@@ -1,3 +1,7 @@
+* {
+  user-select: none;
+}
+
 @import "tailwindcss";
 @theme {
   --font-royal: "Bonheur Royale", cursive;
@@ -5,4 +9,5 @@
   --font-press: "Press Start 2P", system-ui;
   --font-inc: "Inclusive Sans", sans-serif;
   --font-bungee: "Bungee", sans-serif;
+  --color-mid: #5ea85e;
 }

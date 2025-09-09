@@ -15,15 +15,15 @@
     />
     <link href="./src/css/output.css" rel="stylesheet" />
   </head>
-  <body
-    class="bg-[#5EA85E] bg-cover bg-repeat font-inc font-light overflow-x-hidden"
-  >
+  <body class="bg-mid bg-cover bg-repeat font-inc font-light overflow-x-hidden">
     <!-- Menu -->
-    <nav
-      class="fixed font-press text-black z-50 left-0 top-0 w-full flex justify-between gap-12 items-start p-6"
-    >
-      <a href="#" class="inline-block">LOGO</a>
-      <ul class="p-0 m-0 text-lg flex flex-col gap-2">
+    <nav class="font-press text-zinc-800">
+      <a href="#" class="inline-block logo nav-links fixed z-50 left-6 top-6"
+        >Hi,I'm</a
+      >
+      <ul
+        class="p-0 m-0 text-lg flex flex-col gap-2 menu fixed z-50 right-6 top-6"
+      >
         <li>
           <a href="#" class="inline-block nav-links">About</a>
         </li>
@@ -35,7 +35,7 @@
         </li>
       </ul>
     </nav>
-    <!--  -->
+    <!-- Background tiles -->
     <div
       class="fixed top-0 left-0 pointer-events-none w-full h-full grid grid-cols-4"
     >
@@ -43,43 +43,168 @@
       <span class="border-r border-white/30"></span>
       <span class="border-r border-white/30"></span>
     </div>
+    <!-- View project cursor -->
+    <span
+      class="cursor opacity-0 pointer-events-none leading-none bg-yellow-400 text-black text-xs uppercase font-light fixed top-0 left-0 z-50 whitespace-nowrap p-1"
+    >
+      View Project
+    </span>
     <div id="smooth-wrapper">
       <div id="smooth-content">
         <!-- Hero section -->
         <section class="relative">
           <h2
-            class="text-[27dvw] mt-36 leading-[20dvw] text-yellow-50 text-center font-bungee"
+            class="text-[27dvw] overflow-hidden hero-text mt-52 leading-[20dvw] text-yellow-50 text-center font-bungee"
           >
-            Harsh
+            Circl
           </h2>
           <div class="flex justify-between mt-10 px-8">
-            <p class="uppercase text-4xl max-w-xl text-black">
+            <p class="uppercase text-4xl max-w-xl text-black secondary-txt">
               The creative agency that loves to show off a thing or two.
               <br /><br />
               starting with your brand.
             </p>
             <p
-              class="text-[15vw] -mt-40 relative z-10 text-end italic font-royal"
+              class="text-[14vw] last-name -mt-40 relative z-10 text-end italic font-royal"
             >
               Kushwaha
             </p>
-            <p class="text-sm font-light max-w-60 text-end text-black">
+            <p
+              class="text-sm font-light max-w-60 text-end text-black secondary-txt"
+            >
               Impactful digital experiences for ambitious brands
             </p>
           </div>
           <div
-            class="flex justify-between gap-6 mt-10 text-xs font-light px-8 text-black"
+            class="flex justify-between gap-6 mt-5 text-xs font-light px-8 text-black"
           >
-            <p>
+            <p class="secondary-txt">
               PHONE : <br />
               407-99-JUICEs
             </p>
-            <p class="text-end">
+            <p class="text-end secondary-txt">
               ORLANDO : <br />
               07:46:25
             </p>
           </div>
         </section>
+        <!-- Paragraph section -->
+        <section class="font-medium">
+          <p
+            id="hero-bottom-paragraph"
+            class="my-32 max-w-4xl mx-auto text-5xl font-medium text-center text-zinc-800"
+          >
+            We partner with ambitious brands to create digital experiences that
+            feel true and drive momentum.
+          </p>
+          <div class="mx-auto max-w-7xl grid grid-cols-2 gap-12 items-center">
+            <div class="max-w-96 relative">
+              <p class="text-zinc-800 text-lg article-para overflow-hidden">
+                Juice is where strategy, design, and technology come together to
+                build brands people believe in — and empower them to grow with
+                purpose.
+              </p>
+              <a
+                href="#"
+                class="relative group mt-10 flex w-fit gap-2 font-normal items-center text-zinc-800 text-base overflow-hidden btn-animate uppercase"
+              >
+                More about Juice
+                <i
+                  class="bi bi-arrow-right group-hover:-rotate-45 transition duration-200"
+                ></i>
+                <span
+                  class="h-px bg-zinc-800 w-full group-hover:translate-x-full absolute bottom-0 left-0 transition duration-200"
+                ></span>
+              </a>
+            </div>
+            <img
+              src="https://www.juice.agency/_astro/Project-harpie.BJnGIMm3_1SiYxe.webp"
+              class="block w-full max-h-96 object-cover article-img"
+            />
+          </div>
+        </section>
+        <!-- Work section -->
+        <section class="pb-[100dvh] my-40 pt-32 mx-auto max-w-7xl">
+          <h3 class="text-zinc-800 font-normal text-6xl max-w-2/3 work-heading">
+            Featured work where design drives clarity and brand growth.
+          </h3>
+          <div class="grid grid-cols-4 gap-32 mt-32">
+            <a
+              href="#"
+              class="col-span-3 block project-box group project-img project-cursor"
+            >
+              <div class="overflow-hidden">
+                <img
+                  src="https://www.juice.agency/_astro/Project-nauwork.DEZYy-DG_Vs0sd.webp"
+                  class="block w-full max-h-[90dvh] object-cover scale-110 btn-animate group-hover:scale-125"
+                />
+              </div>
+              <p class="uppercase text-4xl font-normal mt-5 text-zinc-800">
+                Fromula 1 Los vegas
+              </p>
+            </a>
+            <p class="text-sm text-black font-normal italic col-span-1">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
+              distinctio sapiente consequatur dolor maiores dolorum mollitia
+              quos labore neque, sed reiciendis animi? Similique ipsam esse eos,
+              quae nesciunt ullam omnis!
+            </p>
+            <p class="text-sm text-black font-normal italic col-span-2">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
+              distinctio sapiente consequatur dolor maiores dolorum mollitia
+              quos labore neque, sed reiciendis animi? Similique ipsam esse eos,
+              quae nesciunt ullam omnis!
+            </p>
+            <a
+              href="#"
+              class="col-span-2 block project-box group project-img project-cursor"
+            >
+              <div class="overflow-hidden">
+                <img
+                  src="https://www.juice.agency/_astro/Project-harpie.BJnGIMm3_1SiYxe.webp"
+                  class="block w-full max-h-[90dvh] object-cover scale-110 btn-animate group-hover:scale-125"
+                />
+              </div>
+              <p class="uppercase text-4xl font-normal mt-5 text-zinc-800">
+                upwork cookbook
+              </p>
+            </a>
+            <a
+              href="#"
+              class="col-span-2 block project-box group project-img project-cursor"
+            >
+              <div class="overflow-hidden">
+                <img
+                  src="https://www.juice.agency/_astro/Project-f1.BXJzh_3J_3nr1X.webp"
+                  class="block w-full scale-110 btn-animate group-hover:scale-125"
+                />
+              </div>
+              <p class="uppercase text-4xl font-normal mt-5 text-zinc-800">
+                Fromula 1 Los vegas
+              </p>
+            </a>
+            <p class="text-sm text-black font-normal italic col-span-1">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
+              distinctio sapiente consequatur dolor maiores dolorum mollitia
+              quos labore neque, sed reiciendis animi? Similique ipsam esse eos,
+              quae nesciunt ullam omnis!
+            </p>
+          </div>
+          <div
+            class="mt-32 text-center flex justify-center text-sm font-medium"
+          >
+            <a
+              href="#"
+              class="group btn-animate flex gap-2 items-center uppercase border border-black py-3 px-6 rounded-md"
+            >
+              Veiw all Projects
+              <i
+                class="bi bi-arrow-right group-hover:-rotate-45 transition duration-200"
+              ></i>
+            </a>
+          </div>
+        </section>
+        <!--  -->
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
