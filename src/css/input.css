@@ -1,1 +1,8 @@
 @import "tailwindcss";
+@theme {
+  --font-royal: "Bonheur Royale", cursive;
+  --font-grav: "Gravitas One", serif;
+  --font-press: "Press Start 2P", system-ui;
+  --font-inc: "Inclusive Sans", sans-serif;
+  --font-bungee: "Bungee", sans-serif;
+}

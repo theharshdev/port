@@ -3,9 +3,91 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Bungee&family=Gravitas+One&family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
     <link href="/src/css/output.css" rel="stylesheet" />
   </head>
-  <body class="bg-black text-white">
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
+  <body
+    class="bg-[#5EA85E] bg-cover bg-repeat font-inc font-light overflow-x-hidden"
+  >
+    <!-- Menu -->
+    <nav
+      class="fixed font-press text-black z-50 left-0 top-0 w-full flex justify-between gap-12 items-start p-6"
+    >
+      <a href="#" class="inline-block">LOGO</a>
+      <ul class="p-0 m-0 text-lg flex flex-col gap-2">
+        <li>
+          <a href="#" class="inline-block nav-links">About</a>
+        </li>
+        <li>
+          <a href="#" class="inline-block nav-links">Work</a>
+        </li>
+        <li>
+          <a href="#" class="inline-block nav-links">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <!--  -->
+    <div
+      class="fixed top-0 left-0 pointer-events-none w-full h-full grid grid-cols-4"
+    >
+      <span class="border-r border-white/30"></span>
+      <span class="border-r border-white/30"></span>
+      <span class="border-r border-white/30"></span>
+    </div>
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <!-- Hero section -->
+        <section class="relative">
+          <h2
+            class="text-[27dvw] mt-36 leading-[20dvw] text-yellow-50 text-center font-bungee"
+          >
+            Harsh
+          </h2>
+          <div class="flex justify-between mt-10 px-8">
+            <p class="uppercase text-4xl max-w-xl text-black">
+              The creative agency that loves to show off a thing or two.
+              <br /><br />
+              starting with your brand.
+            </p>
+            <p
+              class="text-[15vw] -mt-40 relative z-10 text-end italic font-royal"
+            >
+              Kushwaha
+            </p>
+            <p class="text-sm font-light max-w-60 text-end text-black">
+              Impactful digital experiences for ambitious brands
+            </p>
+          </div>
+          <div
+            class="flex justify-between gap-6 mt-10 text-xs font-light px-8 text-black"
+          >
+            <p>
+              PHONE : <br />
+              407-99-JUICEs
+            </p>
+            <p class="text-end">
+              ORLANDO : <br />
+              07:46:25
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+    <script src="/src/js/script.js"></script>
   </body>
 </html>
