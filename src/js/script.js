@@ -83,10 +83,11 @@ gsap.from(".last-name", {
     trigger: ".last-name",
     toggleActions: "restart restart restart restart",
     scrub: 2,
-    end: "top 120%",
+    start: "top 90%",
+    end: "top 80%",
   },
   opacity: 0,
-  y: 450,
+  y: "100%",
   duration: 0.4,
 });
 
@@ -95,12 +96,12 @@ gsap.from(".secondary-txt", {
     trigger: ".secondary-txt",
     toggleActions: "restart restart restart restart",
     scrub: 2,
-    end: "top 50%",
+    end: "top 70%",
   },
   opacity: 0,
   x: 500,
-  duration: 0.4,
-  stagger: 0.3,
+  duration: 0.3,
+  stagger: 0.1,
 });
 
 const splitTextPara = SplitText.create("#hero-bottom-paragraph");
@@ -175,11 +176,11 @@ projectImgs.forEach((projectImg) => {
       toggleActions: "restart restart restart restart",
       scrub: 2,
       end: "top 80%",
-      start: "top 90%",
+      start: "top 100%",
     },
-    y: 250,
-    scale: 0.5,
-    duration: 1,
+    y: 150,
+    scale: 0.7,
+    duration: 0.5,
   });
 
   projectImg.addEventListener("mousemove", (e) => {
@@ -206,17 +207,53 @@ const workHeadTxt = SplitText.create(".work-heading");
 gsap.from(workHeadTxt.words, {
   scrollTrigger: {
     trigger: workHeadTxt.words,
-    toggleActions: "restart restart restart restart",
-    scrub: 2,
-    end: "top 60%",
-    start: "top 80%",
+    toggleActions: "restart none none restart",
   },
   scrambleText: {
     text: workHeadTxt.words.textContent,
     chars: "!@#$%^&*?<>+=|/",
-    revealDelay: 0.3,
-    speed: 0.2,
+    speed: 0.1,
   },
-  duration: 0.3,
-  stagger: 0.2,
+  duration: 0.1,
+  stagger: 0.1,
+});
+
+gsap.from(".service-para", {
+  scrollTrigger: {
+    trigger: ".service-para",
+    toggleActions: "restart none none restart",
+    scrub: 2,
+    end: "top 90%",
+  },
+  y: 100,
+  duration: 1,
+});
+
+gsap.from(".service-video", {
+  scrollTrigger: {
+    trigger: ".service-para",
+    toggleActions: "restart none none restart",
+    scrub: 2,
+    end: "top 30%",
+    start: "top 40%",
+  },
+  y: 100,
+  scale: 0.4,
+});
+
+const workDescriptions = document.querySelectorAll(".work-description");
+workDescriptions.forEach((workDescription) => {
+  const workDescriptionSplt = SplitText.create(workDescription);
+  gsap.from(workDescriptionSplt.chars, {
+    scrollTrigger: {
+      trigger: workDescriptionSplt.chars,
+      toggleActions: "restart none none restart",
+      scrub: 2,
+      end: "top 50%",
+      start: "top 70%",
+    },
+    opacity: 0,
+    x: 10,
+    stagger: 0.1,
+  });
 });
