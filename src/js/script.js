@@ -69,15 +69,6 @@ timeline1.from(".menu li", {
   stagger: 0.3,
 });
 
-const heroSplitText = SplitText.create(".hero-text");
-
-gsap.from(heroSplitText.chars, {
-  opacity: 0,
-  y: 200,
-  duration: 1,
-  stagger: 0.4,
-});
-
 gsap.from(".last-name", {
   scrollTrigger: {
     trigger: ".last-name",
@@ -102,36 +93,6 @@ gsap.from(".secondary-txt", {
   x: 500,
   duration: 0.3,
   stagger: 0.1,
-});
-
-const splitTextPara = SplitText.create("#hero-bottom-paragraph");
-
-gsap.from(splitTextPara.lines, {
-  scrollTrigger: {
-    trigger: splitTextPara.lines,
-    toggleActions: "restart restart restart restart",
-    scrub: 2,
-    end: "top 50%",
-  },
-  opacity: 0,
-  scaleY: -1,
-  duration: 1,
-  stagger: 0.6,
-});
-
-const articleParaSplit = SplitText.create(".article-para");
-
-gsap.from(articleParaSplit.lines, {
-  scrollTrigger: {
-    trigger: articleParaSplit.lines,
-    toggleActions: "restart restart restart restart",
-    scrub: 2,
-    end: "top 50%",
-  },
-  opacity: 0,
-  x: -150,
-  duration: 2,
-  stagger: 0.3,
 });
 
 gsap.from(".article-img", {
@@ -202,22 +163,6 @@ projectImgs.forEach((projectImg) => {
   });
 });
 
-const workHeadTxt = SplitText.create(".work-heading");
-
-gsap.from(workHeadTxt.words, {
-  scrollTrigger: {
-    trigger: workHeadTxt.words,
-    toggleActions: "restart none none restart",
-  },
-  scrambleText: {
-    text: workHeadTxt.words.textContent,
-    chars: "!@#$%^&*?<>+=|/",
-    speed: 0.1,
-  },
-  duration: 0.1,
-  stagger: 0.1,
-});
-
 gsap.from(".service-para", {
   scrollTrigger: {
     trigger: ".service-para",
@@ -241,19 +186,87 @@ gsap.from(".service-video", {
   scale: 0.4,
 });
 
-const workDescriptions = document.querySelectorAll(".work-description");
-workDescriptions.forEach((workDescription) => {
-  const workDescriptionSplt = SplitText.create(workDescription);
-  gsap.from(workDescriptionSplt.chars, {
+document.fonts.ready.then(() => {
+  const heroSplitText = SplitText.create(".hero-text");
+
+  gsap.from(heroSplitText.chars, {
+    opacity: 0,
+    y: 200,
+    duration: 1,
+    stagger: 0.4,
+  });
+
+  const splitTextPara = SplitText.create("#hero-bottom-paragraph");
+
+  gsap.from(splitTextPara.lines, {
     scrollTrigger: {
-      trigger: workDescriptionSplt.chars,
-      toggleActions: "restart none none restart",
+      trigger: splitTextPara.lines,
+      toggleActions: "restart restart restart restart",
       scrub: 2,
       end: "top 50%",
-      start: "top 70%",
     },
     opacity: 0,
-    x: 10,
+    scaleY: -1,
+    duration: 1,
+    stagger: 0.6,
+  });
+
+  const articleParaSplit = SplitText.create(".article-para");
+
+  gsap.from(articleParaSplit.lines, {
+    scrollTrigger: {
+      trigger: articleParaSplit.lines,
+      toggleActions: "restart restart restart restart",
+      scrub: 2,
+      end: "top 50%",
+    },
+    opacity: 0,
+    x: -150,
+    duration: 2,
+    stagger: 0.3,
+  });
+
+  const workHeadTxt = SplitText.create(".work-heading");
+
+  gsap.from(workHeadTxt.words, {
+    scrollTrigger: {
+      trigger: workHeadTxt.words,
+      toggleActions: "restart none none restart",
+    },
+    scrambleText: {
+      text: workHeadTxt.words.textContent,
+      chars: "!@#$%^&*?<>+=|/",
+      speed: 0.1,
+    },
+    duration: 0.1,
     stagger: 0.1,
   });
+
+  const workDescriptions = document.querySelectorAll(".work-description");
+  workDescriptions.forEach((workDescription) => {
+    const workDescriptionSplt = SplitText.create(workDescription);
+    gsap.from(workDescriptionSplt.chars, {
+      scrollTrigger: {
+        trigger: workDescriptionSplt.chars,
+        toggleActions: "restart none none restart",
+        scrub: 2,
+        end: "top 50%",
+        start: "top 70%",
+      },
+      opacity: 0,
+      x: 10,
+      stagger: 0.1,
+    });
+  });
+});
+
+gsap.to(".horizontal-scroll-text", {
+  scrollTrigger: {
+    trigger: ".horizontal-scroll-box",
+    scrub: 2,
+    pin: true,
+    start: "top 0%",
+    end: "top -300%",
+  },
+  transform: "translateX(-51%)",
 });

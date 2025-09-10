@@ -22,16 +22,16 @@
         >Hi,I'm</a
       >
       <ul
-        class="p-0 m-0 text-lg flex flex-col items-end gap-2 menu fixed z-50 right-6 top-6"
+        class="p-0 m-0 text-base flex flex-col gap-2 menu fixed z-50 right-6 top-6"
       >
         <li>
-          <a href="#" class="inline-block nav-links">About</a>
+          <a href="#" class="inline-block nav-links min-w-28">About</a>
         </li>
         <li>
-          <a href="#" class="inline-block nav-links">Work</a>
+          <a href="#" class="inline-block nav-links min-w-28">Work</a>
         </li>
         <li>
-          <a href="#" class="inline-block nav-links">Contact</a>
+          <a href="#" class="inline-block nav-links min-w-28">Contact</a>
         </li>
       </ul>
     </nav>
@@ -213,9 +213,7 @@
           </div>
         </section>
         <!-- Services -->
-        <section
-          class="pb-[100dvh] my-40 pt-20 mx-auto max-w-7xl service-section"
-        >
+        <section class="my-40 pt-20 mx-auto max-w-7xl service-section">
           <h2 class="text-zinc-800 text-xs font-medium uppercase">
             Capabilities
           </h2>
@@ -233,12 +231,26 @@
               src="https://player.vimeo.com/progressive_redirect/playback/1075825736/rendition/1080p/file.mp4?loc=external&signature=a0b5e8bb8152ccde2be30bfa33bbf36d8cfccb5ac4509be1549be39ca41e5b40"
             ></video>
           </div>
-          <div class="mt-40 h-dvh flex items-center">
-            <h3 class="font-royal text-[20vw] font-medium whitespace-nowrap text-zinc-800">
-              Web <span>Development</span>
-            </h3>
-          </div>
         </section>
+        <div
+          class="h-dvh flex items-center horizontal-scroll-box overflow-hidden relative"
+        >
+          <span
+            class="absolute top-5 left-1/2 -translate-x-1/2 text-xs text-zinc-800 font-light"
+          >
+            I do it for you!
+          </span>
+          <h3
+            class="font-royal shrink-0 text-[20vw] horizontal-scroll-text ps-20 leading-none translate-x-0 font-medium whitespace-nowrap text-zinc-800 w-fit"
+          >
+            Web <span>Design</span> & <span>Development</span>
+          </h3>
+          <span
+            class="absolute bottom-5 left-1/2 -translate-x-1/2 text-xs text-zinc-800 font-light"
+          >
+            I do it for you!
+          </span>
+        </div>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
