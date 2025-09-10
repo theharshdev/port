@@ -21,16 +21,21 @@ const navLinks = document.querySelectorAll(".nav-links");
 
 navLinks.forEach((navLink) => {
   const navLinkTxt = navLink.textContent;
+  const navLinkAnimation = gsap.to(navLink, {
+    scrambleText: {
+      text: navLinkTxt,
+      chars: "!@#$%^&*?<>+=|/",
+      revealdelay: 0.5,
+      speed: 0.2,
+    },
+    duration: 1,
+  });
+  navLinkAnimation.pause();
   navLink.addEventListener("mouseover", () => {
-    gsap.to(navLink, {
-      duration: 1,
-      scrambleText: {
-        text: navLinkTxt,
-        chars: "!@#$%^&*?<>+=|/",
-        revealDelay: 0.3,
-        speed: 0.2,
-      },
-    });
+    navLinkAnimation.play();
+  });
+  navLink.addEventListener("mouseleave", () => {
+    navLinkAnimation.reverse();
   });
 });
 
@@ -261,10 +266,10 @@ document.fonts.ready.then(() => {
 gsap.to(".horizontal-scroll-text", {
   scrollTrigger: {
     trigger: ".horizontal-scroll-box",
-    scrub: 2,
+    scrub: 1,
     pin: true,
     start: "top 0%",
-    end: "top -300%",
+    end: "top -200%",
   },
   transform: "translateX(-51%)",
 });
