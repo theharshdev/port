@@ -55,13 +55,6 @@ timeline1.from(".logo", {
   delay: 0.4,
 });
 
-timeline1.from(".menu li a", {
-  x: 200,
-  opacity: 0,
-  duration: 0.5,
-  stagger: 0.2,
-});
-
 timeline1.from(".menu li", {
   x: 200,
   opacity: 0,
@@ -73,26 +66,10 @@ gsap.from(".last-name", {
   scrollTrigger: {
     trigger: ".last-name",
     toggleActions: "restart restart restart restart",
-    scrub: 2,
-    start: "top 90%",
-    end: "top 80%",
   },
   opacity: 0,
-  y: "100%",
-  duration: 0.4,
-});
-
-gsap.from(".secondary-txt", {
-  scrollTrigger: {
-    trigger: ".secondary-txt",
-    toggleActions: "restart restart restart restart",
-    scrub: 2,
-    end: "top 70%",
-  },
-  opacity: 0,
-  x: 500,
-  duration: 0.3,
-  stagger: 0.1,
+  y: 200,
+  duration: 1,
 });
 
 gsap.from(".article-img", {
@@ -163,24 +140,13 @@ projectImgs.forEach((projectImg) => {
   });
 });
 
-gsap.from(".service-para", {
-  scrollTrigger: {
-    trigger: ".service-para",
-    toggleActions: "restart none none restart",
-    scrub: 2,
-    end: "top 90%",
-  },
-  y: 100,
-  duration: 1,
-});
-
 gsap.from(".service-video", {
   scrollTrigger: {
-    trigger: ".service-para",
-    toggleActions: "restart none none restart",
+    trigger: ".service-video",
+    toggleActions: "restart restart restart restart",
     scrub: 2,
-    end: "top 30%",
-    start: "top 40%",
+    end: "top 50%",
+    start: "top 70%",
   },
   y: 100,
   scale: 0.4,
@@ -194,6 +160,10 @@ document.fonts.ready.then(() => {
     y: 200,
     duration: 1,
     stagger: 0.4,
+    scrollTrigger: {
+      trigger: heroSplitText.chars,
+      toggleActions: "restart restart restart restart",
+    },
   });
 
   const splitTextPara = SplitText.create("#hero-bottom-paragraph");
@@ -257,6 +227,34 @@ document.fonts.ready.then(() => {
       x: 10,
       stagger: 0.1,
     });
+  });
+
+  const secondaryTxtSplit = SplitText.create(".secondary-txt");
+  gsap.from(secondaryTxtSplit.lines, {
+    opacity: 0,
+    y: 100,
+    scaleY: -1,
+    duration: 1,
+    scale: 0.6,
+    stagger: 0.1,
+    scrollTrigger: {
+      trigger: secondaryTxtSplit.lines,
+      toggleActions: "restart restart restart restart",
+    },
+  });
+
+  const serviceParaSplit = SplitText.create(".service-para");
+  gsap.from(serviceParaSplit.words, {
+    scrollTrigger: {
+      trigger: serviceParaSplit.words,
+      toggleActions: "restart none none restart",
+      scrub: 2,
+      end: "top 60%",
+      start: "top 70%",
+    },
+    scaleY: -1,
+    opacity: 0,
+    stagger: 0.5,
   });
 });
 
