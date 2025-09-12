@@ -22,7 +22,6 @@ setInterval(() => {
   let now = new Date();
   let time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
   timeElm.textContent = time;
-  
 }, 1000);
 
 const navLinks = document.querySelectorAll(".nav-links");
@@ -286,16 +285,17 @@ let tl = gsap.timeline({
   scrollTrigger: {
     trigger: ".skillParentBox",
     start: "top 0%",
-    end: "top -450%",
-    scrub: 1,
+    end: "top -400%",
+    scrub: 2,
     pin: true,
+    ease: "expoScale(0.5,7,none)",
   },
 });
 
 tl.to(".skillHeading", {
   scale: 60,
-  duration: 3,
-  delay: 0.3,
+  duration: 5,
+  delay: 0.1,
 });
 tl.to(
   ".skillCircle",
@@ -303,7 +303,7 @@ tl.to(
     scale: 2.2,
     duration: 3,
   },
-  "-=2.2"
+  "-=4"
 );
 tl.to(
   ".skillTxts",
@@ -316,5 +316,5 @@ tl.to(
       from: "random",
     },
   },
-  "-=1"
+  "-=2.3"
 );
