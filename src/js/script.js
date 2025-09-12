@@ -17,6 +17,14 @@ ScrollSmoother.create({
 
 ScrollTrigger.normalizeScroll(true);
 
+let timeElm = document.getElementById("time");
+setInterval(() => {
+  let now = new Date();
+  let time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+  timeElm.textContent = time;
+  
+}, 1000);
+
 const navLinks = document.querySelectorAll(".nav-links");
 
 navLinks.forEach((navLink) => {
@@ -269,7 +277,44 @@ gsap.to(".horizontal-scroll-text", {
     scrub: 1,
     pin: true,
     start: "top 0%",
-    end: "top -200%",
+    end: "top -160%",
   },
   transform: "translateX(-51%)",
 });
+
+let tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".skillParentBox",
+    start: "top 0%",
+    end: "top -450%",
+    scrub: 1,
+    pin: true,
+  },
+});
+
+tl.to(".skillHeading", {
+  scale: 60,
+  duration: 3,
+  delay: 0.3,
+});
+tl.to(
+  ".skillCircle",
+  {
+    scale: 2.2,
+    duration: 3,
+  },
+  "-=2.2"
+);
+tl.to(
+  ".skillTxts",
+  {
+    x: 0,
+    opacity: 1,
+    duration: 1,
+    stagger: {
+      each: 0.2,
+      from: "random",
+    },
+  },
+  "-=1"
+);

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button Hover Animations</title>
+    <style>
+      body {
+        background: #111;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+
+      button {
+        position: relative;
+        padding: 15px 30px;
+        font-size: 16px;
+        color: #fff;
+        background: #222;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 8px;
+        min-width: 160px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        min-height: 60px;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+      }
+
+      /* Button 1 */
+      .btn1:hover::after {
+        content: "";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        width: 16px;
+        height: 16px;
+        margin-top: -8px;
+        border: 2px solid #fff;
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Button 2 */
+      .btn2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: #00f5ff;
+        transition: 0.4s;
+      }
+      .btn2:hover::after {
+        width: 100%;
+      }
+
+      /* Button 3 */
+      .btn3:hover::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 10px;
+        height: 10px;
+        background: rgba(0, 255, 200, 0.5);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        animation: ripple 0.6s linear forwards;
+      }
+      @keyframes ripple {
+        100% {
+          width: 200px;
+          height: 200px;
+          opacity: 0;
+        }
+      }
+
+      /* Button 4 */
+      .btn4 {
+        background: linear-gradient(90deg, #444, #222);
+      }
+      .btn4:hover {
+        background: linear-gradient(270deg, #00f, #0ff, #0f0);
+        background-size: 400% 400%;
+        animation: gradientMove 3s ease infinite;
+      }
+      @keyframes gradientMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Button 5 */
+      .btn5 {
+        overflow: hidden;
+      }
+      .btn5::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.6),
+          transparent
+        );
+        transform: skewX(-25deg);
+      }
+      .btn5:hover::before {
+        animation: shimmer 1s forwards;
+      }
+      @keyframes shimmer {
+        100% {
+          left: 125%;
+        }
+      }
+
+      /* Button 6*/
+      .btn6:hover {
+        animation: bounce 0.6s;
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Button 7 */
+      .btn7:hover {
+        box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+        animation: glow 1.5s infinite alternate;
+      }
+      @keyframes glow {
+        from {
+          box-shadow: 0 0 5px #0ff;
+        }
+        to {
+          box-shadow: 0 0 25px #0ff;
+        }
+      }
+
+      /* Button 8 */
+      .btn8 {
+        color: transparent;
+      }
+      .btn8::before {
+        content: "Hover Me";
+        position: absolute;
+        left: -100%;
+        color: #fff;
+        transition: 0.5s;
+      }
+      .btn8:hover::before {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <button class="btn1">Loading</button>
+      <button class="btn2">Underline</button>
+      <button class="btn3">Ripple</button>
+      <button class="btn4">Gradient</button>
+      <button class="btn5">Shimmer</button>
+      <button class="btn6">Bounce</button>
+      <button class="btn7">Glow</button>
+      <button class="btn8">Slide Text</button>
+    </div>
+  </body>
+</html>

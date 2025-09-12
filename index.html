@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Bungee&family=Gravitas+One&family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&family=Press+Start+2P&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Anton&family=Bungee&family=Gravitas+One&family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
     <link
@@ -15,9 +15,11 @@
     />
     <link href="./src/css/output.css" rel="stylesheet" />
   </head>
-  <body class="bg-mid bg-cover bg-repeat font-inc font-light overflow-x-hidden">
+  <body
+    class="bg-mid text-black bg-cover bg-repeat font-inc font-light overflow-x-hidden"
+  >
     <!-- Menu -->
-    <nav class="font-press text-zinc-800">
+    <nav class="font-press">
       <a href="#" class="inline-block logo nav-links fixed z-50 left-6 top-6"
         >Hi,I'm</a
       >
@@ -45,7 +47,7 @@
     </div>
     <!-- View project cursor -->
     <span
-      class="cursor opacity-0 pointer-events-none leading-none bg-yellow-400 text-black text-xs uppercase font-light fixed top-0 left-0 z-50 whitespace-nowrap py-1.5 px-2 flex justify-center items-center shadow-xl shadow-black/20"
+      class="cursor opacity-0 pointer-events-none leading-none bg-black text-white text-xs uppercase font-light fixed top-0 left-0 z-50 whitespace-nowrap w-32 h-32 rounded-full flex justify-center items-center shadow-xl shadow-black/20"
     >
       View Project
     </span>
@@ -59,9 +61,7 @@
             harsh
           </h2>
           <div class="flex justify-between items-start mt-32 px-8">
-            <p
-              class="text-3xl max-w-xl text-black secondary-txt overflow-hidden"
-            >
+            <p class="text-3xl max-w-xl secondary-txt overflow-hidden">
               The creative guy that loves to show off a thing or two.
               <br />
               Starting with your brand.
@@ -71,22 +71,18 @@
             >
               Kushwaha
             </p>
-            <p
-              class="text-sm max-w-60 text-end text-zinc-800 secondary-txt overflow-hidden"
-            >
+            <p class="text-sm max-w-60 text-end secondary-txt overflow-hidden">
               Impactful digital experiences for ambitious brands
             </p>
           </div>
-          <div
-            class="flex justify-between gap-6 mt-12 text-xs font-light px-8 text-black"
-          >
+          <div class="flex justify-between gap-6 mt-12 text-xs font-light px-8">
             <p class="secondary-txt overflow-hidden">
               PHONE : <br />
               +91 8737812696
             </p>
-            <p class="secondary-txt overflow-hidden">
+            <p class=" overflow-hidden">
               INDIA : <br />
-              07:46:25
+              <span id="time">07:46:25</span>
             </p>
           </div>
         </section>
@@ -94,7 +90,7 @@
         <section class="font-medium">
           <p
             id="hero-bottom-paragraph"
-            class="mb-32 max-w-4xl mx-auto text-5xl font-medium text-center text-zinc-800"
+            class="mb-32 max-w-4xl mx-auto text-5xl font-medium text-center"
           >
             I partner with ambitious brands to create digital experiences that
             feel true and drive momentum.
@@ -109,14 +105,14 @@
             <div
               class="max-w-96 relative flex flex-col gap-6 items-end text-end"
             >
-              <p class="text-zinc-800 text-lg article-para overflow-hidden">
+              <p class="text-lg article-para overflow-hidden">
                 Juice is where strategy, design, and technology come together to
                 build brands people believe in — and empower them to grow with
                 purpose.
               </p>
               <a
                 href="#"
-                class="relative group mt-10 flex w-fit gap-2 font-normal items-center text-zinc-800 text-base overflow-hidden btn-animate uppercase"
+                class="relative group mt-10 flex w-fit gap-2 font-normal items-center text-base overflow-hidden btn-animate uppercase"
               >
                 More about Me
                 <i
@@ -131,10 +127,8 @@
         </section>
         <!-- Work section -->
         <section class="my-40 pt-32 mx-auto max-w-7xl">
-          <p class="text-zinc-800 text-sm font-bungee text-end mb-12">
-            Projects
-          </p>
-          <h3 class="text-zinc-800 font-normal text-6xl max-w-2/3 work-heading">
+          <p class="text-sm font-bungee text-end mb-12">Projects</p>
+          <h3 class="font-normal text-6xl max-w-2/3 work-heading">
             Featured work where design drives clarity and brand growth.
           </h3>
           <div class="grid grid-cols-4 gap-32 mt-32">
@@ -148,12 +142,12 @@
                   class="block w-full max-h-[90dvh] object-cover scale-110 btn-animate group-hover:scale-125"
                 />
               </div>
-              <p class="uppercase text-4xl font-normal mt-5 text-zinc-800">
+              <p class="uppercase text-4xl font-normal mt-5">
                 Fromula 1 Los vegas
               </p>
             </a>
             <p
-              class="text-sm text-black font-normal italic work-description mt-32 col-span-1"
+              class="text-sm font-normal italic work-description mt-32 col-span-1"
             >
               "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
               distinctio sapiente consequatur dolor maiores dolorum mollitia
@@ -161,7 +155,7 @@
               quae nesciunt ullam omnis!"
             </p>
             <p
-              class="text-sm text-black font-normal italic work-description mt-32 col-span-2"
+              class="text-sm font-normal italic work-description mt-32 col-span-2"
             >
               "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
               distinctio sapiente consequatur dolor maiores dolorum mollitia
@@ -178,9 +172,7 @@
                   class="block w-full max-h-[90dvh] object-cover scale-110 btn-animate group-hover:scale-125"
                 />
               </div>
-              <p class="uppercase text-4xl font-normal mt-5 text-zinc-800">
-                upwork cookbook
-              </p>
+              <p class="uppercase text-4xl font-normal mt-5">upwork cookbook</p>
             </a>
             <a
               href="#"
@@ -192,12 +184,12 @@
                   class="block w-full scale-110 btn-animate group-hover:scale-125"
                 />
               </div>
-              <p class="uppercase text-4xl font-normal mt-5 text-zinc-800">
+              <p class="uppercase text-4xl font-normal mt-5">
                 Fromula 1 Los vegas
               </p>
             </a>
             <p
-              class="text-sm text-black font-normal italic work-description mt-32 col-span-1"
+              class="text-sm font-normal italic work-description mt-32 col-span-1"
             >
               "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
               distinctio sapiente consequatur dolor maiores dolorum mollitia
@@ -210,9 +202,9 @@
           >
             <a
               href="#"
-              class="group btn-animate flex gap-2 items-center uppercase border border-black py-3 px-6 rounded-md"
+              class="group btn-animate font-bungee flex gap-2 items-center uppercase border border-black py-3 px-6 rounded-md"
             >
-              Veiw all Projects
+              View all Projects
               <i
                 class="bi bi-arrow-right group-hover:-rotate-45 transition duration-200"
               ></i>
@@ -222,12 +214,10 @@
         <!-- Services -->
         <section class="my-40 service-section">
           <div class="pt-20 mx-auto max-w-7xl">
-            <h2 class="text-zinc-800 text-xs font-medium uppercase">
-              Capabilities
-            </h2>
+            <h2 class="text-xs font-medium uppercase">Capabilities</h2>
             <div class="grid grid-cols-2 gap-6 mt-32">
               <p
-                class="text-zinc-800 text-7xl leading-16 font-light mb-32 col-span-1 service-para"
+                class="text-7xl leading-16 font-light mb-32 col-span-1 service-para"
               >
                 An integrated team built to solve for tomorrow's challenges
                 today.
@@ -247,23 +237,44 @@
           class="h-dvh flex items-center horizontal-scroll-box overflow-hidden relative"
         >
           <span
-            class="absolute top-5 left-1/2 -translate-x-1/2 text-xs text-zinc-800 font-light"
+            class="absolute top-5 left-1/2 -translate-x-1/2 text-xs font-light"
           >
             I do it for you!
           </span>
           <h3
-            class="font-royal shrink-0 text-[20vw] horizontal-scroll-text ps-20 leading-none translate-x-0 font-medium whitespace-nowrap text-zinc-800 w-fit"
+            class="font-royal shrink-0 text-[20vw] horizontal-scroll-text ps-20 leading-none translate-x-0 font-medium whitespace-nowrap w-fit"
           >
             Web <span>Design</span> & <span>Development</span>
           </h3>
           <span
-            class="absolute bottom-5 left-1/2 -translate-x-1/2 text-xs text-zinc-800 font-light"
+            class="absolute bottom-5 left-1/2 -translate-x-1/2 text-xs font-light"
           >
             I do it for you!
           </span>
         </div>
-        <!--  -->
-        <section class="pb-[100vh]"></section>
+        <!-- tools i use -->
+        <section class="pb-[100vh] py-40">
+          <div class="skillParentBox relative h-dvh overflow-hidden">
+            <span
+              class="w-[100dvh] h-[100dvh] rounded-full bg-mid block mx-auto skillCircle absolute top-1/2 left-1/2 -translate-1/2 z-0 scale-0"
+            ></span>
+            <p
+              class="text-[10vw] whitespace-nowrap italic uppercase absolute top-1/2 left-1/2 -translate-1/2 text-center mb-32 skillHeading z-10 font-anton"
+            >
+              Tech I use!
+            </p>
+            <div
+              class="absolute top-1/2 left-1/2 -translate-1/2 z-20 text-7xl font-light uppercase text-yellow-100 font-press text-end"
+            >
+              <h3 class="skillTxts opacity-0 -translate-x-full">GSAP</h3>
+              <h3 class="skillTxts opacity-0 -translate-x-full">React.Js</h3>
+              <h3 class="skillTxts opacity-0 -translate-x-full">Typescript</h3>
+              <h3 class="skillTxts opacity-0 -translate-x-full">Javascript</h3>
+              <h3 class="skillTxts opacity-0 -translate-x-full">TailwindCSS</h3>
+              <h3 class="skillTxts opacity-0 -translate-x-full">MUI</h3>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
