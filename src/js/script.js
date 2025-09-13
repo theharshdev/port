@@ -125,8 +125,8 @@ projectImgs.forEach((projectImg) => {
       trigger: projectImg,
       toggleActions: "restart restart restart restart",
       scrub: 2,
-      end: "top 80%",
-      start: "top 100%",
+      start: "top 80%",
+      end: "top 70%",
     },
     y: 150,
     scale: 0.7,
@@ -285,7 +285,7 @@ let tl = gsap.timeline({
   scrollTrigger: {
     trigger: ".skillParentBox",
     start: "top 0%",
-    end: "top -400%",
+    end: "top -600%",
     scrub: 2,
     pin: true,
     ease: "expoScale(0.5,7,none)",
@@ -293,15 +293,15 @@ let tl = gsap.timeline({
 });
 
 tl.to(".skillHeading", {
-  scale: 60,
+  scale: 65,
   duration: 5,
-  delay: 0.1,
+  delay: 0.5,
 });
 tl.to(
   ".skillCircle",
   {
     scale: 2.2,
-    duration: 3,
+    duration: 1,
   },
   "-=4"
 );
@@ -316,5 +316,20 @@ tl.to(
       from: "random",
     },
   },
-  "-=2.3"
+  "-=3"
 );
+
+const tweenNew = gsap.to(".scroller", {
+  x: 0,
+  repeat: -1,
+  duration: 12,
+  ease: "none",
+});
+
+window.addEventListener("wheel", (e) => {
+  if (e.deltaY > 0) {
+    tweenNew.play();
+  } else {
+    tweenNew.reverse();
+  }
+});
