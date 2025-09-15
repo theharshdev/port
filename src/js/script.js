@@ -52,7 +52,7 @@ gsap.to("body", {
     toggleActions: "restart restart restart restart",
     scrub: 2,
   },
-  backgroundColor: "#FFFFEB",
+  backgroundColor: "#fff8d3",
   duration: 0.2,
   ease: "power4.out",
   delay: 1,
@@ -152,9 +152,9 @@ projectImgs.forEach((projectImg) => {
   });
 });
 
-gsap.from(".service-video", {
+gsap.from(".color-palatte", {
   scrollTrigger: {
-    trigger: ".service-video",
+    trigger: ".color-palatte",
     toggleActions: "restart restart restart restart",
     scrub: 2,
     end: "top 50%",

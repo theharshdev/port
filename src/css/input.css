@@ -10,5 +10,7 @@
   --font-inc: "Inclusive Sans", sans-serif;
   --font-bungee: "Bungee", sans-serif;
   --font-anton: "Anton", sans-serif;
-  --color-mid: #f04123;
+  --color-primary: #00a676;
+  --color-secondary: #35281c;
+  --color-ternary: #fff8d3;
 }

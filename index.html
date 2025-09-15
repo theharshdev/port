@@ -16,17 +16,15 @@
     <link href="./src/css/output.css" rel="stylesheet" />
   </head>
   <body
-    class="bg-mid text-black bg-cover bg-repeat font-inc font-light overflow-x-hidden"
+    class="bg-primary text-secondary bg-cover bg-repeat font-inc font-light overflow-x-hidden"
   >
     <!-- Menu -->
-    <nav class="font-press text-white">
-      <a
-        href="#"
-        class="inline-block logo nav-links absolute z-50 left-6 top-6 mix-blend-difference"
+    <nav class="font-press">
+      <a href="#" class="inline-block logo nav-links absolute z-50 left-6 top-6"
         >Hi,I'm</a
       >
       <ul
-        class="p-0 m-0 text-base flex flex-col gap-2 menu fixed z-50 right-6 top-6 mix-blend-difference"
+        class="p-0 m-0 text-base flex flex-col gap-2 menu fixed z-50 right-6 top-6"
       >
         <li>
           <a href="#" class="inline-block nav-links min-w-28">About</a>
@@ -43,13 +41,13 @@
     <div
       class="fixed top-0 left-0 pointer-events-none w-full h-full grid grid-cols-4"
     >
-      <span class="border-r border-black/20"></span>
-      <span class="border-r border-black/20"></span>
-      <span class="border-r border-black/20"></span>
+      <span class="border-r border-secondary"></span>
+      <span class="border-r border-secondary"></span>
+      <span class="border-r border-secondary"></span>
     </div>
     <!-- View project cursor -->
     <span
-      class="cursor opacity-0 pointer-events-none leading-none bg-black text-white text-xs uppercase font-light fixed top-0 left-0 z-50 whitespace-nowrap w-32 h-32 rounded-full flex justify-center items-center shadow-xl shadow-black/20"
+      class="cursor opacity-0 pointer-events-none leading-none bg-black text-ternary text-xs uppercase font-light fixed top-0 left-0 z-50 tertext-ternaryspace-nowrap w-32 h-32 rounded-full flex justify-center items-center shadow-xl shadow-black/20"
     >
       View Project
     </span>
@@ -58,7 +56,7 @@
         <!-- Hero section -->
         <section class="h-dvh pt-56">
           <h2
-            class="text-[15dvw] overflow-hidden hero-text leading-[12dvw] text-yellow-100 text-center font-grav"
+            class="text-[15dvw] overflow-hidden hero-text leading-[12dvw] text-ternary text-center font-grav"
           >
             harsh
           </h2>
@@ -226,13 +224,31 @@
               </p>
             </div>
           </div>
-          <video
-            class="w-full service-video scale-110"
-            muted
-            loop
-            autoplay
-            src="https://player.vimeo.com/progressive_redirect/playback/1075825736/rendition/1080p/file.mp4?loc=external&signature=a0b5e8bb8152ccde2be30bfa33bbf36d8cfccb5ac4509be1549be39ca41e5b40"
-          ></video>
+          <div class="grid grid-cols-3 gap-0 h-dvh color-palatte">
+            <!-- Color pallete  -->
+            <div class="text-center relative bg-primary text-ternary">
+              <div class="absolute bottom-32 left-1/2 -translate-x-1/2">
+                <h3 class="text-2xl font-medium">00A676</h3>
+                <p class="text-sm mt-4">Jade</p>
+              </div>
+            </div>
+            <!-- Color pallete  -->
+            <div
+              class="text-center relative bg-ternary text-secondary border-y border-secondary"
+            >
+              <div class="absolute bottom-32 left-1/2 -translate-x-1/2">
+                <h3 class="text-2xl font-medium">FFF8D3</h3>
+                <p class="text-sm mt-4">Lemon chiffon</p>
+              </div>
+            </div>
+            <!-- Color pallete  -->
+            <div class="text-center relative bg-secondary text-ternary">
+              <div class="absolute bottom-32 left-1/2 -translate-x-1/2">
+                <h3 class="text-2xl font-medium">35281C</h3>
+                <p class="text-sm mt-4">Bistre</p>
+              </div>
+            </div>
+          </div>
         </section>
         <!-- Horizontal scrolling text -->
         <div
@@ -244,7 +260,7 @@
             I do it for you!
           </span>
           <h3
-            class="font-royal shrink-0 text-[20vw] horizontal-scroll-text ps-20 leading-none translate-x-0 font-medium whitespace-nowrap w-fit"
+            class="font-royal shrink-0 text-[20vw] horizontal-scroll-text ps-20 leading-none translate-x-0 font-medium tertext-ternary whitespace-nowrap w-fit"
           >
             Web <span>Design</span> & <span>Development</span>
           </h3>
@@ -258,15 +274,15 @@
         <section class="pt-40">
           <div class="skillParentBox relative h-dvh overflow-hidden">
             <span
-              class="w-[100dvh] h-[100dvh] rounded-full bg-mid block mx-auto skillCircle absolute top-1/2 left-1/2 -translate-1/2 z-0 scale-0"
+              class="w-[100dvh] h-[100dvh] rounded-full bg-primary block mx-auto skillCircle absolute top-1/2 left-1/2 -translate-1/2 z-0 scale-0"
             ></span>
             <p
-              class="text-[12vw] italic whitespace-nowrap uppercase absolute top-1/2 left-1/2 -translate-1/2 text-center mb-32 skillHeading z-10 font-anton -ml-7"
+              class="text-[12vw] italic tertext-ternaryspace-nowrap uppercase absolute top-1/2 left-1/2 -translate-1/2 text-center mb-32 skillHeading z-10 font-anton -ml-7"
             >
               Tech I use!
             </p>
             <div
-              class="absolute top-1/2 left-1/2 -translate-1/2 z-20 text-7xl font-light uppercase font-press text-end italic"
+              class="absolute top-1/2 left-1/2 -translate-1/2 z-20 text-7xl font-light text-ternary uppercase font-press text-end italic"
             >
               <h3 class="skillTxts opacity-0 -translate-x-full">GSAP</h3>
               <h3 class="skillTxts opacity-0 -translate-x-full">React.Js</h3>
