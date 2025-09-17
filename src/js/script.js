@@ -18,10 +18,17 @@ ScrollSmoother.create({
 ScrollTrigger.normalizeScroll(true);
 
 let timeElm = document.getElementById("time");
+
 setInterval(() => {
   let now = new Date();
-  let time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
-  timeElm.textContent = time;
+  let options = {
+    timeZone: "Asia/Kolkata",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  };
+  timeElm.textContent = now.toLocaleTimeString("en-IN", options);
 }, 1000);
 
 const navLinks = document.querySelectorAll(".nav-links");
@@ -285,45 +292,38 @@ let tl = gsap.timeline({
   scrollTrigger: {
     trigger: ".skillParentBox",
     start: "top 0%",
-    end: "top -600%",
-    scrub: 2,
+    end: "top -400%",
+    scrub: true,
     pin: true,
-    ease: "expoScale(0.5,7,none)",
   },
 });
-
 tl.to(".skillHeading", {
-  scale: 65,
-  duration: 5,
-  delay: 0.5,
+  scale: 40,
+  duration: 2,
+  delay: 0.1,
 });
-tl.to(
-  ".skillCircle",
-  {
-    scale: 2.2,
-    duration: 1,
+tl.to(".skillCircle", {
+  scale: 2.3,
+  duration: 2,
+});
+tl.to(".skillTxts", {
+  x: 0,
+  opacity: 1,
+  duration: 2,
+  stagger: {
+    each: 0.2,
+    from: "random",
   },
-  "-=4"
-);
-tl.to(
-  ".skillTxts",
-  {
-    x: 0,
-    opacity: 1,
-    duration: 1,
-    stagger: {
-      each: 0.2,
-      from: "random",
-    },
-  },
-  "-=3"
-);
+});
 
 const tweenNew = gsap.to(".scroller", {
   x: 0,
   repeat: -1,
-  duration: 12,
+  duration: 16,
   ease: "none",
+  scrollTrigger: {
+    trigger: ".scroller",
+  },
 });
 
 window.addEventListener("wheel", (e) => {
@@ -332,4 +332,21 @@ window.addEventListener("wheel", (e) => {
   } else {
     tweenNew.reverse();
   }
+});
+
+const blogCards = document.querySelectorAll(".blogCard");
+
+blogCards.forEach((blogCard) => {
+  gsap.from(blogCard, {
+    scrollTrigger: {
+      trigger: blogCard,
+      toggleActions: "restart restart restart restart",
+      start: "top 90%",
+      end: "top 60%",
+      scrub: true,
+    },
+    scaleX: -1,
+    opacity: 0,
+    duration: 1,
+  });
 });
