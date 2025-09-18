@@ -10,7 +10,7 @@ gsap.registerPlugin(
 ScrollSmoother.create({
   wrapper: "#smooth-wrapper",
   content: "#smooth-content",
-  smooth: 2,
+  smooth: 1.5,
   effects: true,
   smoothTouch: 0.1,
 });
@@ -302,10 +302,14 @@ tl.to(".skillHeading", {
   duration: 2,
   delay: 0.1,
 });
-tl.to(".skillCircle", {
-  scale: 2.3,
-  duration: 2,
-});
+tl.to(
+  ".skillCircle",
+  {
+    scale: 2.3,
+    duration: 2,
+  },
+  "-=1"
+);
 tl.to(".skillTxts", {
   x: 0,
   opacity: 1,
@@ -343,10 +347,40 @@ blogCards.forEach((blogCard) => {
       toggleActions: "restart restart restart restart",
       start: "top 90%",
       end: "top 60%",
-      scrub: true,
+      scrub: 2,
     },
-    scaleX: -1,
-    opacity: 0,
+    y: 200,
+    scale: 0.6,
     duration: 1,
   });
+});
+
+gsap.from("#blog-heading", {
+  scrollTrigger: {
+    trigger: "#blog-heading",
+    scrub: 2,
+  },
+  x: -200,
+  duration: 1,
+});
+
+gsap.from("#blog-paragraph", {
+  scrollTrigger: {
+    trigger: "#blog-paragraph",
+    scrub: 2,
+  },
+  x: 200,
+  duration: 1,
+});
+
+gsap.from("footer", {
+  scrollTrigger: {
+    trigger: "footer",
+    start: "top bottom",
+    toggleActions: "play reverse play reverse",
+    // onEnter, onLeave, onEnterBack, onLeaveBack
+  },
+  y: 200,
+  duration: 1,
+  ease: "power2.out",
 });
