@@ -10,7 +10,7 @@ gsap.registerPlugin(
 ScrollSmoother.create({
   wrapper: "#smooth-wrapper",
   content: "#smooth-content",
-  smooth: 1.5,
+  smooth: 2,
   effects: true,
   smoothTouch: 0.1,
 });
@@ -35,21 +35,16 @@ const navLinks = document.querySelectorAll(".nav-links");
 
 navLinks.forEach((navLink) => {
   const navLinkTxt = navLink.textContent;
-  const navLinkAnimation = gsap.to(navLink, {
-    scrambleText: {
-      text: navLinkTxt,
-      chars: "!@#$%^&*?<>+=|/",
-      revealdelay: 0.5,
-      speed: 0.2,
-    },
-    duration: 1,
-  });
-  navLinkAnimation.pause();
   navLink.addEventListener("mouseover", () => {
-    navLinkAnimation.play();
-  });
-  navLink.addEventListener("mouseleave", () => {
-    navLinkAnimation.reverse();
+    gsap.to(navLink, {
+      scrambleText: {
+        text: navLinkTxt,
+        chars: "!@#$%^&*?<>+=|/",
+        revealdelay: 0.5,
+        speed: 0.2,
+      },
+      duration: 1,
+    });
   });
 });
 
@@ -382,5 +377,33 @@ gsap.from("footer", {
   },
   y: 200,
   duration: 1,
+  ease: "power2.out",
+});
+
+gsap.from("footer div a", {
+  scrollTrigger: {
+    trigger: "footer",
+    start: "top bottom",
+    toggleActions: "play reverse play reverse",
+    // onEnter, onLeave, onEnterBack, onLeaveBack
+  },
+  x: 150,
+  opacity: 0,
+  duration: 1,
+  stagger: 0.2,
+  ease: "power2.out",
+});
+
+gsap.from("footer div p", {
+  scrollTrigger: {
+    trigger: "footer",
+    start: "top bottom",
+    toggleActions: "play reverse play reverse",
+    // onEnter, onLeave, onEnterBack, onLeaveBack
+  },
+  x: 150,
+  opacity: 0,
+  duration: 1,
+  stagger: 0.2,
   ease: "power2.out",
 });
