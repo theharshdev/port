@@ -87,7 +87,7 @@ gsap.from(".last-name", {
     toggleActions: "restart restart restart restart",
   },
   opacity: 0,
-  y: 200,
+  x: 300,
   duration: 1,
 });
 
