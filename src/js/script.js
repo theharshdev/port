@@ -51,7 +51,7 @@ navLinks.forEach((navLink) => {
 gsap.to("body", {
   scrollTrigger: {
     trigger: "#hero-bottom-paragraph",
-    toggleActions: "restart restart restart restart",
+    toggleActions: "play reverse play reverse",
     scrub: 2,
   },
   backgroundColor: "#fff8d3",
@@ -79,29 +79,42 @@ timeline1.from(".menu li", {
 gsap.from(".last-name", {
   scrollTrigger: {
     trigger: ".last-name",
-    toggleActions: "restart restart restart restart",
+    toggleActions: "play reverse play reverse",
   },
   opacity: 0,
   x: 300,
   duration: 1,
 });
 
+gsap.from(".color-palatte", {
+  scrollTrigger: {
+    trigger: ".color-palatte",
+    toggleActions: "play reverse play reverse",
+    start: "top 100%",
+    end: "top 50%",
+    scrub: 2,
+  },
+  y: 150,
+  scale: 0.4,
+});
+
 gsap.from(".article-img", {
   scrollTrigger: {
     trigger: ".article-img",
-    toggleActions: "restart restart restart restart",
+    toggleActions: "play reverse play reverse",
+    start: "top 90%",
+    end: "top 70%",
     scrub: 2,
-    end: "top 80%",
   },
   y: 250,
-  scale: 0.5,
-  duration: 0.6,
+  scale: 0.4,
+  duration: 1,
 });
 
 gsap.to(".logo", {
   scrollTrigger: {
     trigger: "#hero-bottom-paragraph",
-    toggleActions: "restart restart restart restart",
+    toggleActions: "play reverse play reverse",
     scrub: 2,
   },
   y: -200,
@@ -125,7 +138,7 @@ projectImgs.forEach((projectImg) => {
   gsap.from(projectImg, {
     scrollTrigger: {
       trigger: projectImg,
-      toggleActions: "restart restart restart restart",
+      toggleActions: "play reverse play reverse",
       scrub: 2,
       start: "top 80%",
       end: "top 70%",
@@ -154,18 +167,6 @@ projectImgs.forEach((projectImg) => {
   });
 });
 
-gsap.from(".color-palatte", {
-  scrollTrigger: {
-    trigger: ".color-palatte",
-    toggleActions: "restart restart restart restart",
-    scrub: 2,
-    end: "top 50%",
-    start: "top 70%",
-  },
-  y: 100,
-  scale: 0.4,
-});
-
 document.fonts.ready.then(() => {
   const heroSplitText = SplitText.create(".hero-text");
 
@@ -176,7 +177,7 @@ document.fonts.ready.then(() => {
     stagger: 0.4,
     scrollTrigger: {
       trigger: heroSplitText.chars,
-      toggleActions: "restart restart restart restart",
+      toggleActions: "play reverse play reverse",
     },
   });
 
@@ -185,7 +186,7 @@ document.fonts.ready.then(() => {
   gsap.from(splitTextPara.lines, {
     scrollTrigger: {
       trigger: splitTextPara.lines,
-      toggleActions: "restart restart restart restart",
+      toggleActions: "play reverse play reverse",
       scrub: 2,
       end: "top 50%",
     },
@@ -200,7 +201,7 @@ document.fonts.ready.then(() => {
   gsap.from(articleParaSplit.lines, {
     scrollTrigger: {
       trigger: articleParaSplit.lines,
-      toggleActions: "restart restart restart restart",
+      toggleActions: "play reverse play reverse",
       scrub: 2,
       end: "top 50%",
     },
@@ -253,7 +254,7 @@ document.fonts.ready.then(() => {
     stagger: 0.1,
     scrollTrigger: {
       trigger: secondaryTxtSplit.lines,
-      toggleActions: "restart restart restart restart",
+      toggleActions: "play reverse play reverse",
     },
   });
 
@@ -293,7 +294,8 @@ let tl = gsap.timeline({
   },
 });
 tl.to(".skillHeading", {
-  scale: 40,
+  scale: 60,
+  opacity: 0,
   duration: 2,
   delay: 0.1,
 });
@@ -339,7 +341,7 @@ blogCards.forEach((blogCard) => {
   gsap.from(blogCard, {
     scrollTrigger: {
       trigger: blogCard,
-      toggleActions: "restart restart restart restart",
+      toggleActions: "play reverse play reverse",
       start: "top 90%",
       end: "top 60%",
       scrub: 2,
@@ -406,4 +408,40 @@ gsap.from("footer div p", {
   duration: 1,
   stagger: 0.2,
   ease: "power2.out",
+});
+
+const secondImgBoxs = document.querySelectorAll(".second-img-box");
+
+secondImgBoxs.forEach((secondImgBox) => {
+  gsap.from(secondImgBox, {
+    scrollTrigger: {
+      trigger: secondImgBox,
+      toggleActions: "play reverse play reverse",
+      start: "top 90%",
+      end: "top 60%",
+      scrub: 2,
+    },
+    x: 1300,
+    duration: 1,
+  });
+});
+
+const jellySpans = document.querySelectorAll(".jelly span");
+
+jellySpans.forEach((jellySpan, i) => {
+  gsap.set(jellySpan, {
+    xPercent: -50,
+    yPercent: -50,
+    width: 25 * (i + 1),
+    height: 25 * (i + 1),
+  });
+
+  gsap.to(jellySpan, {
+    z: 150,
+    duration: 2,
+    yoyo: true,
+    repeat: -1,
+    ease: "sine.inOut",
+    delay: i * 0.1,
+  });
 });
