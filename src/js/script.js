@@ -445,3 +445,16 @@ jellySpans.forEach((jellySpan, i) => {
     delay: i * 0.1,
   });
 });
+
+gsap.from(".color-platte-box", {
+  scrollTrigger: {
+    trigger: ".color-palatte",
+    toggleActions: "play reverse play reverse",
+    start: "top 90%",
+    end: "top 60%",
+    scrub: 2,
+  },
+  x: 200,
+  duration: 1,
+  stagger: 0.3,
+});
