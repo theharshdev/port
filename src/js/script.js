@@ -82,8 +82,9 @@ gsap.from(".last-name", {
     toggleActions: "play reverse play reverse",
   },
   opacity: 0,
-  x: 300,
-  duration: 1,
+  x: 400,
+  delay: 2.5,
+  duration: 2,
 });
 
 gsap.from(".color-palatte", {
@@ -454,7 +455,7 @@ gsap.from(".color-platte-box", {
     end: "top 60%",
     scrub: 2,
   },
-  x: 200,
-  duration: 1,
+  scaleX: -1,
+  delay: 2,
   stagger: 0.3,
 });
