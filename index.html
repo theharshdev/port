@@ -20,35 +20,29 @@
     class="bg-primary text-secondary bg-cover bg-repeat font-inc font-light overflow-x-hidden"
   >
     <!-- Menu -->
-    <nav class="font-press">
-      <a href="#" class="inline-block logo nav-links absolute z-50 left-6 top-6"
+    <nav class="font-press max-w-7xl mx-auto relative">
+      <a
+        href="#"
+        class="inline-block text-ternary logo nav-links absolute z-50 left-0 top-6"
         >Hi,I'm</a
       >
       <ul
-        class="p-0 m-0 text-base flex flex-col gap-2 menu fixed z-50 right-6 top-6"
+        class="p-0 m-0 text-base flex flex-col items-end gap-2 menu fixed z-50 right-6 top-6"
       >
         <li>
-          <a href="#" class="inline-block nav-links min-w-28">About</a>
+          <a href="#" class="inline-block nav-links">About</a>
         </li>
         <li>
-          <a href="#" class="inline-block nav-links min-w-28">Work</a>
+          <a href="#" class="inline-block nav-links">Work</a>
         </li>
         <li>
-          <a href="#" class="inline-block nav-links min-w-28">Contact</a>
+          <a href="#" class="inline-block nav-links">Contact</a>
         </li>
       </ul>
     </nav>
-    <!-- Background tiles -->
-    <div
-      class="fixed top-0 left-0 pointer-events-none w-full h-full grid grid-cols-4"
-    >
-      <span class="border-r border-secondary"></span>
-      <span class="border-r border-secondary"></span>
-      <span class="border-r border-secondary"></span>
-    </div>
     <!-- View project cursor -->
     <span
-      class="cursor opacity-0 pointer-events-none leading-none bg-yellow-300 text-black font-medium text-xs uppercase fixed top-0 left-0 z-50 tertext-ternaryspace-nowrap w-32 h-32 rounded-full flex justify-center items-center shadow-xl shadow-black/10"
+      class="cursor opacity-0 pointer-events-none leading-none bg-yellow-300 p-2 text-xs uppercase fixed top-0 left-0 z-50 whitespace-nowrap flex justify-center items-center"
     >
       View Project
     </span>
@@ -59,7 +53,7 @@
           <!-- jelly fish -->
           <div class="absolute top-1/2 left-1/2 -translate-1/2">
             <div
-              class="jelly w-96 h-96 btn-animate"
+              class="jelly btn-animate"
               style="
                 transform-style: preserve-3d;
                 transform: perspective(500px) rotateX(60deg) rotateY(20deg);
@@ -132,30 +126,33 @@
           >
             harsh
           </h2>
-          <div class="flex justify-between items-start mt-32 px-8">
-            <p class="text-3xl max-w-md secondary-txt overflow-hidden">
-              The creative guy that loves to show off a thing or two.
-              <br />
-              Starting with your brand.
-            </p>
-            <p
-              class="text-[13vw] last-name -mt-64 relative z-10 text-end italic font-royal overflow-hidden"
+          <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-start mt-32">
+              <p
+                class="text-3xl text-ternary max-w-md secondary-txt overflow-hidden"
+              >
+                The creative guy that loves to show off a thing or two.
+                <br />
+                Starting with your brand.
+              </p>
+              <p
+                class="text-sm max-w-60 text-ternary text-end secondary-txt overflow-hidden"
+              >
+                Impactful digital experiences for ambitious brands
+              </p>
+            </div>
+            <div
+              class="flex text-ternary justify-between gap-6 mt-12 text-xs font-light"
             >
-              Kushwaha
-            </p>
-            <p class="text-sm max-w-60 text-end secondary-txt overflow-hidden">
-              Impactful digital experiences for ambitious brands
-            </p>
-          </div>
-          <div class="flex justify-between gap-6 mt-12 text-xs font-light px-8">
-            <p class="secondary-txt overflow-hidden">
-              PHONE : <br />
-              +91 8737812696
-            </p>
-            <p class="overflow-hidden">
-              INDIA : <br />
-              <span id="time">07:46:25</span>
-            </p>
+              <p class="secondary-txt overflow-hidden">
+                PHONE : <br />
+                +91 8737812696
+              </p>
+              <p class="overflow-hidden">
+                INDIA : <br />
+                <span id="time">07:46:25</span>
+              </p>
+            </div>
           </div>
         </section>
         <!-- Paragraph section -->
@@ -168,10 +165,10 @@
             feel true and drive momentum.
           </p>
           <div
-            class="mx-auto max-w-7xl mt-44 grid grid-cols-2 gap-12 items-center content-between"
+            class="mx-auto max-w-7xl mt-44 flex justify-between gap-12 items-center content-between"
           >
             <div
-              class="grid grid-cols-3 gap-0 h-96 color-palatte scale-125 origin-left"
+              class="grid grid-cols-3 gap-0 h-96 lg:w-1/2 color-palatte scale-125 origin-left"
             >
               <!-- Color pallete  -->
               <div
@@ -187,8 +184,8 @@
                 class="text-center shadow-xl relative color-platte-box bg-primary text-ternary scale-125 origin-center"
               >
                 <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
-                  <h3 class="text-base font-normal uppercase">#3d5a80</h3>
-                  <p class="text-xs">Prussian blue</p>
+                  <h3 class="text-base font-normal uppercase">#0000ff</h3>
+                  <p class="text-xs">Blue</p>
                 </div>
               </div>
               <!-- Color pallete  -->
@@ -196,8 +193,8 @@
                 class="text-center shadow-xl relative color-platte-box bg-ternary text-secondary"
               >
                 <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
-                  <h3 class="text-base font-normal uppercase">#FFF8D3</h3>
-                  <p class="text-xs">Lemon chiffon</p>
+                  <h3 class="text-base font-normal uppercase">#FFFFF</h3>
+                  <p class="text-xs">White</p>
                 </div>
               </div>
             </div>
@@ -224,139 +221,9 @@
             </div>
           </div>
         </section>
-        <!-- Work section -->
-        <section class="my-40 pt-32 mx-auto max-w-7xl">
-          <p class="text-sm font-bungee text-end mb-12">Projects</p>
-          <h3 class="font-normal text-6xl max-w-2/3 work-heading">
-            Featured work where design drives clarity and brand growth.
-          </h3>
-          <div class="grid grid-cols-4 gap-32 mt-32">
-            <a
-              href="#"
-              class="col-span-3 block project-box group project-img project-cursor relative"
-            >
-              <div class="overflow-hidden border-2 border-secondary">
-                <img
-                  src="./src/images/portfolio-home.png"
-                  class="block w-full saturate-0 max-h-[90dvh] object-cover scale-110 btn-animate group-hover:scale-125"
-                />
-              </div>
-              <div
-                class="overflow-hidden border-2 border-secondary absolute second-img-box bottom-0 right-0 -translate-y-1/2 translate-x-1/2 z-10 shadow-2xl max-w-md"
-              >
-                <img
-                  src="./src/images/portfolio-abput.png"
-                  class="block w-full saturate-0 object-cover scale-110 btn-animate group-hover:scale-125"
-                />
-              </div>
-              <p class="uppercase text-4xl font-normal mt-5">Project 01</p>
-            </a>
-            <p
-              class="text-base font-normal italic work-description mt-40 col-span-1"
-            >
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
-              distinctio sapiente consequatur dolor maiores dolorum mollitia
-              quos labore neque, sed reiciendis animi? Similique ipsam esse eos,
-              quae nesciunt ullam omnis!"
-            </p>
-            <div class="mt-40 col-span-2">
-              <p class="text-base font-normal italic work-description">
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
-                distinctio sapiente consequatur dolor maiores dolorum mollitia
-                quos labore neque, sed reiciendis animi? Similique ipsam esse
-                eos, quae nesciunt ullam omnis!"
-              </p>
-              <p class="uppercase text-4xl font-normal mt-5 text-end">
-                Project 02
-              </p>
-            </div>
-            <a
-              href="#"
-              class="col-span-2 block project-box group project-img project-cursor relative"
-            >
-              <div
-                class="overflow-hidden border-2 border-secondary relative z-10"
-              >
-                <img
-                  src="./src/images/gsap-footer.png"
-                  class="block w-full max-h-[90dvh] object-cover scale-110 btn-animate group-hover:scale-125"
-                />
-              </div>
-              <div
-                class="overflow-hidden border-2 border-secondary absolute second-img-box top-1/2 left-1/3 lg:w-[50dvw]"
-              >
-                <img
-                  src="./src/images/gsap-para.png"
-                  class="block w-full object-cover scale-110 btn-animate group-hover:scale-125"
-                />
-              </div>
-            </a>
-            <a
-              href="#"
-              class="col-span-2 block project-box group project-img project-cursor"
-            >
-              <div class="overflow-hidden border-2 border-secondary">
-                <img
-                  src="./src/images/anime-clients.png"
-                  class="block w-full scale-110 btn-animate group-hover:scale-125"
-                />
-              </div>
-              <div
-                class="overflow-hidden border-2 border-secondary absolute second-img-box top-1/2 left-1/3 lg:w-[50dvw]"
-              >
-                <img
-                  src="./src/images/anime-work.png"
-                  class="block w-full object-cover scale-110 btn-animate group-hover:scale-125"
-                />
-              </div>
-            </a>
-            <div class="mt-40 col-span-1">
-              <p class="uppercase text-4xl font-normal mb-8">Project 03</p>
-              <p
-                class="text-base font-normal italic work-description translate-x-[150%]"
-              >
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
-                distinctio sapiente consequatur dolor maiores dolorum mollitia
-                quos labore neque, sed reiciendis animi? Similique ipsam esse
-                eos, quae nesciunt ullam omnis!"
-              </p>
-            </div>
-          </div>
-          <div
-            class="mt-64 text-center flex justify-center text-sm font-medium"
-          >
-            <a
-              href="#"
-              class="group btn-animate font-bungee flex gap-2 items-center uppercase py-3 px-6 rounded-md"
-            >
-              View all Projects
-              <i
-                class="bi bi-arrow-right group-hover:-rotate-45 transition duration-200"
-              ></i>
-            </a>
-          </div>
-        </section>
-        <!-- What I do - scroller -->
-        <section class="my-40 service-section">
-          <div class="pt-20 mx-auto max-w-7xl">
-            <h2 class="text-xs font-medium uppercase">Capabilities</h2>
-            <div class="grid grid-cols-2 gap-6 mt-32">
-              <p
-                class="text-7xl leading-16 font-light mb-32 col-span-1 service-para"
-              >
-                An integrated team built to solve for tomorrow's challenges
-                today.
-              </p>
-            </div>
-          </div>
-          <img
-            src="./src/images/GIF.gif"
-            class="block w-full h-dvh object-cover article-img"
-          />
-        </section>
-        <!-- Horizontal scrolling text -->
+        <!-- Service scrolling text -->
         <div
-          class="h-dvh flex items-center horizontal-scroll-box overflow-hidden relative"
+          class="h-dvh flex mt-80 items-center horizontal-scroll-box overflow-hidden relative"
         >
           <span
             class="absolute top-5 left-1/2 -translate-x-1/2 text-xs font-light"
@@ -374,19 +241,96 @@
             I do it for you!
           </span>
         </div>
+        <!-- Work section -->
+        <section class="mt-20 pt-32 mx-auto max-w-7xl">
+          <p class="text-sm font-medium ps-2 mb-20">Projects</p>
+          <h3 class="font-normal text-6xl max-w-2/3 work-heading">
+            Featured work where design drives clarity and brand growth.
+          </h3>
+          <div class="grid grid-cols-4 gap-32 mt-32">
+            <a
+              href="#"
+              class="col-span-3 block project-box project-img project-cursor relative"
+            >
+              <img src="./src/images/project01.png" class="block btn-animate" />
+            </a>
+            <div class="mt-40 col-span-1">
+              <p class="text-base font-normal italic work-description">
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
+                distinctio sapiente consequatur dolor maiores dolorum mollitia
+                quos labore neque, sed reiciendis animi? Similique ipsam esse
+                eos, quae nesciunt ullam omnis!"
+              </p>
+              <p class="uppercase text-4xl font-normal mt-5">Project 01</p>
+            </div>
+            <div class="mt-40 col-span-1">
+              <p class="text-base font-normal italic work-description">
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
+                distinctio sapiente consequatur dolor maiores dolorum mollitia
+                quos labore neque, sed reiciendis animi? Similique ipsam esse
+                eos, quae nesciunt ullam omnis!"
+              </p>
+              <p class="uppercase text-4xl font-normal mt-5 text-end">
+                Project 02
+              </p>
+            </div>
+            <a
+              href="#"
+              class="col-span-3 block project-box group project-img project-cursor relative"
+            >
+              <img src="./src/images/project02.png" class="block btn-animate" />
+            </a>
+            <a
+              href="#"
+              class="col-span-3 block project-box group project-img project-cursor"
+            >
+              <img src="./src/images/project03.png" class="block btn-animate" />
+            </a>
+            <div class="mt-40 col-span-1">
+              <p class="uppercase text-4xl font-normal mb-8">Project 03</p>
+              <p class="text-base font-normal italic work-description">
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
+                distinctio sapiente consequatur dolor maiores dolorum mollitia
+                quos labore neque, sed reiciendis animi? Similique ipsam esse
+                eos, quae nesciunt ullam omnis!"
+              </p>
+            </div>
+            <div class="mt-40 col-span-1">
+              <p class="text-base font-normal italic work-description">
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
+                distinctio sapiente consequatur dolor maiores dolorum mollitia
+                quos labore neque, sed reiciendis animi? Similique ipsam esse
+                eos, quae nesciunt ullam omnis!"
+              </p>
+              <p class="uppercase text-4xl font-normal mt-5 text-end">
+                Project 04
+              </p>
+            </div>
+            <a
+              href="#"
+              class="col-span-3 block project-box group project-img project-cursor relative"
+            >
+              <img src="./src/images/project04.png" class="block btn-animate" />
+            </a>
+          </div>
+        </section>
         <!-- Tech i use -->
         <section class="pt-40">
           <div class="skillParentBox relative h-dvh overflow-hidden">
+            <!-- Circle -->
             <span
-              class="w-[100dvh] h-[100dvh] rounded-full bg-primary block mx-auto skillCircle absolute top-1/2 left-1/2 -translate-1/2 z-0 scale-0"
-            ></span>
-            <p
-              class="text-[11vw] tracking-tighter tertext-ternaryspace-nowrap uppercase absolute top-1/2 left-1/2 -translate-1/2 text-center mb-32 skillHeading whitespace-nowrap z-10 font-anton flex gap-2 items-center justify-center"
+              class="w-[100dvh] h-[100dvh] rounded-full bg-secondary block mx-auto skillCircle absolute top-1/2 left-1/2 -translate-1/2 z-0 scale-0"
             >
-              <span class="italic mt-8">Technologies</span>❤️
+            </span>
+            <!-- Main text -->
+            <p
+              class="text-[18vw] -ms-7 uppercase absolute top-1/2 left-1/2 -translate-1/2 text-center skillHeading whitespace-nowrap z-10 font-anton flex gap-8 items-center justify-center italic tracking-tight"
+            >
+              Technologies
             </p>
+            <!-- Skills -->
             <div
-              class="absolute top-1/2 left-1/2 text-ternary -translate-1/2 z-20 text-5xl font-light uppercase font-anton text-end"
+              class="absolute top-1/2 left-1/2 text-ternary -translate-1/2 z-20 text-5xl font-light uppercase font-anton text-end z-10"
             >
               <h3
                 class="skillTxts opacity-0 -translate-x-full border-r-2 border-ternary pr-3"
@@ -421,178 +365,80 @@
             </div>
           </div>
         </section>
-        <!-- Contact me -->
-        <section class="overflow-hidden">
-          <div
-            class="flex items-center pt-12 gap-12 text-[36vw] leading-none uppercase font-anton"
-          >
-            <h3
-              class="scroller shrink-0 -translate-x-[200%] text-ternary"
-              style="-webkit-text-stroke: 2px #35281c"
-            >
-              knp.harsh@gmail.com
-            </h3>
-            <h3
-              class="scroller shrink-0 -translate-x-[200%] text-ternary"
-              style="-webkit-text-stroke: 2px #35281c"
-            >
-              knp.harsh@gmail.com
-            </h3>
-            <h3
-              class="scroller shrink-0 -translate-x-[200%] text-ternary"
-              style="-webkit-text-stroke: 2px #35281c"
-            >
-              knp.harsh@gmail.com
-            </h3>
-          </div>
-          <p class="mt-10 text-sm max-w-fit mx-auto relative z-10">
-            <a href="mail:knp.harsh@gmail.com" class="nav-links cursor-pointer"
-              >knp.harsh@gmail.com</a
-            >
+        <!-- Section -->
+        <section class="max-w-7xl mx-auto py-32 mt-20">
+          <p class="text-center text-2xl max-w-3xl mx-auto italic">
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit et,
+            ipsam similique dignissimos porro adipisci repellat eos delectus
+            architecto, hic ex fugit optio rem modi commodi, at error voluptates
+            totam."
           </p>
         </section>
-        <!-- Blogs  -->
-        <section class="py-32 px-6 max-w-7xl mx-auto">
-          <div class="relative my-20">
-            <h3
-              id="blog-heading"
-              class="text-[15vw] text-secondary/20 leading-none font-royal absolute top-0 left-0 z-0"
-            >
-              Latest
-            </h3>
-            <p
-              id="blog-paragraph"
-              class="text-base leading-normal max-w-md font-normal relative z-10 pt-32 pl-10"
-            >
-              We've always been obsessed with design — the typography, the
-              rhythm, the story behind every interaction, the way illustrations
-              bring personality, and how layout guides the experience. We cared
-              about the vibe as much as the visuals — about creating something
-              people could feel, not just use.
-            </p>
-          </div>
-          <div class="grid sm:grid-cols-2 grid-cols-1 md:gap-10 gap-6">
-            <!-- Blog cards -->
-            <a href="#" class="group block blogCard">
-              <div class="overflow-hidden mb-4">
-                <img
-                  class="block w-full group-hover:scale-110 transition duration-200 h-80 object-cover"
-                  src="https://cdn.sanity.io/images/gzgwyya5/production/ae866d4dd5b4e9f00cf2c53f99156357831cfeb6-3001x1994.webp?rect=6,0,2991,1994&w=600&h=400&auto=format"
-                />
-              </div>
-              <span
-                class="bg-primary py-1 px-2 rounded-sm leading-none text-white flex justify-center items-center w-fit text-sm uppercase"
-              >
-                news
-              </span>
-              <p class="text-xl my-2 font-medium">
-                Wiz Acquired by Google — A Milestone Moment for a Former Juice
-                Client
-              </p>
-            </a>
-            <!-- Blog cards -->
-            <a href="#" class="group block blogCard">
-              <div class="overflow-hidden mb-4">
-                <img
-                  class="block w-full group-hover:scale-110 transition duration-200 h-80 object-cover"
-                  src="https://cdn.sanity.io/images/gzgwyya5/production/ed3fbb4fc199af9a71b263cde2857c4eefba0f93-3001x1994.webp?rect=6,0,2991,1994&w=600&h=400&auto=format"
-                />
-              </div>
-              <span
-                class="bg-primary py-1 px-2 rounded-sm leading-none text-white flex justify-center items-center w-fit text-sm uppercase"
-              >
-                news
-              </span>
-              <p class="text-xl my-2 font-medium">
-                Wiz Acquired by Google — A Milestone Moment for a Former Juice
-                Client
-              </p>
-            </a>
-            <!-- Blog cards -->
-            <a href="#" class="group block blogCard">
-              <div class="overflow-hidden mb-4">
-                <img
-                  class="block w-full group-hover:scale-110 transition duration-200 h-80 object-cover"
-                  src="https://cdn.sanity.io/images/gzgwyya5/production/9404e7382a61f62482b50bc01aadcd3319ba19d0-3001x1994.webp?rect=6,0,2991,1994&w=600&h=400&auto=format"
-                />
-              </div>
-              <span
-                class="bg-primary py-1 px-2 rounded-sm leading-none text-white flex justify-center items-center w-fit text-sm uppercase"
-              >
-                news
-              </span>
-              <p class="text-xl my-2 font-medium">
-                Wiz Acquired by Google — A Milestone Moment for a Former Juice
-                Client
-              </p>
-            </a>
-            <!-- Blog cards -->
-            <a href="#" class="group block blogCard">
-              <div class="overflow-hidden mb-4">
-                <img
-                  class="block w-full group-hover:scale-110 transition duration-200 h-80 object-cover"
-                  src="https://cdn.sanity.io/images/gzgwyya5/production/6d877d2af96a85a9594cc9f569d7ab177ca0add0-1000x667.webp?w=600&h=400&auto=format"
-                />
-              </div>
-              <span
-                class="bg-primary py-1 px-2 rounded-sm leading-none text-white flex justify-center items-center w-fit text-sm uppercase"
-              >
-                news
-              </span>
-              <p class="text-xl my-2 font-medium">
-                Wiz Acquired by Google — A Milestone Moment for a Former Juice
-                Client
-              </p>
-            </a>
-          </div>
-        </section>
         <!-- Footer -->
-        <footer class="bg-secondary pt-32 pb-6 text-ternary">
-          <div class="max-w-7xl mx-auto grid grid-cols-5 lg:gap-12 gap-8">
-            <div class="col-span-2">
-              <p class="text-2xl max-w-md">
-                Partner with a creative guy that's ambitious as you are.
-              </p>
-              <h2 class="text-4xl font-royal mt-12">- Harsh Kushwaha</h2>
-            </div>
-            <div class="col-span-1 flex flex-col items-start">
-              <p class="text-xs uppercase font-normal mb-3">NAVIGATE</p>
-              <a href="#" class="text-xl font-medium nav-links block p-1"
-                >Home</a
-              >
-              <a href="#" class="text-xl font-medium nav-links block p-1"
-                >Work</a
-              >
-              <a href="#" class="text-xl font-medium nav-links block p-1"
-                >About</a
-              >
-            </div>
-            <div class="col-span-1 flex flex-col items-start">
-              <p class="text-xs uppercase font-normal mb-3">SOCIAL & STUFF</p>
-              <a href="#" class="text-xl font-medium nav-links block p-1"
-                >Twitter (X)</a
-              >
-              <a href="#" class="text-xl font-medium nav-links block p-1"
-                >Github</a
-              >
-              <a href="#" class="text-xl font-medium nav-links block p-1"
-                >LinkedIn</a
-              >
-            </div>
-            <div class="col-span-1 flex flex-col items-start">
-              <p class="text-xs uppercase font-normal mb-3">CONTACT DEETS</p>
-              <p class="text-xl font-medium cursor-text block p-1">
-                +91 8737812696
-              </p>
-              <p class="text-xl font-medium cursor-text block p-1">
+        <footer class="text-ternary relative">
+          <!-- Contact me -->
+          <section class="overflow-hidden -mb-20 pointer-events-none">
+            <div
+              class="flex items-center pt-12 gap-12 text-[36vw] leading-none uppercase font-anton"
+            >
+              <h3 class="scroller shrink-0 -translate-x-[200%] text-secondary">
                 knp.harsh@gmail.com
-              </p>
-              <p class="text-xl font-medium cursor-text block p-1">
-                New Delhi, India
-              </p>
+              </h3>
+              <h3 class="scroller shrink-0 -translate-x-[200%] text-secondary">
+                knp.harsh@gmail.com
+              </h3>
+              <h3 class="scroller shrink-0 -translate-x-[200%] text-secondary">
+                knp.harsh@gmail.com
+              </h3>
             </div>
+          </section>
+          <div class="bg-secondary pt-32 pb-6">
+            <div class="max-w-7xl mx-auto grid grid-cols-5 lg:gap-12 gap-8">
+              <div class="col-span-2">
+                <p class="text-2xl max-w-md">
+                  Partner with a creative guy that's ambitious as you are.
+                </p>
+                <h2 class="text-4xl font-royal mt-12">- Harsh Kushwaha</h2>
+              </div>
+              <div class="col-span-1 flex flex-col items-start">
+                <p class="text-xs uppercase font-normal mb-3">NAVIGATE</p>
+                <a href="#" class="text-xl font-medium nav-links block p-1"
+                  >Home</a
+                >
+                <a href="#" class="text-xl font-medium nav-links block p-1"
+                  >Work</a
+                >
+                <a href="#" class="text-xl font-medium nav-links block p-1"
+                  >About</a
+                >
+              </div>
+              <div class="col-span-1 flex flex-col items-start">
+                <p class="text-xs uppercase font-normal mb-3">SOCIAL & STUFF</p>
+                <a href="#" class="text-xl font-medium nav-links block p-1"
+                  >Twitter (X)</a
+                >
+                <a href="#" class="text-xl font-medium nav-links block p-1"
+                  >Github</a
+                >
+                <a href="#" class="text-xl font-medium nav-links block p-1"
+                  >LinkedIn</a
+                >
+              </div>
+              <div class="col-span-1 flex flex-col items-start">
+                <p class="text-xs uppercase font-normal mb-3">CONTACT DEETS</p>
+                <p class="text-xl font-medium cursor-text block p-1">
+                  +91 8737812696
+                </p>
+                <p class="text-xl font-medium cursor-text block p-1">
+                  knp.harsh@gmail.com
+                </p>
+                <p class="text-xl font-medium cursor-text block p-1">
+                  New Delhi, India
+                </p>
+              </div>
+            </div>
+            <p class="text-xs text-center mt-32">© 2025 Harsh Kushwaha.</p>
           </div>
-          <p class="text-xs text-center mt-32">© 2025 Harsh Kushwaha.</p>
         </footer>
       </div>
     </div>

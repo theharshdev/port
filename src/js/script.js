@@ -54,7 +54,7 @@ gsap.to("body", {
     toggleActions: "play reverse play reverse",
     scrub: 2,
   },
-  backgroundColor: "#fff8d3",
+  backgroundColor: "#fff",
   duration: 0.2,
   ease: "power4.out",
   delay: 1,
@@ -74,17 +74,6 @@ timeline1.from(".menu li", {
   opacity: 0,
   duration: 0.5,
   stagger: 0.3,
-});
-
-gsap.from(".last-name", {
-  scrollTrigger: {
-    trigger: ".last-name",
-    toggleActions: "play reverse play reverse",
-  },
-  opacity: 0,
-  x: 400,
-  delay: 2.5,
-  duration: 2,
 });
 
 gsap.from(".color-palatte", {
