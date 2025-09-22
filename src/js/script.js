@@ -477,3 +477,33 @@ gsap.from(".horizontal-scroll-text", {
   opacity: 0,
   duration: 2,
 });
+
+window.addEventListener("mousemove", (e) => {
+  gsap.to(".x-axis-line", {
+    x: e.clientX,
+  });
+  gsap.to(".y-axis-line", {
+    y: e.clientY,
+  });
+  gsap.to(".custom-cursor", {
+    x: e.clientX,
+    y: e.clientY,
+  });
+  document.querySelector(
+    ".custom-cursor"
+  ).textContent = `(${e.clientX}, ${e.clientY})`;
+});
+
+function updateScrollPercent() {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const scrollHeight =
+    document.documentElement.scrollHeight - window.innerHeight;
+  const scrolled = (scrollTop / scrollHeight) * 100;
+  document.querySelector(".scroll-spy").textContent = `Scrolled ${Math.round(
+    scrolled
+  )}%`;
+}
+
+window.addEventListener("scroll", updateScrollPercent);
+window.addEventListener("resize", updateScrollPercent); // for dynamic heights
+updateScrollPercent(); // initial call

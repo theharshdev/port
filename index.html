@@ -42,10 +42,28 @@
     </nav>
     <!-- View project cursor -->
     <span
-      class="cursor opacity-0 pointer-events-none leading-none bg-yellow-300 p-2 text-xs uppercase fixed top-0 left-0 z-50 whitespace-nowrap flex justify-center items-center"
+      class="cursor opacity-0 pointer-events-none leading-none bg-yellow-300 p-2 text-xs uppercase fixed top-0 left-0 z-[99] whitespace-nowrap flex justify-center items-center"
     >
       View Project
     </span>
+    <!-- Custom cursor -->
+    <span>
+      <span
+        class="custom-cursor fixed top-0.5 z-50 left-1 text-xs opacity-50 text-zinc-500 mix-blend-difference"
+      ></span>
+      <span
+        class="h-px bg-zinc-500 opacity-40 pointer-events-none mix-blend-difference w-full fixed top-0 left-0 z-50 y-axis-line"
+      ></span>
+      <span
+        class="w-px bg-zinc-500 opacity-40 pointer-events-none mix-blend-difference h-full fixed top-0 left-0 z-50 x-axis-line"
+      ></span>
+    </span>
+    <!-- Scroll spy -->
+    <div
+      class="scroll-spy fixed bottom-12 -left-2 z-50 -rotate-90 text-xs text-white font-light mix-blend-difference"
+    >
+      Scrolled 50%
+    </div>
     <div id="smooth-wrapper">
       <div id="smooth-content">
         <!-- Hero section -->
@@ -222,7 +240,7 @@
           </div>
         </section>
         <!-- Service scrolling text -->
-        <div
+        <section
           class="h-dvh flex mt-80 items-center horizontal-scroll-box overflow-hidden relative"
         >
           <span
@@ -240,7 +258,7 @@
           >
             I do it for you!
           </span>
-        </div>
+        </section>
         <!-- Work section -->
         <section class="mt-20 pt-32 mx-auto max-w-7xl">
           <p class="text-sm font-medium ps-2 mb-20">Projects</p>
