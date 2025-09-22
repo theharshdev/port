@@ -15,6 +15,14 @@ ScrollSmoother.create({
   smoothTouch: 0.1,
 });
 
+window.addEventListener("load", () => {
+  ScrollTrigger.refresh();
+});
+
+window.addEventListener("resize", () => {
+  ScrollTrigger.refresh();
+});
+
 ScrollTrigger.normalizeScroll(true);
 
 let timeElm = document.getElementById("time");
