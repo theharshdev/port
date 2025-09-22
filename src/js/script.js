@@ -505,5 +505,5 @@ function updateScrollPercent() {
 }
 
 window.addEventListener("scroll", updateScrollPercent);
-window.addEventListener("resize", updateScrollPercent); // for dynamic heights
-updateScrollPercent(); // initial call
+window.addEventListener("resize", updateScrollPercent);
+updateScrollPercent();
