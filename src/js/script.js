@@ -131,11 +131,11 @@ projectImgs.forEach((projectImg) => {
       toggleActions: "play reverse play reverse",
       scrub: 2,
       start: "top 80%",
-      end: "top 70%",
+      end: "top 60%",
     },
-    y: 150,
-    scale: 0.7,
-    duration: 0.5,
+    y: 250,
+    scale: 0.4,
+    duration: 1,
   });
 
   projectImg.addEventListener("mousemove", (e) => {
@@ -298,11 +298,10 @@ tl.to(
   "-=1"
 );
 tl.to(".skillTxts", {
-  x: 0,
-  opacity: 1,
-  duration: 2,
+  scale: 1,
+  duration: 1,
   stagger: {
-    each: 0.2,
+    each: 0.3,
     from: "random",
   },
 });
@@ -447,4 +446,26 @@ gsap.from(".color-platte-box", {
   scaleX: -1,
   delay: 2,
   stagger: 0.3,
+});
+
+gsap.to(".footer-paragraph", {
+  scrollTrigger: {
+    trigger: ".footer-paragraph-box",
+    scrub: 1,
+    pin: true,
+    start: " top 0%",
+    end: "top -100%",
+  },
+
+  scale: 1.5,
+  duration: 1,
+});
+
+gsap.from(".horizontal-scroll-text", {
+  scrollTrigger: {
+    trigger: ".horizontal-scroll-text",
+  },
+  y: 100,
+  opacity: 0,
+  duration: 2,
 });
