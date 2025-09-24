@@ -509,3 +509,44 @@ function updateScrollPercent() {
 window.addEventListener("scroll", updateScrollPercent);
 window.addEventListener("resize", updateScrollPercent);
 updateScrollPercent();
+
+const workBtns = document.querySelectorAll(".work-btn");
+const homeBtns = document.querySelectorAll(".home-btn");
+const contactBtns = document.querySelectorAll(".contact-btn");
+const aboutBtns = document.querySelectorAll(".about-btn");
+
+workBtns.forEach((workBtn) => {
+  workBtn.addEventListener("click", () => {
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: { y: "#work-section" },
+    });
+  });
+});
+
+homeBtns.forEach((homeBtn) => {
+  homeBtn.addEventListener("click", () => {
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: { y: "#home-section" },
+    });
+  });
+});
+
+contactBtns.forEach((contactBtn) => {
+  contactBtn.addEventListener("click", () => {
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: { y: "#contact-section" },
+    });
+  });
+});
+
+aboutBtns.forEach((aboutBtn) => {
+  aboutBtn.addEventListener("click", () => {
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: { y: "#about-section" },
+    });
+  });
+});
