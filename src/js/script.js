@@ -475,8 +475,6 @@ gsap.from(".horizontal-scroll-text", {
   scrollTrigger: {
     trigger: ".horizontal-scroll-text",
   },
-  y: 100,
-  opacity: 0,
   duration: 2,
 });
 
