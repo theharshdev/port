@@ -464,9 +464,8 @@ gsap.to(".footer-paragraph", {
     scrub: 1,
     pin: true,
     start: " top 0%",
-    end: "top -100%",
+    end: "top -80%",
   },
-
   scale: 1.5,
   duration: 1,
 });
