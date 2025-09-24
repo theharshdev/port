@@ -120,14 +120,16 @@ gsap.to(".logo", {
 });
 
 document.addEventListener("mousemove", (e) => {
-  const x = Math.floor((e.clientX / window.innerWidth - 0.5) * 50);
-  const y = Math.floor((e.clientY / window.innerHeight - 0.5) * 50);
+  if (window.innerWidth > 1000) {
+    const x = Math.floor((e.clientX / window.innerWidth - 0.5) * 50);
+    const y = Math.floor((e.clientY / window.innerHeight - 0.5) * 50);
 
-  gsap.to(".btn-animate", {
-    x: x,
-    y: y,
-    duration: 2,
-  });
+    gsap.to(".btn-animate", {
+      x: x,
+      y: y,
+      duration: 2,
+    });
+  }
 });
 
 const projectImgs = document.querySelectorAll(".project-img");

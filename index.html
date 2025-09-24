@@ -20,14 +20,14 @@
     class="bg-primary text-secondary bg-cover bg-repeat font-inc font-light overflow-x-hidden"
   >
     <!-- Menu -->
-    <nav class="font-press max-w-7xl mx-auto relative">
-      <a
-        href="#"
-        class="inline-block text-ternary logo nav-links absolute z-50 left-0 top-6"
+    <nav
+      class="font-press max-w-7xl px-6 mx-auto relative md:text-base text-sm"
+    >
+      <a href="#" class="inline-block text-ternary logo nav-links mt-6"
         >Hi,I'm</a
       >
       <ul
-        class="p-0 m-0 text-base flex flex-col items-end gap-2 menu fixed z-50 right-6 top-6"
+        class="p-0 m-0 flex flex-col items-end gap-2 menu fixed z-50 right-6 top-6"
       >
         <li>
           <a href="#" class="inline-block nav-links">About</a>
@@ -42,12 +42,12 @@
     </nav>
     <!-- View project cursor -->
     <span
-      class="cursor opacity-0 pointer-events-none leading-none bg-yellow-300 p-2 text-xs uppercase fixed top-0 left-0 z-[99] whitespace-nowrap flex justify-center items-center"
+      class="cursor hidden opacity-0 pointer-events-none leading-none bg-yellow-300 p-2 text-xs uppercase fixed top-0 left-0 z-[99] whitespace-nowrap lg:flex justify-center items-center"
     >
       View Project
     </span>
     <!-- Custom cursor -->
-    <span>
+    <span class="lg:block hidden">
       <span
         class="custom-cursor fixed top-0.5 z-50 left-1 text-xs opacity-50 text-zinc-500 mix-blend-difference"
       ></span>
@@ -67,7 +67,7 @@
     <div id="smooth-wrapper">
       <div id="smooth-content">
         <!-- Hero section -->
-        <section class="h-dvh pt-56 relative">
+        <section class="h-dvh pt-56 relative px-6">
           <!-- jelly fish -->
           <div class="absolute top-1/2 left-1/2 -translate-1/2">
             <div
@@ -140,21 +140,23 @@
             </div>
           </div>
           <h2
-            class="text-[15dvw] overflow-hidden hero-text leading-[12dvw] text-ternary text-center font-grav"
+            class="md:text-[15dvw] text-[20dvw] overflow-hidden hero-text md:leading-[12dvw] text-ternary text-center font-grav"
           >
             harsh
           </h2>
           <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-start mt-32">
+            <div
+              class="flex justify-between gap-6 md:flex-nowrap flex-wrap items-start mt-32"
+            >
               <p
-                class="text-3xl text-ternary max-w-md secondary-txt overflow-hidden"
+                class="md:text-3xl text-xl text-ternary max-w-md w-full secondary-txt overflow-hidden"
               >
                 The creative guy that loves to show off a thing or two.
                 <br />
                 Starting with your brand.
               </p>
               <p
-                class="text-sm max-w-60 text-ternary text-end secondary-txt overflow-hidden"
+                class="md:text-sm text-xs md:max-w-60 text-ternary w-full md:text-end secondary-txt overflow-hidden"
               >
                 Impactful digital experiences for ambitious brands
               </p>
@@ -174,19 +176,19 @@
           </div>
         </section>
         <!-- Paragraph section -->
-        <section class="font-medium">
+        <section class="font-medium px-6">
           <p
             id="hero-bottom-paragraph"
-            class="mb-32 pt-52 max-w-4xl mx-auto text-5xl font-medium text-center"
+            class="mb-32 pt-52 lg:max-w-4xl md:max-w-xl mx-auto lg:text-5xl md:text-3xl text-2xl font-medium text-center"
           >
             I partner with ambitious brands to create digital experiences that
             feel true and drive momentum.
           </p>
           <div
-            class="mx-auto max-w-7xl mt-44 flex justify-between gap-12 items-center content-between"
+            class="mx-auto max-w-7xl mt-44 flex justify-between lg:gap-12 gap-32 lg:flex-nowrap flex-wrap items-center content-between"
           >
             <div
-              class="grid grid-cols-3 gap-0 h-96 lg:w-1/2 color-palatte scale-125 origin-left"
+              class="grid grid-cols-3 gap-0 h-96 lg:w-1/2 color-palatte lg:scale-125 origin-left w-full"
             >
               <!-- Color pallete  -->
               <div
@@ -217,7 +219,7 @@
               </div>
             </div>
             <div
-              class="max-w-96 relative flex flex-col gap-6 items-end text-end"
+              class="max-w-96 relative flex flex-col gap-6 items-end lg:text-end w-full"
             >
               <p class="text-lg article-para overflow-hidden">
                 Juice is where strategy, design, and technology come together to
@@ -233,7 +235,7 @@
                   class="bi bi-arrow-right group-hover:-rotate-45 transition duration-200"
                 ></i>
                 <span
-                  class="h-px bg-zinc-800 w-full group-hover:translate-x-full absolute bottom-0 left-0 transition duration-200"
+                  class="h-px bg-secondary w-full group-hover:translate-x-full absolute bottom-0 left-0 transition duration-200"
                 ></span>
               </a>
             </div>
@@ -249,7 +251,7 @@
             I do it for you!
           </span>
           <h3
-            class="font-royal shrink-0 text-[20vw] horizontal-scroll-text ps-20 leading-none translate-x-0 font-medium tertext-ternary whitespace-nowrap w-fit"
+            class="font-royal shrink-0 text-[20vw] horizontal-scroll-text lg:ps-20 ps-8 leading-none translate-x-0 font-medium tertext-ternary whitespace-nowrap w-fit"
           >
             Web <span>Design</span> & <span>Development</span>
           </h3>
@@ -260,52 +262,70 @@
           </span>
         </section>
         <!-- Work section -->
-        <section class="mt-20 pt-32 mx-auto max-w-7xl">
+        <section class="mt-20 pt-32 px-6 mx-auto max-w-7xl">
           <p class="text-sm font-medium ps-2 mb-20">Projects</p>
-          <h3 class="font-normal text-6xl max-w-2/3 work-heading">
+          <h3
+            class="font-normal lg:text-6xl md:text-5xl text-3xl max-w-2/3 work-heading"
+          >
             Featured work where design drives clarity and brand growth.
           </h3>
-          <div class="grid grid-cols-4 gap-32 mt-32">
+          <div class="grid grid-cols-4 lg:gap-32 gap-8 mt-32">
             <a
               href="#"
-              class="col-span-3 block project-box project-img project-cursor relative"
+              class="lg:col-span-3 md:col-span-2 sm:col-span-3 col-span-4 block project-box project-img project-cursor relative order-1"
             >
               <img src="./src/images/project01.png" class="block btn-animate" />
             </a>
-            <div class="mt-40 col-span-1">
+            <div
+              class="md:mt-40 lg:col-span-1 md:col-span-2 sm:col-span-3 col-span-4 order-2"
+            >
               <p class="text-base font-normal italic work-description">
                 "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
                 distinctio sapiente consequatur dolor maiores dolorum mollitia
                 quos labore neque, sed reiciendis animi? Similique ipsam esse
                 eos, quae nesciunt ullam omnis!"
               </p>
-              <p class="uppercase text-4xl font-normal mt-5">Project 01</p>
+              <p
+                class="uppercase lg:text-4xl md:text-3xl text-2xl font-normal mt-5"
+              >
+                Project 01
+              </p>
             </div>
-            <div class="mt-40 col-span-1">
+            <div
+              class="md:mt-40 lg:col-span-1 md:col-span-2 sm:col-span-3 col-span-4 md:order-3 order-4"
+            >
               <p class="text-base font-normal italic work-description">
                 "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
                 distinctio sapiente consequatur dolor maiores dolorum mollitia
                 quos labore neque, sed reiciendis animi? Similique ipsam esse
                 eos, quae nesciunt ullam omnis!"
               </p>
-              <p class="uppercase text-4xl font-normal mt-5 text-end">
+              <p
+                class="uppercase lg:text-4xl md:text-3xl text-2xl font-normal mt-5 md:text-end"
+              >
                 Project 02
               </p>
             </div>
             <a
               href="#"
-              class="col-span-3 block project-box group project-img project-cursor relative"
+              class="lg:col-span-3 md:col-span-2 sm:col-span-3 col-span-4 block project-box group project-img project-cursor relative md:order-4 order-3"
             >
               <img src="./src/images/project02.png" class="block btn-animate" />
             </a>
             <a
               href="#"
-              class="col-span-3 block project-box group project-img project-cursor"
+              class="lg:col-span-3 md:col-span-2 sm:col-span-3 col-span-4 block project-box group project-img project-cursor order-5"
             >
               <img src="./src/images/project03.png" class="block btn-animate" />
             </a>
-            <div class="mt-40 col-span-1">
-              <p class="uppercase text-4xl font-normal mb-8">Project 03</p>
+            <div
+              class="md:mt-40 lg:col-span-1 md:col-span-2 sm:col-span-3 col-span-4 order-6"
+            >
+              <p
+                class="uppercase lg:text-4xl md:text-3xl text-2xl font-normal mb-8"
+              >
+                Project 03
+              </p>
               <p class="text-base font-normal italic work-description">
                 "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
                 distinctio sapiente consequatur dolor maiores dolorum mollitia
@@ -313,20 +333,24 @@
                 eos, quae nesciunt ullam omnis!"
               </p>
             </div>
-            <div class="mt-40 col-span-1">
+            <div
+              class="md:mt-40 lg:col-span-1 md:col-span-2 sm:col-span-3 col-span-4 md:order-7 order-8"
+            >
               <p class="text-base font-normal italic work-description">
                 "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
                 distinctio sapiente consequatur dolor maiores dolorum mollitia
                 quos labore neque, sed reiciendis animi? Similique ipsam esse
                 eos, quae nesciunt ullam omnis!"
               </p>
-              <p class="uppercase text-4xl font-normal mt-5 text-end">
+              <p
+                class="uppercase lg:text-4xl md:text-3xl text-2xl font-normal mt-5 md:text-end"
+              >
                 Project 04
               </p>
             </div>
             <a
               href="#"
-              class="col-span-3 block project-box group project-img project-cursor relative"
+              class="lg:col-span-3 md:col-span-2 sm:col-span-3 col-span-4 block project-box group project-img project-cursor relative md:order-8 order-7"
             >
               <img src="./src/images/project04.png" class="block btn-animate" />
             </a>
@@ -342,13 +366,13 @@
             </span>
             <!-- Main text -->
             <p
-              class="text-[18vw] -ms-7 uppercase absolute top-1/2 left-1/2 -translate-1/2 text-center skillHeading whitespace-nowrap z-10 font-anton flex gap-8 items-center justify-center italic tracking-tight"
+              class="md:text-[18vw] text-[19vw] md:-ms-7 -ms-3 uppercase absolute top-1/2 left-1/2 -translate-1/2 text-center skillHeading whitespace-nowrap z-10 font-anton flex gap-8 items-center justify-center italic tracking-tight"
             >
               Technologies
             </p>
             <!-- Skills -->
             <div
-              class="absolute top-1/2 left-1/2 text-ternary italic -translate-1/2 z-20 leading-none uppercase font-anton text-center"
+              class="absolute top-1/2 left-1/2 text-ternary italic -translate-1/2 z-20 leading-none uppercase font-anton text-center md:scale-100 scale-200"
             >
               <h3 class="skillTxts scale-0 text-[9dvw]">GSAP</h3>
               <h3 class="skillTxts scale-0 text-[5dvw]">React.Js</h3>
@@ -361,12 +385,12 @@
         </section>
         <!-- Section -->
         <section
-          class="max-w-7xl mx-auto h-dvh flex justify-center items-center footer-paragraph-box"
+          class="max-w-7xl mx-auto h-dvh flex justify-center items-center footer-paragraph-box px-6"
         >
           <div
-            class="footer-paragraph btn-animate scale-75 max-w-3xl flex flex-col items-center justify-center gap-8"
+            class="footer-paragraph btn-animate scale-75 lg:max-w-3xl sm:max-w-sm max-w-[220px] flex flex-col items-center justify-center gap-8"
           >
-            <p class="text-center text-2xl">
+            <p class="text-center lg:text-2xl md:text-lg sm:text-base text-sm">
               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
               et, ipsam similique dignissimos porro adipisci repellat eos
               delectus architecto, hic ex fugit optio rem modi commodi, at error
@@ -391,7 +415,7 @@
         <!-- Footer -->
         <footer class="text-ternary relative">
           <!-- Contact me -->
-          <section class="overflow-hidden -mb-20 pointer-events-none">
+          <section class="overflow-hidden lg:-mb-20 pointer-events-none">
             <div
               class="flex items-center pt-12 gap-12 text-[36vw] leading-none uppercase font-anton"
             >
@@ -406,9 +430,9 @@
               </h3>
             </div>
           </section>
-          <div class="bg-secondary pt-32 pb-6">
-            <div class="max-w-7xl mx-auto grid grid-cols-5 lg:gap-12 gap-8">
-              <div class="col-span-2">
+          <div class="bg-secondary pt-32 pb-6 px-6">
+            <div class="max-w-7xl mx-auto grid grid-cols-5 gap-12">
+              <div class="lg:col-span-2 col-span-5">
                 <p class="text-2xl max-w-md">
                   Partner with a creative guy that's ambitious as you are.
                 </p>
@@ -416,7 +440,9 @@
                   - Harsh Kushwaha
                 </h2>
               </div>
-              <div class="col-span-1 flex flex-col items-start">
+              <div
+                class="lg:col-span-1 md:col-span-2 col-span-5 flex flex-col items-start"
+              >
                 <p class="text-xs uppercase font-normal mb-3">NAVIGATE</p>
                 <a href="#" class="text-xl font-medium nav-links block p-1"
                   >Home</a
@@ -428,7 +454,9 @@
                   >About</a
                 >
               </div>
-              <div class="col-span-1 flex flex-col items-start">
+              <div
+                class="lg:col-span-1 md:col-span-2 col-span-5 flex flex-col items-start"
+              >
                 <p class="text-xs uppercase font-normal mb-3">SOCIAL & STUFF</p>
                 <a href="#" class="text-xl font-medium nav-links block p-1"
                   >Twitter (X)</a
@@ -440,7 +468,9 @@
                   >LinkedIn</a
                 >
               </div>
-              <div class="col-span-1 flex flex-col items-start">
+              <div
+                class="lg:col-span-1 md:col-span-2 col-span-5 flex flex-col items-start"
+              >
                 <p class="text-xs uppercase font-normal mb-3">CONTACT DEETS</p>
                 <p class="text-xl font-medium cursor-text block p-1">
                   +91 8737812696
