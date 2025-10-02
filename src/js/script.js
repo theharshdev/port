@@ -1,4 +1,3 @@
-// Register the plugin
 gsap.registerPlugin(
   ScrollTrigger,
   ScrollSmoother,
@@ -70,11 +69,91 @@ gsap.to("body", {
 
 const timeline1 = gsap.timeline();
 
+const loader1Txt = SplitText.create(".loader1-txt").chars;
+
+// Step 1: Scramble text only
+timeline1.to(
+  ".loader1-txt",
+  {
+    duration: 3,
+    delay: 0.3, // duration just for scramble
+    scrambleText: {
+      text: "10",
+      chars: "0123456789",
+      speed: 0.2,
+    },
+  },
+  "textnow"
+);
+
+timeline1.to(
+  ".loader2-txt",
+  {
+    duration: 3,
+    delay: 0.3,
+    scrambleText: {
+      text: "0%",
+      chars: "1234567890!@#$%^&*?<>+=|/",
+      speed: 0.2,
+    },
+  },
+  "textnow"
+);
+
+// Step 2: After scramble, fade + translate
+timeline1.to(
+  ".loader1-txt",
+  {
+    x: -200,
+    opacity: 0,
+    delay: 0.3,
+    duration: 1,
+    ease: "power1.out",
+  },
+  "textnow+=3"
+); // starts after scramble finishes
+
+timeline1.to(
+  ".loader2-txt",
+  {
+    x: 200,
+    opacity: 0,
+    delay: 0.3,
+    duration: 1,
+    ease: "power1.out",
+  },
+  "textnow+=3"
+);
+
+timeline1.to(
+  ".loader1",
+  {
+    y: "-100%",
+    duration: 1.2,
+    delay: 0.3,
+  },
+  "start"
+);
+
+timeline1.to(
+  ".loader2",
+  {
+    y: "100%",
+    duration: 1,
+    delay: 0.3,
+  },
+  "start"
+);
+
+timeline1.to(".loader3", {
+  opacity: 0,
+  duration: 1,
+});
+
 timeline1.from(".logo", {
   x: -200,
   opacity: 0,
   duration: 0.5,
-  delay: 0.4,
 });
 
 timeline1.from(".menu li", {

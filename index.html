@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Anton&family=Bungee&family=Gravitas+One&family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&family=Press+Start+2P&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Anton&family=Asimovian&family=Bungee&family=Gravitas+One&family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
     <link
@@ -15,17 +15,40 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
     <link href="./src/css/output.css" rel="stylesheet" />
+    <title>Harsh Kushwaha : The Creative Guy</title>
   </head>
   <body
     class="bg-primary text-secondary bg-cover bg-repeat font-inc font-light overflow-x-hidden"
   >
+    <!-- loader -->
+    <section class="pointer-events-none">
+      <div
+        class="grid grid-cols-2 fixed top-0 left-0 w-full h-dvh z-[9999] text-ternary text-9xl leading-none font-asim"
+      >
+        <div
+          class="bg-secondary/50 backdrop-blur-2xl h-dvh w-full loader1 relative"
+        >
+          <span class="absolute loader1-txt top-1/2 -translate-y-1/2 right-0"
+            >Hi,</span
+          >
+        </div>
+        <div
+          class="bg-secondary/50 backdrop-blur-2xl h-dvh w-full loader2 relative"
+        >
+          <span class="absolute top-1/2 -translate-y-1/2 left-0 loader2-txt"
+            >I'm</span
+          >
+        </div>
+      </div>
+      <div
+        class="fixed top-0 left-0 w-full h-full z-[999] backdrop-blur-2xl loader3"
+      ></div>
+    </section>
     <!-- Menu -->
     <nav
       class="font-press max-w-7xl px-6 mx-auto relative md:text-base text-sm"
     >
-      <a href="#" class="inline-block text-ternary logo nav-links mt-6"
-        >Hi,I'm</a
-      >
+      <a href="#" class="block text-ternary logo nav-links mt-6">Hi,I'm</a>
       <ul
         class="p-0 m-0 flex flex-col items-end gap-2 menu fixed z-50 right-6 top-6"
       >
@@ -166,14 +189,16 @@
               <p
                 class="md:text-3xl text-xl text-ternary max-w-md w-full secondary-txt overflow-hidden"
               >
-                The creative guy that loves to show off a thing or two.
+                Bringing forth an unparalleled fusion of functionality and
+                user-centric design.
                 <br />
-                Starting with your brand.
+                Starting with you.
               </p>
               <p
                 class="md:text-sm text-xs md:max-w-60 text-ternary w-full md:text-end secondary-txt overflow-hidden"
               >
-                Impactful digital experiences for ambitious brands
+                I'm Harsh Kushwaha, A Frontend Developer &
+                <span class="line-through">Photography Hobbyist</span>
               </p>
             </div>
             <div
@@ -196,8 +221,7 @@
             id="hero-bottom-paragraph"
             class="mb-32 pt-52 lg:max-w-4xl md:max-w-xl mx-auto lg:text-5xl md:text-3xl text-2xl font-medium text-center"
           >
-            Hii I am Harsh Kushwaha, ... a frontend Developer fueled with
-            creativity...
+            ...A frontend Developer fueled with creativity
           </p>
           <div
             class="mx-auto max-w-7xl mt-44 flex justify-between lg:gap-12 gap-32 lg:flex-nowrap flex-wrap items-center content-between"
@@ -207,7 +231,7 @@
             >
               <!-- Color pallete  -->
               <div
-                class="text-center shadow-xl relative color-platte-box bg-secondary text-ternary"
+                class="text-center shadow-xl relative color-platte-box bg-primary text-ternary"
               >
                 <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
                   <h3 class="text-base font-normal uppercase">#000000</h3>
@@ -216,11 +240,11 @@
               </div>
               <!-- Color pallete  -->
               <div
-                class="text-center shadow-xl relative color-platte-box bg-primary text-ternary scale-125 origin-center"
+                class="text-center shadow-xl relative color-platte-box bg-secondary text-ternary scale-125 origin-center"
               >
                 <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
-                  <h3 class="text-base font-normal uppercase">#0000ff</h3>
-                  <p class="text-xs">Blue</p>
+                  <h3 class="text-base font-normal uppercase">#b57edc</h3>
+                  <p class="text-xs">Lavender</p>
                 </div>
               </div>
               <!-- Color pallete  -->
@@ -237,22 +261,18 @@
               class="max-w-96 relative flex flex-col gap-6 items-end lg:text-end w-full"
             >
               <p class="text-lg article-para overflow-hidden">
-                Juice is where strategy, design, and technology come together to
-                build brands people believe in — and empower them to grow with
-                purpose.
+                Need help with your project? Want to collaborate with Stay In
+                Touch in another way? Reach out here.
               </p>
-              <a
-                href="#"
-                class="relative group mt-10 flex w-fit gap-2 font-normal items-center text-base overflow-hidden btn-animate uppercase"
+              <button
+                type="button"
+                class="relative group contact-btn cursor-pointer mt-10 flex w-fit gap-2 font-normal items-center text-base overflow-hidden btn-animate uppercase"
               >
-                More about Me
-                <i
-                  class="bi bi-arrow-right group-hover:-rotate-45 transition duration-200"
-                ></i>
+                I look forward to connecting :-)
                 <span
                   class="h-px bg-secondary w-full group-hover:translate-x-full absolute bottom-0 left-0 transition duration-200"
                 ></span>
-              </a>
+              </button>
             </div>
           </div>
         </section>
@@ -282,11 +302,13 @@
           <h3
             class="font-normal lg:text-6xl md:text-5xl text-3xl max-w-2/3 work-heading"
           >
-            Featured work where design drives clarity and brand growth.
+            These projects are more than code; they are a symphony of
+            creativity,
           </h3>
           <div class="grid grid-cols-4 lg:gap-32 gap-8 mt-32">
             <a
-              href="#"
+              href="https://theharshdev.github.io/me/"
+              target="_blank"
               class="lg:col-span-3 md:col-span-2 sm:col-span-3 col-span-4 block project-box project-img project-cursor relative order-1"
             >
               <img src="./src/images/project01.png" class="block btn-animate" />
@@ -295,40 +317,40 @@
               class="md:mt-40 lg:col-span-1 md:col-span-2 sm:col-span-3 col-span-4 order-2"
             >
               <p class="text-base font-normal italic work-description">
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
-                distinctio sapiente consequatur dolor maiores dolorum mollitia
-                quos labore neque, sed reiciendis animi? Similique ipsam esse
-                eos, quae nesciunt ullam omnis!"
+                "Developed a responsive portfolio using TailwindCSS and custom
+                JavaScript animations, focusing on performance-driven UI, clean
+                design, and handcrafted transitions without external libraries."
               </p>
               <p
                 class="uppercase lg:text-4xl md:text-3xl text-2xl font-normal mt-5"
               >
-                Project 01
+                Previous Folio
               </p>
             </div>
             <div
               class="md:mt-40 lg:col-span-1 md:col-span-2 sm:col-span-3 col-span-4 md:order-3 order-4"
             >
               <p class="text-base font-normal italic work-description">
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
-                distinctio sapiente consequatur dolor maiores dolorum mollitia
-                quos labore neque, sed reiciendis animi? Similique ipsam esse
-                eos, quae nesciunt ullam omnis!"
+                "Engineered a dynamic interface with Locomotive Scroll and GSAP,
+                delivering seamless smooth-scroll, parallax depth, and
+                high-performance animations."
               </p>
               <p
                 class="uppercase lg:text-4xl md:text-3xl text-2xl font-normal mt-5 md:text-end"
               >
-                Project 02
+                Locomotive JS Project
               </p>
             </div>
             <a
-              href="#"
+              href="https://theharshdev.github.io/locomotive/"
+              target="_blank"
               class="lg:col-span-3 md:col-span-2 sm:col-span-3 col-span-4 block project-box group project-img project-cursor relative md:order-4 order-3"
             >
               <img src="./src/images/project02.png" class="block btn-animate" />
             </a>
             <a
-              href="#"
+              href="https://theharshdev.github.io/anime/"
+              target="_blank"
               class="lg:col-span-3 md:col-span-2 sm:col-span-3 col-span-4 block project-box group project-img project-cursor order-5"
             >
               <img src="./src/images/project03.png" class="block btn-animate" />
@@ -339,32 +361,30 @@
               <p
                 class="uppercase lg:text-4xl md:text-3xl text-2xl font-normal mb-8"
               >
-                Project 03
+                Creative Agency Folio
               </p>
               <p class="text-base font-normal italic work-description">
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
-                distinctio sapiente consequatur dolor maiores dolorum mollitia
-                quos labore neque, sed reiciendis animi? Similique ipsam esse
-                eos, quae nesciunt ullam omnis!"
+                "A showcase of my Tailwind CSS expertise, highlighting a
+                interactive design for a sleek and responsive user experience."
               </p>
             </div>
             <div
               class="md:mt-40 lg:col-span-1 md:col-span-2 sm:col-span-3 col-span-4 md:order-7 order-8"
             >
               <p class="text-base font-normal italic work-description">
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
-                distinctio sapiente consequatur dolor maiores dolorum mollitia
-                quos labore neque, sed reiciendis animi? Similique ipsam esse
-                eos, quae nesciunt ullam omnis!"
+                "Crafted a fully animated interface using GSAP, implementing
+                timeline-based transitions, motion effects, and interactive
+                elements for a rich user experience."
               </p>
               <p
                 class="uppercase lg:text-4xl md:text-3xl text-2xl font-normal mt-5 md:text-end"
               >
-                Project 04
+                GSAP Animation Project
               </p>
             </div>
             <a
-              href="#"
+              href="https://theharshdev.github.io/gsap/src/pages/"
+              target="_blank"
               class="lg:col-span-3 md:col-span-2 sm:col-span-3 col-span-4 block project-box group project-img project-cursor relative md:order-8 order-7"
             >
               <img src="./src/images/project04.png" class="block btn-animate" />
@@ -453,12 +473,13 @@
           <div class="bg-secondary pt-32 pb-6 px-6">
             <div class="max-w-7xl mx-auto grid grid-cols-5 gap-12">
               <div class="lg:col-span-2 col-span-5">
-                <p class="text-2xl max-w-md">
-                  Partner with a creative guy that's ambitious as you are.
+                <p class="text-lg max-w-md">
+                  “कर्मण्याेवाधिकारस्ते मा फलेषु कदाचन।”
+                  <br />
+                  “तुम्हारा अधिकार केवल कर्म करने में है, फल पर नहीं।”
+                  <br />
+                  “Your responsibility lies in your work, not in its outcomes.”
                 </p>
-                <h2 class="text-xl text-center font-royal mt-6">
-                  - Harsh Kushwaha
-                </h2>
               </div>
               <div
                 class="lg:col-span-1 md:col-span-2 col-span-5 flex flex-col items-start"
@@ -486,21 +507,25 @@
               <div
                 class="lg:col-span-1 md:col-span-2 col-span-5 flex flex-col items-start"
               >
-                <p class="text-xs uppercase font-normal mb-3">SOCIAL & STUFF</p>
-                <a href="#" class="text-xl font-medium nav-links block p-1"
-                  >Twitter (X)</a
-                >
-                <a href="#" class="text-xl font-medium nav-links block p-1"
+                <p class="text-xs uppercase font-normal mb-3">SOCIAL</p>
+
+                <a
+                  href="https://github.com/theharshdev"
+                  target="_blank"
+                  class="text-xl font-medium nav-links block p-1"
                   >Github</a
                 >
-                <a href="#" class="text-xl font-medium nav-links block p-1"
+                <a
+                  href="https://www.linkedin.com/in/theharshdev/"
+                  target="_blank"
+                  class="text-xl font-medium nav-links block p-1"
                   >LinkedIn</a
                 >
               </div>
               <div
                 class="lg:col-span-1 md:col-span-2 col-span-5 flex flex-col items-start"
               >
-                <p class="text-xs uppercase font-normal mb-3">CONTACT DEETS</p>
+                <p class="text-xs uppercase font-normal mb-3">CONTACT</p>
                 <p class="text-xl font-medium cursor-text block p-1">
                   +91 8737812696
                 </p>

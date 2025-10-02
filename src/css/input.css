@@ -10,8 +10,9 @@
   --font-inc: "Inclusive Sans", sans-serif;
   --font-bungee: "Bungee", sans-serif;
   --font-anton: "Anton", sans-serif;
+  --font-asim: "Asimovian", sans-serif;
   --color-primary: black;
-  --color-secondary: blue;
+  --color-secondary: #b57edc;
   --color-ternary: white;
 }
 
