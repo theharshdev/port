@@ -58,7 +58,7 @@
     --font-anton: "Anton", sans-serif;
     --font-asim: "Asimovian", sans-serif;
     --color-primary: black;
-    --color-secondary: #b57edc;
+    --color-secondary: blue;
     --color-ternary: white;
   }
 }
@@ -584,26 +584,8 @@
   .bg-secondary {
     background-color: var(--color-secondary);
   }
-  .bg-secondary\/4 {
-    background-color: color-mix(in srgb, #b57edc 4%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-secondary) 4%, transparent);
-    }
-  }
-  .bg-secondary\/5 {
-    background-color: color-mix(in srgb, #b57edc 5%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-secondary) 5%, transparent);
-    }
-  }
-  .bg-secondary\/40 {
-    background-color: color-mix(in srgb, #b57edc 40%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-secondary) 40%, transparent);
-    }
-  }
   .bg-secondary\/50 {
-    background-color: color-mix(in srgb, #b57edc 50%, transparent);
+    background-color: color-mix(in srgb, blue 50%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-secondary) 50%, transparent);
     }
