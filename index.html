@@ -1,553 +1,2188 @@
-<!-- npx @tailwindcss/cli -i ./src/css/input.css -o ./src/css/output.css --watch -->
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Anton&family=Asimovian&family=Bungee&family=Gravitas+One&family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&family=Press+Start+2P&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
-    <link href="./src/css/output.css" rel="stylesheet" />
-    <title>Harsh Kushwaha : The Creative Guy</title>
-  </head>
-  <body
-    class="bg-primary text-secondary bg-cover bg-repeat font-inc font-light overflow-x-hidden"
-  >
-    <!-- loader -->
-    <section class="pointer-events-none">
-      <div
-        class="grid grid-cols-2 fixed top-0 left-0 w-full h-dvh z-[9999] text-ternary lg:text-9xl md:text-6xl sm:text-5xl text-4xl leading-none font-asim"
-      >
-        <div
-          class="bg-secondary/50 backdrop-blur-2xl h-dvh w-full loader1 relative"
-        >
-          <span class="absolute loader1-txt top-1/2 -translate-y-1/2 right-0"
-            >Hi,</span
-          >
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harsh Kushwaha | Senior Software Developer (zsh terminal os)</title>
+  <meta name="description" content="Portfolio of Harsh Kushwaha, Senior Software Developer with 5+ years of experience. Cyber Terminal Console Edition.">
+  <meta name="keywords" content="Harsh Kushwaha, Terminal Portfolio, React Developer, Senior Software Developer, TypeScript, Redux, Tailwind CSS, Noida">
+  <meta name="author" content="Harsh Kushwaha">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Harsh Kushwaha | Senior Software Developer (Terminal OS)">
+  <meta property="og:description" content="5+ Years Exp | Scalable SaaS, High-Traffic Media, AI/ML Dashboards, & Web Architecture.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Compiled CSS -->
+  <link rel="stylesheet" href="./dist/output.css">
+
+  <!-- CDN Dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Force Scroll to Top on Every Reload -->
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
+</head>
+<body class="bg-zinc-200 dark:bg-obsidian-950 text-zinc-900 dark:text-gray-100 font-mono antialiased overflow-x-hidden selection:bg-orange-500 selection:text-white transition-colors duration-300">
+
+  <!-- Minimalist Cyber Terminal OS Preloader -->
+  <div id="cyber-preloader" class="fixed inset-0 z-[100] bg-zinc-200 dark:bg-obsidian-950 text-zinc-950 dark:text-white font-mono flex flex-col items-center justify-center p-6 select-none transition-colors duration-300">
+    <div class="max-w-sm w-full space-y-6 text-center">
+      
+      <!-- System Title & Prompt -->
+      <div class="space-y-1">
+        <div class="text-xs text-orange-600 dark:text-orange-400 font-bold tracking-widest uppercase">$ SYSTEM_BOOT_SEQUENCE</div>
+        <h2 class="text-xl font-extrabold text-zinc-950 dark:text-white">HARSH KUSHWAHA OS</h2>
+      </div>
+
+      <!-- Large Clean Percentage Display -->
+      <div id="preloader-percent" class="text-6xl sm:text-7xl font-extrabold text-zinc-950 dark:text-white font-mono tracking-tighter">
+        0%
+      </div>
+
+      <!-- Simple Loading Progress Bar -->
+      <div class="w-full h-2 bg-zinc-300 dark:bg-obsidian-900 rounded-full overflow-hidden border border-zinc-400 dark:border-white/10 p-0.5 shadow-fighter-panel">
+        <div id="preloader-bar" class="h-full w-0 bg-orange-500 rounded-full transition-all duration-75 ease-out"></div>
+      </div>
+
+      <!-- Single Clear Status Line -->
+      <div id="preloader-status" class="text-xs text-zinc-600 dark:text-gray-400 font-mono font-semibold animate-pulse">
+        Initializing system modules...
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Custom Terminal Cursor Follower -->
+  <div id="cursor-dot" class="fixed top-0 left-0 w-2 h-4 bg-orange-500 pointer-events-none z-50 transform -translate-x-1/2 -translate-y-1/2 animate-blink"></div>
+  <div id="cursor-follower" class="fixed top-0 left-0 w-10 h-10 border border-orange-500/40 dark:border-orange-400/40 rounded-sm pointer-events-none z-50 transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-75"></div>
+
+  <!-- Global 3D Ambient WebGL Canvas (Travels across full page on scroll behind content at 100% full opacity) -->
+  <div id="hero-minimal-canvas" class="fixed inset-0 z-0 pointer-events-none w-full h-full overflow-hidden opacity-100"></div>
+
+  <!-- Top Progress Bar -->
+  <div class="fixed top-0 left-0 w-full h-[2px] bg-zinc-400 dark:bg-obsidian-900 z-50">
+    <div id="scroll-progress-bar" class="h-full w-0 bg-gradient-to-r from-orange-500 via-amber-400 to-orange-600 transition-all duration-75"></div>
+  </div>
+
+  <!-- Navigation Header: Fighter Plane Tactical Shell Bar -->
+  <header id="main-navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-zinc-400 dark:border-white/10 bg-zinc-300/90 dark:bg-obsidian-950/90 backdrop-blur-xl py-2.5 sm:py-3 px-4 sm:px-6 md:px-12">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Terminal Window Controls & Title -->
+      <div class="flex items-center gap-2 sm:gap-4 min-w-0">
+        <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/80 inline-block"></span>
+          <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-orange-400 inline-block"></span>
+          <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-emerald-500/80 inline-block"></span>
         </div>
-        <div
-          class="bg-secondary/50 backdrop-blur-2xl h-dvh w-full loader2 relative"
-        >
-          <span class="absolute top-1/2 -translate-y-1/2 left-0 loader2-txt"
-            >I'm</span
-          >
+
+        <a href="#hero" data-scramble="true" class="group font-mono text-xs sm:text-sm font-bold tracking-wider text-zinc-950 dark:text-white flex items-center gap-1.5 truncate">
+          <span class="hidden sm:inline">harsh@</span><span class="text-orange-500 dark:text-orange-400 truncate">kushwaha-architect</span><span class="hidden sm:inline">:~ (zsh)</span>
+        </a>
+      </div>
+
+      <!-- Nav Commands Menu (Desktop) -->
+      <nav class="hidden lg:flex items-center gap-7 text-xs font-mono text-zinc-700 dark:text-gray-400">
+        <a href="#about" data-scramble="true" class="hover:text-zinc-950 dark:hover:text-white transition-colors duration-200 font-semibold">01. ./about</a>
+        <a href="#experience" data-scramble="true" class="hover:text-zinc-950 dark:hover:text-white transition-colors duration-200 font-semibold">02. ./experience</a>
+        <a href="#projects" data-scramble="true" class="hover:text-zinc-950 dark:hover:text-white transition-colors duration-200 font-semibold">03. ./systems</a>
+        <a href="#skills" data-scramble="true" class="hover:text-zinc-950 dark:hover:text-white transition-colors duration-200 font-semibold">04. ./skills</a>
+        <a href="#blog" data-scramble="true" class="hover:text-zinc-950 dark:hover:text-white transition-colors duration-200 font-semibold">05. ./blog</a>
+        <a href="#contact" data-scramble="true" class="hover:text-zinc-950 dark:hover:text-white transition-colors duration-200 font-semibold">06. ./contact</a>
+      </nav>
+
+      <!-- Theme Controls & Mobile Menu Toggle -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- Dark / Light Mode Toggle Button -->
+        <button id="theme-toggle-btn" class="p-2 sm:p-2.5 rounded-md bg-zinc-400/40 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 text-zinc-900 dark:text-gray-300 hover:text-orange-500 hover:border-orange-500 transition-all flex items-center gap-1.5 text-xs font-mono font-semibold" title="Toggle Dark/Fighter-Plane Light Mode">
+          <i id="theme-icon" data-lucide="sun" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Theme</span>
+        </button>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 sm:p-2.5 rounded-md bg-zinc-400/40 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 text-zinc-900 dark:text-gray-300 hover:text-orange-500 hover:border-orange-500 transition-all flex items-center justify-center text-xs font-mono font-semibold" title="Open Menu" aria-label="Toggle navigation menu">
+          <i data-lucide="menu" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Collapsible Menu Drawer -->
+    <div id="mobile-nav-menu" class="hidden lg:hidden border-t border-zinc-400/40 dark:border-white/10 mt-3 pt-3 pb-2 flex flex-col gap-2 font-mono text-xs text-zinc-800 dark:text-gray-300 bg-zinc-300/95 dark:bg-obsidian-950/95 backdrop-blur-xl">
+      <a href="#about" class="px-3 py-2 rounded hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-semibold flex items-center justify-between">
+        <span>01. ./about</span>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
+      </a>
+      <a href="#experience" class="px-3 py-2 rounded hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-semibold flex items-center justify-between">
+        <span>02. ./experience</span>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
+      </a>
+      <a href="#projects" class="px-3 py-2 rounded hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-semibold flex items-center justify-between">
+        <span>03. ./systems</span>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
+      </a>
+      <a href="#skills" class="px-3 py-2 rounded hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-semibold flex items-center justify-between">
+        <span>04. ./skills</span>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
+      </a>
+      <a href="#blog" class="px-3 py-2 rounded hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-semibold flex items-center justify-between">
+        <span>05. ./blog</span>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
+      </a>
+      <a href="#contact" class="px-3 py-2 rounded hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-semibold flex items-center justify-between">
+        <span>06. ./contact</span>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="relative z-10">
+
+    <!-- ========================================================= -->
+    <!-- 00. HERO TERMINAL CONSOLE SECTION & INTERACTIVE CLI       -->
+    <!-- ========================================================= -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+      
+      <div id="hero-content-wrapper" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left Hero Text Shell Column -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Terminal Prompt Header line -->
+          <div id="hero-prompt" class="flex items-center gap-2 text-xs text-zinc-600 dark:text-gray-400 font-mono">
+            <span class="text-orange-500 dark:text-orange-400 font-bold">harsh@dev:~$</span>
+            <span class="truncate">./init_portfolio.sh --mode="<span class="text-orange-500 dark:text-orange-400 font-bold">Architect</span>"</span>
+          </div>
+
+          <!-- Hero Name Headline -->
+          <h1 id="hero-title" data-scramble="true" class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight sm:tracking-tighter uppercase leading-tight sm:leading-none text-zinc-950 dark:text-white font-mono cursor-pointer break-words">
+            HARSH <br>
+            <span class="text-zinc-900 dark:text-white">KUSHWAHA</span>
+          </h1>
+
+          <!-- Role Subtitle -->
+          <div id="hero-subtitle" class="text-base sm:text-xl font-semibold text-zinc-800 dark:text-gray-300 flex flex-wrap items-center gap-2">
+            <span class="text-orange-500 font-bold">&gt;</span>
+            <span data-scramble="true">Senior Software Developer II</span>
+            <span class="px-2.5 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-xs border border-orange-500/30 font-bold">5+ YOE</span>
+          </div>
+
+          <!-- Summary -->
+          <p id="hero-description" class="text-xs sm:text-base text-zinc-700 dark:text-gray-400 leading-relaxed max-w-lg">
+            Engineering scalable SaaS platforms (<span class="text-zinc-950 dark:text-white font-bold">2,500+ daily HRMS users</span>), high-traffic media platforms (<span class="text-zinc-950 dark:text-white font-bold">Hindustan Times, LiveMint</span>), and real-time AI/ML telemetry dashboards using <span class="text-orange-600 dark:text-orange-400 font-bold">React, TypeScript, Redux & Tailwind</span>.
+          </p>
+
+          <!-- Terminal Action Commands -->
+          <div id="hero-cta-buttons" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
+            <a href="#experience" data-scramble="true" class="px-5 sm:px-6 py-3 rounded bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 font-bold text-xs uppercase tracking-wider font-mono hover:bg-orange-500 dark:hover:bg-orange-500 dark:hover:text-white hover:border-orange-500 transition-all duration-300 shadow-sm flex items-center justify-center gap-2 group">
+              <span>$ ./cat_experience</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1"></i>
+            </a>
+
+            <a href="mailto:knp.harsh@gmail.com" class="px-5 sm:px-6 py-3 rounded bg-zinc-300 dark:bg-obsidian-900/90 border border-zinc-400 dark:border-white/10 text-zinc-900 dark:text-gray-200 hover:border-orange-500 dark:hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 text-xs font-mono font-bold transition-all duration-300 flex items-center justify-center gap-2 truncate">
+              <i data-lucide="mail" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
+              <span class="truncate">knp.harsh@gmail.com</span>
+            </a>
+          </div>
+
+          <!-- Terminal System Metrics Bar -->
+          <div id="hero-stats" class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl bg-zinc-300 dark:bg-obsidian-900/80 border border-zinc-400 dark:border-white/10 text-xs shadow-fighter-panel dark:shadow-sm">
+            <div>
+              <div class="text-lg sm:text-xl font-bold text-orange-500 dark:text-orange-400 font-mono stat-number" data-value="5" data-suffix="+">0</div>
+              <div class="text-[9px] sm:text-[10px] text-zinc-600 dark:text-gray-500 uppercase font-bold">SYS_EXP_YEARS</div>
+            </div>
+            <div>
+              <div class="text-lg sm:text-xl font-bold text-zinc-950 dark:text-white font-mono stat-number" data-value="2500" data-suffix="+">0</div>
+              <div class="text-[9px] sm:text-[10px] text-zinc-600 dark:text-gray-500 uppercase font-bold">HRMS_USERS</div>
+            </div>
+            <div>
+              <div class="text-lg sm:text-xl font-bold text-orange-500 dark:text-orange-400 font-mono stat-number" data-value="40" data-suffix="%+">0</div>
+              <div class="text-[9px] sm:text-[10px] text-zinc-600 dark:text-gray-500 uppercase font-bold">SEO_TRAFFIC_LIFT</div>
+            </div>
+            <div>
+              <div class="text-lg sm:text-xl font-bold text-zinc-950 dark:text-white font-mono stat-number" data-value="10" data-suffix="+">0</div>
+              <div class="text-[9px] sm:text-[10px] text-zinc-600 dark:text-gray-500 uppercase font-bold">SYSTEMS_DEPLOYED</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: INTERACTIVE CLI TERMINAL WINDOW WIDGET -->
+        <div class="lg:col-span-5">
+          <div id="hero-terminal-widget" class="rounded-xl bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-terminal-window overflow-hidden flex flex-col h-[340px] sm:h-[380px] transition-colors duration-300">
+            
+            <!-- Terminal Header -->
+            <div class="px-4 py-2.5 bg-zinc-400/40 dark:bg-obsidian-950 border-b border-zinc-400 dark:border-white/10 flex items-center justify-between text-xs text-zinc-700 dark:text-gray-400 font-mono">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-orange-400 inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
+                <span class="ml-2 text-zinc-950 dark:text-white font-bold truncate">interactive_cli.<span class="text-orange-500">zsh</span></span>
+              </div>
+              <span class="text-[10px] text-orange-600 dark:text-orange-400 font-mono uppercase font-bold">TYPE 'help'</span>
+            </div>
+
+            <!-- Terminal Output Scroll Box -->
+            <div id="terminal-cli-output" class="p-4 flex-grow overflow-y-auto space-y-2 text-xs font-mono text-zinc-900 dark:text-gray-300 scrollbar-thin"></div>
+
+            <!-- Terminal Input Form -->
+            <form id="terminal-cli-form" class="p-3 bg-zinc-400/40 dark:bg-obsidian-950 border-t border-zinc-400 dark:border-white/10 flex items-center gap-2">
+              <span class="text-orange-500 dark:text-orange-400 text-xs font-bold">$</span>
+              <input id="terminal-cli-input" type="text" autocomplete="off" placeholder="Type a command (e.g. 'help', 'exp')..." class="flex-grow bg-transparent text-xs font-mono text-zinc-950 dark:text-white placeholder-zinc-500 dark:placeholder-gray-600 focus:outline-none font-semibold">
+              <button type="submit" class="px-3 py-1 rounded bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 hover:bg-orange-500 dark:hover:bg-orange-500 dark:hover:text-white text-[10px] font-mono font-bold transition-all">RUN</button>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- 01. PARALLAX MARQUEE TERMINAL COMMAND STREAM              -->
+    <!-- ========================================================= -->
+    <section id="marquee-section" class="py-6 bg-zinc-300/80 dark:bg-obsidian-900/60 border-y border-zinc-400 dark:border-white/10 overflow-hidden">
+      <div class="whitespace-nowrap flex gap-8">
+        <div id="marquee-text-left" class="inline-flex gap-8 text-lg sm:text-2xl font-bold tracking-wider uppercase font-mono text-zinc-600 dark:text-zinc-400 select-none">
+          <span>$ grep -i "REACT.JS & TYPESCRIPT" ./architecture.log</span>
+          <span>•</span>
+          <span>$ systemctl status hrms-saas.service --active</span>
+          <span>•</span>
+          <span>$ tail -f /var/log/hindustan-times-media.log</span>
+          <span>•</span>
+          <span>$ kubectl get pods -n telemetry-dashboards</span>
+          <span>•</span>
         </div>
       </div>
-      <div
-        class="fixed top-0 left-0 w-full h-full z-[999] backdrop-blur-2xl loader3"
-      ></div>
     </section>
-    <!-- Menu -->
-    <nav
-      class="font-press max-w-7xl px-6 mx-auto relative md:text-base text-sm"
-    >
-      <a href="#" class="block text-ternary logo nav-links mt-6">Hi,I'm</a>
-      <ul
-        class="p-0 m-0 flex flex-col items-end gap-2 menu fixed z-50 right-6 top-6"
-      >
-        <li>
-          <button
-            type="button"
-            class="bg-transparent about-btn outline-none border-none cursor-pointer inline-block nav-links"
-          >
-            About
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            class="bg-transparent work-btn outline-none border-none cursor-pointer inline-block nav-links"
-          >
-            Work
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            class="bg-transparent contact-btn outline-none border-none cursor-pointer inline-block nav-links"
-          >
-            Contact
-          </button>
-        </li>
-      </ul>
-    </nav>
-    <!-- View project cursor -->
-    <span
-      class="cursor hidden opacity-0 pointer-events-none leading-none bg-yellow-300 p-2 text-xs uppercase fixed top-0 left-0 z-[99] whitespace-nowrap lg:flex justify-center items-center"
-    >
-      View Project
-    </span>
-    <!-- Custom cursor -->
-    <span class="lg:block hidden">
-      <span
-        class="custom-cursor fixed top-0.5 z-50 left-1 text-xs opacity-50 text-zinc-500 mix-blend-difference"
-      ></span>
-      <span
-        class="h-px bg-zinc-500 opacity-40 pointer-events-none mix-blend-difference w-full fixed top-0 left-0 z-50 y-axis-line"
-      ></span>
-      <span
-        class="w-px bg-zinc-500 opacity-40 pointer-events-none mix-blend-difference h-full fixed top-0 left-0 z-50 x-axis-line"
-      ></span>
-    </span>
-    <!-- Scroll spy -->
-    <div
-      class="scroll-spy fixed bottom-12 -left-2 z-50 -rotate-90 text-xs text-white font-light mix-blend-difference"
-    >
-      Scrolled 50%
-    </div>
-    <div id="smooth-wrapper">
-      <div id="smooth-content">
-        <!-- Hero section -->
-        <section id="home-section" class="h-dvh pt-56 relative px-6">
-          <!-- jelly fish -->
-          <div class="absolute top-1/2 left-1/2 -translate-1/2">
-            <div
-              class="jelly btn-animate"
-              style="
-                transform-style: preserve-3d;
-                transform: perspective(500px) rotateX(60deg) rotateY(20deg);
-              "
-            >
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-              <span
-                class="border border-secondary block rounded-full absolute top-1/2 left-1/2 -translate-1/2"
-              ></span>
-            </div>
+
+    <!-- ========================================================= -->
+    <!-- 01. ABOUT ARCHITECT & INTERACTIVE 3D MODEL SECTION        -->
+    <!-- ========================================================= -->
+    <section id="about" class="py-24 border-t border-zinc-400 dark:border-white/10 relative bg-zinc-200/40 dark:bg-obsidian-950/40 font-mono overflow-hidden">
+      <!-- Background Cyber Ambient Glow & Grid -->
+      <div class="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none"></div>
+      <div class="absolute -top-32 left-1/4 w-96 h-96 bg-white/[0.03] rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-32 right-1/4 w-96 h-96 bg-white/[0.03] rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+        
+        <!-- Section Header -->
+        <div class="mb-14 sm:mb-16">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-orange-600 dark:text-orange-400 font-mono text-xs tracking-widest uppercase font-bold">$ cat /etc/developer-bio.sys</span>
+            <div class="w-12 h-[1px] bg-orange-500/50"></div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/30 font-mono">STATUS: ONLINE • READY FOR DISPATCH</span>
           </div>
-          <h2
-            class="md:text-[15dvw] text-[20dvw] overflow-hidden hero-text md:leading-[12dvw] text-ternary text-center font-grav"
-          >
-            harsh
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 dark:text-white uppercase font-sans">
+            01. ABOUT THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-500 to-zinc-950 dark:from-orange-400 dark:via-amber-300 dark:to-white">ARCHITECT</span>
           </h2>
-          <div class="max-w-7xl mx-auto">
-            <div
-              class="flex justify-between gap-6 md:flex-nowrap flex-wrap items-start mt-32"
-            >
-              <p
-                class="md:text-3xl text-xl text-ternary max-w-md w-full secondary-txt overflow-hidden"
-              >
-                Bringing forth an unparalleled fusion of functionality and
-                user-centric design.
-                <br />
-                Starting with you.
-              </p>
-              <p
-                class="md:text-sm text-xs md:max-w-60 text-ternary w-full md:text-end secondary-txt overflow-hidden"
-              >
-                I'm Harsh Kushwaha, A Frontend Developer &
-                <span class="line-through">Photography Hobbyist</span>
-              </p>
-            </div>
-            <div
-              class="flex text-ternary justify-between gap-6 mt-12 text-xs font-light"
-            >
-              <p class="secondary-txt overflow-hidden">
-                PHONE : <br />
-                +91 8737812696
-              </p>
-              <p class="overflow-hidden">
-                INDIA : <br />
-                <span id="time">07:46:25</span>
-              </p>
-            </div>
-          </div>
-        </section>
-        <!-- Paragraph section -->
-        <section id="about-section" class="font-medium px-6">
-          <p
-            id="hero-bottom-paragraph"
-            class="mb-32 pt-52 lg:max-w-4xl md:max-w-xl mx-auto lg:text-5xl md:text-3xl text-2xl font-medium text-center"
-          >
-            ...A frontend Developer fueled with creativity
+          <p class="mt-3 text-sm sm:text-base text-zinc-600 dark:text-gray-400 max-w-3xl leading-relaxed">
+            Engineering scalable web architectures, ultra-responsive UIs, and interactive 3D WebGL experiences for high-growth SaaS and enterprise media giants.
           </p>
-          <div
-            class="mx-auto max-w-7xl mt-44 flex justify-between lg:gap-12 gap-32 lg:flex-nowrap flex-wrap items-center content-between"
-          >
-            <div
-              class="grid grid-cols-3 gap-0 h-96 lg:w-1/2 color-palatte lg:scale-125 origin-left w-full"
-            >
-              <!-- Color pallete  -->
-              <div
-                class="text-center shadow-xl relative color-platte-box bg-primary text-ternary"
-              >
-                <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
-                  <h3 class="text-base font-normal uppercase">#000000</h3>
-                  <p class="text-xs">Black</p>
+        </div>
+
+        <!-- Main Grid Container: Bio Details (Left) + Interactive 3D Canvas (Right) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+          
+          <!-- LEFT COLUMN: Technical Biography & Core Pillars (7 cols) -->
+          <div class="lg:col-span-7 flex flex-col justify-between space-y-6 sm:space-y-8">
+            
+            <!-- Terminal Glass Bio Shell -->
+            <div class="p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/80 dark:bg-obsidian-900/90 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl relative overflow-hidden backdrop-blur-md">
+              <div class="flex items-center justify-between pb-4 mb-4 border-b border-zinc-400/60 dark:border-white/10 text-xs font-bold text-zinc-700 dark:text-gray-400">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="terminal" class="w-4 h-4 text-orange-500"></i>
+                  <span class="text-zinc-950 dark:text-white">bio_manifest.json</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse"></span>
+                  <span class="text-[10px] text-orange-600 dark:text-orange-400 uppercase font-bold">SYS_LOG_OK</span>
                 </div>
               </div>
-              <!-- Color pallete  -->
-              <div
-                class="text-center shadow-xl relative color-platte-box bg-secondary text-ternary scale-125 origin-center"
-              >
-                <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
-                  <h3 class="text-base font-normal uppercase">#b57edc</h3>
-                  <p class="text-xs">Lavender</p>
-                </div>
+
+              <div class="space-y-4 text-xs sm:text-sm text-zinc-800 dark:text-gray-300 leading-relaxed font-mono">
+                <p>
+                  I'm <strong class="text-zinc-950 dark:text-white font-semibold">Harsh Kushwaha</strong>, a Senior Software Developer with over <strong>5+ years of production experience</strong> specializing in building mission-critical enterprise applications, complex HRMS SaaS platforms, and digital news portals serving millions of daily users.
+                </p>
+                <p>
+                  My engineering philosophy focuses on <strong>resilient state management</strong>, zero-latency user interfaces, optimized Core Web Vitals, and modular micro-frontend design. Whether optimizing server-side rendered pages for <span class="text-zinc-950 dark:text-white font-semibold">Hindustan Times & LiveMint</span> or scaling multi-tenant SaaS dashboards for <span class="text-zinc-950 dark:text-white font-semibold">2,500+ active enterprise users</span>, I craft bulletproof software.
+                </p>
               </div>
-              <!-- Color pallete  -->
-              <div
-                class="text-center shadow-xl relative color-platte-box bg-ternary text-secondary"
-              >
-                <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
-                  <h3 class="text-base font-normal uppercase">#FFFFF</h3>
-                  <p class="text-xs">White</p>
+
+              <!-- Terminal Code Block Preview -->
+              <div class="mt-6 p-3.5 sm:p-4 rounded-xl bg-zinc-900 text-gray-200 dark:bg-obsidian-950 font-mono text-xs border border-zinc-700 dark:border-white/10 overflow-x-auto shadow-inner">
+                <div class="flex justify-between items-center pb-2 mb-2 border-b border-zinc-700 dark:border-white/5 text-[10px] text-gray-400">
+                  <span>// Developer Profile State</span>
+                  <span class="text-orange-400 font-bold">JSON v2.4</span>
                 </div>
+                <pre class="leading-relaxed text-zinc-300 text-[11px] sm:text-xs"><code>{
+  <span class="text-zinc-400">"name"</span>: <span class="text-white">"Harsh Kushwaha"</span>,
+  <span class="text-zinc-400">"role"</span>: <span class="text-white">"Senior Software Developer II"</span>,
+  <span class="text-zinc-400">"experience"</span>: <span class="text-zinc-300">"5+ Years"</span>,
+  <span class="text-zinc-400">"primary_stack"</span>: [<span class="text-orange-400">"React.js"</span>, <span class="text-orange-400">"TypeScript"</span>, <span class="text-orange-400">"Redux Toolkit"</span>, <span class="text-orange-400">"Tailwind CSS"</span>, <span class="text-orange-400">"Three.js"</span>],
+  <span class="text-zinc-400">"availability"</span>: <span class="text-orange-400 font-bold">"Open for High-Impact Roles & Consulting"</span>
+}</code></pre>
               </div>
             </div>
-            <div
-              class="max-w-96 relative flex flex-col gap-6 items-end lg:text-end w-full"
-            >
-              <p class="text-lg article-para overflow-hidden">
-                Need help with your project? Want to collaborate with Stay In
-                Touch in another way? Reach out here.
+
+            <!-- Architectural Highlights Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+              
+              <div class="p-4 rounded-xl bg-zinc-300/60 dark:bg-obsidian-900/60 border border-zinc-400 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 group">
+                <div class="w-10 h-10 rounded-lg bg-orange-500/10 text-orange-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <i data-lucide="layers" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xs font-bold text-zinc-950 dark:text-white uppercase tracking-wider mb-1">SaaS Architecture</h3>
+                <p class="text-[11px] text-zinc-600 dark:text-gray-400 leading-snug">
+                  Architected multi-tenant HRMS engine for 2,500+ daily active users.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-zinc-300/60 dark:bg-obsidian-900/60 border border-zinc-400 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 group">
+                <div class="w-10 h-10 rounded-lg bg-orange-500/10 text-orange-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <i data-lucide="zap" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xs font-bold text-zinc-950 dark:text-white uppercase tracking-wider mb-1">High-Traffic Scale</h3>
+                <p class="text-[11px] text-zinc-600 dark:text-gray-400 leading-snug">
+                  Scaled enterprise media frontends for Hindustan Times & LiveMint.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-zinc-300/60 dark:bg-obsidian-900/60 border border-zinc-400 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 group">
+                <div class="w-10 h-10 rounded-lg bg-orange-500/10 text-orange-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <i data-lucide="box" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xs font-bold text-zinc-950 dark:text-white uppercase tracking-wider mb-1">Interactive 3D Web</h3>
+                <p class="text-[11px] text-zinc-600 dark:text-gray-400 leading-snug">
+                  Crafting real-time WebGL graphics, custom shaders & kinetic motion.
+                </p>
+              </div>
+
+            </div>
+
+            <!-- Action CTA Row -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
+              <a href="#skills" class="px-5 sm:px-6 py-3 rounded-lg bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 hover:bg-orange-500 dark:hover:bg-orange-500 dark:hover:text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-sm">
+                <i data-lucide="cpu" class="w-4 h-4"></i>
+                <span>Explore Technical Matrix</span>
+              </a>
+              <a href="#contact" class="px-5 sm:px-6 py-3 rounded-lg bg-transparent text-zinc-900 dark:text-white border border-zinc-400 dark:border-white/20 hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                <span>Get In Touch</span>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: Interactive 3D WebGL Canvas Viewport (5 cols) -->
+          <div class="lg:col-span-5 flex flex-col h-full">
+            
+            <!-- 3D Model Card Shell -->
+            <div id="about-3d-wrapper" class="relative flex-grow flex flex-col rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl overflow-hidden backdrop-blur-xl group">
+              
+              <!-- 3D Viewport Top Control Bar -->
+              <div class="px-4 sm:px-5 py-3 sm:py-3.5 border-b border-zinc-400 dark:border-white/10 bg-zinc-400/30 dark:bg-obsidian-950/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 z-20">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse"></span>
+                  <span class="text-xs font-bold text-zinc-900 dark:text-white tracking-wider uppercase font-mono">3D WebGL Viewport</span>
+                </div>
+                
+                <!-- Preset Badges Bar -->
+                <div class="flex flex-wrap items-center gap-1.5 font-mono text-[10px]">
+                  <button id="preset-btn-reactor" class="preset-switch-btn active-preset px-2.5 py-1 rounded bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 font-bold transition-all" data-preset="quantum_reactor">Reactor</button>
+                  <button id="preset-btn-satellite" class="preset-switch-btn px-2.5 py-1 rounded bg-zinc-400/60 dark:bg-obsidian-800 text-zinc-800 dark:text-gray-300 hover:text-zinc-950 dark:hover:text-white font-bold transition-all" data-preset="cyber_satellite">Satellite</button>
+                  <button id="preset-btn-neural" class="preset-switch-btn px-2.5 py-1 rounded bg-zinc-400/60 dark:bg-obsidian-800 text-zinc-800 dark:text-gray-300 hover:text-zinc-950 dark:hover:text-white font-bold transition-all" data-preset="neural_matrix">Neural Core</button>
+                  <button id="preset-btn-tesseract" class="preset-switch-btn px-2.5 py-1 rounded bg-zinc-400/60 dark:bg-obsidian-800 text-zinc-800 dark:text-gray-300 hover:text-zinc-950 dark:hover:text-white font-bold transition-all" data-preset="tesseract_chronos">Tesseract</button>
+                </div>
+              </div>
+
+              <!-- Interactive 3D Canvas Viewport -->
+              <div class="relative flex-grow w-full min-h-[340px] sm:min-h-[420px] cursor-grab active:cursor-grabbing select-none overflow-hidden" id="3d-widget-viewport-parent">
+                
+                <!-- Three.js Canvas Mount Point -->
+                <div id="3d-widget-container" class="absolute inset-0 w-full h-full"></div>
+
+                <!-- Touch / Drag Overlay Hint -->
+                <div class="absolute bottom-4 left-4 right-4 pointer-events-none z-10 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-zinc-600 dark:text-gray-400 bg-zinc-300/80 dark:bg-obsidian-950/80 backdrop-blur-md px-3 sm:px-3.5 py-2 rounded-xl border border-zinc-400/50 dark:border-white/10">
+                  <span class="flex items-center gap-1.5 font-semibold truncate">
+                    <i data-lucide="move" class="w-3.5 h-3.5 text-zinc-950 dark:text-white shrink-0"></i>
+                    <span>Drag to Rotate 360°</span>
+                  </span>
+                  <span id="3d-speed-indicator" class="text-zinc-950 dark:text-white font-bold shrink-0">SPIN: ACTIVE</span>
+                </div>
+
+                <!-- Corner Crosshair HUD Overlay Elements -->
+                <div class="absolute top-4 left-4 pointer-events-none text-[9px] font-mono text-zinc-500 dark:text-gray-500 uppercase tracking-widest">
+                  SYS.WEBGL_V2 // RENDER_3D
+                </div>
+                <div class="absolute top-4 right-4 pointer-events-none text-[9px] font-mono text-zinc-950 dark:text-white uppercase tracking-widest font-bold">
+                  FPS: 60
+                </div>
+
+              </div>
+
+              <!-- 3D Viewport Footer Controls -->
+              <div class="px-4 sm:px-5 py-2.5 sm:py-3 border-t border-zinc-400 dark:border-white/10 bg-zinc-400/20 dark:bg-obsidian-950/70 flex flex-wrap items-center justify-between gap-2 text-xs font-mono z-20">
+                <div class="flex items-center gap-3">
+                  <button id="toggle-3d-wireframe" class="hover:text-zinc-950 dark:hover:text-white text-zinc-700 dark:text-gray-300 transition-colors flex items-center gap-1.5 text-[10px] sm:text-[11px] font-semibold">
+                    <i data-lucide="grid" class="w-3.5 h-3.5"></i>
+                    <span id="wireframe-status-text">Wireframe: ON</span>
+                  </button>
+                  <span class="text-zinc-400 dark:text-gray-700">•</span>
+                  <button id="toggle-3d-autorotate" class="hover:text-zinc-950 dark:hover:text-white text-zinc-700 dark:text-gray-300 transition-colors flex items-center gap-1.5 text-[10px] sm:text-[11px] font-semibold">
+                    <i data-lucide="rotate-cw" class="w-3.5 h-3.5"></i>
+                    <span id="autorotate-status-text">Auto-Spin: ON</span>
+                  </button>
+                </div>
+
+                <button id="reset-3d-view" class="p-1.5 rounded hover:bg-zinc-400/40 dark:hover:bg-obsidian-800 text-zinc-700 dark:text-gray-400 hover:text-zinc-950 dark:hover:text-white transition-colors text-[10px] font-bold flex items-center gap-1">
+                  <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+                  <span>Reset View</span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- 02. INTERACTIVE ANIMATED TIMELINE & CAREER TRAJECTORY     -->
+    <!-- ========================================================= -->
+    <section id="experience" class="py-24 border-t border-zinc-400 dark:border-white/10 relative bg-zinc-200/40 dark:bg-obsidian-950/40 font-mono overflow-hidden">
+      
+      <!-- Ambient Grid Pattern & Subtle Glows -->
+      <div class="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
+      <div class="absolute top-1/4 -left-40 w-[500px] h-[500px] bg-white/[0.02] rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-1/4 -right-40 w-[500px] h-[500px] bg-white/[0.02] rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+        
+        <!-- Section Header & Milestone Navigator Bar -->
+        <div class="mb-14 sm:mb-16">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-orange-600 dark:text-orange-400 font-mono text-xs tracking-widest uppercase font-bold">$ git log --graph --oneline --decorate --all</span>
+            <div class="w-12 h-[1px] bg-orange-500/50"></div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/30 font-mono">
+              5+ YEARS CHRONOLOGICAL LOGS
+            </span>
+          </div>
+          
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+            <div>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 dark:text-white uppercase font-sans">
+                02. CAREER <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-500 to-zinc-950 dark:from-orange-400 dark:via-amber-300 dark:to-white">TIMELINE</span> & TRAJECTORY
+              </h2>
+              <p class="mt-3 text-sm sm:text-base text-zinc-600 dark:text-gray-400 max-w-2xl leading-relaxed">
+                Chronological engineering milestones building enterprise SaaS cores, national digital publishing suites, and mission-critical telemetry visualizers.
               </p>
-              <button
-                type="button"
-                class="relative group contact-btn cursor-pointer mt-10 flex w-fit gap-2 font-normal items-center text-base overflow-hidden btn-animate uppercase"
-              >
-                I look forward to connecting :-)
-                <span
-                  class="h-px bg-secondary w-full group-hover:translate-x-full absolute bottom-0 left-0 transition duration-200"
-                ></span>
+            </div>
+
+            <!-- Quick Milestone Jump Navigation -->
+            <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <button data-timeline-jump="timeline-entry-1" class="timeline-nav-btn px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all bg-orange-500 text-white shadow-sm border border-transparent">
+                [2024-NOW] INTELEGENCIA
+              </button>
+              <button data-timeline-jump="timeline-entry-2" class="timeline-nav-btn px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 text-zinc-800 dark:text-gray-300 hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400">
+                [2024] KLOUDRAC
+              </button>
+              <button data-timeline-jump="timeline-entry-3" class="timeline-nav-btn px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 text-zinc-800 dark:text-gray-300 hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400">
+                [2023-24] ALETHE
+              </button>
+              <button data-timeline-jump="timeline-entry-4" class="timeline-nav-btn px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 text-zinc-800 dark:text-gray-300 hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400">
+                [2021-23] EGLOBAL
               </button>
             </div>
           </div>
-        </section>
-        <!-- Service scrolling text -->
-        <section
-          class="h-dvh flex mt-80 items-center horizontal-scroll-box overflow-hidden relative"
-        >
-          <span
-            class="absolute top-5 left-1/2 -translate-x-1/2 text-xs font-light"
-          >
-            I do it for you!
-          </span>
-          <h3
-            class="font-royal shrink-0 text-[20vw] horizontal-scroll-text lg:ps-20 ps-8 leading-none translate-x-0 font-medium tertext-ternary whitespace-nowrap w-fit"
-          >
-            Web <span>Design</span> & <span>Development</span>
-          </h3>
-          <span
-            class="absolute bottom-5 left-1/2 -translate-x-1/2 text-xs font-light"
-          >
-            I do it for you!
-          </span>
-        </section>
-        <!-- Work section -->
-        <section id="work-section" class="mt-20 pt-32 px-6 mx-auto max-w-7xl">
-          <p class="text-sm font-medium ps-2 mb-20">Projects</p>
-          <h3
-            class="font-normal lg:text-6xl md:text-5xl text-3xl max-w-2/3 work-heading"
-          >
-            These projects are more than code; they are a symphony of
-            creativity,
-          </h3>
-          <div class="grid grid-cols-4 lg:gap-32 gap-8 mt-32">
-            <a
-              href="https://theharshdev.github.io/me/"
-              target="_blank"
-              class="lg:col-span-3 md:col-span-2 sm:col-span-3 col-span-4 block project-box project-img project-cursor relative order-1"
-            >
-              <img src="./src/images/project01.png" class="block btn-animate" />
-            </a>
-            <div
-              class="md:mt-40 lg:col-span-1 md:col-span-2 sm:col-span-3 col-span-4 order-2"
-            >
-              <p class="text-base font-normal italic work-description">
-                "Developed a responsive portfolio using TailwindCSS and custom
-                JavaScript animations, focusing on performance-driven UI, clean
-                design, and handcrafted transitions without external libraries."
-              </p>
-              <p
-                class="uppercase lg:text-4xl md:text-3xl text-2xl font-normal mt-5"
-              >
-                Previous Folio
-              </p>
-            </div>
-            <div
-              class="md:mt-40 lg:col-span-1 md:col-span-2 sm:col-span-3 col-span-4 md:order-3 order-4"
-            >
-              <p class="text-base font-normal italic work-description">
-                "Engineered a dynamic interface with Locomotive Scroll and GSAP,
-                delivering seamless smooth-scroll, parallax depth, and
-                high-performance animations."
-              </p>
-              <p
-                class="uppercase lg:text-4xl md:text-3xl text-2xl font-normal mt-5 md:text-end"
-              >
-                Locomotive JS Project
-              </p>
-            </div>
-            <a
-              href="https://theharshdev.github.io/locomotive/"
-              target="_blank"
-              class="lg:col-span-3 md:col-span-2 sm:col-span-3 col-span-4 block project-box group project-img project-cursor relative md:order-4 order-3"
-            >
-              <img src="./src/images/project02.png" class="block btn-animate" />
-            </a>
-            <a
-              href="https://theharshdev.github.io/anime/"
-              target="_blank"
-              class="lg:col-span-3 md:col-span-2 sm:col-span-3 col-span-4 block project-box group project-img project-cursor order-5"
-            >
-              <img src="./src/images/project03.png" class="block btn-animate" />
-            </a>
-            <div
-              class="md:mt-40 lg:col-span-1 md:col-span-2 sm:col-span-3 col-span-4 order-6"
-            >
-              <p
-                class="uppercase lg:text-4xl md:text-3xl text-2xl font-normal mb-8"
-              >
-                Creative Agency Folio
-              </p>
-              <p class="text-base font-normal italic work-description">
-                "A showcase of my Tailwind CSS expertise, highlighting a
-                interactive design for a sleek and responsive user experience."
-              </p>
-            </div>
-            <div
-              class="md:mt-40 lg:col-span-1 md:col-span-2 sm:col-span-3 col-span-4 md:order-7 order-8"
-            >
-              <p class="text-base font-normal italic work-description">
-                "Crafted a fully animated interface using GSAP, implementing
-                timeline-based transitions, motion effects, and interactive
-                elements for a rich user experience."
-              </p>
-              <p
-                class="uppercase lg:text-4xl md:text-3xl text-2xl font-normal mt-5 md:text-end"
-              >
-                GSAP Animation Project
-              </p>
-            </div>
-            <a
-              href="https://theharshdev.github.io/gsap/src/pages/"
-              target="_blank"
-              class="lg:col-span-3 md:col-span-2 sm:col-span-3 col-span-4 block project-box group project-img project-cursor relative md:order-8 order-7"
-            >
-              <img src="./src/images/project04.png" class="block btn-animate" />
-            </a>
+        </div>
+
+        <!-- Interactive Animated Timeline Tree Container -->
+        <div class="relative timeline-tree-container py-6">
+          
+          <!-- Central Glowing Spine Axis (Laser Line) -->
+          <div class="timeline-spine-track absolute top-0 bottom-0 left-3 sm:left-4 md:left-1/2 -translate-x-1/2 w-[2px] bg-zinc-400/40 dark:border-white/10 rounded-full overflow-hidden">
+            <!-- Animated Glowing Progress Laser that fills on scroll -->
+            <div id="timeline-progress-laser" class="w-full bg-gradient-to-b from-orange-500 via-amber-400 to-orange-600 h-0 transition-all duration-75 shadow-[0_0_12px_rgba(249,115,22,0.8)]"></div>
           </div>
-        </section>
-        <!-- Tech i use -->
-        <section class="pt-40">
-          <div class="skillParentBox relative h-dvh overflow-hidden">
-            <!-- Circle -->
-            <span
-              class="w-[100dvh] h-[100dvh] rounded-full bg-secondary block mx-auto skillCircle absolute top-1/2 left-1/2 -translate-1/2 z-0 scale-0"
-            >
+
+          <div class="space-y-12 sm:space-y-20 md:space-y-24 relative z-10">
+            
+            <!-- ============================================== -->
+            <!-- TIMELINE NODE 01: INTELEGENCIA ANALYTICS       -->
+            <!-- ============================================== -->
+            <div id="timeline-entry-1" class="timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-16 items-center">
+              
+              <!-- Timeline Central Node Pin -->
+              <div class="timeline-node-pin absolute left-3 sm:left-4 md:left-1/2 -translate-x-1/2 w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 rounded-full bg-zinc-950 dark:bg-obsidian-950 border-2 border-orange-500 flex items-center justify-center text-white dark:text-white font-mono text-xs font-extrabold shadow-lg z-20 transition-all duration-300">
+                <span class="timeline-node-inner w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-orange-500 animate-ping opacity-75"></span>
+                <span class="absolute w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-orange-500"></span>
+              </div>
+
+              <!-- Left Column: Header & Context Badge (Desktop Left) -->
+              <div class="timeline-meta-col pl-8 sm:pl-11 md:pl-0 md:text-right md:pr-12">
+                <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/30 text-[11px] sm:text-xs font-extrabold mb-2 sm:mb-3">
+                  <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+                  <span>DEC 2024 — PRESENT</span>
+                  <span class="text-orange-500 font-bold">• ACTIVE</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-zinc-950 dark:text-white font-sans">
+                  INTELEGENCIA ANALYTICS
+                </h3>
+                <p class="text-xs sm:text-sm font-bold text-zinc-700 dark:text-zinc-300 mt-1">
+                  Senior Software Developer II • Core Frontend Architecture Lead
+                </p>
+                <div class="text-xs text-zinc-500 dark:text-gray-400 mt-1 flex items-center gap-1.5 md:justify-end">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
+                  <span>Noida, Uttar Pradesh, India</span>
+                </div>
+              </div>
+
+              <!-- Right Column: Detailed Dossier Panel -->
+              <div class="timeline-dossier-col pl-8 sm:pl-11 md:pl-12">
+                <div class="timeline-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-xl hover:border-orange-500/50 transition-all duration-300 group">
+                  
+                  <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-zinc-400/40 dark:border-white/10 text-xs font-bold">
+                    <span class="text-zinc-600 dark:text-zinc-400 uppercase tracking-widest text-[10px] sm:text-[11px]">Workforce & Payroll SaaS Core</span>
+                    <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30">STAGE: PRODUCTION</span>
+                  </div>
+
+                  <!-- Bullet Breakdown -->
+                  <ul class="space-y-2.5 sm:space-y-3 text-zinc-800 dark:text-gray-300 text-xs sm:text-sm leading-relaxed font-mono mb-5 sm:mb-6">
+                    <li class="flex items-start gap-2">
+                      <span class="text-orange-500 font-bold text-sm leading-none mt-0.5 shrink-0">&gt;</span>
+                      <span>Architected high-scale React.js & Redux Toolkit modules for an enterprise HRMS SaaS platform servicing <strong class="text-orange-600 dark:text-orange-400 font-bold">2,500+ daily active users</strong> across global enterprise organizations.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-orange-500 font-bold text-sm leading-none mt-0.5 shrink-0">&gt;</span>
+                      <span>Led third-party vendor migration to an in-house React 18 / TypeScript infrastructure, decreasing API roundtrip latency by <strong class="text-orange-600 dark:text-orange-400 font-bold">45%</strong> and eliminating recurring software licensing costs.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-orange-500 font-bold text-sm leading-none mt-0.5 shrink-0">&gt;</span>
+                      <span>Engineered an atomic design system and standardized component library (60+ components) accelerating team delivery velocity while establishing Role-Based Access Control (RBAC).</span>
+                    </li>
+                  </ul>
+
+                  <!-- KPI Metric Grid -->
+                  <div class="grid grid-cols-3 gap-1.5 sm:gap-2.5 mb-4 sm:mb-5">
+                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">2,500+</div>
+                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">Daily Users</div>
+                    </div>
+                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">-45%</div>
+                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">API Latency</div>
+                    </div>
+                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">99.9%</div>
+                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">Uptime</div>
+                    </div>
+                  </div>
+
+                  <!-- Tech Arsenal -->
+                  <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React 18</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">TypeScript</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Redux Toolkit</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Tailwind CSS</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">RBAC</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Vite & Jest</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ============================================== -->
+            <!-- TIMELINE NODE 02: KLOUDRAC SOFTWARES           -->
+            <!-- ============================================== -->
+            <div id="timeline-entry-2" class="timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-16 items-center">
+              
+              <!-- Timeline Central Node Pin -->
+              <div class="timeline-node-pin absolute left-3 sm:left-4 md:left-1/2 -translate-x-1/2 w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 rounded-full bg-zinc-950 dark:bg-obsidian-950 border-2 border-orange-500/60 dark:border-orange-400/60 flex items-center justify-center text-white dark:text-white font-mono text-xs font-extrabold shadow-lg z-20 transition-all duration-300">
+                <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-orange-500"></span>
+              </div>
+
+              <!-- Left Column: Detailed Dossier Panel (Desktop Left) -->
+              <div class="timeline-dossier-col order-2 md:order-1 pl-8 sm:pl-11 md:pl-0 md:pr-12">
+                <div class="timeline-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-xl hover:border-orange-500/50 transition-all duration-300 group">
+                  
+                  <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-zinc-400/40 dark:border-white/10 text-xs font-bold">
+                    <span class="text-zinc-600 dark:text-zinc-400 uppercase tracking-widest text-[10px] sm:text-[11px]">National Publishing Portals</span>
+                    <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30">10M+ IMPRESSIONS</span>
+                  </div>
+
+                  <!-- Bullet Breakdown -->
+                  <ul class="space-y-2.5 sm:space-y-3 text-zinc-800 dark:text-gray-300 text-xs sm:text-sm leading-relaxed font-mono mb-5 sm:mb-6">
+                    <li class="flex items-start gap-2">
+                      <span class="text-orange-500 font-bold text-sm leading-none mt-0.5 shrink-0">&gt;</span>
+                      <span>Engineered mission-critical frontend templates for national digital media giants (<strong class="text-zinc-950 dark:text-white font-semibold">Hindustan Times, LiveMint, HT Auto</strong>), maintaining high availability during breaking news traffic surges.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-orange-500 font-bold text-sm leading-none mt-0.5 shrink-0">&gt;</span>
+                      <span>Optimized Core Web Vitals across editorial article & video feeds, dropping Largest Contentful Paint (LCP) from <strong class="text-orange-600 dark:text-orange-400 font-bold">3.2s down to 1.1s</strong> via code-splitting, lazy hydration, and priority decoding.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-orange-500 font-bold text-sm leading-none mt-0.5 shrink-0">&gt;</span>
+                      <span>Integrated dynamic header-bidding ad slots and real-time reader telemetry pipelines with zero cumulative layout shift (CLS).</span>
+                    </li>
+                  </ul>
+
+                  <!-- KPI Metric Grid -->
+                  <div class="grid grid-cols-3 gap-1.5 sm:gap-2.5 mb-4 sm:mb-5">
+                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">10M+</div>
+                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">Readers</div>
+                    </div>
+                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">1.1s</div>
+                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">LCP Vitals</div>
+                    </div>
+                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">3 Portals</div>
+                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">HT, Mint, Auto</div>
+                    </div>
+                  </div>
+
+                  <!-- Tech Arsenal -->
+                  <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Next.js SSR</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React.js</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">TypeScript</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Core Web Vitals</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Ad-Tech</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Header & Context Badge (Desktop Right) -->
+              <div class="timeline-meta-col order-1 md:order-2 pl-8 sm:pl-11 md:pl-12">
+                <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/30 text-[11px] sm:text-xs font-extrabold mb-2 sm:mb-3">
+                  <span>APR 2024 — DEC 2024</span>
+                  <span class="text-orange-500 font-bold">• COMPLETED</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-zinc-950 dark:text-white font-sans">
+                  KLOUDRAC SOFTWARES
+                </h3>
+                <p class="text-xs sm:text-sm font-bold text-zinc-700 dark:text-zinc-300 mt-1">
+                  Software Developer • Key Enterprise Clients: <span class="text-orange-600 dark:text-orange-400 font-extrabold">Hindustan Times, LiveMint, HT Auto</span>
+                </p>
+                <div class="text-xs text-zinc-500 dark:text-gray-400 mt-1 flex items-center gap-1.5">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
+                  <span>Noida, Uttar Pradesh, India</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ============================================== -->
+            <!-- TIMELINE NODE 03: ALETHE LABS INDIA            -->
+            <!-- ============================================== -->
+            <div id="timeline-entry-3" class="timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-16 items-center">
+              
+              <!-- Timeline Central Node Pin -->
+              <div class="timeline-node-pin absolute left-3 sm:left-4 md:left-1/2 -translate-x-1/2 w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 rounded-full bg-zinc-950 dark:bg-obsidian-950 border-2 border-orange-500/60 dark:border-orange-400/60 flex items-center justify-center text-white dark:text-white font-mono text-xs font-extrabold shadow-lg z-20 transition-all duration-300">
+                <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-orange-500"></span>
+              </div>
+
+              <!-- Left Column: Header & Context Badge (Desktop Left) -->
+              <div class="timeline-meta-col pl-8 sm:pl-11 md:pl-0 md:text-right md:pr-12">
+                <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/30 text-[11px] sm:text-xs font-extrabold mb-2 sm:mb-3">
+                  <span>AUG 2023 — APR 2024</span>
+                  <span class="text-orange-500 font-bold">• COMPLETED</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-zinc-950 dark:text-white font-sans">
+                  ALETHE LABS INDIA
+                </h3>
+                <p class="text-xs sm:text-sm font-bold text-zinc-700 dark:text-zinc-300 mt-1">
+                  Software Developer • AI/ML & Govt Telemetry Systems
+                </p>
+                <div class="text-xs text-zinc-500 dark:text-gray-400 mt-1 flex items-center gap-1.5 md:justify-end">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
+                  <span>Gurugram, Haryana, India</span>
+                </div>
+              </div>
+
+              <!-- Right Column: Detailed Dossier Panel -->
+              <div class="timeline-dossier-col pl-8 sm:pl-11 md:pl-12">
+                <div class="timeline-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-xl hover:border-orange-500/50 transition-all duration-300 group">
+                  
+                  <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-zinc-400/40 dark:border-white/10 text-xs font-bold">
+                    <span class="text-zinc-600 dark:text-zinc-400 uppercase tracking-widest text-[10px] sm:text-[11px]">Sensor Telemetry & Anomaly Alerts</span>
+                    <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30">50K+ SENSORS</span>
+                  </div>
+
+                  <!-- Bullet Breakdown -->
+                  <ul class="space-y-2.5 sm:space-y-3 text-zinc-800 dark:text-gray-300 text-xs sm:text-sm leading-relaxed font-mono mb-5 sm:mb-6">
+                    <li class="flex items-start gap-2">
+                      <span class="text-orange-500 font-bold text-sm leading-none mt-0.5 shrink-0">&gt;</span>
+                      <span>Constructed real-time AI/ML telemetry monitoring dashboards for government critical infrastructure and nationwide pipeline safety networks.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-orange-500 font-bold text-sm leading-none mt-0.5 shrink-0">&gt;</span>
+                      <span>Integrated high-frequency WebSocket streams rendering <strong class="text-orange-600 dark:text-orange-400 font-bold">50,000+ real-time telemetry sensor records</strong> at stable 60 FPS without memory leaks.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-orange-500 font-bold text-sm leading-none mt-0.5 shrink-0">&gt;</span>
+                      <span>Engineered geospatial GIS map overlays with interactive heatmaps, clustering, and pinpoint alert markers for immediate incident localization.</span>
+                    </li>
+                  </ul>
+
+                  <!-- KPI Metric Grid -->
+                  <div class="grid grid-cols-3 gap-1.5 sm:gap-2.5 mb-4 sm:mb-5">
+                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">50K+</div>
+                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">Sensor Nodes</div>
+                    </div>
+                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">&lt;250ms</div>
+                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">WSS Latency</div>
+                    </div>
+                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">100%</div>
+                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">Compliance</div>
+                    </div>
+                  </div>
+
+                  <!-- Tech Arsenal -->
+                  <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React.js</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">TypeScript</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">WebSockets</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">D3.js / Chart.js</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Geospatial GIS</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ============================================== -->
+            <!-- TIMELINE NODE 04: EGLOBAL SOFT SOLUTIONS       -->
+            <!-- ============================================== -->
+            <div id="timeline-entry-4" class="timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-16 items-center">
+              
+              <!-- Timeline Central Node Pin -->
+              <div class="timeline-node-pin absolute left-3 sm:left-4 md:left-1/2 -translate-x-1/2 w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 rounded-full bg-zinc-950 dark:bg-obsidian-950 border-2 border-orange-500/60 dark:border-orange-400/60 flex items-center justify-center text-white dark:text-white font-mono text-xs font-extrabold shadow-lg z-20 transition-all duration-300">
+                <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-orange-500"></span>
+              </div>
+
+              <!-- Left Column: Detailed Dossier Panel (Desktop Left) -->
+              <div class="timeline-dossier-col order-2 md:order-1 pl-8 sm:pl-11 md:pl-0 md:pr-12">
+                <div class="timeline-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-xl hover:border-orange-500/50 transition-all duration-300 group">
+                  
+                  <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-zinc-400/40 dark:border-white/10 text-xs font-bold">
+                    <span class="text-zinc-600 dark:text-zinc-400 uppercase tracking-widest text-[10px] sm:text-[11px]">Commercial Web & Search Growth</span>
+                    <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30">+40% SEARCH SURGE</span>
+                  </div>
+
+                  <!-- Bullet Breakdown -->
+                  <ul class="space-y-2.5 sm:space-y-3 text-zinc-800 dark:text-gray-300 text-xs sm:text-sm leading-relaxed font-mono mb-5 sm:mb-6">
+                    <li class="flex items-start gap-2">
+                      <span class="text-orange-500 font-bold text-sm leading-none mt-0.5 shrink-0">&gt;</span>
+                      <span>Engineered responsive, performant React-based web applications for client portfolios across e-commerce, real estate, and healthcare.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-orange-500 font-bold text-sm leading-none mt-0.5 shrink-0">&gt;</span>
+                      <span>Increased organic search engine traffic by <strong class="text-orange-600 dark:text-orange-400 font-bold">over 40%</strong> across commercial web properties through structured semantic HTML5, JSON-LD rich snippets, and performance tuning.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-orange-500 font-bold text-sm leading-none mt-0.5 shrink-0">&gt;</span>
+                      <span>Integrated secure payment gateways (Razorpay, Stripe) and maintained 98+ Google Lighthouse scores across production builds.</span>
+                    </li>
+                  </ul>
+
+                  <!-- KPI Metric Grid -->
+                  <div class="grid grid-cols-3 gap-1.5 sm:gap-2.5 mb-4 sm:mb-5">
+                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">+40%</div>
+                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">SEO Lift</div>
+                    </div>
+                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">20+</div>
+                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">Portals</div>
+                    </div>
+                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">98/100</div>
+                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">Lighthouse</div>
+                    </div>
+                  </div>
+
+                  <!-- Tech Arsenal -->
+                  <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React.js</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">JavaScript (ES6+)</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Redux</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Technical SEO</span>
+                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Stripe / Razorpay</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Header & Context Badge (Desktop Right) -->
+              <div class="timeline-meta-col order-1 md:order-2 pl-8 sm:pl-11 md:pl-12">
+                <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/30 text-[11px] sm:text-xs font-extrabold mb-2 sm:mb-3">
+                  <span>AUG 2021 — AUG 2023</span>
+                  <span class="text-orange-500 font-bold">• COMPLETED</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-zinc-950 dark:text-white font-sans">
+                  EGLOBAL SOFT SOLUTIONS
+                </h3>
+                <p class="text-xs sm:text-sm font-bold text-zinc-700 dark:text-zinc-300 mt-1">
+                  Software Developer • Multi-Industry Client Platforms
+                </p>
+                <div class="text-xs text-zinc-500 dark:text-gray-400 mt-1 flex items-center gap-1.5">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
+                  <span>New Delhi, India</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- ========================================================= -->
+    <!-- 03. DEPLOYED SYSTEMS PROCESS TABLE & ARCHITECTURE HUB     -->
+    <!-- ========================================================= -->
+    <section id="projects" class="py-24 border-t border-zinc-400 dark:border-white/10 relative bg-zinc-200/40 dark:bg-obsidian-950/40 font-mono overflow-hidden">
+      
+      <!-- Ambient Background Glow & Cyber Grid -->
+      <div class="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
+      <div class="absolute top-1/4 -left-32 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+        
+        <!-- Section Header Bar -->
+        <div class="mb-12 sm:mb-14">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-orange-600 dark:text-orange-400 font-mono text-xs tracking-widest uppercase font-bold truncate">$ docker ps --all --format "table {{.ID}}\t{{.Names}}"</span>
+            <div class="w-12 h-[1px] bg-orange-500/50 shrink-0"></div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/30 shrink-0 font-mono">
+              6 CONTAINERS ONLINE
             </span>
-            <!-- Main text -->
-            <p
-              class="md:text-[18vw] text-[19vw] md:-ms-7 -ms-3 uppercase absolute top-1/2 left-1/2 -translate-1/2 text-center skillHeading whitespace-nowrap z-10 font-anton flex gap-8 items-center justify-center italic tracking-tight"
-            >
-              Technologies
-            </p>
-            <!-- Skills -->
-            <div
-              class="absolute top-1/2 left-1/2 text-ternary italic -translate-1/2 z-20 leading-none uppercase font-anton text-center md:scale-100 scale-200"
-            >
-              <h3 class="skillTxts scale-0 text-[9dvw]">GSAP</h3>
-              <h3 class="skillTxts scale-0 text-[5dvw]">Javascript</h3>
-              <h3 class="skillTxts scale-0 text-[6dvw]">React.Js</h3>
-              <h3 class="skillTxts scale-0 text-[3dvw]">TailwindCSS</h3>
-              <h3 class="skillTxts scale-0 text-[4dvw]">CSS</h3>
-              <h3 class="skillTxts scale-0 text-[7dvw]">HTML</h3>
-            </div>
           </div>
-        </section>
-        <!-- Section -->
-        <section
-          class="max-w-7xl mx-auto h-dvh flex justify-center items-center footer-paragraph-box px-6"
-        >
-          <div
-            class="footer-paragraph btn-animate scale-75 lg:max-w-2xl sm:max-w-sm max-w-[220px] flex flex-col items-center justify-center gap-8"
-          >
-            <p class="text-center lg:text-2xl md:text-lg sm:text-base text-sm">
-              "Would you like to know more? Please feel free to
-              <i class="bi bi-braces"></i> reach out to hear how, I can help
-              <i class="bi bi-braces-asterisk"></i> to develop your brand
-              aesthetically, <i class="bi bi-braces"></i> or for any other
-              design needs you <i class="bi bi-braces-asterisk"></i> might
-              have."
-            </p>
-            <button
-              type="button"
-              class="uppercase cursor-pointer contact-btn text-sm bg-white py-3 px-8 border flex justify-center items-center gap-2 border-secondary rounded-full font-normal group hover:bg-secondary hover:text-ternary transition duration-300"
-            >
-              Lets Connect
-              <span class="relative overflow-hidden w-5 h-5">
-                <i
-                  class="bi bi-arrow-up-right absolute top-0 left-0 transition duration-500 group-hover:-translate-y-full group-hover:translate-x-full"
-                ></i>
-                <i
-                  class="bi bi-arrow-up-right absolute top-0 left-0 transition duration-500 -translate-x-full translate-y-full group-hover:translate-0"
-                ></i>
-              </span>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 dark:text-white uppercase font-sans">
+            03. DEPLOYED <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-500 to-zinc-950 dark:from-orange-400 dark:via-amber-300 dark:to-white">SYSTEMS</span> & ARCHITECTURE
+          </h2>
+          <p class="mt-3 text-sm sm:text-base text-zinc-600 dark:text-gray-400 max-w-3xl leading-relaxed">
+            Production micro-frontends, high-throughput media publishing suites, and mission-critical telemetry visualizers engineered with zero-compromise performance.
+          </p>
+
+          <!-- Interactive Process Filter Toolbar -->
+          <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-5 sm:pt-6">
+            <button data-project-filter="all" class="project-filter-btn px-3 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-bold transition-all bg-orange-500 text-white shadow-sm border border-transparent">
+              [ALL_CONTAINERS] (06)
+            </button>
+            <button data-project-filter="saas" class="project-filter-btn px-3 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-bold transition-all bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 text-zinc-800 dark:text-gray-300 hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400">
+              [SAAS_ENTERPRISE]
+            </button>
+            <button data-project-filter="media" class="project-filter-btn px-3 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-bold transition-all bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 text-zinc-800 dark:text-gray-300 hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400">
+              [MEDIA_PUBLISHING]
+            </button>
+            <button data-project-filter="telemetry" class="project-filter-btn px-3 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-bold transition-all bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 text-zinc-800 dark:text-gray-300 hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400">
+              [AI_TELEMETRY]
+            </button>
+            <button data-project-filter="creative" class="project-filter-btn px-3 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-bold transition-all bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 text-zinc-800 dark:text-gray-300 hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400">
+              [CREATIVE_WEBGL]
             </button>
           </div>
-        </section>
-        <!-- Footer -->
-        <footer class="text-ternary relative">
-          <!-- Contact me -->
-          <section
-            id="contact-section"
-            class="overflow-hidden lg:-mb-20 pointer-events-none"
-          >
-            <div
-              class="flex items-center pt-12 gap-12 text-[36vw] leading-none uppercase font-anton"
-            >
-              <h3 class="scroller shrink-0 -translate-x-[200%] text-secondary">
-                knp.harsh@gmail.com
-              </h3>
-              <h3 class="scroller shrink-0 -translate-x-[200%] text-secondary">
-                knp.harsh@gmail.com
-              </h3>
-              <h3 class="scroller shrink-0 -translate-x-[200%] text-secondary">
-                knp.harsh@gmail.com
-              </h3>
-            </div>
-          </section>
-          <div class="bg-secondary pt-32 pb-6 px-6">
-            <div class="max-w-7xl mx-auto grid grid-cols-5 gap-12">
-              <div class="lg:col-span-2 col-span-5">
-                <p class="text-lg max-w-md">
-                  “कर्मण्याेवाधिकारस्ते मा फलेषु कदाचन।”
-                  <br />
-                  “तुम्हारा अधिकार केवल कर्म करने में है, फल पर नहीं।”
-                  <br />
-                  “Your responsibility lies in your work, not in its outcomes.”
-                </p>
-              </div>
-              <div
-                class="lg:col-span-1 md:col-span-2 col-span-5 flex flex-col items-start"
-              >
-                <p class="text-xs uppercase font-normal mb-3">NAVIGATE</p>
-                <button
-                  type="button"
-                  class="bg-transparent border-none outline-none cursor-pointer home-btn text-xl font-medium nav-links block p-1"
-                >
-                  Home
-                </button>
-                <button
-                  type="button"
-                  class="bg-transparent border-none outline-none cursor-pointer work-btn text-xl font-medium nav-links block p-1"
-                >
-                  Work
-                </button>
-                <button
-                  type="button"
-                  class="bg-transparent border-none outline-none cursor-pointer about-btn text-xl font-medium nav-links block p-1"
-                >
-                  About
-                </button>
-              </div>
-              <div
-                class="lg:col-span-1 md:col-span-2 col-span-5 flex flex-col items-start"
-              >
-                <p class="text-xs uppercase font-normal mb-3">SOCIAL</p>
+        </div>
 
-                <a
-                  href="https://github.com/theharshdev"
-                  target="_blank"
-                  class="text-xl font-medium nav-links block p-1"
-                  >Github</a
-                >
-                <a
-                  href="https://www.linkedin.com/in/theharshdev/"
-                  target="_blank"
-                  class="text-xl font-medium nav-links block p-1"
-                  >LinkedIn</a
-                >
+        <!-- 6 High-Fidelity Project Dossier Cards Grid (With Embedded Minimal 3D Models) -->
+        <div id="projects-container" class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
+          
+          <!-- ========================================== -->
+          <!-- 01. Enterprise HRMS SaaS Core Engine       -->
+          <!-- ========================================== -->
+          <div data-category="saas" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-fighter-panel dark:shadow-2xl flex flex-col justify-between backdrop-blur-xl group">
+            <div>
+              <!-- Top Container Header -->
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/60 dark:border-white/10 text-xs">
+                <div class="flex items-center gap-2 font-bold truncate">
+                  <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
+                  <span class="text-zinc-950 dark:text-white truncate">CNT_01_HRMS_CORE</span>
+                  <span class="text-orange-600 dark:text-orange-400 font-mono font-bold text-[10px] hidden sm:inline">• PORT 3000</span>
+                </div>
+                <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30 shrink-0">2,500+ USERS</span>
               </div>
-              <div
-                class="lg:col-span-1 md:col-span-2 col-span-5 flex flex-col items-start"
-              >
-                <p class="text-xs uppercase font-normal mb-3">CONTACT</p>
-                <p class="text-xl font-medium cursor-text block p-1">
-                  +91 8737812696
-                </p>
-                <p class="text-xl font-medium cursor-text block p-1">
-                  knp.harsh@gmail.com
-                </p>
-                <p class="text-xl font-medium cursor-text block p-1">
-                  New Delhi, India
-                </p>
+
+              <!-- Minimal 3D Geometric Model Viewport -->
+              <div class="relative w-full h-36 sm:h-44 rounded-xl bg-zinc-950 border border-zinc-700/80 dark:border-white/10 mb-4 overflow-hidden flex items-center justify-center">
+                <div id="project-canvas-1" class="project-3d-model-viewport w-full h-full" data-project-model="torusknot"></div>
+                <div class="absolute top-2.5 left-3 text-[9px] font-mono text-zinc-400 uppercase tracking-wider pointer-events-none flex items-center gap-1.5 bg-black/60 px-2 py-0.5 rounded border border-white/10">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+                  <span>3D_GEOM // HRMS_CLUSTER</span>
+                </div>
+                <div class="absolute bottom-2 right-3 text-[9px] font-mono text-zinc-400 uppercase pointer-events-none bg-black/60 px-2 py-0.5 rounded border border-white/10">
+                  ROT: <span class="text-orange-400 font-bold">ACTIVE</span>
+                </div>
+              </div>
+
+              <!-- Title & Context -->
+              <h3 data-scramble="true" class="text-lg sm:text-xl md:text-2xl font-bold text-zinc-950 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors cursor-pointer font-sans mb-1">
+                Enterprise HRMS SaaS Engine
+              </h3>
+              <div class="text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-3">
+                Intelegencia Analytics • Multi-Tenant Workforce & Payroll Core
+              </div>
+
+              <p class="text-zinc-700 dark:text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 font-mono">
+                Architected high-throughput React & Redux Toolkit state modules servicing <strong class="text-orange-600 dark:text-orange-400 font-bold">2,500+ active users</strong>. Led third-party software vendor migration, decreasing API roundtrip latency by <strong class="text-orange-600 dark:text-orange-400 font-bold">45%</strong> and establishing automated payroll orchestration.
+              </p>
+
+              <!-- Interactive Simulated Terminal Output Window -->
+              <div class="p-3.5 sm:p-4 rounded-xl bg-zinc-900 text-gray-200 dark:bg-obsidian-950 font-mono text-xs border border-zinc-700 dark:border-white/10 mb-4 sm:mb-5 shadow-inner overflow-x-auto">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-zinc-700 dark:border-white/5 text-[10px] text-gray-400">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="w-2 h-2 rounded-full bg-orange-400"></span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="ml-1 text-gray-400">hrms_cluster_health.sh</span>
+                  </div>
+                  <span class="text-orange-400 font-bold">STATUS: OK</span>
+                </div>
+                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-300">
+                  <div class="text-orange-400 font-bold">$ systemctl status hrms-saas.service</div>
+                  <div class="text-white">● Active: running (2,548 sessions, 0 dropouts)</div>
+                  <div class="text-zinc-300">↳ CPU: 14% | MEM: 380MB | Cache Hit: <span class="text-orange-400 font-bold">94.2%</span></div>
+                  <div class="text-zinc-500">// POST /api/v2/payroll/batch-sync -> 200 OK (38ms)</div>
+                </div>
               </div>
             </div>
-            <p class="text-xs text-center mt-32">© 2025 Harsh Kushwaha.</p>
+
+            <!-- Card Footer: Telemetry & Stack Badges -->
+            <div class="pt-3 sm:pt-4 border-t border-zinc-400/60 dark:border-white/10 space-y-3">
+              <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React 18</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">TypeScript</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Redux Toolkit</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Tailwind CSS</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">RBAC Security</span>
+              </div>
+            </div>
           </div>
-        </footer>
+
+          <!-- ========================================== -->
+          <!-- 02. Hindustan Times & LiveMint Suite       -->
+          <!-- ========================================== -->
+          <div data-category="media" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-fighter-panel dark:shadow-2xl flex flex-col justify-between backdrop-blur-xl group">
+            <div>
+              <!-- Top Container Header -->
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/60 dark:border-white/10 text-xs">
+                <div class="flex items-center gap-2 font-bold truncate">
+                  <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
+                  <span class="text-zinc-950 dark:text-white truncate">CNT_02_MEDIA_HT</span>
+                  <span class="text-orange-600 dark:text-orange-400 font-mono font-bold text-[10px] hidden sm:inline">• PORT 443</span>
+                </div>
+                <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30 shrink-0">10M+ IMPRESSIONS</span>
+              </div>
+
+              <!-- Minimal 3D Geometric Model Viewport -->
+              <div class="relative w-full h-36 sm:h-44 rounded-xl bg-zinc-950 border border-zinc-700/80 dark:border-white/10 mb-4 overflow-hidden flex items-center justify-center">
+                <div id="project-canvas-2" class="project-3d-model-viewport w-full h-full" data-project-model="prism"></div>
+                <div class="absolute top-2.5 left-3 text-[9px] font-mono text-zinc-400 uppercase tracking-wider pointer-events-none flex items-center gap-1.5 bg-black/60 px-2 py-0.5 rounded border border-white/10">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+                  <span>3D_GEOM // BROADCAST_PRISM</span>
+                </div>
+                <div class="absolute bottom-2 right-3 text-[9px] font-mono text-zinc-400 uppercase pointer-events-none bg-black/60 px-2 py-0.5 rounded border border-white/10">
+                  ROT: <span class="text-orange-400 font-bold">ACTIVE</span>
+                </div>
+              </div>
+
+              <!-- Title & Context -->
+              <h3 data-scramble="true" class="text-lg sm:text-xl md:text-2xl font-bold text-zinc-950 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors cursor-pointer font-sans mb-1">
+                Hindustan Times & LiveMint Suite
+              </h3>
+              <div class="text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-3">
+                Kloudrac Softwares • High-Traffic National News & Financial Portals
+              </div>
+
+              <p class="text-zinc-700 dark:text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 font-mono">
+                Engineered robust, server-rendered editorial templates and breaking news feeds for India's leading news publications. Reduced Largest Contentful Paint (LCP) from 3.2s to <strong class="text-orange-600 dark:text-orange-400 font-bold">1.1s</strong> with zero cumulative layout shift during ad hydration.
+              </p>
+
+              <!-- Interactive Simulated Terminal Output Window -->
+              <div class="p-3.5 sm:p-4 rounded-xl bg-zinc-900 text-gray-200 dark:bg-obsidian-950 font-mono text-xs border border-zinc-700 dark:border-white/10 mb-4 sm:mb-5 shadow-inner overflow-x-auto">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-zinc-700 dark:border-white/5 text-[10px] text-gray-400">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="w-2 h-2 rounded-full bg-orange-400"></span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="ml-1 text-gray-400">core_vitals_telemetry.log</span>
+                  </div>
+                  <span class="text-orange-400 font-bold">PERF: 99/100</span>
+                </div>
+                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-300">
+                  <div class="text-orange-400 font-bold">$ lighthouse --url=https://hindustantimes.com</div>
+                  <div class="text-white">✓ LCP: <span class="text-orange-400 font-bold">1.1s</span> | FID: 12ms | CLS: 0.00 (Zero Drift)</div>
+                  <div class="text-zinc-300">↳ SSR Stream: 18ms TTFB | Dynamic Hydration: PASS</div>
+                  <div class="text-zinc-500">// Header-Bidding Ad Engine: Asynchronous Render (0ms block)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Footer: Telemetry & Stack Badges -->
+            <div class="pt-3 sm:pt-4 border-t border-zinc-400/60 dark:border-white/10 space-y-3">
+              <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Next.js SSR</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React.js</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">TypeScript</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Core Web Vitals</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Ad-Tech Integration</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================================== -->
+          <!-- 03. AI/ML Infrastructure Telemetry Hub     -->
+          <!-- ========================================== -->
+          <div data-category="telemetry" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-fighter-panel dark:shadow-2xl flex flex-col justify-between backdrop-blur-xl group">
+            <div>
+              <!-- Top Container Header -->
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/60 dark:border-white/10 text-xs">
+                <div class="flex items-center gap-2 font-bold truncate">
+                  <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
+                  <span class="text-zinc-950 dark:text-white truncate">CNT_03_TELEMETRY_ML</span>
+                  <span class="text-orange-600 dark:text-orange-400 font-mono font-bold text-[10px] hidden sm:inline">• PORT 8080</span>
+                </div>
+                <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30 shrink-0">50K+ SENSORS</span>
+              </div>
+
+              <!-- Minimal 3D Geometric Model Viewport -->
+              <div class="relative w-full h-36 sm:h-44 rounded-xl bg-zinc-950 border border-zinc-700/80 dark:border-white/10 mb-4 overflow-hidden flex items-center justify-center">
+                <div id="project-canvas-3" class="project-3d-model-viewport w-full h-full" data-project-model="radar"></div>
+                <div class="absolute top-2.5 left-3 text-[9px] font-mono text-zinc-400 uppercase tracking-wider pointer-events-none flex items-center gap-1.5 bg-black/60 px-2 py-0.5 rounded border border-white/10">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+                  <span>3D_GEOM // RADAR_SPHERE</span>
+                </div>
+                <div class="absolute bottom-2 right-3 text-[9px] font-mono text-zinc-400 uppercase pointer-events-none bg-black/60 px-2 py-0.5 rounded border border-white/10">
+                  ROT: <span class="text-orange-400 font-bold">ACTIVE</span>
+                </div>
+              </div>
+
+              <!-- Title & Context -->
+              <h3 data-scramble="true" class="text-lg sm:text-xl md:text-2xl font-bold text-zinc-950 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors cursor-pointer font-sans mb-1">
+                AI/ML Telemetry Dashboard
+              </h3>
+              <div class="text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-3">
+                Alethe Labs India • Government Infrastructure & Pipeline Safety
+              </div>
+
+              <p class="text-zinc-700 dark:text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 font-mono">
+                Engineered real-time sensor telemetry visualizers rendering <strong class="text-orange-600 dark:text-orange-400 font-bold">50,000+ live pipeline records</strong> at 60 FPS. Built geospatial GIS heatmap overlays and automated anomaly alert triggers for critical infrastructure safety.
+              </p>
+
+              <!-- Interactive Simulated Terminal Output Window -->
+              <div class="p-3.5 sm:p-4 rounded-xl bg-zinc-900 text-gray-200 dark:bg-obsidian-950 font-mono text-xs border border-zinc-700 dark:border-white/10 mb-4 sm:mb-5 shadow-inner overflow-x-auto">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-zinc-700 dark:border-white/5 text-[10px] text-gray-400">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="w-2 h-2 rounded-full bg-orange-400"></span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="ml-1 text-gray-400">pipeline_sensor_stream.wss</span>
+                  </div>
+                  <span class="text-orange-400 font-bold">LATENCY: 180ms</span>
+                </div>
+                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-300">
+                  <div class="text-orange-400 font-bold">$ wscat -c wss://telemetry.alethe.gov/live</div>
+                  <div class="text-white">⚡ Connected: <span class="text-orange-400 font-bold">52,400</span> active sensor nodes synced</div>
+                  <div class="text-zinc-300">↳ [GEO_MONITOR] Sector 7B Pressure: 98.4 PSI (Nominal)</div>
+                  <div class="text-zinc-500">// Threshold Engine: 0 critical breaches in last 24h</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Footer: Telemetry & Stack Badges -->
+            <div class="pt-3 sm:pt-4 border-t border-zinc-400/60 dark:border-white/10 space-y-3">
+              <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React.js</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">WebSockets</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">D3.js / Chart.js</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Geospatial GIS</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Leaflet</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================================== -->
+          <!-- 04. Nexora Enterprise E-Commerce Engine    -->
+          <!-- ========================================== -->
+          <div data-category="saas" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-fighter-panel dark:shadow-2xl flex flex-col justify-between backdrop-blur-xl group">
+            <div>
+              <!-- Top Container Header -->
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/60 dark:border-white/10 text-xs">
+                <div class="flex items-center gap-2 font-bold truncate">
+                  <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
+                  <span class="text-zinc-950 dark:text-white truncate">CNT_04_NEXORA</span>
+                  <span class="text-orange-600 dark:text-orange-400 font-mono font-bold text-[10px] hidden sm:inline">• PORT 8443</span>
+                </div>
+                <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30 shrink-0">+40% CONVERSION</span>
+              </div>
+
+              <!-- Minimal 3D Geometric Model Viewport -->
+              <div class="relative w-full h-36 sm:h-44 rounded-xl bg-zinc-950 border border-zinc-700/80 dark:border-white/10 mb-4 overflow-hidden flex items-center justify-center">
+                <div id="project-canvas-4" class="project-3d-model-viewport w-full h-full" data-project-model="dodecahedron"></div>
+                <div class="absolute top-2.5 left-3 text-[9px] font-mono text-zinc-400 uppercase tracking-wider pointer-events-none flex items-center gap-1.5 bg-black/60 px-2 py-0.5 rounded border border-white/10">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+                  <span>3D_GEOM // COMMERCE_HYPERCUBE</span>
+                </div>
+                <div class="absolute bottom-2 right-3 text-[9px] font-mono text-zinc-400 uppercase pointer-events-none bg-black/60 px-2 py-0.5 rounded border border-white/10">
+                  ROT: <span class="text-orange-400 font-bold">ACTIVE</span>
+                </div>
+              </div>
+
+              <!-- Title & Context -->
+              <h3 data-scramble="true" class="text-lg sm:text-xl md:text-2xl font-bold text-zinc-950 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors cursor-pointer font-sans mb-1">
+                Nexora Cloud Commerce Engine
+              </h3>
+              <div class="text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-3">
+                High-Conversion Multi-Tenant E-Commerce & Checkout Suite
+              </div>
+
+              <p class="text-zinc-700 dark:text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 font-mono">
+                Built an enterprise e-commerce platform with instant client-side debounced catalog filters, multi-currency Stripe/Razorpay payment routing, and technical SEO boosting organic search traffic by <strong class="text-orange-600 dark:text-orange-400 font-bold">over 40%</strong>.
+              </p>
+
+              <!-- Interactive Simulated Terminal Output Window -->
+              <div class="p-3.5 sm:p-4 rounded-xl bg-zinc-900 text-gray-200 dark:bg-obsidian-950 font-mono text-xs border border-zinc-700 dark:border-white/10 mb-4 sm:mb-5 shadow-inner overflow-x-auto">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-zinc-700 dark:border-white/5 text-[10px] text-gray-400">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="w-2 h-2 rounded-full bg-orange-400"></span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="ml-1 text-gray-400">checkout_orchestration.ts</span>
+                  </div>
+                  <span class="text-orange-400 font-bold">99.98% RELIABILITY</span>
+                </div>
+                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-300">
+                  <div class="text-orange-400 font-bold">// Multi-currency Checkout Pipeline</div>
+                  <div class="text-white">dispatch(processOrder({ gateway: "Stripe", currency: "USD" }))</div>
+                  <div class="text-zinc-300">✓ Tokenized: txn_3M0294829 -> <span class="text-orange-400 font-bold">201 Created</span> (Instant)</div>
+                  <div class="text-zinc-500">// Cart abandonment auto-recovery webhook dispatched</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Footer: Telemetry & Stack Badges -->
+            <div class="pt-3 sm:pt-4 border-t border-zinc-400/60 dark:border-white/10 space-y-3">
+              <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React 18</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Next.js</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Redux Toolkit</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Stripe / Razorpay</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Technical SEO</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================================== -->
+          <!-- 05. DevAvionics 3D WebGL Kinetic Studio    -->
+          <!-- ========================================== -->
+          <div data-category="creative" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-fighter-panel dark:shadow-2xl flex flex-col justify-between backdrop-blur-xl group">
+            <div>
+              <!-- Top Container Header -->
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/60 dark:border-white/10 text-xs">
+                <div class="flex items-center gap-2 font-bold truncate">
+                  <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
+                  <span class="text-zinc-950 dark:text-white truncate">CNT_05_WEBGL_STUDIO</span>
+                  <span class="text-orange-600 dark:text-orange-400 font-mono font-bold text-[10px] hidden sm:inline">• PORT 7777</span>
+                </div>
+                <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30 shrink-0">60 FPS GPU</span>
+              </div>
+
+              <!-- Minimal 3D Geometric Model Viewport -->
+              <div class="relative w-full h-36 sm:h-44 rounded-xl bg-zinc-950 border border-zinc-700/80 dark:border-white/10 mb-4 overflow-hidden flex items-center justify-center">
+                <div id="project-canvas-5" class="project-3d-model-viewport w-full h-full" data-project-model="mobius"></div>
+                <div class="absolute top-2.5 left-3 text-[9px] font-mono text-zinc-400 uppercase tracking-wider pointer-events-none flex items-center gap-1.5 bg-black/60 px-2 py-0.5 rounded border border-white/10">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+                  <span>3D_GEOM // KINETIC_HELIX</span>
+                </div>
+                <div class="absolute bottom-2 right-3 text-[9px] font-mono text-zinc-400 uppercase pointer-events-none bg-black/60 px-2 py-0.5 rounded border border-white/10">
+                  ROT: <span class="text-orange-400 font-bold">ACTIVE</span>
+                </div>
+              </div>
+
+              <!-- Title & Context -->
+              <h3 data-scramble="true" class="text-lg sm:text-xl md:text-2xl font-bold text-zinc-950 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors cursor-pointer font-sans mb-1">
+                DevAvionics 3D WebGL Studio
+              </h3>
+              <div class="text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-3">
+                Interactive Three.js Geometric Engine & Real-Time Cyber Shaders
+              </div>
+
+              <p class="text-zinc-700 dark:text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 font-mono">
+                Engineered a modular WebGL rendering suite featuring custom GLSL vertex wave shaders, camera gimbal math with inertial damping, and GSAP scroll-synced matrix transformations at <strong class="text-orange-600 dark:text-orange-400 font-bold">60 FPS GPU</strong>.
+              </p>
+
+              <!-- Interactive Simulated Terminal Output Window -->
+              <div class="p-3.5 sm:p-4 rounded-xl bg-zinc-900 text-gray-200 dark:bg-obsidian-950 font-mono text-xs border border-zinc-700 dark:border-white/10 mb-4 sm:mb-5 shadow-inner overflow-x-auto">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-zinc-700 dark:border-white/5 text-[10px] text-gray-400">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="w-2 h-2 rounded-full bg-orange-400"></span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="ml-1 text-gray-400">shader_pipeline.glsl</span>
+                  </div>
+                  <span class="text-orange-400 font-bold">GPU: METAL / VULKAN</span>
+                </div>
+                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-300">
+                  <div class="text-orange-400 font-bold">// Parametric Vertex Morphing Shader</div>
+                  <div class="text-white">vec3 wave = sin(u_time * 2.0 + vPosition * 3.0) * 0.15;</div>
+                  <div class="text-zinc-300">gl_Position = projectionMatrix * modelViewMatrix * vec4(position + wave, 1.0);</div>
+                  <div class="text-zinc-500">// Frame Render Time: <span class="text-orange-400 font-bold">1.2ms</span> (Draw Calls: 8)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Footer: Telemetry & Stack Badges -->
+            <div class="pt-3 sm:pt-4 border-t border-zinc-400/60 dark:border-white/10 space-y-3">
+              <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Three.js</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">WebGL 2.0</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">GLSL Shaders</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">GSAP ScrollTrigger</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Tailwind CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================================== -->
+          <!-- 06. Sentinel Cloud Log & Anomaly Alert Hub -->
+          <!-- ========================================== -->
+          <div data-category="telemetry" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-fighter-panel dark:shadow-2xl flex flex-col justify-between backdrop-blur-xl group">
+            <div>
+              <!-- Top Container Header -->
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/60 dark:border-white/10 text-xs">
+                <div class="flex items-center gap-2 font-bold truncate">
+                  <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
+                  <span class="text-zinc-950 dark:text-white truncate">CNT_06_SENTINEL_HUB</span>
+                  <span class="text-orange-600 dark:text-orange-400 font-mono font-bold text-[10px] hidden sm:inline">• PORT 9090</span>
+                </div>
+                <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30 shrink-0">50+ SERVICES</span>
+              </div>
+
+              <!-- Minimal 3D Geometric Model Viewport -->
+              <div class="relative w-full h-36 sm:h-44 rounded-xl bg-zinc-950 border border-zinc-700/80 dark:border-white/10 mb-4 overflow-hidden flex items-center justify-center">
+                <div id="project-canvas-6" class="project-3d-model-viewport w-full h-full" data-project-model="sentinel"></div>
+                <div class="absolute top-2.5 left-3 text-[9px] font-mono text-zinc-400 uppercase tracking-wider pointer-events-none flex items-center gap-1.5 bg-black/60 px-2 py-0.5 rounded border border-white/10">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+                  <span>3D_GEOM // SENTINEL_MATRIX</span>
+                </div>
+                <div class="absolute bottom-2 right-3 text-[9px] font-mono text-zinc-400 uppercase pointer-events-none bg-black/60 px-2 py-0.5 rounded border border-white/10">
+                  ROT: <span class="text-orange-400 font-bold">ACTIVE</span>
+                </div>
+              </div>
+
+              <!-- Title & Context -->
+              <h3 data-scramble="true" class="text-lg sm:text-xl md:text-2xl font-bold text-zinc-950 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors cursor-pointer font-sans mb-1">
+                Sentinel Cloud Log & Anomaly Hub
+              </h3>
+              <div class="text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-3">
+                Distributed DevOps Monitoring & Real-Time Incident Telemetry
+              </div>
+
+              <p class="text-zinc-700 dark:text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 font-mono">
+                Built an enterprise log streaming and cluster health aggregator. Features instant regex search, sub-second error anomaly alerting, and automated incident triage webhooks for <strong class="text-orange-600 dark:text-orange-400 font-bold">50+ containerized microservices</strong>.
+              </p>
+
+              <!-- Interactive Simulated Terminal Output Window -->
+              <div class="p-3.5 sm:p-4 rounded-xl bg-zinc-900 text-gray-200 dark:bg-obsidian-950 font-mono text-xs border border-zinc-700 dark:border-white/10 mb-4 sm:mb-5 shadow-inner overflow-x-auto">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-zinc-700 dark:border-white/5 text-[10px] text-gray-400">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="w-2 h-2 rounded-full bg-orange-400"></span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="ml-1 text-gray-400">sentinel_daemon_cluster.log</span>
+                  </div>
+                  <span class="text-orange-400 font-bold">UPTIME: 99.99%</span>
+                </div>
+                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-300">
+                  <div class="text-orange-400 font-bold">$ kubectl get pods -A | grep -v Running</div>
+                  <div class="text-white">✓ All 54 pods running healthy in namespaces [default, prod]</div>
+                  <div class="text-zinc-300">↳ Anomaly Scanners: <span class="text-orange-400 font-bold">0 threshold spikes</span> detected</div>
+                  <div class="text-zinc-500">// Ingress Rate: 4,200 req/sec | Error Rate: 0.00%</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Footer: Telemetry & Stack Badges -->
+            <div class="pt-3 sm:pt-4 border-t border-zinc-400/60 dark:border-white/10 space-y-3">
+              <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React.js</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">TypeScript</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">WebSockets</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Docker / K8s</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Recharts</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- 04. TECHNICAL SKILLS: INTERACTIVE 3D TECH GLOBE MATRIX   -->
+    <!-- ========================================================= -->
+    <section id="skills" class="py-24 border-t border-zinc-400 dark:border-white/10 relative bg-zinc-300/40 dark:bg-obsidian-900/30 font-mono overflow-hidden">
+      
+      <!-- Subtle Cyber Grid Background -->
+      <div class="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+        
+        <!-- Section Header Bar -->
+        <div class="mb-12 sm:mb-14">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-orange-600 dark:text-orange-400 font-mono text-xs tracking-widest uppercase font-bold truncate">$ /sys/3d_globe --render=skills_matrix --nodes=20</span>
+            <div class="w-12 h-[1px] bg-orange-500/50 shrink-0"></div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/30 font-mono shrink-0">
+              20 NODES ONLINE
+            </span>
+          </div>
+          
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+            <div>
+              <h2 data-scramble="true" class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 dark:text-white uppercase font-sans cursor-pointer">
+                04. TECHNICAL <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-500 to-zinc-950 dark:from-orange-400 dark:via-amber-300 dark:to-white">ARSENAL</span> & 3D SKILL MATRIX
+              </h2>
+              <p class="mt-3 text-sm sm:text-base text-zinc-600 dark:text-gray-400 max-w-2xl leading-relaxed">
+                Interactive 3D WebGL Fibonacci sphere projecting core competencies across Frontend Architecture, State Engines, Real-Time Streams, and Systems Engineering. Drag to rotate in 3D, click any node to inspect.
+              </p>
+            </div>
+
+            <!-- Quick Domain Filters -->
+            <div class="flex flex-wrap items-center gap-1.5">
+              <button data-globe-filter="all" class="globe-filter-btn px-2.5 sm:px-3 py-1.5 rounded text-[11px] sm:text-xs font-mono font-bold transition-all bg-orange-500 text-white shadow-sm border border-transparent">
+                [ALL_NODES] (20)
+              </button>
+              <button data-globe-filter="frontend" class="globe-filter-btn px-2.5 sm:px-3 py-1.5 rounded text-[11px] sm:text-xs font-mono font-bold transition-all bg-zinc-200 dark:bg-obsidian-800 border border-zinc-400 dark:border-white/10 text-zinc-900 dark:text-gray-300 hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400">
+                [FRONTEND]
+              </button>
+              <button data-globe-filter="state" class="globe-filter-btn px-2.5 sm:px-3 py-1.5 rounded text-[11px] sm:text-xs font-mono font-bold transition-all bg-zinc-200 dark:bg-obsidian-800 border border-zinc-400 dark:border-white/10 text-zinc-900 dark:text-gray-300 hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400">
+                [STATE_&_APIS]
+              </button>
+              <button data-globe-filter="ui" class="globe-filter-btn px-2.5 sm:px-3 py-1.5 rounded text-[11px] sm:text-xs font-mono font-bold transition-all bg-zinc-200 dark:bg-obsidian-800 border border-zinc-400 dark:border-white/10 text-zinc-900 dark:text-gray-300 hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400">
+                [UI_&_MOTION]
+              </button>
+              <button data-globe-filter="backend" class="globe-filter-btn px-2.5 sm:px-3 py-1.5 rounded text-[11px] sm:text-xs font-mono font-bold transition-all bg-zinc-200 dark:bg-obsidian-800 border border-zinc-400 dark:border-white/10 text-zinc-900 dark:text-gray-300 hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400">
+                [BACKEND_&_TOOLS]
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Globe Interactive Theater & HUD Dashboard -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
+          
+          <!-- Left: 3D Interactive WebGL Globe Stage -->
+          <div class="lg:col-span-8 relative rounded-2xl bg-zinc-950 border border-zinc-400/40 dark:border-white/15 overflow-hidden shadow-fighter-panel flex flex-col justify-between min-h-[380px] sm:min-h-[480px] md:min-h-[560px] select-none">
+            
+            <!-- Terminal Top Ribbon -->
+            <div class="relative z-20 flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 bg-zinc-900/90 border-b border-white/10 text-xs font-mono text-gray-300 backdrop-blur-md gap-2">
+              <div class="flex items-center gap-2 truncate">
+                <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
+                <span class="font-bold text-white uppercase truncate">$ webgl_engine --sphere="interactive_globe"</span>
+              </div>
+              <div class="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] shrink-0">
+                <span id="globe-status-fps" class="text-orange-400 font-bold">60 FPS</span>
+                <span class="text-zinc-500">•</span>
+                <span id="globe-active-filter-label" class="text-orange-400 font-bold hidden sm:inline">[FILTER: ALL_NODES]</span>
+              </div>
+            </div>
+
+            <!-- WebGL Canvas Mount Container -->
+            <div id="skills-3d-globe-canvas" class="absolute inset-0 z-0 cursor-grab active:cursor-grabbing w-full h-full"></div>
+
+            <!-- HTML Projection Layer for Orbiting 3D Tags -->
+            <div id="skills-3d-tag-overlay" class="absolute inset-0 z-10 pointer-events-none overflow-hidden"></div>
+
+            <!-- Terminal Bottom Control Ribbon -->
+            <div class="relative z-20 flex flex-wrap items-center justify-between gap-2.5 px-3 sm:px-4 py-2.5 sm:py-3 bg-zinc-900/90 border-t border-white/10 text-xs font-mono text-gray-400 backdrop-blur-md">
+              <div class="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] truncate">
+                <i data-lucide="orbit" class="w-3.5 h-3.5 text-orange-400 shrink-0"></i>
+                <span class="text-gray-300 font-bold truncate">DRAG TO ROTATE 3D GLOBE</span>
+              </div>
+              
+              <div class="flex items-center gap-2">
+                <button id="toggle-globe-spin" class="px-2 sm:px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-[10px] sm:text-[11px] font-bold transition-colors">
+                  SPIN: AUTO
+                </button>
+                <button id="reset-globe-view" class="px-2 sm:px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-[10px] sm:text-[11px] font-bold transition-colors">
+                  RESET
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right: Live Skill Inspection Dossier HUD -->
+          <div class="lg:col-span-4 flex flex-col justify-between p-4 sm:p-6 md:p-7 rounded-2xl bg-zinc-200 dark:bg-obsidian-950 border border-zinc-400 dark:border-white/10 shadow-fighter-panel space-y-5 sm:space-y-6">
+            
+            <div>
+              <div class="flex items-center justify-between pb-3 border-b border-zinc-400 dark:border-white/10 mb-4">
+                <div class="text-[10px] sm:text-[11px] text-zinc-500 uppercase font-bold tracking-wider">
+                  NODE_TELEMETRY_INSPECTOR
+                </div>
+                <span id="hud-skill-category" class="px-2 py-0.5 rounded bg-orange-500 text-white text-[10px] font-bold uppercase shadow-sm">
+                  FRONTEND_CORE
+                </span>
+              </div>
+
+              <!-- Selected Skill Title -->
+              <div class="space-y-1 mb-4">
+                <div class="text-[10px] sm:text-[11px] font-mono text-orange-500 dark:text-orange-400 font-bold uppercase" id="hud-skill-index">
+                  NODE // 01 of 20
+                </div>
+                <h3 id="hud-skill-name" class="text-xl sm:text-2xl font-extrabold text-zinc-950 dark:text-white font-mono">
+                  React.js (v18+)
+                </h3>
+                <p id="hud-skill-desc" class="text-xs text-zinc-700 dark:text-gray-400 font-sans pt-1 leading-relaxed">
+                  Fiber Architecture, Concurrent Mode, Custom Hooks, Suspense, and Complex State Normalization.
+                </p>
+              </div>
+
+              <!-- Mastery Metric & Progress Gauge -->
+              <div class="p-3 sm:p-3.5 rounded-lg bg-zinc-300/80 dark:bg-obsidian-900 border border-zinc-400/50 dark:border-white/10 space-y-2 mb-4">
+                <div class="flex items-center justify-between text-xs font-bold font-mono">
+                  <span class="text-zinc-600 dark:text-gray-400 text-[11px] sm:text-xs">ENGINEERING MASTERY</span>
+                  <span id="hud-skill-percentage" class="text-zinc-950 dark:text-white font-bold text-[11px] sm:text-xs">95% (Senior L5)</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-zinc-400/50 dark:bg-zinc-800 overflow-hidden">
+                  <div id="hud-skill-bar" class="h-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 rounded-full transition-all duration-500" style="width: 95%"></div>
+                </div>
+              </div>
+
+              <!-- Production Impact Note -->
+              <div class="space-y-1.5 mb-4">
+                <div class="text-[10px] uppercase font-bold text-zinc-500 tracking-wider">
+                  PRODUCTION IMPACT & USE CASE
+                </div>
+                <div id="hud-skill-impact" class="text-[11px] sm:text-xs text-zinc-800 dark:text-zinc-300 font-mono bg-zinc-100 dark:bg-obsidian-900/60 p-2.5 rounded border border-zinc-400/30 dark:border-white/5 leading-relaxed">
+                  Architected reactive frontend state tree handling 2.5K+ daily active SaaS enterprise employees with zero memory leaks.
+                </div>
+              </div>
+
+              <!-- Sub-Capabilities Chips -->
+              <div class="space-y-1.5">
+                <div class="text-[10px] uppercase font-bold text-zinc-500 tracking-wider">
+                  KEY MODULES & ABSTRACTIONS
+                </div>
+                <div id="hud-skill-chips" class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono">
+                  <span class="px-2 py-0.5 rounded bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400/40 dark:border-white/10 text-zinc-900 dark:text-zinc-200">Concurrent Rendering</span>
+                  <span class="px-2 py-0.5 rounded bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400/40 dark:border-white/10 text-zinc-900 dark:text-zinc-200">Custom Hooks</span>
+                  <span class="px-2 py-0.5 rounded bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400/40 dark:border-white/10 text-zinc-900 dark:text-zinc-200">Fiber Engine</span>
+                  <span class="px-2 py-0.5 rounded bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400/40 dark:border-white/10 text-zinc-900 dark:text-zinc-200">Context API</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Quick Jump Selector Grid -->
+            <div class="pt-3 sm:pt-4 border-t border-zinc-400 dark:border-white/10">
+              <div class="text-[10px] uppercase font-bold text-zinc-500 mb-2 flex items-center justify-between">
+                <span>QUICK INSPECT NODE</span>
+                <span class="text-orange-500 dark:text-orange-400 font-bold">● LIVE</span>
+              </div>
+              <div id="quick-skills-selector" class="flex flex-wrap gap-1 max-h-28 overflow-y-auto pr-1">
+                <!-- 20 Quick clickable buttons injected via JS -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- 05. TECHNICAL PUBLICATIONS & ENGINEERING BLOG (READ ONLY) -->
+    <!-- ========================================================= -->
+    <section id="blog" class="py-24 border-t border-zinc-400 dark:border-white/10 relative bg-zinc-200/40 dark:bg-obsidian-950/40 font-mono overflow-hidden">
+      
+      <!-- Ambient Background Glow & Cyber Grid -->
+      <div class="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
+      <div class="absolute top-1/4 -right-32 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-1/4 -left-32 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+        
+        <!-- Section Header Bar -->
+        <div class="mb-12 sm:mb-14">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-orange-600 dark:text-orange-400 font-mono text-xs tracking-widest uppercase font-bold truncate">$ ls -la /var/log/engineering-insights/</span>
+            <div class="w-12 h-[1px] bg-orange-500/50 shrink-0"></div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/30 font-mono shrink-0">
+              3 PUBLICATIONS
+            </span>
+          </div>
+          
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 dark:text-white uppercase font-sans">
+                05. TECHNICAL <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-500 to-zinc-950 dark:from-orange-400 dark:via-amber-300 dark:to-white">PUBLICATIONS</span> & BLOG
+              </h2>
+              <p class="mt-3 text-sm sm:text-base text-zinc-600 dark:text-gray-400 max-w-2xl leading-relaxed">
+                Architectural deep-dives, performance telemetry benchmarks, and engineering case studies from production systems.
+              </p>
+            </div>
+
+            <div class="text-xs text-zinc-500 dark:text-gray-400 font-bold flex items-center gap-1.5">
+              <i data-lucide="book-open" class="w-4 h-4 text-orange-500"></i>
+              <span>Distraction-Free Technical Essays</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3-Post Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Post 01: HRMS SaaS Architecture -->
+          <article class="p-4 sm:p-6 md:p-7 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-xl hover:border-orange-500/50 transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/40 dark:border-white/10 text-xs font-bold gap-2">
+                <span class="px-2 sm:px-2.5 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30 uppercase truncate">[SAAS // ARCHITECTURE]</span>
+                <span class="text-zinc-600 dark:text-gray-400 text-[10px] sm:text-[11px] shrink-0">8 MIN READ</span>
+              </div>
+
+              <div class="text-[10px] text-orange-600 dark:text-orange-400 font-mono mb-2">DEC 2024 • POST_01_HRMS_CORE.md</div>
+
+              <h3 class="text-base sm:text-lg md:text-xl font-extrabold text-zinc-950 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors mb-3 leading-snug font-sans">
+                Architecting High-Scale Multi-Tenant HRMS SaaS Platforms with React 18 & TypeScript
+              </h3>
+
+              <p class="text-xs sm:text-sm text-zinc-700 dark:text-gray-400 leading-relaxed font-sans mb-5 sm:mb-6">
+                A technical blueprint on state normalization with RTK Entity Adapters, eliminating legacy vendor overheads to slash API latency by <strong class="text-orange-600 dark:text-orange-400 font-bold">45%</strong>, and zero-leak RBAC security.
+              </p>
+
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold mb-5 sm:mb-6">
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">React 18</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">TypeScript</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">RTK Query</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">RBAC</span>
+              </div>
+            </div>
+
+            <!-- Read Button Link -->
+            <a href="blog-hrms-saas.html" class="w-full py-2.5 px-4 rounded-lg bg-orange-500 text-white font-bold text-xs uppercase tracking-wider font-mono flex items-center justify-between hover:bg-orange-600 transition-colors shadow-sm">
+              <span>Read Full Publication</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1"></i>
+            </a>
+          </article>
+
+          <!-- Post 02: Core Web Vitals -->
+          <article class="p-4 sm:p-6 md:p-7 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-xl hover:border-orange-500/50 transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/40 dark:border-white/10 text-xs font-bold gap-2">
+                <span class="px-2 sm:px-2.5 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30 uppercase truncate">[PERFORMANCE // WEB_VITALS]</span>
+                <span class="text-zinc-600 dark:text-gray-400 text-[10px] sm:text-[11px] shrink-0">7 MIN READ</span>
+              </div>
+
+              <div class="text-[10px] text-orange-600 dark:text-orange-400 font-mono mb-2">NOV 2024 • POST_02_CORE_WEB_VITALS.md</div>
+
+              <h3 class="text-base sm:text-lg md:text-xl font-extrabold text-zinc-950 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors mb-3 leading-snug font-sans">
+                Optimizing Core Web Vitals for 10M+ Readers: Dropping LCP from 3.2s to 1.1s
+              </h3>
+
+              <p class="text-xs sm:text-sm text-zinc-700 dark:text-gray-400 leading-relaxed font-sans mb-5 sm:mb-6">
+                How we eliminated Cumulative Layout Shift (CLS) across national publications (<strong class="text-orange-600 dark:text-orange-400">Hindustan Times, LiveMint</strong>) using Next.js streaming hydration and priority media decoding.
+              </p>
+
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold mb-5 sm:mb-6">
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">Next.js SSR</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">Core Web Vitals</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">Zero CLS</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">Ad-Tech</span>
+              </div>
+            </div>
+
+            <!-- Read Button Link -->
+            <a href="blog-core-web-vitals.html" class="w-full py-2.5 px-4 rounded-lg bg-orange-500 text-white font-bold text-xs uppercase tracking-wider font-mono flex items-center justify-between hover:bg-orange-600 transition-colors shadow-sm">
+              <span>Read Full Publication</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1"></i>
+            </a>
+          </article>
+
+          <!-- Post 03: Real-Time Telemetry WebGL -->
+          <article class="p-4 sm:p-6 md:p-7 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-xl hover:border-orange-500/50 transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/40 dark:border-white/10 text-xs font-bold gap-2">
+                <span class="px-2 sm:px-2.5 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30 uppercase truncate">[SYSTEMS // REALTIME_WEBGL]</span>
+                <span class="text-zinc-600 dark:text-gray-400 text-[10px] sm:text-[11px] shrink-0">9 MIN READ</span>
+              </div>
+
+              <div class="text-[10px] text-orange-600 dark:text-orange-400 font-mono mb-2">OCT 2024 • POST_03_TELEMETRY_PIPELINES.md</div>
+
+              <h3 class="text-base sm:text-lg md:text-xl font-extrabold text-zinc-950 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors mb-3 leading-snug font-sans">
+                Real-Time Telemetry at 60 FPS: Streaming 50,000+ WebSocket Sensor Data Points with WebGL
+              </h3>
+
+              <p class="text-xs sm:text-sm text-zinc-700 dark:text-gray-400 leading-relaxed font-sans mb-5 sm:mb-6">
+                Engineering hardware-accelerated telemetry dashboards for nationwide pipeline safety networks with Web Workers, TypedArray memory buffers, and WebGL instanced rendering at <strong class="text-orange-600 dark:text-orange-400">60 FPS</strong>.
+              </p>
+
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold mb-5 sm:mb-6">
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">WebSockets</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">WebGL</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">Web Workers</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">GIS Mapping</span>
+              </div>
+            </div>
+
+            <!-- Read Button Link -->
+            <a href="blog-realtime-telemetry.html" class="w-full py-2.5 px-4 rounded-lg bg-orange-500 text-white font-bold text-xs uppercase tracking-wider font-mono flex items-center justify-between hover:bg-orange-600 transition-colors shadow-sm">
+              <span>Read Full Publication</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1"></i>
+            </a>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- 06. TERMINAL CONTACT FORM CONSOLE                         -->
+    <!-- ========================================================= -->
+    <section id="contact" class="py-24 border-t border-zinc-400 dark:border-white/10 relative bg-zinc-200/40 dark:bg-obsidian-950/40 font-mono overflow-hidden">
+      
+      <!-- Ambient Grid Background -->
+      <div class="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
+
+      <!-- Copy Toast Notification -->
+      <div id="copy-toast" class="fixed bottom-8 right-8 z-50 px-4 py-2.5 rounded-lg bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 border border-zinc-700 text-xs shadow-fighter-panel dark:shadow-2xl opacity-0 translate-y-5 pointer-events-none transition-all duration-300 flex items-center gap-2 font-mono font-bold">
+        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 dark:text-emerald-600"></i>
+        <span>✓ Email address copied to clipboard!</span>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+        
+        <!-- Section Header -->
+        <div class="mb-12 sm:mb-16">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-zinc-800 dark:text-zinc-300 font-mono text-xs tracking-widest uppercase font-bold truncate">$ /usr/bin/transmit_signal --priority=HIGH</span>
+            <div class="w-12 h-[1px] bg-zinc-800 dark:bg-zinc-400 shrink-0"></div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-zinc-300 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400 dark:border-white/10 shrink-0 font-mono">TLS 1.3</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 dark:text-white uppercase font-sans">
+            06. INITIATE <span class="text-transparent bg-clip-text bg-gradient-to-r from-zinc-950 via-zinc-700 to-zinc-500 dark:from-white dark:via-zinc-200 dark:to-zinc-400">CONTACT</span>
+          </h2>
+          <p class="mt-3 text-sm sm:text-base text-zinc-600 dark:text-gray-400 max-w-3xl leading-relaxed font-mono">
+            Direct communication channels for Senior Frontend Architect roles, SaaS state scalability consultations, and enterprise technical collaborations.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          
+          <!-- LEFT COLUMN: Detailed Ordered Communication Dossiers (5 cols) -->
+          <div class="lg:col-span-5 space-y-4 sm:space-y-5">
+            
+            <!-- 1. Direct Email Channel Dossier -->
+            <div class="p-4 sm:p-5 md:p-6 rounded-2xl bg-zinc-300/80 dark:bg-obsidian-900/90 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-md hover:border-zinc-950 dark:hover:border-white transition-all duration-300">
+              <div class="flex items-center justify-between text-xs font-bold text-zinc-600 dark:text-gray-400 mb-3 border-b border-zinc-400/50 dark:border-white/10 pb-2.5">
+                <span class="flex items-center gap-2 text-zinc-950 dark:text-white uppercase truncate">
+                  <i data-lucide="mail" class="w-4 h-4 shrink-0"></i>
+                  <span class="truncate">PRIMARY_DISPATCH_ENDPOINT</span>
+                </span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-300 uppercase shrink-0">DIRECT</span>
+              </div>
+              <div class="flex items-center justify-between gap-3">
+                <a href="mailto:knp.harsh@gmail.com" class="text-xs sm:text-sm md:text-base font-extrabold text-zinc-950 dark:text-white font-mono hover:underline truncate" title="Send email">
+                  knp.harsh@gmail.com
+                </a>
+                <button id="copy-email-btn" class="px-2.5 sm:px-3 py-1.5 rounded-lg bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 text-[11px] sm:text-xs font-bold font-mono hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all flex items-center gap-1.5 shadow-sm shrink-0" title="Copy Email to Clipboard">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                  <span>COPY</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. Location & Live Operational Clock -->
+            <div class="p-4 sm:p-5 rounded-2xl bg-zinc-300/80 dark:bg-obsidian-900/90 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-md">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs font-mono">
+                <div>
+                  <div class="text-[10px] uppercase font-bold text-zinc-500 dark:text-gray-400 mb-1 flex items-center gap-1.5">
+                    <i data-lucide="map-pin" class="w-3 h-3 text-orange-500"></i>
+                    <span>BASE_LOCATION</span>
+                  </div>
+                  <div class="font-extrabold text-zinc-950 dark:text-white">Noida / NCR, India</div>
+                  <div class="text-[10px] text-zinc-600 dark:text-gray-400">Uttar Pradesh, 201301</div>
+                </div>
+                <div>
+                  <div class="text-[10px] uppercase font-bold text-zinc-500 dark:text-gray-400 mb-1 flex items-center gap-1.5">
+                    <i data-lucide="clock" class="w-3 h-3 text-orange-500"></i>
+                    <span>SYSTEM_TIMEZONE</span>
+                  </div>
+                  <div class="font-extrabold text-zinc-950 dark:text-white">IST (UTC +05:30)</div>
+                  <div id="contact-live-clock" class="text-[10px] text-orange-600 dark:text-orange-400 font-bold">19:30:00 IST</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Availability Matrix & SLA Commitment -->
+            <div class="p-4 sm:p-5 rounded-2xl bg-zinc-300/80 dark:bg-obsidian-900/90 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-md space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="text-zinc-600 dark:text-gray-400 uppercase text-[10px] font-bold">DISPATCH_STATUS</span>
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-orange-600 dark:text-orange-400">
+                  <span class="w-2 h-2 rounded-full bg-orange-500 animate-ping"></span>
+                  <span>AVAILABLE FOR HIRE</span>
+                </span>
+              </div>
+              <div class="text-xs text-zinc-700 dark:text-gray-300 leading-relaxed font-sans font-medium">
+                Evaluating Senior Full-Time Opportunities, Tech Lead Roles & High-Impact Frontend Consulting.
+              </div>
+              <div class="pt-2 border-t border-zinc-400/40 dark:border-white/10 flex items-center justify-between text-[11px] font-mono text-zinc-600 dark:text-gray-400">
+                <span class="flex items-center gap-1.5">
+                  <i data-lucide="shield-check" class="w-3.5 h-3.5 text-orange-500"></i>
+                  <span>RESPONSE GUARANTEE:</span>
+                </span>
+                <span class="font-bold text-zinc-950 dark:text-white">&lt; 12 Hours</span>
+              </div>
+            </div>
+
+            <!-- 4. Encrypted Social & Repository Endpoints -->
+            <div class="p-4 sm:p-5 rounded-2xl bg-zinc-300/80 dark:bg-obsidian-900/90 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-md">
+              <div class="text-[10px] uppercase font-bold text-zinc-500 dark:text-gray-400 mb-3 font-mono">
+                AUTHENTICATED_PROFILES
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 text-xs font-mono">
+                <a href="https://linkedin.com/in/theharshdev" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg bg-zinc-200 dark:bg-obsidian-950 border border-zinc-400 dark:border-white/10 text-zinc-900 dark:text-gray-200 hover:border-orange-500 dark:hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 transition-all flex items-center justify-between group">
+                  <span class="font-bold flex items-center gap-1.5 truncate">
+                    <i data-lucide="linkedin" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
+                    <span class="truncate">LinkedIn</span>
+                  </span>
+                  <i data-lucide="external-link" class="w-3 h-3 text-zinc-500 group-hover:text-orange-500 transition-colors shrink-0"></i>
+                </a>
+
+                <a href="https://github.com/theharshdev" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg bg-zinc-200 dark:bg-obsidian-950 border border-zinc-400 dark:border-white/10 text-zinc-900 dark:text-gray-200 hover:border-orange-500 dark:hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 transition-all flex items-center justify-between group">
+                  <span class="font-bold flex items-center gap-1.5 truncate">
+                    <i data-lucide="github" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
+                    <span class="truncate">GitHub</span>
+                  </span>
+                  <i data-lucide="external-link" class="w-3 h-3 text-zinc-500 group-hover:text-orange-500 transition-colors shrink-0"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: Interactive Terminal Contact Form Console with Live Validation (7 cols) -->
+          <div class="lg:col-span-7">
+            <div id="contact-form-card" class="rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl overflow-hidden backdrop-blur-xl transition-all duration-300">
+              
+              <!-- Terminal Console Top Bar -->
+              <div class="px-4 sm:px-5 py-3 bg-zinc-400/40 dark:bg-obsidian-950 border-b border-zinc-400 dark:border-white/10 flex items-center justify-between text-xs text-zinc-700 dark:text-gray-400 font-mono">
+                <div class="flex items-center gap-2 truncate">
+                  <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/80 inline-block shrink-0"></span>
+                  <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-orange-400 inline-block shrink-0"></span>
+                  <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-emerald-500/80 inline-block shrink-0"></span>
+                  <span class="ml-1 sm:ml-2 text-zinc-950 dark:text-white font-bold truncate">contact_dispatch_socket.<span class="text-orange-500">ts</span></span>
+                </div>
+                <span class="text-[10px] text-orange-600 dark:text-orange-400 uppercase font-bold shrink-0">[PORT: 443]</span>
+              </div>
+
+              <!-- Form Body -->
+              <div class="p-4 sm:p-6 md:p-8">
+                <form id="contact-form" class="space-y-4 sm:space-y-5" novalidate>
+                  
+                  <!-- Row 1: Name & Email -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                    
+                    <!-- Name Field -->
+                    <div>
+                      <div class="flex items-center justify-between mb-1.5">
+                        <label for="contact-name" class="text-xs text-zinc-800 dark:text-gray-300 font-bold font-mono">
+                          $ input --name <span class="text-orange-500">*</span>
+                        </label>
+                        <span id="contact-name-status" class="text-[10px] font-mono font-bold text-zinc-500"></span>
+                      </div>
+                      <div class="relative">
+                        <input id="contact-name" type="text" placeholder="e.g. Alex Henderson" class="w-full px-3.5 py-2.5 rounded-lg bg-zinc-200 dark:bg-obsidian-950 border border-zinc-400 dark:border-white/15 text-zinc-950 dark:text-white placeholder-zinc-500 dark:placeholder-gray-600 focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-xs font-semibold font-mono transition-all">
+                      </div>
+                      <div id="contact-name-error" class="hidden text-[11px] text-rose-600 dark:text-rose-400 font-mono mt-1 font-bold flex items-center gap-1">
+                        <i data-lucide="alert-circle" class="w-3 h-3 inline"></i>
+                        <span>Name must be at least 2 characters.</span>
+                      </div>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div>
+                      <div class="flex items-center justify-between mb-1.5">
+                        <label for="contact-email" class="text-xs text-zinc-800 dark:text-gray-300 font-bold font-mono">
+                          $ input --email <span class="text-orange-500">*</span>
+                        </label>
+                        <span id="contact-email-status" class="text-[10px] font-mono font-bold text-zinc-500"></span>
+                      </div>
+                      <div class="relative">
+                        <input id="contact-email" type="email" placeholder="e.g. alex@company.com" class="w-full px-3.5 py-2.5 rounded-lg bg-zinc-200 dark:bg-obsidian-950 border border-zinc-400 dark:border-white/15 text-zinc-950 dark:text-white placeholder-zinc-500 dark:placeholder-gray-600 focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-xs font-semibold font-mono transition-all">
+                      </div>
+                      <div id="contact-email-error" class="hidden text-[11px] text-rose-600 dark:text-rose-400 font-mono mt-1 font-bold flex items-center gap-1">
+                        <i data-lucide="alert-circle" class="w-3 h-3 inline"></i>
+                        <span>Enter a valid corporate or personal email.</span>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- Row 2: Subject / Scope Dropdown -->
+                  <div>
+                    <div class="flex items-center justify-between mb-1.5">
+                      <label for="contact-subject" class="text-xs text-zinc-800 dark:text-gray-300 font-bold font-mono">
+                        $ select --scope <span class="text-orange-500">*</span>
+                      </label>
+                      <span class="text-[10px] font-mono text-orange-500 font-bold">TOPIC</span>
+                    </div>
+                    <select id="contact-subject" class="w-full px-3.5 py-2.5 rounded-lg bg-zinc-200 dark:bg-obsidian-950 border border-zinc-400 dark:border-white/15 text-zinc-950 dark:text-white focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-xs font-semibold font-mono transition-all">
+                      <option value="saas_role" selected>[SAAS // FULL_TIME] Senior Software Developer / Architect Role</option>
+                      <option value="web_vitals">[PERFORMANCE] Core Web Vitals & Next.js Optimization</option>
+                      <option value="consulting">[CONSULTING] React 18 / TypeScript / State Architecture</option>
+                      <option value="general">[GENERAL_INQUIRY] Technical Collaboration / Project Discussion</option>
+                    </select>
+                  </div>
+
+                  <!-- Row 3: Message Body & Character Counter -->
+                  <div>
+                    <div class="flex items-center justify-between mb-1.5">
+                      <label for="contact-message" class="text-xs text-zinc-800 dark:text-gray-300 font-bold font-mono">
+                        $ input --message-body <span class="text-orange-500">*</span>
+                      </label>
+                      <span id="char-counter" class="text-[10px] font-mono text-zinc-500 font-bold">0 / 500</span>
+                    </div>
+                    <textarea id="contact-message" rows="4" maxlength="500" placeholder="Describe your project, team requirements, or role details (min 15 characters)..." class="w-full px-3.5 py-2.5 rounded-lg bg-zinc-200 dark:bg-obsidian-950 border border-zinc-400 dark:border-white/15 text-zinc-950 dark:text-white placeholder-zinc-500 dark:placeholder-gray-600 focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-xs font-semibold font-mono transition-all resize-none"></textarea>
+                    <div id="contact-message-error" class="hidden text-[11px] text-rose-600 dark:text-rose-400 font-mono mt-1 font-bold flex items-center gap-1">
+                      <i data-lucide="alert-circle" class="w-3 h-3 inline"></i>
+                      <span>Message must be at least 15 characters long.</span>
+                    </div>
+                  </div>
+
+                  <!-- Transmission Log Simulation Box (Animated on submit) -->
+                  <div id="transmission-log-box" class="hidden p-3 rounded-lg bg-zinc-950 text-white dark:bg-obsidian-950 text-xs font-mono border border-zinc-700 dark:border-white/15 space-y-1">
+                    <div class="flex items-center justify-between text-[10px] text-zinc-400 pb-1 border-b border-zinc-800">
+                      <span>$ /bin/tls_handshake.sh</span>
+                      <span id="log-status-badge" class="text-orange-400 font-bold">TRANSMITTING...</span>
+                    </div>
+                    <div id="transmission-log-lines" class="text-[11px] space-y-1 text-zinc-300">
+                      <!-- Dynamically added log steps -->
+                    </div>
+                  </div>
+
+                  <!-- Action Submit Button -->
+                  <button id="contact-submit-btn" type="submit" class="w-full py-3.5 px-6 rounded-lg bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 font-extrabold text-xs font-mono uppercase tracking-wider hover:bg-orange-500 dark:hover:bg-orange-500 dark:hover:text-white transition-all duration-300 shadow-fighter-panel flex items-center justify-center gap-2 group cursor-pointer">
+                    <i data-lucide="send" class="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5"></i>
+                    <span id="submit-btn-text">TRANSMIT ENCRYPTED SIGNAL</span>
+                  </button>
+
+                  <!-- Success Banner -->
+                  <div id="form-status" class="hidden p-4 rounded-lg bg-zinc-200 dark:bg-obsidian-950 border border-zinc-400 dark:border-white/20 text-center text-xs text-zinc-950 dark:text-white font-mono font-bold space-y-1">
+                    <div class="flex items-center justify-center gap-2 text-emerald-600 dark:text-emerald-400">
+                      <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                      <span>✓ 200 OK: Signal Delivered Successfully!</span>
+                    </div>
+                    <p class="text-[11px] text-zinc-600 dark:text-gray-400 font-sans font-normal">
+                      Thank you for reaching out. Harsh will respond within 12 hours.
+                    </p>
+                  </div>
+
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- 07. FULL-SCREEN KINETIC HORIZONTAL SCROLL THANK YOU HERO   -->
+    <!-- ========================================================= -->
+    <section id="thankyou-section" class="relative py-20 sm:py-32 bg-zinc-300/40 dark:bg-obsidian-900/40 border-t border-zinc-400 dark:border-white/10 overflow-hidden select-none">
+      
+      <!-- Subtle Cyber Grid Background -->
+      <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+
+      <!-- Top Terminal Identifier -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 mb-6 sm:mb-8 flex items-center justify-between text-xs font-mono text-zinc-600 dark:text-gray-400">
+        <div class="flex items-center gap-2 truncate">
+          <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse inline-block shrink-0"></span>
+          <span class="text-zinc-950 dark:text-white font-bold uppercase truncate">$ /sys/shutdown --message="<span class="text-orange-500 dark:text-orange-400">Gratitude</span>"</span>
+        </div>
+        <span class="text-[10px] uppercase font-bold tracking-widest hidden sm:inline shrink-0">[SESSION_TERMINATION]</span>
+      </div>
+
+      <!-- Massive Track 01 (Leftwards Kinetic Marquee) -->
+      <div class="relative w-full overflow-hidden py-3 border-y border-zinc-400/40 dark:border-white/10 bg-zinc-200/40 dark:bg-obsidian-950/30 backdrop-blur-sm">
+        <div id="thankyou-scroll-track-1" class="flex whitespace-nowrap will-change-transform w-max">
+          <div class="flex items-center gap-10 text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] font-semibold uppercase tracking-tight text-zinc-700 dark:text-zinc-400 font-sans leading-[0.85] pr-10">
+            <span>THANK YOU FOR VISITING</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+            <span>COME VISIT AGAIN</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+            <span>HAVE A GREAT DAY</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+          </div>
+          <div class="flex items-center gap-10 text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] font-semibold uppercase tracking-tight text-zinc-700 dark:text-zinc-400 font-sans leading-[0.85] pr-10" aria-hidden="true">
+            <span>THANK YOU FOR VISITING</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+            <span>COME VISIT AGAIN</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+            <span>HAVE A GREAT DAY</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+          </div>
+          <div class="flex items-center gap-10 text-5xl sm:text-7xl md:text-8xl lg:text-[7.5vw] font-semibold uppercase tracking-tight text-zinc-700 dark:text-zinc-400 font-sans leading-[0.85] pr-10" aria-hidden="true">
+            <span>THANK YOU FOR VISITING</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+            <span>COME VISIT AGAIN</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+            <span>HAVE A GREAT DAY</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Massive Track 02 (Rightwards Kinetic Marquee) -->
+      <div class="relative w-full overflow-hidden py-3 mt-3 border-b border-zinc-400/40 dark:border-white/10">
+        <div id="thankyou-scroll-track-2" class="flex whitespace-nowrap will-change-transform w-max">
+          <div class="flex items-center gap-10 text-4xl sm:text-6xl md:text-7xl lg:text-[6.5vw] font-medium uppercase tracking-tight text-zinc-500 dark:text-zinc-400 font-mono leading-[0.85] pr-10">
+            <span>ARCHITECTING SCALABLE WEB SYSTEMS</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+            <span>5+ YEARS PRODUCTION EXPERIENCE</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+            <span>HARSH KUSHWAHA</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+          </div>
+          <div class="flex items-center gap-10 text-4xl sm:text-6xl md:text-7xl lg:text-[6.5vw] font-medium uppercase tracking-tight text-zinc-500 dark:text-zinc-400 font-mono leading-[0.85] pr-10" aria-hidden="true">
+            <span>ARCHITECTING SCALABLE WEB SYSTEMS</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+            <span>5+ YEARS PRODUCTION EXPERIENCE</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+            <span>HARSH KUSHWAHA</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+          </div>
+          <div class="flex items-center gap-10 text-4xl sm:text-6xl md:text-7xl lg:text-[6.5vw] font-medium uppercase tracking-tight text-zinc-500 dark:text-zinc-400 font-mono leading-[0.85] pr-10" aria-hidden="true">
+            <span>ARCHITECTING SCALABLE WEB SYSTEMS</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+            <span>5+ YEARS PRODUCTION EXPERIENCE</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+            <span>HARSH KUSHWAHA</span>
+            <span class="text-zinc-400 dark:text-zinc-600">•</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Terminal Bottom Note -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-zinc-600 dark:text-gray-400 gap-3 sm:gap-4">
+        <div>$ echo "Looking forward to collaborating on high-impact production systems."</div>
+        <div class="flex items-center gap-2 font-bold text-zinc-950 dark:text-white">
+          <i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i>
+          <span>Let's build something extraordinary together.</span>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Detailed Master Footer -->
+  <footer class="border-t border-zinc-400 dark:border-white/10 bg-zinc-300/60 dark:bg-obsidian-950/60 font-mono text-zinc-700 dark:text-gray-400">
+    
+    <!-- Top Action Ribbon -->
+    <div class="border-b border-zinc-400/60 dark:border-white/10 py-6 sm:py-8 px-4 sm:px-6 md:px-12 bg-zinc-200/60 dark:bg-obsidian-900/40">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
+        <div>
+          <div class="flex items-center gap-3">
+            <h3 class="text-lg sm:text-xl md:text-2xl font-extrabold text-zinc-950 dark:text-white font-mono">
+              HARSH KUSHWAHA
+            </h3>
+            <span class="px-2.5 py-0.5 rounded bg-orange-500 text-white text-[10px] font-bold uppercase shadow-sm">
+              SR_DEV_II
+            </span>
+          </div>
+          <p class="text-xs text-zinc-600 dark:text-gray-400 mt-1">
+            Senior Software Developer • Enterprise HRMS SaaS & High-Traffic Media Architect
+          </p>
+        </div>
+
+        <!-- Quick Jump to Top -->
+        <a href="#hero" class="px-4 sm:px-5 py-2.5 rounded-lg bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 text-xs font-bold font-mono uppercase tracking-wider hover:bg-orange-500 dark:hover:bg-orange-500 dark:hover:text-white transition-all flex items-center gap-2 shadow-sm group">
+          <span>$ cd ~ / RETURN_TO_TOP</span>
+          <i data-lucide="arrow-up" class="w-4 h-4 transition-transform group-hover:-translate-y-1"></i>
+        </a>
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
-    <script src="./src/js/script.js"></script>
-  </body>
+
+    <!-- Main 4-Column Directory Grid -->
+    <div class="max-w-7xl mx-auto py-12 sm:py-16 px-4 sm:px-6 md:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+      
+      <!-- Col 1: System Directory -->
+      <div class="space-y-3 sm:space-y-4">
+        <div class="text-xs font-bold text-zinc-950 dark:text-white uppercase tracking-wider border-b border-zinc-400/60 dark:border-white/10 pb-2">
+          01. NAVIGATION_TREE
+        </div>
+        <ul class="space-y-2 text-xs font-semibold">
+          <li><a href="#hero" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./00_terminal_hero.sh</a></li>
+          <li><a href="#about" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./01_about_architect.md</a></li>
+          <li><a href="#experience" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./02_career_timeline.log</a></li>
+          <li><a href="#projects" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./03_deployed_systems.json</a></li>
+          <li><a href="#skills" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./04_skills_arsenal.env</a></li>
+          <li><a href="#blog" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./05_tech_publications.md</a></li>
+          <li><a href="#contact" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./06_initiate_contact.socket</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 2: Standalone Technical Publications -->
+      <div class="space-y-3 sm:space-y-4">
+        <div class="text-xs font-bold text-zinc-950 dark:text-white uppercase tracking-wider border-b border-zinc-400/60 dark:border-white/10 pb-2">
+          02. PUBLICATIONS
+        </div>
+        <ul class="space-y-2.5 text-xs">
+          <li>
+            <a href="blog-hrms-saas.html" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors block">
+              <div class="font-bold text-zinc-900 dark:text-zinc-200">HRMS SaaS Architecture</div>
+              <div class="text-[10px] text-zinc-500">React 18, RTK Query & RBAC</div>
+            </a>
+          </li>
+          <li>
+            <a href="blog-core-web-vitals.html" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors block">
+              <div class="font-bold text-zinc-900 dark:text-zinc-200">Core Web Vitals (10M+)</div>
+              <div class="text-[10px] text-zinc-500">3.2s to 1.1s LCP, Zero CLS</div>
+            </a>
+          </li>
+          <li>
+            <a href="blog-realtime-telemetry.html" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors block">
+              <div class="font-bold text-zinc-900 dark:text-zinc-200">Real-Time WebGL Telemetry</div>
+              <div class="text-[10px] text-zinc-500">50K+ Nodes at 60 FPS</div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Core Technology Arsenal -->
+      <div class="space-y-3 sm:space-y-4">
+        <div class="text-xs font-bold text-zinc-950 dark:text-white uppercase tracking-wider border-b border-zinc-400/60 dark:border-white/10 pb-2">
+          03. CORE_STACK
+        </div>
+        <div class="flex flex-wrap gap-1.5 text-[10px]">
+          <span class="px-2 py-1 rounded bg-zinc-200 dark:bg-obsidian-900 text-zinc-900 dark:text-zinc-300 border border-zinc-400/40 dark:border-white/10 font-bold hover:border-orange-500">React.js 18</span>
+          <span class="px-2 py-1 rounded bg-zinc-200 dark:bg-obsidian-900 text-zinc-900 dark:text-zinc-300 border border-zinc-400/40 dark:border-white/10 font-bold hover:border-orange-500">TypeScript</span>
+          <span class="px-2 py-1 rounded bg-zinc-200 dark:bg-obsidian-900 text-zinc-900 dark:text-zinc-300 border border-zinc-400/40 dark:border-white/10 font-bold hover:border-orange-500">Next.js SSR</span>
+          <span class="px-2 py-1 rounded bg-zinc-200 dark:bg-obsidian-900 text-zinc-900 dark:text-zinc-300 border border-zinc-400/40 dark:border-white/10 font-bold hover:border-orange-500">Redux Toolkit</span>
+          <span class="px-2 py-1 rounded bg-zinc-200 dark:bg-obsidian-900 text-zinc-900 dark:text-zinc-300 border border-zinc-400/40 dark:border-white/10 font-bold hover:border-orange-500">Tailwind CSS</span>
+          <span class="px-2 py-1 rounded bg-zinc-200 dark:bg-obsidian-900 text-zinc-900 dark:text-zinc-300 border border-zinc-400/40 dark:border-white/10 font-bold hover:border-orange-500">Three.js / WebGL</span>
+          <span class="px-2 py-1 rounded bg-zinc-200 dark:bg-obsidian-900 text-zinc-900 dark:text-zinc-300 border border-zinc-400/40 dark:border-white/10 font-bold hover:border-orange-500">GSAP ScrollTrigger</span>
+          <span class="px-2 py-1 rounded bg-zinc-200 dark:bg-obsidian-900 text-zinc-900 dark:text-zinc-300 border border-zinc-400/40 dark:border-white/10 font-bold hover:border-orange-500">WebSockets</span>
+        </div>
+      </div>
+
+      <!-- Col 4: Dispatch & Location -->
+      <div class="space-y-3 sm:space-y-4">
+        <div class="text-xs font-bold text-zinc-950 dark:text-white uppercase tracking-wider border-b border-zinc-400/60 dark:border-white/10 pb-2">
+          04. DIRECT_CONNECT
+        </div>
+        <ul class="space-y-2 text-xs font-medium">
+          <li class="flex items-center gap-2">
+            <i data-lucide="mail" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
+            <a href="mailto:knp.harsh@gmail.com" class="hover:underline font-bold text-zinc-950 dark:text-white hover:text-orange-500 dark:hover:text-orange-400 truncate">knp.harsh@gmail.com</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="linkedin" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
+            <a href="https://linkedin.com/in/theharshdev" target="_blank" rel="noopener noreferrer" class="hover:underline hover:text-orange-500 dark:hover:text-orange-400 truncate">linkedin.com/in/theharshdev</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="github" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
+            <a href="https://github.com/theharshdev" target="_blank" rel="noopener noreferrer" class="hover:underline hover:text-orange-500 dark:hover:text-orange-400 truncate">github.com/theharshdev</a>
+          </li>
+          <li class="flex items-center gap-2 text-[11px] text-zinc-500 pt-1">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
+            <span>Noida / NCR, UP, India</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Telemetry & Copyright Bar -->
+    <div class="border-t border-zinc-400/60 dark:border-white/10 py-6 px-4 sm:px-6 md:px-12 bg-zinc-400/30 dark:bg-obsidian-950 text-xs">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          © 2026 Harsh Kushwaha. Engineered with React principles, Tailwind & GSAP.
+        </div>
+        <div class="flex items-center gap-3 text-[11px] text-zinc-600 dark:text-gray-400">
+          <span class="inline-flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+            <span class="text-orange-600 dark:text-orange-400 font-bold">TLS 1.3 ENCRYPTED</span>
+          </span>
+          <span>•</span>
+          <span>60 FPS OPTIMIZED</span>
+          <span>•</span>
+          <span>ALL SYSTEMS NORMAL</span>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Monumental Giant Signature Brandmark Below Footer -->
+  <div id="footer-giant-signature" class="relative w-full bg-zinc-200/40 dark:bg-obsidian-950/40 border-t border-zinc-400 dark:border-white/10 pt-6 sm:pt-8 pb-10 sm:pb-12 overflow-hidden select-none">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 mb-2 flex items-center justify-between text-xs font-mono text-zinc-600 dark:text-gray-400">
+      <span class="font-bold uppercase tracking-widest">$ /dev/null • END_OF_TRANSMISSION</span>
+      <span class="text-[10px] uppercase font-bold tracking-widest text-zinc-500 hidden sm:inline">[STATUS: 200 OK • KERNEL_HALT]</span>
+    </div>
+
+    <div class="w-full text-center px-2 overflow-hidden py-1">
+      <h1 class="text-[13vw] sm:text-[14.5vw] md:text-[15.5vw] font-extrabold uppercase tracking-tighter text-zinc-950 dark:text-white font-sans leading-[0.78] hover:tracking-normal transition-all duration-300 select-none">
+        HARSH KUSHWAHA
+      </h1>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 mt-2 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-gray-500 gap-2">
+      <span>NOIDA, UTTAR PRADESH • INDIA</span>
+      <span>SCALABLE SAAS • 5+ YEARS PRODUCTION EXPERIENCE</span>
+      <span>2026 EDITION</span>
+    </div>
+  </div>
+
+  <!-- Application Scripts -->
+  <script src="./js/theme-engine.js"></script>
+  <script src="./js/terminal-engine.js"></script>
+  <script src="./js/scramble-text.js"></script>
+  <script src="./js/smooth-scroll.js"></script>
+  <script src="./js/three-scene.js"></script>
+  <script src="./js/animations.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
 </html>

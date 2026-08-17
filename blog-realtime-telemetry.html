@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Telemetry at 60 FPS with WebSockets & WebGL | Harsh Kushwaha</title>
+  <meta name="description" content="Engineering telemetry monitoring visualizers streaming 50,000+ sensor data points at stable 60 FPS using WebSockets, WebGL, and virtualized canvas pipelines.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Compiled Tailwind Stylesheet -->
+  <link rel="stylesheet" href="./dist/output.css">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-zinc-100 text-zinc-900 dark:bg-obsidian-950 dark:text-zinc-100 font-sans antialiased transition-colors duration-300 min-h-screen selection:bg-orange-500 selection:text-white">
+
+  <!-- Top Progress Bar -->
+  <div class="fixed top-0 left-0 w-full h-[2px] bg-zinc-400/40 dark:bg-obsidian-900 z-50">
+    <div id="reading-progress" class="h-full w-0 bg-gradient-to-r from-orange-500 via-amber-400 to-orange-600 shadow-[0_0_10px_rgba(249,115,22,0.8)] transition-all duration-75"></div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 left-0 w-full z-40 border-b border-zinc-400 dark:border-white/10 bg-zinc-200/90 dark:bg-obsidian-950/90 backdrop-blur-xl py-3 px-4 sm:px-6 md:px-12 transition-colors">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+      
+      <!-- Back to Portfolio Link -->
+      <a href="index.html#blog" class="group font-mono text-xs sm:text-sm font-bold tracking-wider text-zinc-950 dark:text-white flex items-center gap-2 hover:text-orange-500 transition-colors">
+        <i data-lucide="arrow-left" class="w-4 h-4 text-orange-500 transition-transform group-hover:-translate-x-1 shrink-0"></i>
+        <span class="truncate">$ cd .. / <span class="text-orange-500">[BACK_TO_PORTFOLIO]</span></span>
+      </a>
+
+      <!-- Theme Switcher -->
+      <button id="theme-toggle-btn" class="p-2 rounded-md bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 text-zinc-900 dark:text-gray-300 hover:border-orange-500 hover:text-orange-500 transition-all flex items-center gap-2 text-xs font-mono font-semibold shrink-0" title="Toggle Theme">
+        <i id="theme-icon" data-lucide="sun" class="w-4 h-4 text-orange-500"></i>
+        <span class="hidden sm:inline">Theme</span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-16 font-sans relative">
+    
+    <!-- Breadcrumb & Post Header Tag -->
+    <div class="flex flex-wrap items-center gap-2 text-xs font-mono text-zinc-600 dark:text-gray-400 mb-6">
+      <span class="px-2.5 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/30 font-bold">
+        SYSTEMS // REALTIME_WEBGL
+      </span>
+      <span>•</span>
+      <span class="font-bold text-zinc-900 dark:text-zinc-200">Oct 2024</span>
+      <span>•</span>
+      <span class="text-orange-600 dark:text-orange-400 font-bold">9 MIN READ</span>
+      <span>•</span>
+      <span class="text-zinc-500">ID: POST_03_TELEMETRY_PIPELINES</span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 dark:text-white tracking-tight leading-tight mb-6 font-sans">
+      Real-Time Telemetry at 60 FPS: Streaming 50,000+ WebSocket Sensor Data Points with WebGL
+    </h1>
+
+    <!-- Author Dossier Bar -->
+    <div class="flex items-center gap-4 py-4 border-y border-zinc-400/50 dark:border-white/10 mb-10 text-xs font-mono">
+      <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-sm shadow-md">
+        HK
+      </div>
+      <div>
+        <div class="font-bold text-zinc-950 dark:text-white text-sm">Harsh Kushwaha</div>
+        <div class="text-zinc-600 dark:text-gray-400">Software Developer • <span class="text-orange-600 dark:text-orange-400 font-semibold">Telemetry & Critical Infrastructure Lead</span></div>
+      </div>
+      <div class="ml-auto hidden sm:flex items-center gap-2 text-zinc-500">
+        <i data-lucide="activity" class="w-4 h-4 text-orange-500"></i>
+        <span><strong class="text-orange-600 dark:text-orange-400">50,000+</strong> Sensor Records at <strong class="text-orange-600 dark:text-orange-400">60 FPS</strong></span>
+      </div>
+    </div>
+
+    <!-- Article Content Body -->
+    <article class="prose prose-zinc dark:prose-invert max-w-none text-zinc-800 dark:text-zinc-300 leading-relaxed font-sans text-base sm:text-lg space-y-8">
+      
+      <!-- Key Executive Summary Callout -->
+      <div class="p-6 rounded-xl bg-zinc-200/90 dark:bg-obsidian-900/90 border border-orange-500/30 font-mono text-sm leading-relaxed not-prose shadow-fighter-panel">
+        <div class="flex items-center gap-2 text-orange-600 dark:text-orange-400 font-bold mb-2">
+          <i data-lucide="cpu" class="w-4 h-4 text-orange-500"></i>
+          <span>[SYSTEM_ARCHITECTURE_BRIEF]</span>
+        </div>
+        <p class="text-zinc-700 dark:text-zinc-300">
+          Monitoring critical government physical infrastructure (such as nationwide oil and gas pipelines) requires processing high-velocity sensor telemetry feeds without UI starvation or garbage collection freezes. This article explores how we architected a high-throughput WebSocket ingestion queue, combined with WebGL/HTML5 Canvas batching, to render <strong class="text-orange-600 dark:text-orange-400 font-bold">50,000+ live data points at a rock-solid 60 FPS</strong>.
+        </p>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 dark:text-white mt-10 mb-4 font-sans flex items-center gap-2">
+        <span><span class="text-orange-500 font-mono">1.</span> Why Standard DOM Grids Choke at Scale</span>
+      </h2>
+      <p>
+        In typical web dashboards, developers render incoming data points as React components attached to the standard DOM tree. However, when 500+ WebSocket messages arrive per second across 50,000 sensor nodes, the browser spends 95% of its main thread time calculating CSS style recalculations, reflows, and layout geometry.
+      </p>
+      <p>
+        The result is browser frame dropping down to 10–15 FPS, unbounded memory consumption, and delayed safety anomaly alerts.
+      </p>
+
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 dark:text-white mt-10 mb-4 font-sans flex items-center gap-2">
+        <span><span class="text-orange-500 font-mono">2.</span> Web Worker Ingestion & Backpressure Management</span>
+      </h2>
+      <p>
+        To prevent main-thread freezing, all WebSocket connection handling, binary payload unpacking (using Protocol Buffers / ArrayBuffers), and mathematical anomaly detection algorithms were offloaded to a dedicated <strong>Web Worker thread</strong>:
+      </p>
+
+      <!-- Code Snippet -->
+      <div class="rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 font-mono text-xs not-prose shadow-2xl">
+        <div class="px-4 py-2.5 bg-zinc-950 border-b border-zinc-800 text-zinc-400 flex items-center justify-between">
+          <span class="text-zinc-300 font-bold">telemetryWorker.ts (Off-Thread Ingestion)</span>
+          <span class="text-[10px] text-orange-400 font-bold">Dedicated Worker</span>
+        </div>
+        <pre class="p-4 text-zinc-200 overflow-x-auto leading-relaxed"><code>// Worker Thread: Ingestion, Rolling Window Buffer, Anomaly Filter
+let telemetryBuffer: Float32Array = new Float32Array(50000 * 4); // [lat, lng, pressure, temp]
+
+const ws = new WebSocket('wss://telemetry.safety.infra.gov/stream');
+ws.binaryType = 'arraybuffer';
+
+ws.onmessage = (event: MessageEvent&lt;ArrayBuffer&gt;) => {
+  const incomingData = new Float32Array(event.data);
+  
+  // Fast memory copy into rolling buffer
+  telemetryBuffer.set(incomingData);
+
+  // Perform threshold analysis on worker thread
+  const anomalies = detectPressureSpikes(telemetryBuffer);
+  
+  if (anomalies.length > 0) {
+    postMessage({ type: 'ANOMALY_TRIGGER', payload: anomalies });
+  }
+};
+
+// Batch dispatch to UI thread synchronized with 60 FPS ticker
+setInterval(() => {
+  // Transfer array buffer without cloning
+  const bufferCopy = telemetryBuffer.slice();
+  postMessage({ type: 'BATCH_FRAME', buffer: bufferCopy }, [bufferCopy.buffer]);
+}, 16.67); // 60 Hz rate</code></pre>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 dark:text-white mt-10 mb-4 font-sans flex items-center gap-2">
+        <span><span class="text-orange-500 font-mono">3.</span> Hardware-Accelerated Rendering with WebGL & Instanced Meshes</span>
+      </h2>
+      <p>
+        Instead of rendering thousands of SVG or DOM circle markers on geospatial maps, we leveraged <strong>WebGL Instanced Rendering</strong>. A single draw call (<code>gl.drawArraysInstanced</code>) transmits the entire 50,000-sensor coordinate matrix directly to the GPU:
+      </p>
+
+      <!-- Code Snippet -->
+      <div class="rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 font-mono text-xs not-prose shadow-2xl">
+        <div class="px-4 py-2.5 bg-zinc-950 border-b border-zinc-800 text-zinc-400 flex items-center justify-between">
+          <span class="text-zinc-300 font-bold">sensorShader.vert (Instanced Vertex Shader)</span>
+          <span class="text-[10px] text-orange-400 font-bold">GLSL</span>
+        </div>
+        <pre class="p-4 text-zinc-200 overflow-x-auto leading-relaxed"><code>#version 300 es
+layout (location = 0) in vec2 a_quad_pos;
+layout (location = 1) in vec2 a_sensor_coord;
+layout (location = 2) in float a_pressure_metric;
+
+uniform mat4 u_projection_matrix;
+out float v_pressure;
+
+void main() {
+  v_pressure = a_pressure_metric;
+  
+  // Compute point position dynamically on GPU
+  vec2 world_pos = a_sensor_coord + (a_quad_pos * 4.0);
+  gl_Position = u_projection_matrix * vec4(world_pos, 0.0, 1.0);
+}</code></pre>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 dark:text-white mt-10 mb-4 font-sans flex items-center gap-2">
+        <span><span class="text-orange-500 font-mono">4.</span> Performance & Reliability Comparison</span>
+      </h2>
+
+      <!-- Benchmark Table -->
+      <div class="overflow-x-auto not-prose my-8">
+        <table class="w-full text-left font-mono text-xs border border-zinc-400 dark:border-white/10 rounded-xl overflow-hidden bg-zinc-200/60 dark:bg-obsidian-900/60">
+          <thead class="bg-zinc-300 dark:bg-obsidian-950 text-orange-600 dark:text-orange-400 border-b border-zinc-400 dark:border-white/10 font-bold">
+            <tr>
+              <th class="p-3">Architecture Approach</th>
+              <th class="p-3">Max Sensor Capacity</th>
+              <th class="p-3">Average Framerate</th>
+              <th class="p-3">WebSocket Roundtrip</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-400/40 dark:divide-white/10">
+            <tr>
+              <td class="p-3 font-semibold text-zinc-950 dark:text-white">Standard DOM Elements</td>
+              <td class="p-3 text-zinc-600 dark:text-gray-400">~2,000 nodes</td>
+              <td class="p-3 text-zinc-600 dark:text-gray-400">12 - 18 FPS (Laggy)</td>
+              <td class="p-3 text-zinc-600 dark:text-gray-400">&gt; 1,200 ms</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-zinc-950 dark:text-white">SVG Virtualized Canvas</td>
+              <td class="p-3 text-zinc-600 dark:text-gray-400">~8,000 nodes</td>
+              <td class="p-3 text-zinc-600 dark:text-gray-400">32 - 40 FPS</td>
+              <td class="p-3 text-zinc-600 dark:text-gray-400">650 ms</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-zinc-950 dark:text-white">Web Workers + WebGL (Our Stack)</td>
+              <td class="p-3 font-bold text-orange-600 dark:text-orange-400">50,000+ nodes</td>
+              <td class="p-3 font-bold text-orange-600 dark:text-orange-400">60.0 FPS (Locked)</td>
+              <td class="p-3 font-bold text-orange-600 dark:text-orange-400">&lt; 250 ms</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 dark:text-white mt-10 mb-4 font-sans flex items-center gap-2">
+        <span><span class="text-orange-500 font-mono">5.</span> Summary</span>
+      </h2>
+      <p>
+        Building ultra-high-throughput real-time dashboards requires stepping outside standard DOM paradigms. By combining dedicated worker threads for ingestion, TypedArray zero-copy buffers, and WebGL instancing, browser applications can render complex industrial telemetry with zero lag and instant safety response.
+      </p>
+
+    </article>
+
+    <!-- Author Bio Card & Read-Only Notice -->
+    <div class="mt-16 pt-8 border-t border-zinc-400/50 dark:border-white/10">
+      
+      <div class="p-6 rounded-2xl bg-zinc-200 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+        <div class="w-16 h-16 rounded-2xl bg-orange-500 text-white flex items-center justify-center font-extrabold text-xl shrink-0 font-mono shadow-md">
+          HK
+        </div>
+        <div class="space-y-1">
+          <div class="font-bold text-zinc-950 dark:text-white text-base font-sans">Written by Harsh Kushwaha</div>
+          <div class="text-xs text-orange-600 dark:text-orange-400 font-mono font-bold">Senior Software Developer • Real-Time Systems & WebGL Visualization</div>
+          <p class="text-xs text-zinc-700 dark:text-zinc-300 font-sans pt-1">
+            Constructed real-time AI/ML telemetry monitoring dashboards for government critical infrastructure and nationwide pipeline safety networks.
+          </p>
+        </div>
+      </div>
+
+      <!-- Read Only Badge (No Comments) -->
+      <div class="mt-6 text-center text-xs font-mono text-zinc-500 dark:text-gray-500 py-4 border-t border-zinc-300 dark:border-white/5 flex items-center justify-center gap-2">
+        <i data-lucide="book-open" class="w-4 h-4 text-orange-500"></i>
+        <span>Read-Only Technical Publication • Comments are disabled</span>
+      </div>
+
+      <!-- Navigation to Next / Previous Article -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+        <a href="blog-hrms-saas.html" class="p-5 rounded-xl bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 hover:border-orange-500 transition-all group font-mono">
+          <div class="text-[10px] text-orange-600 dark:text-orange-400 uppercase font-bold mb-1">&lt; Publication 01</div>
+          <div class="text-sm font-bold text-zinc-950 dark:text-white group-hover:text-orange-500 transition-colors">
+            ← Architecting High-Scale HRMS SaaS
+          </div>
+        </a>
+        <a href="blog-core-web-vitals.html" class="p-5 rounded-xl bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 hover:border-orange-500 transition-all group font-mono">
+          <div class="text-[10px] text-orange-600 dark:text-orange-400 uppercase font-bold mb-1">&lt; Publication 02</div>
+          <div class="text-sm font-bold text-zinc-950 dark:text-white group-hover:text-orange-500 transition-colors">
+            ← Optimizing Core Web Vitals for 10M+ Readers
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-8 border-t border-zinc-400 dark:border-white/10 text-center text-xs font-mono text-zinc-600 dark:text-gray-500">
+    <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>© 2026 Harsh Kushwaha. All rights reserved.</div>
+      <a href="index.html" class="text-zinc-950 dark:text-white font-bold hover:text-orange-500 transition-colors">$ cd /home</a>
+    </div>
+  </footer>
+
+  <!-- Theme Script & Progress Bar Sync -->
+  <script src="./js/theme-engine.js"></script>
+  <script>
+    lucide.createIcons();
+
+    // Reading progress tracker
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const bar = document.getElementById('reading-progress');
+      if (bar) bar.style.width = scrolled + '%';
+    });
+  </script>
+</body>
+</html>

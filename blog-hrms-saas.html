@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecting High-Scale Multi-Tenant HRMS SaaS Platforms | Harsh Kushwaha</title>
+  <meta name="description" content="Technical deep-dive on architecting an enterprise HRMS SaaS platform with React 18, TypeScript, Redux Toolkit, RBAC security, and cutting API latency by 45%.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Compiled Tailwind Stylesheet -->
+  <link rel="stylesheet" href="./dist/output.css">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-zinc-100 text-zinc-900 dark:bg-obsidian-950 dark:text-zinc-100 font-sans antialiased transition-colors duration-300 min-h-screen selection:bg-orange-500 selection:text-white">
+
+  <!-- Top Progress Bar -->
+  <div class="fixed top-0 left-0 w-full h-[2px] bg-zinc-400/40 dark:bg-obsidian-900 z-50">
+    <div id="reading-progress" class="h-full w-0 bg-gradient-to-r from-orange-500 via-amber-400 to-orange-600 shadow-[0_0_10px_rgba(249,115,22,0.8)] transition-all duration-75"></div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 left-0 w-full z-40 border-b border-zinc-400 dark:border-white/10 bg-zinc-200/90 dark:bg-obsidian-950/90 backdrop-blur-xl py-3 px-4 sm:px-6 md:px-12 transition-colors">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+      
+      <!-- Back to Portfolio Link -->
+      <a href="index.html#blog" class="group font-mono text-xs sm:text-sm font-bold tracking-wider text-zinc-950 dark:text-white flex items-center gap-2 hover:text-orange-500 transition-colors">
+        <i data-lucide="arrow-left" class="w-4 h-4 text-orange-500 transition-transform group-hover:-translate-x-1 shrink-0"></i>
+        <span class="truncate">$ cd .. / <span class="text-orange-500">[BACK_TO_PORTFOLIO]</span></span>
+      </a>
+
+      <!-- Theme Switcher -->
+      <button id="theme-toggle-btn" class="p-2 rounded-md bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 text-zinc-900 dark:text-gray-300 hover:border-orange-500 hover:text-orange-500 transition-all flex items-center gap-2 text-xs font-mono font-semibold shrink-0" title="Toggle Theme">
+        <i id="theme-icon" data-lucide="sun" class="w-4 h-4 text-orange-500"></i>
+        <span class="hidden sm:inline">Theme</span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- Main Article Content Container -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-16 font-sans relative">
+    
+    <!-- Breadcrumb & Post Header Tag -->
+    <div class="flex flex-wrap items-center gap-2 text-xs font-mono text-zinc-600 dark:text-gray-400 mb-6">
+      <span class="px-2.5 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/30 font-bold">
+        ENGINEERING // SAAS_ARCHITECTURE
+      </span>
+      <span>•</span>
+      <span class="font-bold text-zinc-900 dark:text-zinc-200">Dec 2024</span>
+      <span>•</span>
+      <span class="text-orange-600 dark:text-orange-400 font-bold">8 MIN READ</span>
+      <span>•</span>
+      <span class="text-zinc-500">ID: POST_01_HRMS_CORE</span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 dark:text-white tracking-tight leading-tight mb-6 font-sans">
+      Architecting High-Scale Multi-Tenant HRMS SaaS Platforms with React 18 & TypeScript
+    </h1>
+
+    <!-- Author Dossier Bar -->
+    <div class="flex items-center gap-4 py-4 border-y border-zinc-400/50 dark:border-white/10 mb-10 text-xs font-mono">
+      <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-sm shadow-md">
+        HK
+      </div>
+      <div>
+        <div class="font-bold text-zinc-950 dark:text-white text-sm">Harsh Kushwaha</div>
+        <div class="text-zinc-600 dark:text-gray-400">Senior Software Developer II • <span class="text-orange-600 dark:text-orange-400 font-semibold">Core Frontend Architecture Lead</span></div>
+      </div>
+      <div class="ml-auto hidden sm:flex items-center gap-2 text-zinc-500">
+        <i data-lucide="shield-check" class="w-4 h-4 text-orange-500"></i>
+        <span><strong class="text-orange-600 dark:text-orange-400">2,500+</strong> Active Users Validated</span>
+      </div>
+    </div>
+
+    <!-- Article Content Body -->
+    <article class="prose prose-zinc dark:prose-invert max-w-none text-zinc-800 dark:text-zinc-300 leading-relaxed font-sans text-base sm:text-lg space-y-8">
+      
+      <!-- Key Executive Summary Callout -->
+      <div class="p-6 rounded-xl bg-zinc-200/90 dark:bg-obsidian-900/90 border border-orange-500/30 font-mono text-sm leading-relaxed not-prose shadow-fighter-panel">
+        <div class="flex items-center gap-2 text-orange-600 dark:text-orange-400 font-bold mb-2">
+          <i data-lucide="terminal" class="w-4 h-4 text-orange-500"></i>
+          <span>[SYSTEM_ABSTRACT]</span>
+        </div>
+        <p class="text-zinc-700 dark:text-zinc-300">
+          When scaling an enterprise Human Resource Management System (HRMS) to support thousands of concurrent daily users across diverse organizational hierarchies, naive state management and monolithic data fetching collapse under operational strain. This article outlines the architectural principles used to replace a legacy vendor engine with an in-house React 18 / TypeScript architecture, reducing API latency by <strong class="text-orange-600 dark:text-orange-400 font-bold">45%</strong> and maintaining 99.9% uptime.
+        </p>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 dark:text-white mt-10 mb-4 font-sans flex items-center gap-2">
+        <span><span class="text-orange-500 font-mono">1.</span> The Challenge of Enterprise Multi-Tenancy</span>
+      </h2>
+      <p>
+        In an enterprise HRMS SaaS ecosystem, each tenant organization operates with distinct configuration schemas: custom payroll calculation rules, granular Role-Based Access Control (RBAC) policies, dynamic approval workflow graphs, and localized compliance datasets.
+      </p>
+      <p>
+        The primary failure mode in initial single-page architecture is <strong>global state bloat</strong>—where tenant configuration, user sessions, attendance logs, and payroll matrices are all coupled in one unnormalized store. As organization size scales to 2,500+ daily active users, component re-renders cascade uncontrollably, leading to sluggish UI inputs and frequent memory spikes.
+      </p>
+
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 dark:text-white mt-10 mb-4 font-sans flex items-center gap-2">
+        <span><span class="text-orange-500 font-mono">2.</span> Normalized State Topology with Redux Toolkit & RTK Query</span>
+      </h2>
+      <p>
+        To decouple UI rendering from complex nested data graphs, we adopted entity normalization via <code>createEntityAdapter</code> from Redux Toolkit. By flattening relational structures (e.g. <code>Departments -> Teams -> Employees -> PayrollRecords</code>), state operations execute in <code class="font-mono text-sm px-1.5 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/20 font-bold">O(1)</code> lookup time rather than deep tree traversals.
+      </p>
+
+      <!-- Code Snippet Block -->
+      <div class="rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 font-mono text-xs not-prose shadow-2xl">
+        <div class="px-4 py-2.5 bg-zinc-950 border-b border-zinc-800 text-zinc-400 flex items-center justify-between">
+          <span class="text-zinc-300 font-bold">employeeSlice.ts (Normalized State Pattern)</span>
+          <span class="text-[10px] text-orange-400 font-bold">TypeScript 5.x</span>
+        </div>
+        <pre class="p-4 text-zinc-200 overflow-x-auto leading-relaxed"><code>import { createEntityAdapter, createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import type { Employee, RootState } from './types';
+
+// Normalized Entity Adapter
+export const employeesAdapter = createEntityAdapter&lt;Employee&gt;({
+  selectId: (emp) => emp.id,
+  sortComparer: (a, b) => a.lastName.localeCompare(b.lastName),
+});
+
+const employeesSlice = createSlice({
+  name: 'employees',
+  initialState: employeesAdapter.getInitialState({
+    status: 'idle',
+    error: null as string | null,
+  }),
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchEmployeesByTenant.fulfilled, (state, action) => {
+      employeesAdapter.setAll(state, action.payload);
+      state.status = 'succeeded';
+    });
+  },
+});
+
+export const { selectById, selectAll, selectIds } = 
+  employeesAdapter.getSelectors((state: RootState) => state.employees);
+export default employeesSlice.reducer;</code></pre>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 dark:text-white mt-10 mb-4 font-sans flex items-center gap-2">
+        <span><span class="text-orange-500 font-mono">3.</span> Cutting API Roundtrip Latency by 45%</span>
+      </h2>
+      <p>
+        Migrating away from legacy REST endpoints that suffered from over-fetching, we implemented an intelligent client-side caching and pre-fetching pipeline:
+      </p>
+      <ul class="space-y-2 font-mono text-sm text-zinc-800 dark:text-zinc-300">
+        <li class="flex items-start gap-2">
+          <span class="text-orange-500 font-bold">&gt;</span>
+          <span><strong>Request Deduplication:</strong> Identical simultaneous telemetry and attendance queries share in-flight promises.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-orange-500 font-bold">&gt;</span>
+          <span><strong>Prefetch on Hover:</strong> Department and payroll breakdown sub-routes trigger speculative prefetching when users mouse over navigation nodes.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-orange-500 font-bold">&gt;</span>
+          <span><strong>Optimistic UI Updates:</strong> Leave approvals and punch-in timestamps render immediately in the UI while synchronizing with the backend in the background.</span>
+        </li>
+      </ul>
+
+      <!-- Benchmark Metrics Table -->
+      <div class="overflow-x-auto not-prose my-8">
+        <table class="w-full text-left font-mono text-xs border border-zinc-400 dark:border-white/10 rounded-xl overflow-hidden bg-zinc-200/60 dark:bg-obsidian-900/60">
+          <thead class="bg-zinc-300 dark:bg-obsidian-950 text-orange-600 dark:text-orange-400 border-b border-zinc-400 dark:border-white/10 font-bold">
+            <tr>
+              <th class="p-3">Performance Metric</th>
+              <th class="p-3">Legacy Architecture</th>
+              <th class="p-3">React 18 + RTK Architecture</th>
+              <th class="p-3">Optimization Impact</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-400/40 dark:divide-white/10">
+            <tr>
+              <td class="p-3 font-semibold text-zinc-950 dark:text-white">Average API Roundtrip</td>
+              <td class="p-3 text-zinc-600 dark:text-gray-400">820 ms</td>
+              <td class="p-3 font-bold text-zinc-950 dark:text-white">450 ms</td>
+              <td class="p-3 font-bold text-orange-600 dark:text-orange-400">-45.1% latency</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-zinc-950 dark:text-white">Client Memory Consumption</td>
+              <td class="p-3 text-zinc-600 dark:text-gray-400">185 MB</td>
+              <td class="p-3 font-bold text-zinc-950 dark:text-white">62 MB</td>
+              <td class="p-3 font-bold text-orange-600 dark:text-orange-400">-66.4% memory footprint</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-zinc-950 dark:text-white">Initial Dashboard TTI</td>
+              <td class="p-3 text-zinc-600 dark:text-gray-400">2.8 s</td>
+              <td class="p-3 font-bold text-zinc-950 dark:text-white">0.9 s</td>
+              <td class="p-3 font-bold text-orange-600 dark:text-orange-400">3.1x faster interactive</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 dark:text-white mt-10 mb-4 font-sans flex items-center gap-2">
+        <span><span class="text-orange-500 font-mono">4.</span> Enforcing Role-Based Access Control (RBAC) at the Component Boundary</span>
+      </h2>
+      <p>
+        Security and compliance in HRMS environments require that unauthorized users cannot inspect, trigger, or render sensitive payroll actions. We implemented a declarative <code>&lt;PermissionGate /&gt;</code> component hierarchy:
+      </p>
+
+      <!-- Code Snippet -->
+      <div class="rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 font-mono text-xs not-prose shadow-2xl">
+        <div class="px-4 py-2.5 bg-zinc-950 border-b border-zinc-800 text-zinc-400 flex items-center justify-between">
+          <span class="text-zinc-300 font-bold">PermissionGate.tsx (Zero-Leak RBAC Enforcement)</span>
+          <span class="text-[10px] text-orange-400 font-bold">React 18 + TS</span>
+        </div>
+        <pre class="p-4 text-zinc-200 overflow-x-auto leading-relaxed"><code>import React from 'react';
+import { useAuthSession } from '@/hooks/useAuthSession';
+import type { PermissionKey } from '@/types/auth';
+
+interface PermissionGateProps {
+  requiredPermission: PermissionKey | PermissionKey[];
+  requireAll?: boolean;
+  fallback?: React.ReactNode;
+  children: React.ReactNode;
+}
+
+export const PermissionGate: React.FC&lt;PermissionGateProps&gt; = ({
+  requiredPermission,
+  requireAll = false,
+  fallback = null,
+  children,
+}) => {
+  const { hasPermission } = useAuthSession();
+  
+  const isAuthorized = Array.isArray(requiredPermission)
+    ? requireAll
+      ? requiredPermission.every(hasPermission)
+      : requiredPermission.some(hasPermission)
+    : hasPermission(requiredPermission);
+
+  if (!isAuthorized) return &lt;&gt;{fallback}&lt;/&gt;;
+  return &lt;&gt;{children}&lt;/&gt;;
+};</code></pre>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 dark:text-white mt-10 mb-4 font-sans flex items-center gap-2">
+        <span><span class="text-orange-500 font-mono">5.</span> Key Takeaways for SaaS Architects</span>
+      </h2>
+      <p>
+        Building resilient enterprise SaaS platforms is not about choosing the newest framework; it is about establishing clear boundary contracts between data entities, enforcing strict type invariants, and caching aggressively while respecting security perimeters.
+      </p>
+
+    </article>
+
+    <!-- Author Bio Card & Read-Only Notice -->
+    <div class="mt-16 pt-8 border-t border-zinc-400/50 dark:border-white/10">
+      
+      <div class="p-6 rounded-2xl bg-zinc-200 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+        <div class="w-16 h-16 rounded-2xl bg-orange-500 text-white flex items-center justify-center font-extrabold text-xl shrink-0 font-mono shadow-md">
+          HK
+        </div>
+        <div class="space-y-1">
+          <div class="font-bold text-zinc-950 dark:text-white text-base font-sans">Written by Harsh Kushwaha</div>
+          <div class="text-xs text-orange-600 dark:text-orange-400 font-mono font-bold">Senior Software Developer • 5+ Years Building Scalable Web & SaaS Platforms</div>
+          <p class="text-xs text-zinc-700 dark:text-zinc-300 font-sans pt-1">
+            Specializing in high-performance React/TypeScript architectures, real-time WebGL dashboards, and enterprise frontend systems.
+          </p>
+        </div>
+      </div>
+
+      <!-- Read Only Badge (No Comments) -->
+      <div class="mt-6 text-center text-xs font-mono text-zinc-500 dark:text-gray-500 py-4 border-t border-zinc-300 dark:border-white/5 flex items-center justify-center gap-2">
+        <i data-lucide="book-open" class="w-4 h-4 text-orange-500"></i>
+        <span>Read-Only Technical Publication • Comments are disabled</span>
+      </div>
+
+      <!-- Navigation to Next Article -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+        <a href="blog-core-web-vitals.html" class="p-5 rounded-xl bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 hover:border-orange-500 transition-all group font-mono">
+          <div class="text-[10px] text-orange-600 dark:text-orange-400 uppercase font-bold mb-1">Next Publication &gt;</div>
+          <div class="text-sm font-bold text-zinc-950 dark:text-white group-hover:text-orange-500 transition-colors">
+            Optimizing Core Web Vitals for 10M+ Readers →
+          </div>
+        </a>
+        <a href="blog-realtime-telemetry.html" class="p-5 rounded-xl bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 hover:border-orange-500 transition-all group font-mono">
+          <div class="text-[10px] text-orange-600 dark:text-orange-400 uppercase font-bold mb-1">System Case Study &gt;</div>
+          <div class="text-sm font-bold text-zinc-950 dark:text-white group-hover:text-orange-500 transition-colors">
+            Real-Time Telemetry at 60 FPS with WebGL →
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-8 border-t border-zinc-400 dark:border-white/10 text-center text-xs font-mono text-zinc-600 dark:text-gray-500">
+    <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>© 2026 Harsh Kushwaha. All rights reserved.</div>
+      <a href="index.html" class="text-zinc-950 dark:text-white font-bold hover:text-orange-500 transition-colors">$ cd /home</a>
+    </div>
+  </footer>
+
+  <!-- Theme Script & Progress Bar Sync -->
+  <script src="./js/theme-engine.js"></script>
+  <script>
+    lucide.createIcons();
+
+    // Reading progress tracker
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const bar = document.getElementById('reading-progress');
+      if (bar) bar.style.width = scrolled + '%';
+    });
+  </script>
+</body>
+</html>
