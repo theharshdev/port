@@ -1,6 +1,6 @@
 /**
- * Ultra-Smooth Cinematic Scroll Engine (Lenis + GSAP ScrollTrigger)
- * Harsh Kushwaha - Senior Software Developer Portfolio
+ * Ultra-Smooth Cinematic Scroll Engine (Lenis + GSAP ScrollTrigger & ScrollToPlugin)
+ * Harsh Kushwaha - Senior Software Engineer Portfolio
  */
 
 // Force manual scroll restoration so browsers never restore old scroll position on reload
@@ -9,6 +9,12 @@ if ('scrollRestoration' in history) {
 }
 
 function initSmoothScrollEngine() {
+  // Register GSAP Plugins safely
+  if (typeof gsap !== 'undefined') {
+    if (typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+    if (typeof ScrollToPlugin !== 'undefined') gsap.registerPlugin(ScrollToPlugin);
+  }
+
   // Reset window scroll position initially
   if (!window.location.hash) {
     window.scrollTo(0, 0);
@@ -56,7 +62,7 @@ function initSmoothScrollEngine() {
     }
   }
 
-  // Smooth scroll handler function
+  // GSAP ScrollToPlugin Enhanced Smooth Navigation
   window.smoothScrollToTarget = function (target, offset = null) {
     let targetElement = null;
 
@@ -76,13 +82,36 @@ function initSmoothScrollEngine() {
 
     const navbar = document.getElementById('main-navbar');
     const navHeight = navbar ? navbar.offsetHeight : 64;
-    const scrollOffset = offset !== null ? offset : -(navHeight + 10);
+    const scrollOffsetY = offset !== null ? offset : (navHeight + 14);
 
-    if (window.lenis) {
-      // Ensure lenis is running and active
-      window.lenis.start();
+    // If GSAP ScrollToPlugin is available
+    if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
+      if (window.lenis) {
+        // Smoothly glide using Lenis with physics interpolation
+        window.lenis.start();
+        window.lenis.scrollTo(targetElement, {
+          offset: -scrollOffsetY,
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          immediate: false,
+          lock: false,
+          force: true
+        });
+      } else {
+        // Smoothly animate using GSAP ScrollToPlugin
+        gsap.to(window, {
+          duration: 1.2,
+          scrollTo: {
+            y: targetElement,
+            offsetY: scrollOffsetY,
+            autoKill: false
+          },
+          ease: 'power3.inOut'
+        });
+      }
+    } else if (window.lenis) {
       window.lenis.scrollTo(targetElement, {
-        offset: scrollOffset,
+        offset: -scrollOffsetY,
         duration: 1.2,
         immediate: false,
         lock: false,
@@ -90,7 +119,7 @@ function initSmoothScrollEngine() {
       });
     } else {
       const rect = targetElement.getBoundingClientRect();
-      const targetY = rect.top + (window.pageYOffset || document.documentElement.scrollTop) + scrollOffset;
+      const targetY = rect.top + (window.pageYOffset || document.documentElement.scrollTop) - scrollOffsetY;
       window.scrollTo({
         top: Math.max(0, targetY),
         behavior: 'smooth'
@@ -109,14 +138,15 @@ function initSmoothScrollEngine() {
     const targetElement = document.querySelector(href);
     if (targetElement) {
       e.preventDefault();
-      window.smoothScrollToTarget(targetElement);
+      e.stopPropagation();
 
-      // Update URL hash smoothly without instant browser jump
-      if (history.pushState) {
-        history.pushState(null, null, href);
-      } else {
-        location.hash = href;
+      // Keep URL completely clean: NEVER show #id or hash in address bar
+      if (window.location.hash) {
+        history.replaceState(null, null, window.location.pathname + window.location.search);
       }
+
+      // Smoothly animate scroll directly using GSAP ScrollToPlugin
+      window.smoothScrollToTarget(targetElement);
 
       // Close mobile menu if open
       const mobileMenu = document.getElementById('mobile-nav-menu');
@@ -142,14 +172,87 @@ function initSmoothScrollEngine() {
     });
   }
 
-  // Handle initial page load with hash in URL
+  // -------------------------------------------------------------
+  // GSAP ScrollTrigger Active Navlink Highlighting (ScrollSpy)
+  // -------------------------------------------------------------
+  function initNavScrollSpy() {
+    const desktopLinks = document.querySelectorAll('header#main-navbar nav a.nav-link');
+    const mobileLinks = document.querySelectorAll('#mobile-nav-menu a.nav-link-mobile');
+
+    const sections = [
+      { id: 'hero', navHref: null },
+      { id: 'about', navHref: '#about' },
+      { id: 'experience', navHref: '#experience' },
+      { id: 'projects', navHref: '#projects' },
+      { id: 'skills', navHref: '#skills' },
+      { id: 'blog', navHref: '#blog' },
+      { id: 'contact', navHref: '#contact' }
+    ];
+
+    function setActiveNav(activeHref) {
+      desktopLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === activeHref) {
+          link.classList.add('nav-link-active');
+        } else {
+          link.classList.remove('nav-link-active');
+        }
+      });
+
+      mobileLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === activeHref) {
+          link.classList.add('nav-link-active');
+        } else {
+          link.classList.remove('nav-link-active');
+        }
+      });
+    }
+
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      sections.forEach(({ id, navHref }) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 50%',
+          end: 'bottom 50%',
+          onEnter: () => setActiveNav(navHref),
+          onEnterBack: () => setActiveNav(navHref),
+        });
+      });
+    } else {
+      const observerOptions = {
+        root: null,
+        rootMargin: '-30% 0px -40% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const sectionItem = sections.find(s => s.id === entry.target.id);
+            if (sectionItem) {
+              setActiveNav(sectionItem.navHref);
+            }
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach(({ id }) => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+    }
+  }
+
+  // Initialize ScrollSpy on startup
+  initNavScrollSpy();
+
+  // Strip any lingering hash on startup for a 100% clean URL
   if (window.location.hash) {
-    setTimeout(() => {
-      const hashEl = document.querySelector(window.location.hash);
-      if (hashEl) {
-        window.smoothScrollToTarget(hashEl);
-      }
-    }, 400);
+    history.replaceState(null, null, window.location.pathname + window.location.search);
   }
 }
 
@@ -159,3 +262,4 @@ if (document.readyState === 'loading') {
 } else {
   initSmoothScrollEngine();
 }
+

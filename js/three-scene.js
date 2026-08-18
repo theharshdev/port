@@ -23,6 +23,23 @@ class HeroMinimalScene {
     this.lastScrollY = window.scrollY || 0;
     this.scrollVelocity = 0;
 
+    // Intro Animation State (Active after preloader finishes)
+    this.introState = {
+      scale: 0.001,
+      offsetZ: 6.0,
+      spinBoostY: Math.PI * 4,
+      spinBoostX: Math.PI * 2,
+      ring1Scale: 0.001,
+      ring2Scale: 0.001,
+      ring3Scale: 0.001,
+      lightIntensity: 0.1,
+      coreSpinSpeed: 3.5,
+      gridY: -6.0,
+      gridOpacity: 0.02,
+      dustOpacity: 0.1
+    };
+    this.introPlayed = false;
+
     this.init();
   }
 
@@ -32,7 +49,7 @@ class HeroMinimalScene {
     this.renderer.setSize(width, height);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.2;
+    this.renderer.toneMappingExposure = 1.0;
     this.renderer.domElement.style.position = 'absolute';
     this.renderer.domElement.style.top = '0';
     this.renderer.domElement.style.left = '0';
@@ -46,9 +63,16 @@ class HeroMinimalScene {
     this.createBackgroundWaveGrid();
     this.createAmbientDust();
     this.createNewHeroCenterpiece();
+    this.applyThemeColors();
 
     window.addEventListener('resize', () => this.onResize());
     window.addEventListener('mousemove', (e) => this.onMouseMove(e));
+    window.addEventListener('themeChanged', () => this.applyThemeColors());
+
+    // If hero entrance was already triggered before scene initialized
+    if (window._heroEntranceReady) {
+      this.playIntroAnimation();
+    }
 
     this.animate();
   }
@@ -74,9 +98,10 @@ class HeroMinimalScene {
     const ctx = canvas.getContext('2d');
     if (!ctx) return null;
     const grad = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
-    grad.addColorStop(0, 'rgba(255, 255, 255, 1)');
-    grad.addColorStop(0.3, 'rgba(249, 115, 22, 0.8)');
-    grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    grad.addColorStop(0, 'rgba(255, 255, 255, 1.0)');
+    grad.addColorStop(0.35, 'rgba(255, 255, 255, 0.8)');
+    grad.addColorStop(0.7, 'rgba(255, 255, 255, 0.2)');
+    grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
     ctx.fillStyle = grad;
     ctx.beginPath();
     ctx.arc(16, 16, 16, 0, Math.PI * 2);
@@ -105,15 +130,16 @@ class HeroMinimalScene {
     this.gridGeometry = new THREE.PlaneGeometry(this.gridWidth, this.gridDepth, this.gridSegmentsX, this.gridSegmentsY);
     this.initialGridPositions = this.gridGeometry.attributes.position.clone();
 
+    const isDark = document.documentElement.classList.contains('dark');
     const wireframeGeo = new THREE.WireframeGeometry(this.gridGeometry);
     const wireframeMat = new THREE.LineBasicMaterial({
-      color: 0xf97316,
+      color: isDark ? 0xf97316 : 0xa1a1aa,
       transparent: true,
-      opacity: 0.35,
+      opacity: this.introState ? this.introState.gridOpacity : (isDark ? 0.16 : 0.06),
     });
     this.gridWireframe = new THREE.LineSegments(wireframeGeo, wireframeMat);
     this.gridWireframe.rotation.x = -Math.PI / 2.3;
-    this.gridWireframe.position.y = -3.2;
+    this.gridWireframe.position.y = this.introState ? this.introState.gridY : -3.2;
     this.gridWireframe.position.z = -2;
 
     this.scene.add(this.gridWireframe);
@@ -132,12 +158,13 @@ class HeroMinimalScene {
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
+    const isDark = document.documentElement.classList.contains('dark');
     const dustMat = new THREE.PointsMaterial({
-      color: 0xffedd5,
-      size: 0.06,
+      color: isDark ? 0xfde68a : 0xa1a1aa,
+      size: isDark ? 0.05 : 0.04,
       transparent: true,
-      opacity: 0.7,
-      blending: THREE.AdditiveBlending,
+      opacity: this.introState ? this.introState.dustOpacity : (isDark ? 0.35 : 0.12),
+      blending: isDark ? THREE.AdditiveBlending : THREE.NormalBlending,
     });
 
     this.dust = new THREE.Points(geometry, dustMat);
@@ -145,58 +172,81 @@ class HeroMinimalScene {
   }
 
   // -------------------------------------------------------------
-  // New Centerpiece Model: Kinetic Quantum Torus Knot & Satellite Rings
+  // Refined Centerpiece Model: Amber in Dark Mode & Soft Low-Contrast Knot with Crisp Black Outer Circles in Light Mode
   // -------------------------------------------------------------
   createNewHeroCenterpiece() {
     this.heroGroup = new THREE.Group();
 
-    // Add dedicated dynamic light attached to centerpiece
-    const pointLight = new THREE.PointLight(0xf97316, 3.5, 35);
-    pointLight.position.set(0, 0, 3);
-    this.heroGroup.add(pointLight);
+    const isDark = document.documentElement.classList.contains('dark');
+    const knotPrimaryColor = isDark ? 0xf97316 : 0x71717a;     // Soft Zinc in Light Mode
+    const knotSecondaryColor = isDark ? 0xa1a1aa : 0xa1a1aa;   // Soft Light Zinc
+    const coreAccentColor = isDark ? 0xd4d4d8 : 0x71717a;      // Zinc Core
+    const innerCrystalColor = isDark ? 0xfbbf24 : 0xa1a1aa;    // Inner Core
+    const particleColor = isDark ? 0xfed7aa : 0x71717a;        // Node Points
+    const innerBodyColor = isDark ? 0x120804 : 0xd4d4d8;       // Light Frosted Acrylic
+    const innerEmissive = isDark ? 0xf97316 : 0x000000;
+    const innerEmissiveIntensity = isDark ? 0.20 : 0.0;
+    const lightColor = isDark ? 0xf97316 : 0xffffff;
+    const lightIntensity = isDark ? 1.8 : 0.8;
 
-    const ambientGlow = new THREE.AmbientLight(0xffffff, 1.5);
-    this.scene.add(ambientGlow);
+    // Outer Circle Lines: Black in Light Mode, Amber/Slate/Gold in Dark Mode
+    const ring1Color = isDark ? 0xf97316 : 0x09090b;           // Pure Black
+    const ring2Color = isDark ? 0x94a3b8 : 0x18181b;           // Charcoal Black
+    const ring3Color = isDark ? 0xfbbf24 : 0x27272a;           // Gunmetal Black
+    const sat1Color = isDark ? 0xf97316 : 0x09090b;            // Black Satellite
+    const sat2Color = isDark ? 0xd4d4d8 : 0x18181b;            // Charcoal Satellite
 
-    // 1. Quantum Torus Knot Outer Neon Wireframe (100% Solid Orange Accent)
+    // Dedicated point light attached to centerpiece
+    this.pointLight = new THREE.PointLight(lightColor, this.introState ? this.introState.lightIntensity : lightIntensity, 30);
+    this.pointLight.position.set(0, 0, 3);
+    this.heroGroup.add(this.pointLight);
+
+    this.ambientGlow = new THREE.AmbientLight(0xffffff, isDark ? 1.0 : 1.2);
+    this.scene.add(this.ambientGlow);
+
+    // 1. Quantum Torus Knot Outer Neon Wireframe (Amber in Dark Mode, Soft Low-Contrast Zinc in Light Mode)
     const torusGeo = new THREE.TorusKnotGeometry(1.4, 0.42, 128, 32, 2, 3);
     const wireGeo = new THREE.WireframeGeometry(torusGeo);
     const orangeWireMat = new THREE.LineBasicMaterial({
-      color: 0xf97316,
+      color: knotPrimaryColor,
+      transparent: true,
+      opacity: isDark ? 0.55 : 0.28,
     });
     this.torusWire = new THREE.LineSegments(wireGeo, orangeWireMat);
     this.heroGroup.add(this.torusWire);
 
-    // Secondary White Structural Accent Wireframe (100% Solid)
+    // Secondary Soft Structural Wireframe (Slate in Dark Mode, Light Zinc in Light Mode)
     const whiteWireMat = new THREE.LineBasicMaterial({
-      color: 0xffffff,
+      color: knotSecondaryColor,
+      transparent: true,
+      opacity: isDark ? 0.35 : 0.18,
     });
     this.torusWhiteWire = new THREE.LineSegments(wireGeo, whiteWireMat);
     this.torusWhiteWire.scale.setScalar(0.98);
     this.heroGroup.add(this.torusWhiteWire);
 
-    // Inner Luminous Core
+    // Inner Translucent Core (Dark Obsidian Glass in Dark Mode, Frosted Translucent Acrylic in Light Mode)
     const innerMat = new THREE.MeshPhysicalMaterial({
-      color: 0x200c00,
-      emissive: 0xf97316,
-      emissiveIntensity: 0.45,
-      roughness: 0.1,
-      metalness: 0.9,
+      color: innerBodyColor,
+      emissive: innerEmissive,
+      emissiveIntensity: innerEmissiveIntensity,
+      roughness: isDark ? 0.25 : 0.45,
+      metalness: isDark ? 0.8 : 0.2,
       transparent: true,
-      opacity: 0.85,
+      opacity: isDark ? 0.45 : 0.18,
     });
     this.torusInner = new THREE.Mesh(torusGeo, innerMat);
     this.heroGroup.add(this.torusInner);
 
-    // Glowing Node Points along Knot
+    // Node Points along Knot
     const pointMap = this.createPointTexture();
     const pointsMat = new THREE.PointsMaterial({
-      size: 0.25,
+      size: isDark ? 0.16 : 0.12,
       map: pointMap || undefined,
-      color: 0xffedd5,
+      color: particleColor,
       transparent: true,
-      opacity: 1.0,
-      blending: THREE.AdditiveBlending,
+      opacity: isDark ? 0.45 : 0.25,
+      blending: isDark ? THREE.AdditiveBlending : THREE.NormalBlending,
       depthWrite: false,
     });
     this.knotPoints = new THREE.Points(torusGeo, pointsMat);
@@ -205,51 +255,299 @@ class HeroMinimalScene {
     // 2. Central Energy Crystal Core (Octahedron Dual Core)
     const coreGeo = new THREE.OctahedronGeometry(0.55, 0);
     const coreMat = new THREE.MeshBasicMaterial({
-      color: 0xffffff,
+      color: coreAccentColor,
       wireframe: true,
+      transparent: true,
+      opacity: isDark ? 0.65 : 0.30,
     });
     this.crystalCore = new THREE.Mesh(coreGeo, coreMat);
     this.heroGroup.add(this.crystalCore);
 
     const innerCoreMat = new THREE.MeshBasicMaterial({
-      color: 0xf97316,
+      color: innerCrystalColor,
       wireframe: true,
+      transparent: true,
+      opacity: isDark ? 0.75 : 0.25,
     });
     this.innerCrystalCore = new THREE.Mesh(new THREE.OctahedronGeometry(0.35, 0), innerCoreMat);
     this.heroGroup.add(this.innerCrystalCore);
 
-    // 3. Concentric Vector Orbital Rings (100% Solid Lines)
-    const ringMat1 = new THREE.LineBasicMaterial({ color: 0xf97316 });
-    const ringMat2 = new THREE.LineBasicMaterial({ color: 0xffffff });
-    const ringMat3 = new THREE.LineBasicMaterial({ color: 0xfbbf24 });
+    // 3. Concentric Vector Orbital Rings (Outer Circles in Solid Black for Light Mode)
+    const ringMat1 = new THREE.LineBasicMaterial({ color: ring1Color, transparent: true, opacity: isDark ? 0.45 : 0.65 });
+    const ringMat2 = new THREE.LineBasicMaterial({ color: ring2Color, transparent: true, opacity: isDark ? 0.35 : 0.50 });
+    const ringMat3 = new THREE.LineBasicMaterial({ color: ring3Color, transparent: true, opacity: isDark ? 0.35 : 0.45 });
 
     this.orbitRing1 = new THREE.LineLoop(this.createRingGeometry(2.7, 64), ringMat1);
     this.orbitRing1.rotation.x = Math.PI / 3;
+    if (this.introState) this.orbitRing1.scale.setScalar(this.introState.ring1Scale);
     this.heroGroup.add(this.orbitRing1);
 
     this.orbitRing2 = new THREE.LineLoop(this.createRingGeometry(3.2, 64), ringMat2);
     this.orbitRing2.rotation.y = Math.PI / 4;
+    if (this.introState) this.orbitRing2.scale.setScalar(this.introState.ring2Scale);
     this.heroGroup.add(this.orbitRing2);
 
     this.orbitRing3 = new THREE.LineLoop(this.createRingGeometry(3.6, 64), ringMat3);
     this.orbitRing3.rotation.z = Math.PI / 6;
+    if (this.introState) this.orbitRing3.scale.setScalar(this.introState.ring3Scale);
     this.heroGroup.add(this.orbitRing3);
 
     // 4. Orbiting Satellite Nodes
     const satGeo1 = new THREE.OctahedronGeometry(0.18, 0);
-    const satMat1 = new THREE.MeshBasicMaterial({ color: 0xf97316, wireframe: true });
+    const satMat1 = new THREE.MeshBasicMaterial({ color: sat1Color, wireframe: true, transparent: true, opacity: isDark ? 0.65 : 0.75 });
     this.satellite = new THREE.Mesh(satGeo1, satMat1);
     this.heroGroup.add(this.satellite);
 
     const satGeo2 = new THREE.OctahedronGeometry(0.14, 0);
-    const satMat2 = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
+    const satMat2 = new THREE.MeshBasicMaterial({ color: sat2Color, wireframe: true, transparent: true, opacity: isDark ? 0.55 : 0.65 });
     this.satellite2 = new THREE.Mesh(satGeo2, satMat2);
     this.heroGroup.add(this.satellite2);
 
     // Center in the screen
     this.heroGroup.position.set(0, 0.2, 0);
+    if (this.introState) this.heroGroup.scale.setScalar(this.introState.scale);
 
     this.scene.add(this.heroGroup);
+  }
+
+  // -------------------------------------------------------------
+  // Dynamic Theme Switching Method (Seamless Palette Adaptation)
+  // -------------------------------------------------------------
+  applyThemeColors() {
+    const isDark = document.documentElement.classList.contains('dark');
+    const knotPrimaryColor = isDark ? 0xf97316 : 0x71717a;     // Soft Zinc in Light Mode
+    const knotSecondaryColor = isDark ? 0xa1a1aa : 0xa1a1aa;   // Soft Light Zinc
+    const coreAccentColor = isDark ? 0xd4d4d8 : 0x71717a;      // Zinc Core
+    const innerCrystalColor = isDark ? 0xfbbf24 : 0xa1a1aa;    // Inner Core
+    const particleColor = isDark ? 0xfed7aa : 0x71717a;        // Node Points
+    const innerBodyColor = isDark ? 0x120804 : 0xd4d4d8;       // Light Frosted Acrylic
+    const innerEmissive = isDark ? 0xf97316 : 0x000000;
+    const innerEmissiveIntensity = isDark ? 0.20 : 0.0;
+    const lightColor = isDark ? 0xf97316 : 0xffffff;
+    const lightIntensity = isDark ? 1.8 : 0.8;
+
+    // Outer Circle Lines: Black in Light Mode
+    const ring1Color = isDark ? 0xf97316 : 0x09090b;           // Pure Black
+    const ring2Color = isDark ? 0x94a3b8 : 0x18181b;           // Charcoal Black
+    const ring3Color = isDark ? 0xfbbf24 : 0x27272a;           // Gunmetal Black
+    const sat1Color = isDark ? 0xf97316 : 0x09090b;            // Black Satellite
+    const sat2Color = isDark ? 0xd4d4d8 : 0x18181b;            // Charcoal Satellite
+
+    if (this.torusWire && this.torusWire.material) {
+      this.torusWire.material.color.setHex(knotPrimaryColor);
+      this.torusWire.material.opacity = isDark ? 0.55 : 0.28;
+    }
+    if (this.torusWhiteWire && this.torusWhiteWire.material) {
+      this.torusWhiteWire.material.color.setHex(knotSecondaryColor);
+      this.torusWhiteWire.material.opacity = isDark ? 0.35 : 0.18;
+    }
+    if (this.torusInner && this.torusInner.material) {
+      this.torusInner.material.color.setHex(innerBodyColor);
+      this.torusInner.material.emissive.setHex(innerEmissive);
+      this.torusInner.material.emissiveIntensity = innerEmissiveIntensity;
+      this.torusInner.material.roughness = isDark ? 0.25 : 0.45;
+      this.torusInner.material.metalness = isDark ? 0.8 : 0.2;
+      this.torusInner.material.opacity = isDark ? 0.45 : 0.18;
+    }
+    if (this.knotPoints && this.knotPoints.material) {
+      this.knotPoints.material.color.setHex(particleColor);
+      this.knotPoints.material.size = isDark ? 0.16 : 0.12;
+      this.knotPoints.material.opacity = isDark ? 0.45 : 0.25;
+      this.knotPoints.material.blending = isDark ? THREE.AdditiveBlending : THREE.NormalBlending;
+    }
+    if (this.crystalCore && this.crystalCore.material) {
+      this.crystalCore.material.color.setHex(coreAccentColor);
+      this.crystalCore.material.opacity = isDark ? 0.65 : 0.30;
+    }
+    if (this.innerCrystalCore && this.innerCrystalCore.material) {
+      this.innerCrystalCore.material.color.setHex(innerCrystalColor);
+      this.innerCrystalCore.material.opacity = isDark ? 0.75 : 0.25;
+    }
+    if (this.orbitRing1 && this.orbitRing1.material) {
+      this.orbitRing1.material.color.setHex(ring1Color);
+      this.orbitRing1.material.opacity = isDark ? 0.45 : 0.65;
+    }
+    if (this.orbitRing2 && this.orbitRing2.material) {
+      this.orbitRing2.material.color.setHex(ring2Color);
+      this.orbitRing2.material.opacity = isDark ? 0.35 : 0.50;
+    }
+    if (this.orbitRing3 && this.orbitRing3.material) {
+      this.orbitRing3.material.color.setHex(ring3Color);
+      this.orbitRing3.material.opacity = isDark ? 0.35 : 0.45;
+    }
+    if (this.satellite && this.satellite.material) {
+      this.satellite.material.color.setHex(sat1Color);
+      this.satellite.material.opacity = isDark ? 0.65 : 0.75;
+    }
+    if (this.satellite2 && this.satellite2.material) {
+      this.satellite2.material.color.setHex(sat2Color);
+      this.satellite2.material.opacity = isDark ? 0.55 : 0.65;
+    }
+    if (this.gridWireframe && this.gridWireframe.material) {
+      this.gridWireframe.material.color.setHex(isDark ? 0xf97316 : 0xa1a1aa);
+      this.gridWireframe.material.opacity = this.introPlayed ? (isDark ? 0.16 : 0.06) : 0.02;
+    }
+    if (this.dust && this.dust.material) {
+      this.dust.material.color.setHex(isDark ? 0xfde68a : 0xa1a1aa);
+      this.dust.material.size = isDark ? 0.05 : 0.04;
+      this.dust.material.opacity = this.introPlayed ? (isDark ? 0.35 : 0.12) : 0.05;
+      this.dust.material.blending = isDark ? THREE.AdditiveBlending : THREE.NormalBlending;
+    }
+    if (this.pointLight) {
+      this.pointLight.color.setHex(lightColor);
+      this.pointLight.intensity = lightIntensity;
+    }
+    if (this.ambientGlow) {
+      this.ambientGlow.intensity = isDark ? 1.0 : 1.2;
+    }
+  }
+
+  // -------------------------------------------------------------
+  // Dynamic Intro Assembly & Ignition Animation (Plays After Loading)
+  // -------------------------------------------------------------
+  playIntroAnimation() {
+    if (this.introPlayed) return;
+    this.introPlayed = true;
+
+    const isDark = document.documentElement.classList.contains('dark');
+    const targetLight = isDark ? 1.8 : 0.8;
+    const targetGridOp = isDark ? 0.16 : 0.06;
+    const targetDustOp = isDark ? 0.35 : 0.12;
+
+    if (typeof gsap === 'undefined') {
+      this.introState.scale = 1.0;
+      this.introState.offsetZ = 0;
+      this.introState.spinBoostY = 0;
+      this.introState.spinBoostX = 0;
+      this.introState.ring1Scale = 1.0;
+      this.introState.ring2Scale = 1.0;
+      this.introState.ring3Scale = 1.0;
+      this.introState.lightIntensity = targetLight;
+      this.introState.coreSpinSpeed = 1.0;
+      this.introState.gridY = -3.2;
+      this.introState.gridOpacity = targetGridOp;
+      this.introState.dustOpacity = targetDustOp;
+      if (this.pointLight) this.pointLight.intensity = targetLight;
+      if (this.orbitRing1) this.orbitRing1.scale.setScalar(1);
+      if (this.orbitRing2) this.orbitRing2.scale.setScalar(1);
+      if (this.orbitRing3) this.orbitRing3.scale.setScalar(1);
+      if (this.gridWireframe) this.gridWireframe.material.opacity = targetGridOp;
+      if (this.dust) this.dust.material.opacity = targetDustOp;
+      return;
+    }
+
+    const tl = gsap.timeline({
+      defaults: { ease: 'power3.out' }
+    });
+
+    // 1. Hyperspace Scale Warp & Elastic Overshoot
+    tl.to(this.introState, {
+      scale: 1.0,
+      duration: 1.85,
+      ease: 'back.out(1.8)'
+    }, 0);
+
+    // 2. Fly in along Z from deep space
+    tl.to(this.introState, {
+      offsetZ: 0,
+      duration: 1.7,
+      ease: 'power3.out'
+    }, 0);
+
+    // 3. High-speed intro spin deceleration (kinetic burst)
+    tl.to(this.introState, {
+      spinBoostY: 0,
+      spinBoostX: 0,
+      coreSpinSpeed: 1.0,
+      duration: 2.2,
+      ease: 'power3.out'
+    }, 0);
+
+    // 4. Staggered Gyroscopic Rings Expansion
+    tl.to(this.introState, {
+      ring1Scale: 1.0,
+      duration: 1.3,
+      ease: 'back.out(2.2)',
+      onUpdate: () => {
+        if (this.orbitRing1) this.orbitRing1.scale.setScalar(this.introState.ring1Scale);
+      }
+    }, 0.15);
+
+    tl.to(this.introState, {
+      ring2Scale: 1.0,
+      duration: 1.3,
+      ease: 'back.out(2.0)',
+      onUpdate: () => {
+        if (this.orbitRing2) this.orbitRing2.scale.setScalar(this.introState.ring2Scale);
+      }
+    }, 0.3);
+
+    tl.to(this.introState, {
+      ring3Scale: 1.0,
+      duration: 1.3,
+      ease: 'back.out(1.8)',
+      onUpdate: () => {
+        if (this.orbitRing3) this.orbitRing3.scale.setScalar(this.introState.ring3Scale);
+      }
+    }, 0.45);
+
+    // 5. Point Light photon ignition burst (gentle warm flare in dark mode / subtle light in light mode)
+    const flarePeak = isDark ? 3.8 : 1.4;
+    tl.to(this.introState, {
+      lightIntensity: flarePeak,
+      duration: 0.5,
+      ease: 'power2.in',
+      onUpdate: () => {
+        if (this.pointLight) this.pointLight.intensity = this.introState.lightIntensity;
+      }
+    }, 0)
+    .to(this.introState, {
+      lightIntensity: targetLight,
+      duration: 1.3,
+      ease: 'power2.out',
+      onUpdate: () => {
+        if (this.pointLight) this.pointLight.intensity = this.introState.lightIntensity;
+      }
+    }, 0.5);
+
+    // Emissive flare pulse on torus inner mesh (only in dark mode)
+    if (this.torusInner && this.torusInner.material && isDark) {
+      tl.to(this.torusInner.material, {
+        emissiveIntensity: 0.55,
+        duration: 0.5,
+        ease: 'power2.in'
+      }, 0)
+      .to(this.torusInner.material, {
+        emissiveIntensity: 0.20,
+        duration: 1.3,
+        ease: 'power2.out'
+      }, 0.5);
+    }
+
+    // 6. 3D Cyber Wave Grid Floor rises & illuminates softly
+    tl.to(this.introState, {
+      gridY: -3.2,
+      gridOpacity: targetGridOp,
+      duration: 1.8,
+      ease: 'power2.out',
+      onUpdate: () => {
+        if (this.gridWireframe) {
+          this.gridWireframe.material.opacity = this.introState.gridOpacity;
+        }
+      }
+    }, 0.1);
+
+    // 7. Starfield particles brighten
+    tl.to(this.introState, {
+      dustOpacity: targetDustOp,
+      duration: 1.5,
+      ease: 'power2.out',
+      onUpdate: () => {
+        if (this.dust) {
+          this.dust.material.opacity = this.introState.dustOpacity;
+        }
+      }
+    }, 0.2);
   }
 
   animate() {
@@ -289,24 +587,31 @@ class HeroMinimalScene {
     this.currentPos.z += (pathZ - this.currentPos.z) * 0.08;
     this.currentScale += (pathScale - this.currentScale) * 0.08;
 
-    if (this.heroGroup) {
-      this.heroGroup.position.set(this.currentPos.x, this.currentPos.y, this.currentPos.z);
-      this.heroGroup.scale.setScalar(this.currentScale);
+    const finalScale = this.currentScale * (this.introState ? this.introState.scale : 1.0);
+    const finalZ = this.currentPos.z + (this.introState ? this.introState.offsetZ : 0);
 
-      // Kinetic rotation driven by elapsed time + scroll travel + scroll velocity
+    if (this.heroGroup) {
+      this.heroGroup.position.set(this.currentPos.x, this.currentPos.y, finalZ);
+      this.heroGroup.scale.setScalar(finalScale);
+
+      // Kinetic rotation driven by elapsed time + scroll travel + scroll velocity + intro spin boost
       const kineticSpin = scrollProgress * Math.PI * 6 + this.scrollVelocity * 0.003;
-      this.heroGroup.rotation.y = elapsedTime * 0.2 + kineticSpin + this.mouse.x * 0.35;
-      this.heroGroup.rotation.x = elapsedTime * 0.12 + Math.sin(scrollProgress * Math.PI * 3) * 0.5 + this.mouse.y * 0.25;
+      const boostY = this.introState ? this.introState.spinBoostY : 0;
+      const boostX = this.introState ? this.introState.spinBoostX : 0;
+      this.heroGroup.rotation.y = elapsedTime * 0.2 + kineticSpin + this.mouse.x * 0.35 + boostY;
+      this.heroGroup.rotation.x = elapsedTime * 0.12 + Math.sin(scrollProgress * Math.PI * 3) * 0.5 + this.mouse.y * 0.25 + boostX;
       this.heroGroup.rotation.z = Math.cos(scrollProgress * Math.PI * 2) * 0.35 + (this.scrollVelocity * 0.001);
     }
 
+    const coreSpeed = this.introState ? this.introState.coreSpinSpeed : 1.0;
+
     if (this.crystalCore) {
-      this.crystalCore.rotation.y = -elapsedTime * 0.8 - (scrollProgress * Math.PI * 8);
+      this.crystalCore.rotation.y = -elapsedTime * 0.8 * coreSpeed - (scrollProgress * Math.PI * 8);
       this.crystalCore.rotation.z = elapsedTime * 0.4 + (this.scrollVelocity * 0.005);
     }
     if (this.innerCrystalCore) {
-      this.innerCrystalCore.rotation.x = elapsedTime * 0.9;
-      this.innerCrystalCore.rotation.y = elapsedTime * 0.6;
+      this.innerCrystalCore.rotation.x = elapsedTime * 0.9 * coreSpeed;
+      this.innerCrystalCore.rotation.y = elapsedTime * 0.6 * coreSpeed;
     }
 
     if (this.orbitRing1) {
@@ -319,9 +624,12 @@ class HeroMinimalScene {
       this.orbitRing3.rotation.y = elapsedTime * 0.2 + (scrollProgress * Math.PI * 3);
     }
 
+    const r1Scale = this.introState ? this.introState.ring1Scale : 1.0;
+    const r2Scale = this.introState ? this.introState.ring2Scale : 1.0;
+
     if (this.satellite) {
       const angle = elapsedTime * 0.9 + scrollProgress * Math.PI * 4;
-      const radius = 2.7;
+      const radius = 2.7 * r1Scale;
       this.satellite.position.x = Math.cos(angle) * radius;
       this.satellite.position.y = Math.sin(angle) * radius * Math.sin(Math.PI / 3);
       this.satellite.position.z = Math.sin(angle) * radius * Math.cos(Math.PI / 3);
@@ -330,7 +638,7 @@ class HeroMinimalScene {
 
     if (this.satellite2) {
       const angle2 = -elapsedTime * 0.7 - scrollProgress * Math.PI * 3;
-      const radius2 = 3.2;
+      const radius2 = 3.2 * r2Scale;
       this.satellite2.position.x = Math.cos(angle2) * radius2;
       this.satellite2.position.y = Math.sin(angle2) * radius2 * Math.cos(Math.PI / 4);
       this.satellite2.position.z = Math.sin(angle2) * radius2 * Math.sin(Math.PI / 4);
@@ -339,7 +647,8 @@ class HeroMinimalScene {
 
     // Dynamic 3D Cyber Wave Grid Floor also drifts gracefully with full-page scroll
     if (this.gridWireframe) {
-      this.gridWireframe.position.y = -3.2 + Math.sin(elapsedTime * 0.5) * 0.1 - (scrollProgress * 1.8);
+      const baseGridY = this.introState ? this.introState.gridY : -3.2;
+      this.gridWireframe.position.y = baseGridY + Math.sin(elapsedTime * 0.5) * 0.1 - (scrollProgress * 1.8);
       this.gridWireframe.rotation.z = Math.sin(elapsedTime * 0.2) * 0.03 + this.mouse.x * 0.05 + (scrollProgress * 0.2);
       this.gridWireframe.rotation.x = -Math.PI / 2.3 + Math.sin(scrollProgress * Math.PI) * 0.15;
     }
@@ -401,6 +710,19 @@ class MinimalModelWidget {
     });
 
     this.animate();
+  }
+
+  playIntroAnimation() {
+    if (this.mainGroup && typeof gsap !== 'undefined') {
+      gsap.fromTo(this.mainGroup.scale,
+        { x: 0.15, y: 0.15, z: 0.15 },
+        { x: 1.0, y: 1.0, z: 1.0, duration: 1.2, ease: 'back.out(1.8)' }
+      );
+      gsap.fromTo(this.mainGroup.rotation,
+        { y: this.mainGroup.rotation.y + Math.PI * 1.5 },
+        { y: this.mainGroup.rotation.y, duration: 1.4, ease: 'power3.out' }
+      );
+    }
   }
 
   updateSize() {
@@ -1381,7 +1703,7 @@ const SKILLS_GLOBE_DATA = [
     category: 'frontend',
     categoryName: 'FRONTEND_SSR',
     percentage: 90,
-    level: '90% (Architect)',
+    level: '90% (Staff/Lead Level)',
     desc: 'App Router, Streaming SSR, Incremental Static Regeneration, and Edge API Routes.',
     impact: 'Engineered high-traffic news portals serving 10M+ monthly page views with 1.1s LCP & 0 CLS.',
     chips: ['App Router', 'Streaming SSR', 'ISR', 'Edge Functions']

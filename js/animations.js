@@ -5,7 +5,11 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // Register GSAP Plugins
-  gsap.registerPlugin(ScrollTrigger);
+  if (typeof ScrollToPlugin !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+  } else {
+    gsap.registerPlugin(ScrollTrigger);
+  }
 
   // -------------------------------------------------------------
   // 0. Minimalist Cyber Terminal Preloader Sequence (Authentic Jerky / Staggered Loading)
@@ -51,14 +55,31 @@ document.addEventListener('DOMContentLoaded', () => {
         updatePreloaderUI(100);
 
         setTimeout(() => {
+          // Preloader inner content does a subtle upward lift & fade
+          const preloaderContent = document.getElementById('preloader-content');
+          if (preloaderContent) {
+            gsap.to(preloaderContent, {
+              y: -25,
+              opacity: 0,
+              duration: 0.35,
+              ease: 'power2.in'
+            });
+          }
+
+          // Full Preloader Curtain Slide-Up Animation
           gsap.to(preloader, {
             yPercent: -100,
-            opacity: 0,
-            duration: 0.85,
+            duration: 0.95,
             ease: 'power4.inOut',
             onStart: () => {
               // Trigger the Hero Section Entrance Timeline as the preloader slides up
               playHeroEntrance();
+              // Trigger 3D WebGL Model Intro Assembly & Ignition Animation
+              if (window.heroMinimal3D && typeof window.heroMinimal3D.playIntroAnimation === 'function') {
+                window.heroMinimal3D.playIntroAnimation();
+              } else {
+                window._heroEntranceReady = true;
+              }
             },
             onComplete: () => {
               preloader.style.display = 'none';
@@ -72,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
               }
             }
           });
-        }, 350);
+        }, 300);
         return;
       }
 
@@ -195,6 +216,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function playHeroEntrance() {
     if (heroAnimationExecuted) return;
     heroAnimationExecuted = true;
+
+    // Trigger 3D WebGL Centerpiece Entrance & Ignition
+    if (window.heroMinimal3D && typeof window.heroMinimal3D.playIntroAnimation === 'function') {
+      window.heroMinimal3D.playIntroAnimation();
+    } else {
+      window._heroEntranceReady = true;
+    }
 
     const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
@@ -402,7 +430,12 @@ document.addEventListener('DOMContentLoaded', () => {
           scrollTrigger: {
             trigger: about3d,
             start: 'top 85%',
-            toggleActions: 'play none none none'
+            toggleActions: 'play none none none',
+            onEnter: () => {
+              if (window.widget3D && typeof window.widget3D.playIntroAnimation === 'function') {
+                window.widget3D.playIntroAnimation();
+              }
+            }
           }
         }
       );

@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harsh Kushwaha | Senior Software Developer (zsh terminal os)</title>
-  <meta name="description" content="Portfolio of Harsh Kushwaha, Senior Software Developer with 5+ years of experience. Cyber Terminal Console Edition.">
-  <meta name="keywords" content="Harsh Kushwaha, Terminal Portfolio, React Developer, Senior Software Developer, TypeScript, Redux, Tailwind CSS, Noida">
+  <title>Harsh Kushwaha | Senior Software Engineer (zsh terminal os)</title>
+  <meta name="description" content="Portfolio of Harsh Kushwaha, Senior Software Engineer with 5+ years of experience. Cyber Terminal Console Edition.">
+  <meta name="keywords" content="Harsh Kushwaha, Terminal Portfolio, React Developer, Senior Software Engineer, TypeScript, Redux, Tailwind CSS, Noida">
   <meta name="author" content="Harsh Kushwaha">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Harsh Kushwaha | Senior Software Developer (Terminal OS)">
-  <meta property="og:description" content="5+ Years Exp | Scalable SaaS, High-Traffic Media, AI/ML Dashboards, & Web Architecture.">
+  <meta property="og:title" content="Harsh Kushwaha | Senior Software Engineer (Terminal OS)">
+  <meta property="og:description" content="5+ Years Exp | Scalable SaaS, High-Traffic Media, AI/ML Dashboards, & Frontend Engineering.">
   <meta property="og:type" content="website">
 
   <!-- Google Fonts -->
@@ -25,13 +25,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Force Scroll to Top on Every Reload -->
+  <!-- Force Scroll to Top on Every Reload & Strip Hash for Clean URL -->
   <script>
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
+    }
+    if (window.location.hash) {
+      history.replaceState(null, null, window.location.pathname + window.location.search);
     }
     window.scrollTo(0, 0);
   </script>
@@ -39,8 +43,11 @@
 <body class="bg-zinc-200 dark:bg-obsidian-950 text-zinc-900 dark:text-gray-100 font-mono antialiased overflow-x-hidden selection:bg-orange-500 selection:text-white transition-colors duration-300">
 
   <!-- Minimalist Cyber Terminal OS Preloader -->
-  <div id="cyber-preloader" class="fixed inset-0 z-[100] bg-zinc-200 dark:bg-obsidian-950 text-zinc-950 dark:text-white font-mono flex flex-col items-center justify-center p-6 select-none transition-colors duration-300">
-    <div class="max-w-sm w-full space-y-6 text-center">
+  <div id="cyber-preloader" class="fixed inset-0 z-[100] bg-zinc-200 dark:bg-obsidian-950 text-zinc-950 dark:text-white font-mono flex flex-col items-center justify-center p-6 select-none transition-colors duration-300 shadow-2xl">
+    <!-- Cyber Shutter Bottom Neon Laser Edge -->
+    <div class="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-orange-500 to-transparent shadow-[0_0_25px_#f97316]"></div>
+
+    <div id="preloader-content" class="max-w-sm w-full space-y-6 text-center will-change-transform">
       
       <!-- System Title & Prompt -->
       <div class="space-y-1">
@@ -54,8 +61,8 @@
       </div>
 
       <!-- Simple Loading Progress Bar -->
-      <div class="w-full h-2 bg-zinc-300 dark:bg-obsidian-900 rounded-full overflow-hidden border border-zinc-400 dark:border-white/10 p-0.5 shadow-fighter-panel">
-        <div id="preloader-bar" class="h-full w-0 bg-orange-500 rounded-full transition-all duration-75 ease-out"></div>
+      <div class="w-full h-2.5 bg-zinc-300 dark:bg-obsidian-900 rounded-full overflow-hidden border border-zinc-400 dark:border-white/10 p-0.5 shadow-fighter-panel">
+        <div id="preloader-bar" class="h-full w-0 bg-orange-500 rounded-full transition-all duration-75 ease-out shadow-[0_0_12px_#f97316]"></div>
       </div>
 
       <!-- Single Clear Status Line -->
@@ -91,18 +98,18 @@
         </div>
 
         <a href="#hero" data-scramble="true" class="group font-mono text-xs sm:text-sm font-bold tracking-wider text-zinc-950 dark:text-white flex items-center gap-1.5 truncate">
-          <span class="hidden sm:inline">harsh@</span><span class="text-orange-500 dark:text-orange-400 truncate">kushwaha-architect</span><span class="hidden sm:inline">:~ (zsh)</span>
+          <span class="hidden sm:inline">harsh@</span><span class="text-orange-500 dark:text-orange-400 truncate">kushwaha-engineer</span><span class="hidden sm:inline">:~ (zsh)</span>
         </a>
       </div>
 
       <!-- Nav Commands Menu (Desktop) -->
       <nav class="hidden lg:flex items-center gap-7 text-xs font-mono text-zinc-700 dark:text-gray-400">
-        <a href="#about" data-scramble="true" class="hover:text-zinc-950 dark:hover:text-white transition-colors duration-200 font-semibold">01. ./about</a>
-        <a href="#experience" data-scramble="true" class="hover:text-zinc-950 dark:hover:text-white transition-colors duration-200 font-semibold">02. ./experience</a>
-        <a href="#projects" data-scramble="true" class="hover:text-zinc-950 dark:hover:text-white transition-colors duration-200 font-semibold">03. ./systems</a>
-        <a href="#skills" data-scramble="true" class="hover:text-zinc-950 dark:hover:text-white transition-colors duration-200 font-semibold">04. ./skills</a>
-        <a href="#blog" data-scramble="true" class="hover:text-zinc-950 dark:hover:text-white transition-colors duration-200 font-semibold">05. ./blog</a>
-        <a href="#contact" data-scramble="true" class="hover:text-zinc-950 dark:hover:text-white transition-colors duration-200 font-semibold">06. ./contact</a>
+        <a href="#about" data-scramble="true" class="nav-link py-1 font-semibold hover:text-zinc-950 dark:hover:text-white transition-colors duration-200">01. ./about</a>
+        <a href="#experience" data-scramble="true" class="nav-link py-1 font-semibold hover:text-zinc-950 dark:hover:text-white transition-colors duration-200">02. ./experience</a>
+        <a href="#projects" data-scramble="true" class="nav-link py-1 font-semibold hover:text-zinc-950 dark:hover:text-white transition-colors duration-200">03. ./projects</a>
+        <a href="#skills" data-scramble="true" class="nav-link py-1 font-semibold hover:text-zinc-950 dark:hover:text-white transition-colors duration-200">04. ./skills</a>
+        <a href="#blog" data-scramble="true" class="nav-link py-1 font-semibold hover:text-zinc-950 dark:hover:text-white transition-colors duration-200">05. ./blog</a>
+        <a href="#contact" data-scramble="true" class="nav-link py-1 font-semibold hover:text-zinc-950 dark:hover:text-white transition-colors duration-200">06. ./contact</a>
       </nav>
 
       <!-- Theme Controls & Mobile Menu Toggle -->
@@ -123,27 +130,27 @@
 
     <!-- Mobile Collapsible Menu Drawer -->
     <div id="mobile-nav-menu" class="hidden lg:hidden border-t border-zinc-400/40 dark:border-white/10 mt-3 pt-3 pb-2 flex flex-col gap-2 font-mono text-xs text-zinc-800 dark:text-gray-300 bg-zinc-300/95 dark:bg-obsidian-950/95 backdrop-blur-xl">
-      <a href="#about" class="px-3 py-2 rounded hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-semibold flex items-center justify-between">
+      <a href="#about" class="nav-link-mobile px-3 py-2 rounded-lg hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-all font-semibold flex items-center justify-between">
         <span>01. ./about</span>
         <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
       </a>
-      <a href="#experience" class="px-3 py-2 rounded hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-semibold flex items-center justify-between">
+      <a href="#experience" class="nav-link-mobile px-3 py-2 rounded-lg hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-all font-semibold flex items-center justify-between">
         <span>02. ./experience</span>
         <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
       </a>
-      <a href="#projects" class="px-3 py-2 rounded hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-semibold flex items-center justify-between">
-        <span>03. ./systems</span>
+      <a href="#projects" class="nav-link-mobile px-3 py-2 rounded-lg hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-all font-semibold flex items-center justify-between">
+        <span>03. ./projects</span>
         <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
       </a>
-      <a href="#skills" class="px-3 py-2 rounded hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-semibold flex items-center justify-between">
+      <a href="#skills" class="nav-link-mobile px-3 py-2 rounded-lg hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-all font-semibold flex items-center justify-between">
         <span>04. ./skills</span>
         <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
       </a>
-      <a href="#blog" class="px-3 py-2 rounded hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-semibold flex items-center justify-between">
+      <a href="#blog" class="nav-link-mobile px-3 py-2 rounded-lg hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-all font-semibold flex items-center justify-between">
         <span>05. ./blog</span>
         <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
       </a>
-      <a href="#contact" class="px-3 py-2 rounded hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-semibold flex items-center justify-between">
+      <a href="#contact" class="nav-link-mobile px-3 py-2 rounded-lg hover:bg-orange-500/10 hover:text-orange-600 dark:hover:text-orange-400 transition-all font-semibold flex items-center justify-between">
         <span>06. ./contact</span>
         <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
       </a>
@@ -166,7 +173,7 @@
           <!-- Terminal Prompt Header line -->
           <div id="hero-prompt" class="flex items-center gap-2 text-xs text-zinc-600 dark:text-gray-400 font-mono">
             <span class="text-orange-500 dark:text-orange-400 font-bold">harsh@dev:~$</span>
-            <span class="truncate">./init_portfolio.sh --mode="<span class="text-orange-500 dark:text-orange-400 font-bold">Architect</span>"</span>
+            <span class="truncate">./init_portfolio.sh --mode="<span class="text-orange-500 dark:text-orange-400 font-bold">Senior Software Engineer</span>"</span>
           </div>
 
           <!-- Hero Name Headline -->
@@ -178,7 +185,7 @@
           <!-- Role Subtitle -->
           <div id="hero-subtitle" class="text-base sm:text-xl font-semibold text-zinc-800 dark:text-gray-300 flex flex-wrap items-center gap-2">
             <span class="text-orange-500 font-bold">&gt;</span>
-            <span data-scramble="true">Senior Software Developer II</span>
+            <span data-scramble="true">Senior Software Engineer II</span>
             <span class="px-2.5 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-xs border border-orange-500/30 font-bold">5+ YOE</span>
           </div>
 
@@ -216,7 +223,7 @@
             </div>
             <div>
               <div class="text-lg sm:text-xl font-bold text-zinc-950 dark:text-white font-mono stat-number" data-value="10" data-suffix="+">0</div>
-              <div class="text-[9px] sm:text-[10px] text-zinc-600 dark:text-gray-500 uppercase font-bold">SYSTEMS_DEPLOYED</div>
+              <div class="text-[9px] sm:text-[10px] text-zinc-600 dark:text-gray-500 uppercase font-bold">PROJECTS_DEPLOYED</div>
             </div>
           </div>
 
@@ -224,10 +231,10 @@
 
         <!-- Right Column: INTERACTIVE CLI TERMINAL WINDOW WIDGET -->
         <div class="lg:col-span-5">
-          <div id="hero-terminal-widget" class="rounded-xl bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-terminal-window overflow-hidden flex flex-col h-[340px] sm:h-[380px] transition-colors duration-300">
+          <div id="hero-terminal-widget" class="rounded-2xl apple-glass overflow-hidden flex flex-col h-[340px] sm:h-[380px]">
             
             <!-- Terminal Header -->
-            <div class="px-4 py-2.5 bg-zinc-400/40 dark:bg-obsidian-950 border-b border-zinc-400 dark:border-white/10 flex items-center justify-between text-xs text-zinc-700 dark:text-gray-400 font-mono">
+            <div class="px-4 py-2.5 apple-glass-inset border-b border-black/5 dark:border-white/10 flex items-center justify-between text-xs text-zinc-700 dark:text-gray-400 font-mono">
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>
                 <span class="w-2.5 h-2.5 rounded-full bg-orange-400 inline-block"></span>
@@ -241,10 +248,10 @@
             <div id="terminal-cli-output" class="p-4 flex-grow overflow-y-auto space-y-2 text-xs font-mono text-zinc-900 dark:text-gray-300 scrollbar-thin"></div>
 
             <!-- Terminal Input Form -->
-            <form id="terminal-cli-form" class="p-3 bg-zinc-400/40 dark:bg-obsidian-950 border-t border-zinc-400 dark:border-white/10 flex items-center gap-2">
+            <form id="terminal-cli-form" class="p-3 apple-glass-inset border-t border-black/5 dark:border-white/10 flex items-center gap-2">
               <span class="text-orange-500 dark:text-orange-400 text-xs font-bold">$</span>
               <input id="terminal-cli-input" type="text" autocomplete="off" placeholder="Type a command (e.g. 'help', 'exp')..." class="flex-grow bg-transparent text-xs font-mono text-zinc-950 dark:text-white placeholder-zinc-500 dark:placeholder-gray-600 focus:outline-none font-semibold">
-              <button type="submit" class="px-3 py-1 rounded bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 hover:bg-orange-500 dark:hover:bg-orange-500 dark:hover:text-white text-[10px] font-mono font-bold transition-all">RUN</button>
+              <button type="submit" class="px-3 py-1 rounded-lg bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 hover:bg-orange-500 dark:hover:bg-orange-500 dark:hover:text-white text-[10px] font-mono font-bold transition-all shadow-sm">RUN</button>
             </form>
 
           </div>
@@ -272,7 +279,7 @@
     </section>
 
     <!-- ========================================================= -->
-    <!-- 01. ABOUT ARCHITECT & INTERACTIVE 3D MODEL SECTION        -->
+    <!-- 01. ABOUT ENGINEER & INTERACTIVE 3D MODEL SECTION         -->
     <!-- ========================================================= -->
     <section id="about" class="py-24 border-t border-zinc-400 dark:border-white/10 relative bg-zinc-200/40 dark:bg-obsidian-950/40 font-mono overflow-hidden">
       <!-- Background Cyber Ambient Glow & Grid -->
@@ -290,7 +297,7 @@
             <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/30 font-mono">STATUS: ONLINE • READY FOR DISPATCH</span>
           </div>
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 dark:text-white uppercase font-sans">
-            01. ABOUT THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-500 to-zinc-950 dark:from-orange-400 dark:via-amber-300 dark:to-white">ARCHITECT</span>
+            01. ABOUT THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-500 to-zinc-950 dark:from-orange-400 dark:via-amber-300 dark:to-white">ENGINEER</span>
           </h2>
           <p class="mt-3 text-sm sm:text-base text-zinc-600 dark:text-gray-400 max-w-3xl leading-relaxed">
             Engineering scalable web architectures, ultra-responsive UIs, and interactive 3D WebGL experiences for high-growth SaaS and enterprise media giants.
@@ -304,8 +311,8 @@
           <div class="lg:col-span-7 flex flex-col justify-between space-y-6 sm:space-y-8">
             
             <!-- Terminal Glass Bio Shell -->
-            <div class="p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/80 dark:bg-obsidian-900/90 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl relative overflow-hidden backdrop-blur-md">
-              <div class="flex items-center justify-between pb-4 mb-4 border-b border-zinc-400/60 dark:border-white/10 text-xs font-bold text-zinc-700 dark:text-gray-400">
+            <div class="p-4 sm:p-6 md:p-8 rounded-2xl apple-glass relative overflow-hidden">
+              <div class="flex items-center justify-between pb-4 mb-4 border-b border-black/5 dark:border-white/10 text-xs font-bold text-zinc-700 dark:text-gray-400">
                 <div class="flex items-center gap-2">
                   <i data-lucide="terminal" class="w-4 h-4 text-orange-500"></i>
                   <span class="text-zinc-950 dark:text-white">bio_manifest.json</span>
@@ -318,7 +325,7 @@
 
               <div class="space-y-4 text-xs sm:text-sm text-zinc-800 dark:text-gray-300 leading-relaxed font-mono">
                 <p>
-                  I'm <strong class="text-zinc-950 dark:text-white font-semibold">Harsh Kushwaha</strong>, a Senior Software Developer with over <strong>5+ years of production experience</strong> specializing in building mission-critical enterprise applications, complex HRMS SaaS platforms, and digital news portals serving millions of daily users.
+                  I'm <strong class="text-zinc-950 dark:text-white font-semibold">Harsh Kushwaha</strong>, a Senior Software Engineer with over <strong>5+ years of production experience</strong> specializing in building mission-critical enterprise applications, complex HRMS SaaS platforms, and digital news portals serving millions of daily users.
                 </p>
                 <p>
                   My engineering philosophy focuses on <strong>resilient state management</strong>, zero-latency user interfaces, optimized Core Web Vitals, and modular micro-frontend design. Whether optimizing server-side rendered pages for <span class="text-zinc-950 dark:text-white font-semibold">Hindustan Times & LiveMint</span> or scaling multi-tenant SaaS dashboards for <span class="text-zinc-950 dark:text-white font-semibold">2,500+ active enterprise users</span>, I craft bulletproof software.
@@ -326,26 +333,26 @@
               </div>
 
               <!-- Terminal Code Block Preview -->
-              <div class="mt-6 p-3.5 sm:p-4 rounded-xl bg-zinc-900 text-gray-200 dark:bg-obsidian-950 font-mono text-xs border border-zinc-700 dark:border-white/10 overflow-x-auto shadow-inner">
-                <div class="flex justify-between items-center pb-2 mb-2 border-b border-zinc-700 dark:border-white/5 text-[10px] text-gray-400">
-                  <span>// Developer Profile State</span>
-                  <span class="text-orange-400 font-bold">JSON v2.4</span>
+              <div class="mt-6 p-3.5 sm:p-4 rounded-xl apple-glass-inset font-mono text-xs overflow-x-auto">
+                <div class="flex justify-between items-center pb-2 mb-2 border-b border-black/5 dark:border-white/5 text-[10px] text-zinc-600 dark:text-gray-400">
+                  <span>// Engineer Profile State</span>
+                  <span class="text-orange-500 dark:text-orange-400 font-bold">JSON v2.4</span>
                 </div>
-                <pre class="leading-relaxed text-zinc-300 text-[11px] sm:text-xs"><code>{
-  <span class="text-zinc-400">"name"</span>: <span class="text-white">"Harsh Kushwaha"</span>,
-  <span class="text-zinc-400">"role"</span>: <span class="text-white">"Senior Software Developer II"</span>,
-  <span class="text-zinc-400">"experience"</span>: <span class="text-zinc-300">"5+ Years"</span>,
-  <span class="text-zinc-400">"primary_stack"</span>: [<span class="text-orange-400">"React.js"</span>, <span class="text-orange-400">"TypeScript"</span>, <span class="text-orange-400">"Redux Toolkit"</span>, <span class="text-orange-400">"Tailwind CSS"</span>, <span class="text-orange-400">"Three.js"</span>],
-  <span class="text-zinc-400">"availability"</span>: <span class="text-orange-400 font-bold">"Open for High-Impact Roles & Consulting"</span>
+                <pre class="leading-relaxed text-zinc-800 dark:text-zinc-300 text-[11px] sm:text-xs"><code>{
+  <span class="text-zinc-500 dark:text-zinc-400">"name"</span>: <span class="text-zinc-950 dark:text-white font-bold">"Harsh Kushwaha"</span>,
+  <span class="text-zinc-500 dark:text-zinc-400">"role"</span>: <span class="text-zinc-950 dark:text-white font-bold">"Senior Software Engineer II"</span>,
+  <span class="text-zinc-500 dark:text-zinc-400">"experience"</span>: <span class="text-zinc-700 dark:text-zinc-300">"5+ Years"</span>,
+  <span class="text-zinc-500 dark:text-zinc-400">"primary_stack"</span>: [<span class="text-orange-600 dark:text-orange-400">"React.js"</span>, <span class="text-orange-600 dark:text-orange-400">"TypeScript"</span>, <span class="text-orange-600 dark:text-orange-400">"Redux Toolkit"</span>, <span class="text-orange-600 dark:text-orange-400">"Tailwind CSS"</span>, <span class="text-orange-600 dark:text-orange-400">"Three.js"</span>],
+  <span class="text-zinc-500 dark:text-zinc-400">"availability"</span>: <span class="text-orange-600 dark:text-orange-400 font-bold">"Open for High-Impact Roles & Technical Consulting"</span>
 }</code></pre>
               </div>
             </div>
 
-            <!-- Architectural Highlights Grid -->
+            <!-- Engineering Highlights Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
               
-              <div class="p-4 rounded-xl bg-zinc-300/60 dark:bg-obsidian-900/60 border border-zinc-400 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 group">
-                <div class="w-10 h-10 rounded-lg bg-orange-500/10 text-orange-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <div class="p-4 rounded-2xl apple-glass apple-glass-interactive group">
+                <div class="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                   <i data-lucide="layers" class="w-5 h-5"></i>
                 </div>
                 <h3 class="text-xs font-bold text-zinc-950 dark:text-white uppercase tracking-wider mb-1">SaaS Architecture</h3>
@@ -354,8 +361,8 @@
                 </p>
               </div>
 
-              <div class="p-4 rounded-xl bg-zinc-300/60 dark:bg-obsidian-900/60 border border-zinc-400 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 group">
-                <div class="w-10 h-10 rounded-lg bg-orange-500/10 text-orange-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <div class="p-4 rounded-2xl apple-glass apple-glass-interactive group">
+                <div class="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                   <i data-lucide="zap" class="w-5 h-5"></i>
                 </div>
                 <h3 class="text-xs font-bold text-zinc-950 dark:text-white uppercase tracking-wider mb-1">High-Traffic Scale</h3>
@@ -364,8 +371,8 @@
                 </p>
               </div>
 
-              <div class="p-4 rounded-xl bg-zinc-300/60 dark:bg-obsidian-900/60 border border-zinc-400 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 group">
-                <div class="w-10 h-10 rounded-lg bg-orange-500/10 text-orange-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <div class="p-4 rounded-2xl apple-glass apple-glass-interactive group">
+                <div class="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                   <i data-lucide="box" class="w-5 h-5"></i>
                 </div>
                 <h3 class="text-xs font-bold text-zinc-950 dark:text-white uppercase tracking-wider mb-1">Interactive 3D Web</h3>
@@ -378,11 +385,11 @@
 
             <!-- Action CTA Row -->
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
-              <a href="#skills" class="px-5 sm:px-6 py-3 rounded-lg bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 hover:bg-orange-500 dark:hover:bg-orange-500 dark:hover:text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-sm">
+              <a href="#skills" class="px-5 sm:px-6 py-3 rounded-xl bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 hover:bg-orange-500 dark:hover:bg-orange-500 dark:hover:text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-sm">
                 <i data-lucide="cpu" class="w-4 h-4"></i>
                 <span>Explore Technical Matrix</span>
               </a>
-              <a href="#contact" class="px-5 sm:px-6 py-3 rounded-lg bg-transparent text-zinc-900 dark:text-white border border-zinc-400 dark:border-white/20 hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2">
+              <a href="#contact" class="px-5 sm:px-6 py-3 rounded-xl bg-transparent text-zinc-900 dark:text-white border border-zinc-400 dark:border-white/20 hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2">
                 <i data-lucide="mail" class="w-4 h-4"></i>
                 <span>Get In Touch</span>
               </a>
@@ -394,7 +401,7 @@
           <div class="lg:col-span-5 flex flex-col h-full">
             
             <!-- 3D Model Card Shell -->
-            <div id="about-3d-wrapper" class="relative flex-grow flex flex-col rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl overflow-hidden backdrop-blur-xl group">
+            <div id="about-3d-wrapper" class="relative flex-grow flex flex-col rounded-2xl apple-glass overflow-hidden group">
               
               <!-- 3D Viewport Top Control Bar -->
               <div class="px-4 sm:px-5 py-3 sm:py-3.5 border-b border-zinc-400 dark:border-white/10 bg-zinc-400/30 dark:bg-obsidian-950/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 z-20">
@@ -549,7 +556,7 @@
                   INTELEGENCIA ANALYTICS
                 </h3>
                 <p class="text-xs sm:text-sm font-bold text-zinc-700 dark:text-zinc-300 mt-1">
-                  Senior Software Developer II • Core Frontend Architecture Lead
+                  Senior Software Engineer II • Core Frontend Lead
                 </p>
                 <div class="text-xs text-zinc-500 dark:text-gray-400 mt-1 flex items-center gap-1.5 md:justify-end">
                   <i data-lucide="map-pin" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
@@ -559,9 +566,9 @@
 
               <!-- Right Column: Detailed Dossier Panel -->
               <div class="timeline-dossier-col pl-8 sm:pl-11 md:pl-12">
-                <div class="timeline-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-xl hover:border-orange-500/50 transition-all duration-300 group">
+                <div class="timeline-card p-4 sm:p-6 md:p-8 rounded-2xl apple-glass apple-glass-interactive group">
                   
-                  <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-zinc-400/40 dark:border-white/10 text-xs font-bold">
+                  <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-black/5 dark:border-white/10 text-xs font-bold">
                     <span class="text-zinc-600 dark:text-zinc-400 uppercase tracking-widest text-[10px] sm:text-[11px]">Workforce & Payroll SaaS Core</span>
                     <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30">STAGE: PRODUCTION</span>
                   </div>
@@ -584,15 +591,15 @@
 
                   <!-- KPI Metric Grid -->
                   <div class="grid grid-cols-3 gap-1.5 sm:gap-2.5 mb-4 sm:mb-5">
-                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                    <div class="p-2 sm:p-2.5 rounded-xl apple-glass-inset text-center overflow-hidden">
                       <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">2,500+</div>
                       <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">Daily Users</div>
                     </div>
-                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                    <div class="p-2 sm:p-2.5 rounded-xl apple-glass-inset text-center overflow-hidden">
                       <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">-45%</div>
                       <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">API Latency</div>
                     </div>
-                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                    <div class="p-2 sm:p-2.5 rounded-xl apple-glass-inset text-center overflow-hidden">
                       <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">99.9%</div>
                       <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">Uptime</div>
                     </div>
@@ -600,12 +607,12 @@
 
                   <!-- Tech Arsenal -->
                   <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React 18</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">TypeScript</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Redux Toolkit</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Tailwind CSS</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">RBAC</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Vite & Jest</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">React 18</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">TypeScript</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Redux Toolkit</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Tailwind CSS</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">RBAC</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Vite & Jest</span>
                   </div>
                 </div>
               </div>
@@ -624,9 +631,9 @@
 
               <!-- Left Column: Detailed Dossier Panel (Desktop Left) -->
               <div class="timeline-dossier-col order-2 md:order-1 pl-8 sm:pl-11 md:pl-0 md:pr-12">
-                <div class="timeline-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-xl hover:border-orange-500/50 transition-all duration-300 group">
+                <div class="timeline-card p-4 sm:p-6 md:p-8 rounded-2xl apple-glass apple-glass-interactive group">
                   
-                  <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-zinc-400/40 dark:border-white/10 text-xs font-bold">
+                  <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-black/5 dark:border-white/10 text-xs font-bold">
                     <span class="text-zinc-600 dark:text-zinc-400 uppercase tracking-widest text-[10px] sm:text-[11px]">National Publishing Portals</span>
                     <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30">10M+ IMPRESSIONS</span>
                   </div>
@@ -649,15 +656,15 @@
 
                   <!-- KPI Metric Grid -->
                   <div class="grid grid-cols-3 gap-1.5 sm:gap-2.5 mb-4 sm:mb-5">
-                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                    <div class="p-2 sm:p-2.5 rounded-xl apple-glass-inset text-center overflow-hidden">
                       <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">10M+</div>
                       <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">Readers</div>
                     </div>
-                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                    <div class="p-2 sm:p-2.5 rounded-xl apple-glass-inset text-center overflow-hidden">
                       <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">1.1s</div>
                       <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">LCP Vitals</div>
                     </div>
-                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                    <div class="p-2 sm:p-2.5 rounded-xl apple-glass-inset text-center overflow-hidden">
                       <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">3 Portals</div>
                       <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">HT, Mint, Auto</div>
                     </div>
@@ -665,11 +672,11 @@
 
                   <!-- Tech Arsenal -->
                   <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Next.js SSR</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React.js</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">TypeScript</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Core Web Vitals</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Ad-Tech</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Next.js SSR</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">React.js</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">TypeScript</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Core Web Vitals</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Ad-Tech</span>
                   </div>
                 </div>
               </div>
@@ -724,9 +731,9 @@
 
               <!-- Right Column: Detailed Dossier Panel -->
               <div class="timeline-dossier-col pl-8 sm:pl-11 md:pl-12">
-                <div class="timeline-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-xl hover:border-orange-500/50 transition-all duration-300 group">
+                <div class="timeline-card p-4 sm:p-6 md:p-8 rounded-2xl apple-glass apple-glass-interactive group">
                   
-                  <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-zinc-400/40 dark:border-white/10 text-xs font-bold">
+                  <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-black/5 dark:border-white/10 text-xs font-bold">
                     <span class="text-zinc-600 dark:text-zinc-400 uppercase tracking-widest text-[10px] sm:text-[11px]">Sensor Telemetry & Anomaly Alerts</span>
                     <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30">50K+ SENSORS</span>
                   </div>
@@ -749,15 +756,15 @@
 
                   <!-- KPI Metric Grid -->
                   <div class="grid grid-cols-3 gap-1.5 sm:gap-2.5 mb-4 sm:mb-5">
-                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                    <div class="p-2 sm:p-2.5 rounded-xl apple-glass-inset text-center overflow-hidden">
                       <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">50K+</div>
                       <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">Sensor Nodes</div>
                     </div>
-                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                    <div class="p-2 sm:p-2.5 rounded-xl apple-glass-inset text-center overflow-hidden">
                       <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">&lt;250ms</div>
                       <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">WSS Latency</div>
                     </div>
-                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                    <div class="p-2 sm:p-2.5 rounded-xl apple-glass-inset text-center overflow-hidden">
                       <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">100%</div>
                       <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">Compliance</div>
                     </div>
@@ -765,11 +772,11 @@
 
                   <!-- Tech Arsenal -->
                   <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React.js</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">TypeScript</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">WebSockets</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">D3.js / Chart.js</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Geospatial GIS</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">React.js</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">TypeScript</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">WebSockets</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">D3.js / Chart.js</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Geospatial GIS</span>
                   </div>
                 </div>
               </div>
@@ -788,9 +795,9 @@
 
               <!-- Left Column: Detailed Dossier Panel (Desktop Left) -->
               <div class="timeline-dossier-col order-2 md:order-1 pl-8 sm:pl-11 md:pl-0 md:pr-12">
-                <div class="timeline-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-xl hover:border-orange-500/50 transition-all duration-300 group">
+                <div class="timeline-card p-4 sm:p-6 md:p-8 rounded-2xl apple-glass apple-glass-interactive group">
                   
-                  <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-zinc-400/40 dark:border-white/10 text-xs font-bold">
+                  <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-black/5 dark:border-white/10 text-xs font-bold">
                     <span class="text-zinc-600 dark:text-zinc-400 uppercase tracking-widest text-[10px] sm:text-[11px]">Commercial Web & Search Growth</span>
                     <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30">+40% SEARCH SURGE</span>
                   </div>
@@ -807,33 +814,33 @@
                     </li>
                     <li class="flex items-start gap-2">
                       <span class="text-orange-500 font-bold text-sm leading-none mt-0.5 shrink-0">&gt;</span>
-                      <span>Integrated secure payment gateways (Razorpay, Stripe) and maintained 98+ Google Lighthouse scores across production builds.</span>
+                      <span>Implemented automated test suites and continuous deployment pipelines reducing staging defect escapes.</span>
                     </li>
                   </ul>
 
                   <!-- KPI Metric Grid -->
                   <div class="grid grid-cols-3 gap-1.5 sm:gap-2.5 mb-4 sm:mb-5">
-                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
+                    <div class="p-2 sm:p-2.5 rounded-xl apple-glass-inset text-center overflow-hidden">
                       <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">+40%</div>
-                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">SEO Lift</div>
+                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">SEO Surge</div>
                     </div>
-                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
-                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">20+</div>
-                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">Portals</div>
+                    <div class="p-2 sm:p-2.5 rounded-xl apple-glass-inset text-center overflow-hidden">
+                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">15+</div>
+                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">Live Apps</div>
                     </div>
-                    <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-200/90 dark:bg-obsidian-950 border border-zinc-400/50 dark:border-white/10 text-center overflow-hidden">
-                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">98/100</div>
-                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">Lighthouse</div>
+                    <div class="p-2 sm:p-2.5 rounded-xl apple-glass-inset text-center overflow-hidden">
+                      <div class="text-base sm:text-lg md:text-xl font-extrabold text-orange-500 dark:text-orange-400 font-mono truncate">100%</div>
+                      <div class="text-[8px] sm:text-[9px] text-zinc-600 dark:text-gray-400 font-bold uppercase truncate">On-Time</div>
                     </div>
                   </div>
 
                   <!-- Tech Arsenal -->
                   <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React.js</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">JavaScript (ES6+)</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Redux</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Technical SEO</span>
-                    <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Stripe / Razorpay</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">React.js</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">JavaScript ES6+</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">HTML5/CSS3</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">SEO & Schema</span>
+                    <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">REST APIs</span>
                   </div>
                 </div>
               </div>
@@ -868,7 +875,7 @@
 
     <!-- ========================================================= -->
     <!-- ========================================================= -->
-    <!-- 03. DEPLOYED SYSTEMS PROCESS TABLE & ARCHITECTURE HUB     -->
+    <!-- 03. FEATURED PROJECTS & ARCHITECTURE HUB                  -->
     <!-- ========================================================= -->
     <section id="projects" class="py-24 border-t border-zinc-400 dark:border-white/10 relative bg-zinc-200/40 dark:bg-obsidian-950/40 font-mono overflow-hidden">
       
@@ -889,7 +896,7 @@
             </span>
           </div>
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-950 dark:text-white uppercase font-sans">
-            03. DEPLOYED <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-500 to-zinc-950 dark:from-orange-400 dark:via-amber-300 dark:to-white">SYSTEMS</span> & ARCHITECTURE
+            03. FEATURED <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-500 to-zinc-950 dark:from-orange-400 dark:via-amber-300 dark:to-white">PROJECTS</span> & ARCHITECTURE
           </h2>
           <p class="mt-3 text-sm sm:text-base text-zinc-600 dark:text-gray-400 max-w-3xl leading-relaxed">
             Production micro-frontends, high-throughput media publishing suites, and mission-critical telemetry visualizers engineered with zero-compromise performance.
@@ -921,10 +928,10 @@
           <!-- ========================================== -->
           <!-- 01. Enterprise HRMS SaaS Core Engine       -->
           <!-- ========================================== -->
-          <div data-category="saas" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-fighter-panel dark:shadow-2xl flex flex-col justify-between backdrop-blur-xl group">
+          <div data-category="saas" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl apple-glass apple-glass-interactive flex flex-col justify-between group">
             <div>
               <!-- Top Container Header -->
-              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/60 dark:border-white/10 text-xs">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-black/5 dark:border-white/10 text-xs">
                 <div class="flex items-center gap-2 font-bold truncate">
                   <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
                   <span class="text-zinc-950 dark:text-white truncate">CNT_01_HRMS_CORE</span>
@@ -958,33 +965,33 @@
               </p>
 
               <!-- Interactive Simulated Terminal Output Window -->
-              <div class="p-3.5 sm:p-4 rounded-xl bg-zinc-900 text-gray-200 dark:bg-obsidian-950 font-mono text-xs border border-zinc-700 dark:border-white/10 mb-4 sm:mb-5 shadow-inner overflow-x-auto">
-                <div class="flex items-center justify-between pb-2 mb-2 border-b border-zinc-700 dark:border-white/5 text-[10px] text-gray-400">
+              <div class="p-3.5 sm:p-4 rounded-xl apple-glass-inset font-mono text-xs mb-4 sm:mb-5 overflow-x-auto">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-black/5 dark:border-white/5 text-[10px] text-zinc-600 dark:text-gray-400">
                   <div class="flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-600"></span>
                     <span class="w-2 h-2 rounded-full bg-orange-400"></span>
-                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
-                    <span class="ml-1 text-gray-400">hrms_cluster_health.sh</span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-600"></span>
+                    <span class="ml-1 text-zinc-700 dark:text-gray-400">hrms_cluster_health.sh</span>
                   </div>
-                  <span class="text-orange-400 font-bold">STATUS: OK</span>
+                  <span class="text-orange-500 dark:text-orange-400 font-bold">STATUS: OK</span>
                 </div>
-                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-300">
-                  <div class="text-orange-400 font-bold">$ systemctl status hrms-saas.service</div>
-                  <div class="text-white">● Active: running (2,548 sessions, 0 dropouts)</div>
-                  <div class="text-zinc-300">↳ CPU: 14% | MEM: 380MB | Cache Hit: <span class="text-orange-400 font-bold">94.2%</span></div>
-                  <div class="text-zinc-500">// POST /api/v2/payroll/batch-sync -> 200 OK (38ms)</div>
+                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-800 dark:text-zinc-300">
+                  <div class="text-orange-600 dark:text-orange-400 font-bold">$ systemctl status hrms-saas.service</div>
+                  <div class="text-zinc-950 dark:text-white font-bold">● Active: running (2,548 sessions, 0 dropouts)</div>
+                  <div class="text-zinc-700 dark:text-zinc-300">↳ CPU: 14% | MEM: 380MB | Cache Hit: <span class="text-orange-600 dark:text-orange-400 font-bold">94.2%</span></div>
+                  <div class="text-zinc-500 dark:text-zinc-400">// POST /api/v2/payroll/batch-sync -> 200 OK (38ms)</div>
                 </div>
               </div>
             </div>
 
             <!-- Card Footer: Telemetry & Stack Badges -->
-            <div class="pt-3 sm:pt-4 border-t border-zinc-400/60 dark:border-white/10 space-y-3">
+            <div class="pt-3 sm:pt-4 border-t border-black/5 dark:border-white/10 space-y-3">
               <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React 18</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">TypeScript</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Redux Toolkit</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Tailwind CSS</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">RBAC Security</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">React 18</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">TypeScript</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Redux Toolkit</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Tailwind CSS</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">RBAC Security</span>
               </div>
             </div>
           </div>
@@ -992,10 +999,10 @@
           <!-- ========================================== -->
           <!-- 02. Hindustan Times & LiveMint Suite       -->
           <!-- ========================================== -->
-          <div data-category="media" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-fighter-panel dark:shadow-2xl flex flex-col justify-between backdrop-blur-xl group">
+          <div data-category="media" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl apple-glass apple-glass-interactive flex flex-col justify-between group">
             <div>
               <!-- Top Container Header -->
-              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/60 dark:border-white/10 text-xs">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-black/5 dark:border-white/10 text-xs">
                 <div class="flex items-center gap-2 font-bold truncate">
                   <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
                   <span class="text-zinc-950 dark:text-white truncate">CNT_02_MEDIA_HT</span>
@@ -1029,33 +1036,33 @@
               </p>
 
               <!-- Interactive Simulated Terminal Output Window -->
-              <div class="p-3.5 sm:p-4 rounded-xl bg-zinc-900 text-gray-200 dark:bg-obsidian-950 font-mono text-xs border border-zinc-700 dark:border-white/10 mb-4 sm:mb-5 shadow-inner overflow-x-auto">
-                <div class="flex items-center justify-between pb-2 mb-2 border-b border-zinc-700 dark:border-white/5 text-[10px] text-gray-400">
+              <div class="p-3.5 sm:p-4 rounded-xl apple-glass-inset font-mono text-xs mb-4 sm:mb-5 overflow-x-auto">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-black/5 dark:border-white/5 text-[10px] text-zinc-600 dark:text-gray-400">
                   <div class="flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-600"></span>
                     <span class="w-2 h-2 rounded-full bg-orange-400"></span>
-                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
-                    <span class="ml-1 text-gray-400">core_vitals_telemetry.log</span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-600"></span>
+                    <span class="ml-1 text-zinc-700 dark:text-gray-400">core_vitals_telemetry.log</span>
                   </div>
-                  <span class="text-orange-400 font-bold">PERF: 99/100</span>
+                  <span class="text-orange-500 dark:text-orange-400 font-bold">PERF: 99/100</span>
                 </div>
-                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-300">
-                  <div class="text-orange-400 font-bold">$ lighthouse --url=https://hindustantimes.com</div>
-                  <div class="text-white">✓ LCP: <span class="text-orange-400 font-bold">1.1s</span> | FID: 12ms | CLS: 0.00 (Zero Drift)</div>
-                  <div class="text-zinc-300">↳ SSR Stream: 18ms TTFB | Dynamic Hydration: PASS</div>
-                  <div class="text-zinc-500">// Header-Bidding Ad Engine: Asynchronous Render (0ms block)</div>
+                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-800 dark:text-zinc-300">
+                  <div class="text-orange-600 dark:text-orange-400 font-bold">$ lighthouse --url=https://hindustantimes.com</div>
+                  <div class="text-zinc-950 dark:text-white font-bold">✓ LCP: <span class="text-orange-600 dark:text-orange-400 font-bold">1.1s</span> | FID: 12ms | CLS: 0.00 (Zero Drift)</div>
+                  <div class="text-zinc-700 dark:text-zinc-300">↳ SSR Stream: 18ms TTFB | Dynamic Hydration: PASS</div>
+                  <div class="text-zinc-500 dark:text-zinc-400">// Header-Bidding Ad Engine: Asynchronous Render (0ms block)</div>
                 </div>
               </div>
             </div>
 
             <!-- Card Footer: Telemetry & Stack Badges -->
-            <div class="pt-3 sm:pt-4 border-t border-zinc-400/60 dark:border-white/10 space-y-3">
+            <div class="pt-3 sm:pt-4 border-t border-black/5 dark:border-white/10 space-y-3">
               <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Next.js SSR</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React.js</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">TypeScript</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Core Web Vitals</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Ad-Tech Integration</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Next.js SSR</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">React.js</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">TypeScript</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Core Web Vitals</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Ad-Tech Integration</span>
               </div>
             </div>
           </div>
@@ -1063,10 +1070,10 @@
           <!-- ========================================== -->
           <!-- 03. AI/ML Infrastructure Telemetry Hub     -->
           <!-- ========================================== -->
-          <div data-category="telemetry" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-fighter-panel dark:shadow-2xl flex flex-col justify-between backdrop-blur-xl group">
+          <div data-category="telemetry" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl apple-glass apple-glass-interactive flex flex-col justify-between group">
             <div>
               <!-- Top Container Header -->
-              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/60 dark:border-white/10 text-xs">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-black/5 dark:border-white/10 text-xs">
                 <div class="flex items-center gap-2 font-bold truncate">
                   <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
                   <span class="text-zinc-950 dark:text-white truncate">CNT_03_TELEMETRY_ML</span>
@@ -1100,33 +1107,33 @@
               </p>
 
               <!-- Interactive Simulated Terminal Output Window -->
-              <div class="p-3.5 sm:p-4 rounded-xl bg-zinc-900 text-gray-200 dark:bg-obsidian-950 font-mono text-xs border border-zinc-700 dark:border-white/10 mb-4 sm:mb-5 shadow-inner overflow-x-auto">
-                <div class="flex items-center justify-between pb-2 mb-2 border-b border-zinc-700 dark:border-white/5 text-[10px] text-gray-400">
+              <div class="p-3.5 sm:p-4 rounded-xl apple-glass-inset font-mono text-xs mb-4 sm:mb-5 overflow-x-auto">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-black/5 dark:border-white/5 text-[10px] text-zinc-600 dark:text-gray-400">
                   <div class="flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-600"></span>
                     <span class="w-2 h-2 rounded-full bg-orange-400"></span>
-                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
-                    <span class="ml-1 text-gray-400">pipeline_sensor_stream.wss</span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-600"></span>
+                    <span class="ml-1 text-zinc-700 dark:text-gray-400">pipeline_sensor_stream.wss</span>
                   </div>
-                  <span class="text-orange-400 font-bold">LATENCY: 180ms</span>
+                  <span class="text-orange-500 dark:text-orange-400 font-bold">LATENCY: 180ms</span>
                 </div>
-                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-300">
-                  <div class="text-orange-400 font-bold">$ wscat -c wss://telemetry.alethe.gov/live</div>
-                  <div class="text-white">⚡ Connected: <span class="text-orange-400 font-bold">52,400</span> active sensor nodes synced</div>
-                  <div class="text-zinc-300">↳ [GEO_MONITOR] Sector 7B Pressure: 98.4 PSI (Nominal)</div>
-                  <div class="text-zinc-500">// Threshold Engine: 0 critical breaches in last 24h</div>
+                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-800 dark:text-zinc-300">
+                  <div class="text-orange-600 dark:text-orange-400 font-bold">$ wscat -c wss://telemetry.alethe.gov/live</div>
+                  <div class="text-zinc-950 dark:text-white font-bold">⚡ Connected: <span class="text-orange-600 dark:text-orange-400 font-bold">52,400</span> active sensor nodes synced</div>
+                  <div class="text-zinc-700 dark:text-zinc-300">↳ [GEO_MONITOR] Sector 7B Pressure: 98.4 PSI (Nominal)</div>
+                  <div class="text-zinc-500 dark:text-zinc-400">// Threshold Engine: 0 critical breaches in last 24h</div>
                 </div>
               </div>
             </div>
 
             <!-- Card Footer: Telemetry & Stack Badges -->
-            <div class="pt-3 sm:pt-4 border-t border-zinc-400/60 dark:border-white/10 space-y-3">
+            <div class="pt-3 sm:pt-4 border-t border-black/5 dark:border-white/10 space-y-3">
               <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React.js</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">WebSockets</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">D3.js / Chart.js</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Geospatial GIS</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Leaflet</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">React.js</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">WebSockets</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">D3.js / Chart.js</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Geospatial GIS</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Leaflet</span>
               </div>
             </div>
           </div>
@@ -1134,10 +1141,10 @@
           <!-- ========================================== -->
           <!-- 04. Nexora Enterprise E-Commerce Engine    -->
           <!-- ========================================== -->
-          <div data-category="saas" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-fighter-panel dark:shadow-2xl flex flex-col justify-between backdrop-blur-xl group">
+          <div data-category="saas" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl apple-glass apple-glass-interactive flex flex-col justify-between group">
             <div>
               <!-- Top Container Header -->
-              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/60 dark:border-white/10 text-xs">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-black/5 dark:border-white/10 text-xs">
                 <div class="flex items-center gap-2 font-bold truncate">
                   <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
                   <span class="text-zinc-950 dark:text-white truncate">CNT_04_NEXORA</span>
@@ -1171,33 +1178,33 @@
               </p>
 
               <!-- Interactive Simulated Terminal Output Window -->
-              <div class="p-3.5 sm:p-4 rounded-xl bg-zinc-900 text-gray-200 dark:bg-obsidian-950 font-mono text-xs border border-zinc-700 dark:border-white/10 mb-4 sm:mb-5 shadow-inner overflow-x-auto">
-                <div class="flex items-center justify-between pb-2 mb-2 border-b border-zinc-700 dark:border-white/5 text-[10px] text-gray-400">
+              <div class="p-3.5 sm:p-4 rounded-xl apple-glass-inset font-mono text-xs mb-4 sm:mb-5 overflow-x-auto">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-black/5 dark:border-white/5 text-[10px] text-zinc-600 dark:text-gray-400">
                   <div class="flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-600"></span>
                     <span class="w-2 h-2 rounded-full bg-orange-400"></span>
-                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
-                    <span class="ml-1 text-gray-400">checkout_orchestration.ts</span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-600"></span>
+                    <span class="ml-1 text-zinc-700 dark:text-gray-400">checkout_orchestration.ts</span>
                   </div>
-                  <span class="text-orange-400 font-bold">99.98% RELIABILITY</span>
+                  <span class="text-orange-500 dark:text-orange-400 font-bold">99.98% RELIABILITY</span>
                 </div>
-                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-300">
-                  <div class="text-orange-400 font-bold">// Multi-currency Checkout Pipeline</div>
-                  <div class="text-white">dispatch(processOrder({ gateway: "Stripe", currency: "USD" }))</div>
-                  <div class="text-zinc-300">✓ Tokenized: txn_3M0294829 -> <span class="text-orange-400 font-bold">201 Created</span> (Instant)</div>
-                  <div class="text-zinc-500">// Cart abandonment auto-recovery webhook dispatched</div>
+                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-800 dark:text-zinc-300">
+                  <div class="text-orange-600 dark:text-orange-400 font-bold">// Multi-currency Checkout Pipeline</div>
+                  <div class="text-zinc-950 dark:text-white font-bold">dispatch(processOrder({ gateway: "Stripe", currency: "USD" }))</div>
+                  <div class="text-zinc-700 dark:text-zinc-300">✓ Tokenized: txn_3M0294829 -> <span class="text-orange-600 dark:text-orange-400 font-bold">201 Created</span> (Instant)</div>
+                  <div class="text-zinc-500 dark:text-zinc-400">// Cart abandonment auto-recovery webhook dispatched</div>
                 </div>
               </div>
             </div>
 
             <!-- Card Footer: Telemetry & Stack Badges -->
-            <div class="pt-3 sm:pt-4 border-t border-zinc-400/60 dark:border-white/10 space-y-3">
+            <div class="pt-3 sm:pt-4 border-t border-black/5 dark:border-white/10 space-y-3">
               <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React 18</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Next.js</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Redux Toolkit</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Stripe / Razorpay</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Technical SEO</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">React 18</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Next.js</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Redux Toolkit</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Stripe / Razorpay</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Technical SEO</span>
               </div>
             </div>
           </div>
@@ -1205,10 +1212,10 @@
           <!-- ========================================== -->
           <!-- 05. DevAvionics 3D WebGL Kinetic Studio    -->
           <!-- ========================================== -->
-          <div data-category="creative" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-fighter-panel dark:shadow-2xl flex flex-col justify-between backdrop-blur-xl group">
+          <div data-category="creative" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl apple-glass apple-glass-interactive flex flex-col justify-between group">
             <div>
               <!-- Top Container Header -->
-              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/60 dark:border-white/10 text-xs">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-black/5 dark:border-white/10 text-xs">
                 <div class="flex items-center gap-2 font-bold truncate">
                   <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
                   <span class="text-zinc-950 dark:text-white truncate">CNT_05_WEBGL_STUDIO</span>
@@ -1242,33 +1249,33 @@
               </p>
 
               <!-- Interactive Simulated Terminal Output Window -->
-              <div class="p-3.5 sm:p-4 rounded-xl bg-zinc-900 text-gray-200 dark:bg-obsidian-950 font-mono text-xs border border-zinc-700 dark:border-white/10 mb-4 sm:mb-5 shadow-inner overflow-x-auto">
-                <div class="flex items-center justify-between pb-2 mb-2 border-b border-zinc-700 dark:border-white/5 text-[10px] text-gray-400">
+              <div class="p-3.5 sm:p-4 rounded-xl apple-glass-inset font-mono text-xs mb-4 sm:mb-5 overflow-x-auto">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-black/5 dark:border-white/5 text-[10px] text-zinc-600 dark:text-gray-400">
                   <div class="flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-600"></span>
                     <span class="w-2 h-2 rounded-full bg-orange-400"></span>
-                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
-                    <span class="ml-1 text-gray-400">shader_pipeline.glsl</span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-600"></span>
+                    <span class="ml-1 text-zinc-700 dark:text-gray-400">shader_pipeline.glsl</span>
                   </div>
-                  <span class="text-orange-400 font-bold">GPU: METAL / VULKAN</span>
+                  <span class="text-orange-500 dark:text-orange-400 font-bold">GPU: METAL / VULKAN</span>
                 </div>
-                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-300">
-                  <div class="text-orange-400 font-bold">// Parametric Vertex Morphing Shader</div>
-                  <div class="text-white">vec3 wave = sin(u_time * 2.0 + vPosition * 3.0) * 0.15;</div>
-                  <div class="text-zinc-300">gl_Position = projectionMatrix * modelViewMatrix * vec4(position + wave, 1.0);</div>
-                  <div class="text-zinc-500">// Frame Render Time: <span class="text-orange-400 font-bold">1.2ms</span> (Draw Calls: 8)</div>
+                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-800 dark:text-zinc-300">
+                  <div class="text-orange-600 dark:text-orange-400 font-bold">// Parametric Vertex Morphing Shader</div>
+                  <div class="text-zinc-950 dark:text-white font-bold">vec3 wave = sin(u_time * 2.0 + vPosition * 3.0) * 0.15;</div>
+                  <div class="text-zinc-700 dark:text-zinc-300">gl_Position = projectionMatrix * modelViewMatrix * vec4(position + wave, 1.0);</div>
+                  <div class="text-zinc-500 dark:text-zinc-400">// Frame Render Time: <span class="text-orange-600 dark:text-orange-400 font-bold">1.2ms</span> (Draw Calls: 8)</div>
                 </div>
               </div>
             </div>
 
             <!-- Card Footer: Telemetry & Stack Badges -->
-            <div class="pt-3 sm:pt-4 border-t border-zinc-400/60 dark:border-white/10 space-y-3">
+            <div class="pt-3 sm:pt-4 border-t border-black/5 dark:border-white/10 space-y-3">
               <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Three.js</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">WebGL 2.0</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">GLSL Shaders</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">GSAP ScrollTrigger</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Tailwind CSS</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Three.js</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">WebGL 2.0</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">GLSL Shaders</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">GSAP ScrollTrigger</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Tailwind CSS</span>
               </div>
             </div>
           </div>
@@ -1276,10 +1283,10 @@
           <!-- ========================================== -->
           <!-- 06. Sentinel Cloud Log & Anomaly Alert Hub -->
           <!-- ========================================== -->
-          <div data-category="telemetry" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 hover:border-orange-500/50 transition-all duration-300 shadow-fighter-panel dark:shadow-2xl flex flex-col justify-between backdrop-blur-xl group">
+          <div data-category="telemetry" class="project-card p-4 sm:p-6 md:p-8 rounded-2xl apple-glass apple-glass-interactive flex flex-col justify-between group">
             <div>
               <!-- Top Container Header -->
-              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/60 dark:border-white/10 text-xs">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-black/5 dark:border-white/10 text-xs">
                 <div class="flex items-center gap-2 font-bold truncate">
                   <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
                   <span class="text-zinc-950 dark:text-white truncate">CNT_06_SENTINEL_HUB</span>
@@ -1313,33 +1320,33 @@
               </p>
 
               <!-- Interactive Simulated Terminal Output Window -->
-              <div class="p-3.5 sm:p-4 rounded-xl bg-zinc-900 text-gray-200 dark:bg-obsidian-950 font-mono text-xs border border-zinc-700 dark:border-white/10 mb-4 sm:mb-5 shadow-inner overflow-x-auto">
-                <div class="flex items-center justify-between pb-2 mb-2 border-b border-zinc-700 dark:border-white/5 text-[10px] text-gray-400">
+              <div class="p-3.5 sm:p-4 rounded-xl apple-glass-inset font-mono text-xs mb-4 sm:mb-5 overflow-x-auto">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-black/5 dark:border-white/5 text-[10px] text-zinc-600 dark:text-gray-400">
                   <div class="flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-600"></span>
                     <span class="w-2 h-2 rounded-full bg-orange-400"></span>
-                    <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
-                    <span class="ml-1 text-gray-400">sentinel_daemon_cluster.log</span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-600"></span>
+                    <span class="ml-1 text-zinc-700 dark:text-gray-400">sentinel_daemon_cluster.log</span>
                   </div>
-                  <span class="text-orange-400 font-bold">UPTIME: 99.99%</span>
+                  <span class="text-orange-500 dark:text-orange-400 font-bold">UPTIME: 99.99%</span>
                 </div>
-                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-300">
-                  <div class="text-orange-400 font-bold">$ kubectl get pods -A | grep -v Running</div>
-                  <div class="text-white">✓ All 54 pods running healthy in namespaces [default, prod]</div>
-                  <div class="text-zinc-300">↳ Anomaly Scanners: <span class="text-orange-400 font-bold">0 threshold spikes</span> detected</div>
-                  <div class="text-zinc-500">// Ingress Rate: 4,200 req/sec | Error Rate: 0.00%</div>
+                <div class="space-y-1 text-[10px] sm:text-[11px] text-zinc-800 dark:text-zinc-300">
+                  <div class="text-orange-600 dark:text-orange-400 font-bold">$ kubectl get pods -A | grep -v Running</div>
+                  <div class="text-zinc-950 dark:text-white font-bold">✓ All 54 pods running healthy in namespaces [default, prod]</div>
+                  <div class="text-zinc-700 dark:text-zinc-300">↳ Anomaly Scanners: <span class="text-orange-600 dark:text-orange-400 font-bold">0 threshold spikes</span> detected</div>
+                  <div class="text-zinc-500 dark:text-zinc-400">// Ingress Rate: 4,200 req/sec | Error Rate: 0.00%</div>
                 </div>
               </div>
             </div>
 
             <!-- Card Footer: Telemetry & Stack Badges -->
-            <div class="pt-3 sm:pt-4 border-t border-zinc-400/60 dark:border-white/10 space-y-3">
+            <div class="pt-3 sm:pt-4 border-t border-black/5 dark:border-white/10 space-y-3">
               <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">React.js</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">TypeScript</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">WebSockets</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Docker / K8s</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/50 dark:border-white/10 hover:border-orange-500">Recharts</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">React.js</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">TypeScript</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">WebSockets</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Docker / K8s</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200 hover:border-orange-500">Recharts</span>
               </div>
             </div>
           </div>
@@ -1404,18 +1411,18 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           
           <!-- Left: 3D Interactive WebGL Globe Stage -->
-          <div class="lg:col-span-8 relative rounded-2xl bg-zinc-950 border border-zinc-400/40 dark:border-white/15 overflow-hidden shadow-fighter-panel flex flex-col justify-between min-h-[380px] sm:min-h-[480px] md:min-h-[560px] select-none">
+          <div class="lg:col-span-8 relative rounded-2xl apple-glass overflow-hidden flex flex-col justify-between min-h-[380px] sm:min-h-[480px] md:min-h-[560px] select-none">
             
             <!-- Terminal Top Ribbon -->
-            <div class="relative z-20 flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 bg-zinc-900/90 border-b border-white/10 text-xs font-mono text-gray-300 backdrop-blur-md gap-2">
+            <div class="relative z-20 flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 apple-glass-inset border-b border-black/5 dark:border-white/10 text-xs font-mono text-zinc-800 dark:text-gray-300 gap-2">
               <div class="flex items-center gap-2 truncate">
                 <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse shrink-0"></span>
-                <span class="font-bold text-white uppercase truncate">$ webgl_engine --sphere="interactive_globe"</span>
+                <span class="font-bold text-zinc-950 dark:text-white uppercase truncate">$ webgl_engine --sphere="interactive_globe"</span>
               </div>
               <div class="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] shrink-0">
-                <span id="globe-status-fps" class="text-orange-400 font-bold">60 FPS</span>
+                <span id="globe-status-fps" class="text-orange-500 dark:text-orange-400 font-bold">60 FPS</span>
                 <span class="text-zinc-500">•</span>
-                <span id="globe-active-filter-label" class="text-orange-400 font-bold hidden sm:inline">[FILTER: ALL_NODES]</span>
+                <span id="globe-active-filter-label" class="text-orange-500 dark:text-orange-400 font-bold hidden sm:inline">[FILTER: ALL_NODES]</span>
               </div>
             </div>
 
@@ -1426,17 +1433,17 @@
             <div id="skills-3d-tag-overlay" class="absolute inset-0 z-10 pointer-events-none overflow-hidden"></div>
 
             <!-- Terminal Bottom Control Ribbon -->
-            <div class="relative z-20 flex flex-wrap items-center justify-between gap-2.5 px-3 sm:px-4 py-2.5 sm:py-3 bg-zinc-900/90 border-t border-white/10 text-xs font-mono text-gray-400 backdrop-blur-md">
+            <div class="relative z-20 flex flex-wrap items-center justify-between gap-2.5 px-3 sm:px-4 py-2.5 sm:py-3 apple-glass-inset border-t border-black/5 dark:border-white/10 text-xs font-mono text-zinc-600 dark:text-gray-400">
               <div class="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] truncate">
-                <i data-lucide="orbit" class="w-3.5 h-3.5 text-orange-400 shrink-0"></i>
-                <span class="text-gray-300 font-bold truncate">DRAG TO ROTATE 3D GLOBE</span>
+                <i data-lucide="orbit" class="w-3.5 h-3.5 text-orange-500 dark:text-orange-400 shrink-0"></i>
+                <span class="text-zinc-900 dark:text-gray-300 font-bold truncate">DRAG TO ROTATE 3D GLOBE</span>
               </div>
               
               <div class="flex items-center gap-2">
-                <button id="toggle-globe-spin" class="px-2 sm:px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-[10px] sm:text-[11px] font-bold transition-colors">
+                <button id="toggle-globe-spin" class="px-2 sm:px-2.5 py-1 rounded-md apple-glass-inset text-zinc-900 dark:text-white text-[10px] sm:text-[11px] font-bold hover:border-orange-500 transition-colors">
                   SPIN: AUTO
                 </button>
-                <button id="reset-globe-view" class="px-2 sm:px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-[10px] sm:text-[11px] font-bold transition-colors">
+                <button id="reset-globe-view" class="px-2 sm:px-2.5 py-1 rounded-md apple-glass-inset text-zinc-900 dark:text-white text-[10px] sm:text-[11px] font-bold hover:border-orange-500 transition-colors">
                   RESET
                 </button>
               </div>
@@ -1445,10 +1452,10 @@
           </div>
 
           <!-- Right: Live Skill Inspection Dossier HUD -->
-          <div class="lg:col-span-4 flex flex-col justify-between p-4 sm:p-6 md:p-7 rounded-2xl bg-zinc-200 dark:bg-obsidian-950 border border-zinc-400 dark:border-white/10 shadow-fighter-panel space-y-5 sm:space-y-6">
+          <div class="lg:col-span-4 flex flex-col justify-between p-4 sm:p-6 md:p-7 rounded-2xl apple-glass space-y-5 sm:space-y-6">
             
             <div>
-              <div class="flex items-center justify-between pb-3 border-b border-zinc-400 dark:border-white/10 mb-4">
+              <div class="flex items-center justify-between pb-3 border-b border-black/5 dark:border-white/10 mb-4">
                 <div class="text-[10px] sm:text-[11px] text-zinc-500 uppercase font-bold tracking-wider">
                   NODE_TELEMETRY_INSPECTOR
                 </div>
@@ -1471,50 +1478,46 @@
               </div>
 
               <!-- Mastery Metric & Progress Gauge -->
-              <div class="p-3 sm:p-3.5 rounded-lg bg-zinc-300/80 dark:bg-obsidian-900 border border-zinc-400/50 dark:border-white/10 space-y-2 mb-4">
+              <div class="p-3 sm:p-3.5 rounded-xl apple-glass-inset space-y-2 mb-4">
                 <div class="flex items-center justify-between text-xs font-bold font-mono">
                   <span class="text-zinc-600 dark:text-gray-400 text-[11px] sm:text-xs">ENGINEERING MASTERY</span>
                   <span id="hud-skill-percentage" class="text-zinc-950 dark:text-white font-bold text-[11px] sm:text-xs">95% (Senior L5)</span>
                 </div>
-                <div class="w-full h-2 rounded-full bg-zinc-400/50 dark:bg-zinc-800 overflow-hidden">
-                  <div id="hud-skill-bar" class="h-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 rounded-full transition-all duration-500" style="width: 95%"></div>
+                <div class="w-full h-2 rounded-full bg-zinc-300 dark:bg-obsidian-950 overflow-hidden p-0.5 border border-black/5 dark:border-white/10">
+                  <div id="hud-skill-bar" class="h-full bg-gradient-to-r from-orange-500 via-amber-400 to-orange-600 rounded-full transition-all duration-500 w-[95%] shadow-[0_0_8px_#f97316]"></div>
                 </div>
               </div>
 
-              <!-- Production Impact Note -->
-              <div class="space-y-1.5 mb-4">
-                <div class="text-[10px] uppercase font-bold text-zinc-500 tracking-wider">
-                  PRODUCTION IMPACT & USE CASE
+              <!-- Enterprise Production Impact Box -->
+              <div class="p-3 sm:p-3.5 rounded-xl apple-glass-inset space-y-1.5 mb-4">
+                <div class="text-[10px] text-zinc-500 uppercase font-bold flex items-center gap-1.5">
+                  <i data-lucide="check-circle" class="w-3 h-3 text-orange-500"></i>
+                  <span>PRODUCTION_IMPACT_LOG</span>
                 </div>
-                <div id="hud-skill-impact" class="text-[11px] sm:text-xs text-zinc-800 dark:text-zinc-300 font-mono bg-zinc-100 dark:bg-obsidian-900/60 p-2.5 rounded border border-zinc-400/30 dark:border-white/5 leading-relaxed">
+                <p id="hud-skill-impact" class="text-xs text-zinc-800 dark:text-gray-300 font-mono leading-relaxed">
                   Architected reactive frontend state tree handling 2.5K+ daily active SaaS enterprise employees with zero memory leaks.
-                </div>
+                </p>
               </div>
 
-              <!-- Sub-Capabilities Chips -->
+              <!-- Architectural Core Chips -->
               <div class="space-y-1.5">
                 <div class="text-[10px] uppercase font-bold text-zinc-500 tracking-wider">
                   KEY MODULES & ABSTRACTIONS
                 </div>
-                <div id="hud-skill-chips" class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono">
-                  <span class="px-2 py-0.5 rounded bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400/40 dark:border-white/10 text-zinc-900 dark:text-zinc-200">Concurrent Rendering</span>
-                  <span class="px-2 py-0.5 rounded bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400/40 dark:border-white/10 text-zinc-900 dark:text-zinc-200">Custom Hooks</span>
-                  <span class="px-2 py-0.5 rounded bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400/40 dark:border-white/10 text-zinc-900 dark:text-zinc-200">Fiber Engine</span>
-                  <span class="px-2 py-0.5 rounded bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400/40 dark:border-white/10 text-zinc-900 dark:text-zinc-200">Context API</span>
+                <div id="hud-skill-chips" class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold">
+                  <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">Concurrent Rendering</span>
+                  <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">Custom Hooks</span>
+                  <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">Fiber Engine</span>
+                  <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">Context API</span>
                 </div>
               </div>
 
             </div>
 
-            <!-- Quick Jump Selector Grid -->
-            <div class="pt-3 sm:pt-4 border-t border-zinc-400 dark:border-white/10">
-              <div class="text-[10px] uppercase font-bold text-zinc-500 mb-2 flex items-center justify-between">
-                <span>QUICK INSPECT NODE</span>
-                <span class="text-orange-500 dark:text-orange-400 font-bold">● LIVE</span>
-              </div>
-              <div id="quick-skills-selector" class="flex flex-wrap gap-1 max-h-28 overflow-y-auto pr-1">
-                <!-- 20 Quick clickable buttons injected via JS -->
-              </div>
+            <!-- Terminal Helper Prompt -->
+            <div class="pt-3 border-t border-black/5 dark:border-white/10 text-[11px] font-mono text-zinc-600 dark:text-gray-500 flex items-center justify-between">
+              <span>$ inspect --node=active</span>
+              <span class="text-orange-500 font-bold">CLICK GLOBE NODE</span>
             </div>
 
           </div>
@@ -1567,9 +1570,9 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           <!-- Post 01: HRMS SaaS Architecture -->
-          <article class="p-4 sm:p-6 md:p-7 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-xl hover:border-orange-500/50 transition-all duration-300 flex flex-col justify-between group">
+          <article class="p-4 sm:p-6 md:p-7 rounded-2xl apple-glass apple-glass-interactive flex flex-col justify-between group">
             <div>
-              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/40 dark:border-white/10 text-xs font-bold gap-2">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-black/5 dark:border-white/10 text-xs font-bold gap-2">
                 <span class="px-2 sm:px-2.5 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30 uppercase truncate">[SAAS // ARCHITECTURE]</span>
                 <span class="text-zinc-600 dark:text-gray-400 text-[10px] sm:text-[11px] shrink-0">8 MIN READ</span>
               </div>
@@ -1586,24 +1589,24 @@
 
               <!-- Tags -->
               <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold mb-5 sm:mb-6">
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">React 18</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">TypeScript</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">RTK Query</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">RBAC</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">React 18</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">TypeScript</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">RTK Query</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">RBAC</span>
               </div>
             </div>
 
             <!-- Read Button Link -->
-            <a href="blog-hrms-saas.html" class="w-full py-2.5 px-4 rounded-lg bg-orange-500 text-white font-bold text-xs uppercase tracking-wider font-mono flex items-center justify-between hover:bg-orange-600 transition-colors shadow-sm">
+            <a href="blog-hrms-saas.html" class="w-full py-2.5 px-4 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs uppercase tracking-wider font-mono flex items-center justify-between transition-colors shadow-sm">
               <span>Read Full Publication</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1"></i>
             </a>
           </article>
 
           <!-- Post 02: Core Web Vitals -->
-          <article class="p-4 sm:p-6 md:p-7 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-xl hover:border-orange-500/50 transition-all duration-300 flex flex-col justify-between group">
+          <article class="p-4 sm:p-6 md:p-7 rounded-2xl apple-glass apple-glass-interactive flex flex-col justify-between group">
             <div>
-              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/40 dark:border-white/10 text-xs font-bold gap-2">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-black/5 dark:border-white/10 text-xs font-bold gap-2">
                 <span class="px-2 sm:px-2.5 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30 uppercase truncate">[PERFORMANCE // WEB_VITALS]</span>
                 <span class="text-zinc-600 dark:text-gray-400 text-[10px] sm:text-[11px] shrink-0">7 MIN READ</span>
               </div>
@@ -1620,24 +1623,24 @@
 
               <!-- Tags -->
               <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold mb-5 sm:mb-6">
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">Next.js SSR</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">Core Web Vitals</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">Zero CLS</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">Ad-Tech</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">Next.js SSR</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">Core Web Vitals</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">Zero CLS</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">Ad-Tech</span>
               </div>
             </div>
 
             <!-- Read Button Link -->
-            <a href="blog-core-web-vitals.html" class="w-full py-2.5 px-4 rounded-lg bg-orange-500 text-white font-bold text-xs uppercase tracking-wider font-mono flex items-center justify-between hover:bg-orange-600 transition-colors shadow-sm">
+            <a href="blog-core-web-vitals.html" class="w-full py-2.5 px-4 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs uppercase tracking-wider font-mono flex items-center justify-between transition-colors shadow-sm">
               <span>Read Full Publication</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1"></i>
             </a>
           </article>
 
           <!-- Post 03: Real-Time Telemetry WebGL -->
-          <article class="p-4 sm:p-6 md:p-7 rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400/80 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-xl hover:border-orange-500/50 transition-all duration-300 flex flex-col justify-between group">
+          <article class="p-4 sm:p-6 md:p-7 rounded-2xl apple-glass apple-glass-interactive flex flex-col justify-between group">
             <div>
-              <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-400/40 dark:border-white/10 text-xs font-bold gap-2">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-black/5 dark:border-white/10 text-xs font-bold gap-2">
                 <span class="px-2 sm:px-2.5 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold border border-orange-500/30 uppercase truncate">[SYSTEMS // REALTIME_WEBGL]</span>
                 <span class="text-zinc-600 dark:text-gray-400 text-[10px] sm:text-[11px] shrink-0">9 MIN READ</span>
               </div>
@@ -1654,15 +1657,15 @@
 
               <!-- Tags -->
               <div class="flex flex-wrap gap-1.5 text-[9px] sm:text-[10px] font-mono font-bold mb-5 sm:mb-6">
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">WebSockets</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">WebGL</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">Web Workers</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-obsidian-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400/40 dark:border-white/10 hover:border-orange-500">GIS Mapping</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">WebSockets</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">WebGL</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">Web Workers</span>
+                <span class="px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-200">GIS Mapping</span>
               </div>
             </div>
 
             <!-- Read Button Link -->
-            <a href="blog-realtime-telemetry.html" class="w-full py-2.5 px-4 rounded-lg bg-orange-500 text-white font-bold text-xs uppercase tracking-wider font-mono flex items-center justify-between hover:bg-orange-600 transition-colors shadow-sm">
+            <a href="blog-realtime-telemetry.html" class="w-full py-2.5 px-4 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs uppercase tracking-wider font-mono flex items-center justify-between transition-colors shadow-sm">
               <span>Read Full Publication</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1"></i>
             </a>
@@ -1682,7 +1685,7 @@
       <div class="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
 
       <!-- Copy Toast Notification -->
-      <div id="copy-toast" class="fixed bottom-8 right-8 z-50 px-4 py-2.5 rounded-lg bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 border border-zinc-700 text-xs shadow-fighter-panel dark:shadow-2xl opacity-0 translate-y-5 pointer-events-none transition-all duration-300 flex items-center gap-2 font-mono font-bold">
+      <div id="copy-toast" class="fixed bottom-8 right-8 z-50 px-4 py-2.5 rounded-xl bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 border border-zinc-700 text-xs shadow-2xl opacity-0 translate-y-5 pointer-events-none transition-all duration-300 flex items-center gap-2 font-mono font-bold">
         <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 dark:text-emerald-600"></i>
         <span>✓ Email address copied to clipboard!</span>
       </div>
@@ -1692,7 +1695,7 @@
         <!-- Section Header -->
         <div class="mb-12 sm:mb-16">
           <div class="flex items-center gap-3 mb-3">
-            <span class="text-zinc-800 dark:text-zinc-300 font-mono text-xs tracking-widest uppercase font-bold truncate">$ /usr/bin/transmit_signal --priority=HIGH</span>
+            <span class="text-zinc-800 dark:text-zinc-300 font-mono text-xs tracking-widest uppercase font-bold">$ netstat -an | grep LISTEN:443</span>
             <div class="w-12 h-[1px] bg-zinc-800 dark:bg-zinc-400 shrink-0"></div>
             <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-zinc-300 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-200 border border-zinc-400 dark:border-white/10 shrink-0 font-mono">TLS 1.3</span>
           </div>
@@ -1700,7 +1703,7 @@
             06. INITIATE <span class="text-transparent bg-clip-text bg-gradient-to-r from-zinc-950 via-zinc-700 to-zinc-500 dark:from-white dark:via-zinc-200 dark:to-zinc-400">CONTACT</span>
           </h2>
           <p class="mt-3 text-sm sm:text-base text-zinc-600 dark:text-gray-400 max-w-3xl leading-relaxed font-mono">
-            Direct communication channels for Senior Frontend Architect roles, SaaS state scalability consultations, and enterprise technical collaborations.
+            Direct communication channels for Senior Software Engineer roles, SaaS state scalability consultations, and enterprise technical collaborations.
           </p>
         </div>
 
@@ -1710,19 +1713,19 @@
           <div class="lg:col-span-5 space-y-4 sm:space-y-5">
             
             <!-- 1. Direct Email Channel Dossier -->
-            <div class="p-4 sm:p-5 md:p-6 rounded-2xl bg-zinc-300/80 dark:bg-obsidian-900/90 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-md hover:border-zinc-950 dark:hover:border-white transition-all duration-300">
-              <div class="flex items-center justify-between text-xs font-bold text-zinc-600 dark:text-gray-400 mb-3 border-b border-zinc-400/50 dark:border-white/10 pb-2.5">
+            <div class="p-4 sm:p-5 md:p-6 rounded-2xl apple-glass apple-glass-interactive">
+              <div class="flex items-center justify-between text-xs font-bold text-zinc-600 dark:text-gray-400 mb-3 border-b border-black/5 dark:border-white/10 pb-2.5">
                 <span class="flex items-center gap-2 text-zinc-950 dark:text-white uppercase truncate">
                   <i data-lucide="mail" class="w-4 h-4 shrink-0"></i>
                   <span class="truncate">PRIMARY_DISPATCH_ENDPOINT</span>
                 </span>
-                <span class="text-[10px] px-2 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-300 uppercase shrink-0">DIRECT</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-md apple-glass-inset text-zinc-900 dark:text-zinc-300 uppercase shrink-0">DIRECT</span>
               </div>
               <div class="flex items-center justify-between gap-3">
                 <a href="mailto:knp.harsh@gmail.com" class="text-xs sm:text-sm md:text-base font-extrabold text-zinc-950 dark:text-white font-mono hover:underline truncate" title="Send email">
                   knp.harsh@gmail.com
                 </a>
-                <button id="copy-email-btn" class="px-2.5 sm:px-3 py-1.5 rounded-lg bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 text-[11px] sm:text-xs font-bold font-mono hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all flex items-center gap-1.5 shadow-sm shrink-0" title="Copy Email to Clipboard">
+                <button id="copy-email-btn" class="px-2.5 sm:px-3 py-1.5 rounded-lg bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 text-[11px] sm:text-xs font-bold font-mono hover:bg-orange-500 dark:hover:bg-orange-500 dark:hover:text-white transition-all flex items-center gap-1.5 shadow-sm shrink-0" title="Copy Email to Clipboard">
                   <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                   <span>COPY</span>
                 </button>
@@ -1730,7 +1733,7 @@
             </div>
 
             <!-- 2. Location & Live Operational Clock -->
-            <div class="p-4 sm:p-5 rounded-2xl bg-zinc-300/80 dark:bg-obsidian-900/90 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-md">
+            <div class="p-4 sm:p-5 rounded-2xl apple-glass apple-glass-interactive">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs font-mono">
                 <div>
                   <div class="text-[10px] uppercase font-bold text-zinc-500 dark:text-gray-400 mb-1 flex items-center gap-1.5">
@@ -1752,7 +1755,7 @@
             </div>
 
             <!-- 3. Availability Matrix & SLA Commitment -->
-            <div class="p-4 sm:p-5 rounded-2xl bg-zinc-300/80 dark:bg-obsidian-900/90 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-md space-y-3">
+            <div class="p-4 sm:p-5 rounded-2xl apple-glass apple-glass-interactive space-y-3">
               <div class="flex items-center justify-between text-xs font-mono">
                 <span class="text-zinc-600 dark:text-gray-400 uppercase text-[10px] font-bold">DISPATCH_STATUS</span>
                 <span class="inline-flex items-center gap-1.5 text-xs font-bold text-orange-600 dark:text-orange-400">
@@ -1763,7 +1766,7 @@
               <div class="text-xs text-zinc-700 dark:text-gray-300 leading-relaxed font-sans font-medium">
                 Evaluating Senior Full-Time Opportunities, Tech Lead Roles & High-Impact Frontend Consulting.
               </div>
-              <div class="pt-2 border-t border-zinc-400/40 dark:border-white/10 flex items-center justify-between text-[11px] font-mono text-zinc-600 dark:text-gray-400">
+              <div class="pt-2 border-t border-black/5 dark:border-white/10 flex items-center justify-between text-[11px] font-mono text-zinc-600 dark:text-gray-400">
                 <span class="flex items-center gap-1.5">
                   <i data-lucide="shield-check" class="w-3.5 h-3.5 text-orange-500"></i>
                   <span>RESPONSE GUARANTEE:</span>
@@ -1773,12 +1776,12 @@
             </div>
 
             <!-- 4. Encrypted Social & Repository Endpoints -->
-            <div class="p-4 sm:p-5 rounded-2xl bg-zinc-300/80 dark:bg-obsidian-900/90 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl backdrop-blur-md">
+            <div class="p-4 sm:p-5 rounded-2xl apple-glass apple-glass-interactive">
               <div class="text-[10px] uppercase font-bold text-zinc-500 dark:text-gray-400 mb-3 font-mono">
                 AUTHENTICATED_PROFILES
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 text-xs font-mono">
-                <a href="https://linkedin.com/in/theharshdev" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg bg-zinc-200 dark:bg-obsidian-950 border border-zinc-400 dark:border-white/10 text-zinc-900 dark:text-gray-200 hover:border-orange-500 dark:hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 transition-all flex items-center justify-between group">
+                <a href="https://linkedin.com/in/theharshdev" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl apple-glass-inset text-zinc-900 dark:text-gray-200 hover:border-orange-500 dark:hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 transition-all flex items-center justify-between group">
                   <span class="font-bold flex items-center gap-1.5 truncate">
                     <i data-lucide="linkedin" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
                     <span class="truncate">LinkedIn</span>
@@ -1786,7 +1789,7 @@
                   <i data-lucide="external-link" class="w-3 h-3 text-zinc-500 group-hover:text-orange-500 transition-colors shrink-0"></i>
                 </a>
 
-                <a href="https://github.com/theharshdev" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg bg-zinc-200 dark:bg-obsidian-950 border border-zinc-400 dark:border-white/10 text-zinc-900 dark:text-gray-200 hover:border-orange-500 dark:hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 transition-all flex items-center justify-between group">
+                <a href="https://github.com/theharshdev" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl apple-glass-inset text-zinc-900 dark:text-gray-200 hover:border-orange-500 dark:hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 transition-all flex items-center justify-between group">
                   <span class="font-bold flex items-center gap-1.5 truncate">
                     <i data-lucide="github" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
                     <span class="truncate">GitHub</span>
@@ -1800,10 +1803,10 @@
 
           <!-- RIGHT COLUMN: Interactive Terminal Contact Form Console with Live Validation (7 cols) -->
           <div class="lg:col-span-7">
-            <div id="contact-form-card" class="rounded-2xl bg-zinc-300/90 dark:bg-obsidian-900/90 border border-zinc-400 dark:border-white/10 shadow-fighter-panel dark:shadow-2xl overflow-hidden backdrop-blur-xl transition-all duration-300">
+            <div id="contact-form-card" class="rounded-2xl apple-glass overflow-hidden">
               
               <!-- Terminal Console Top Bar -->
-              <div class="px-4 sm:px-5 py-3 bg-zinc-400/40 dark:bg-obsidian-950 border-b border-zinc-400 dark:border-white/10 flex items-center justify-between text-xs text-zinc-700 dark:text-gray-400 font-mono">
+              <div class="px-4 sm:px-5 py-3 apple-glass-inset border-b border-black/5 dark:border-white/10 flex items-center justify-between text-xs text-zinc-700 dark:text-gray-400 font-mono">
                 <div class="flex items-center gap-2 truncate">
                   <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/80 inline-block shrink-0"></span>
                   <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-orange-400 inline-block shrink-0"></span>
@@ -1829,7 +1832,7 @@
                         <span id="contact-name-status" class="text-[10px] font-mono font-bold text-zinc-500"></span>
                       </div>
                       <div class="relative">
-                        <input id="contact-name" type="text" placeholder="e.g. Alex Henderson" class="w-full px-3.5 py-2.5 rounded-lg bg-zinc-200 dark:bg-obsidian-950 border border-zinc-400 dark:border-white/15 text-zinc-950 dark:text-white placeholder-zinc-500 dark:placeholder-gray-600 focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-xs font-semibold font-mono transition-all">
+                        <input id="contact-name" type="text" placeholder="e.g. Alex Henderson" class="w-full px-3.5 py-2.5 rounded-xl apple-glass-inset text-zinc-950 dark:text-white placeholder-zinc-500 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-xs font-semibold font-mono transition-all">
                       </div>
                       <div id="contact-name-error" class="hidden text-[11px] text-rose-600 dark:text-rose-400 font-mono mt-1 font-bold flex items-center gap-1">
                         <i data-lucide="alert-circle" class="w-3 h-3 inline"></i>
@@ -1846,7 +1849,7 @@
                         <span id="contact-email-status" class="text-[10px] font-mono font-bold text-zinc-500"></span>
                       </div>
                       <div class="relative">
-                        <input id="contact-email" type="email" placeholder="e.g. alex@company.com" class="w-full px-3.5 py-2.5 rounded-lg bg-zinc-200 dark:bg-obsidian-950 border border-zinc-400 dark:border-white/15 text-zinc-950 dark:text-white placeholder-zinc-500 dark:placeholder-gray-600 focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-xs font-semibold font-mono transition-all">
+                        <input id="contact-email" type="email" placeholder="e.g. alex@company.com" class="w-full px-3.5 py-2.5 rounded-xl apple-glass-inset text-zinc-950 dark:text-white placeholder-zinc-500 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-xs font-semibold font-mono transition-all">
                       </div>
                       <div id="contact-email-error" class="hidden text-[11px] text-rose-600 dark:text-rose-400 font-mono mt-1 font-bold flex items-center gap-1">
                         <i data-lucide="alert-circle" class="w-3 h-3 inline"></i>
@@ -1864,8 +1867,8 @@
                       </label>
                       <span class="text-[10px] font-mono text-orange-500 font-bold">TOPIC</span>
                     </div>
-                    <select id="contact-subject" class="w-full px-3.5 py-2.5 rounded-lg bg-zinc-200 dark:bg-obsidian-950 border border-zinc-400 dark:border-white/15 text-zinc-950 dark:text-white focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-xs font-semibold font-mono transition-all">
-                      <option value="saas_role" selected>[SAAS // FULL_TIME] Senior Software Developer / Architect Role</option>
+                    <select id="contact-subject" class="w-full px-3.5 py-2.5 rounded-xl apple-glass-inset text-zinc-950 dark:text-white focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-xs font-semibold font-mono transition-all">
+                      <option value="saas_role" selected>[SAAS // FULL_TIME] Senior Software Engineer Role</option>
                       <option value="web_vitals">[PERFORMANCE] Core Web Vitals & Next.js Optimization</option>
                       <option value="consulting">[CONSULTING] React 18 / TypeScript / State Architecture</option>
                       <option value="general">[GENERAL_INQUIRY] Technical Collaboration / Project Discussion</option>
@@ -1880,7 +1883,7 @@
                       </label>
                       <span id="char-counter" class="text-[10px] font-mono text-zinc-500 font-bold">0 / 500</span>
                     </div>
-                    <textarea id="contact-message" rows="4" maxlength="500" placeholder="Describe your project, team requirements, or role details (min 15 characters)..." class="w-full px-3.5 py-2.5 rounded-lg bg-zinc-200 dark:bg-obsidian-950 border border-zinc-400 dark:border-white/15 text-zinc-950 dark:text-white placeholder-zinc-500 dark:placeholder-gray-600 focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-xs font-semibold font-mono transition-all resize-none"></textarea>
+                    <textarea id="contact-message" rows="4" maxlength="500" placeholder="Describe your project, team requirements, or role details (min 15 characters)..." class="w-full px-3.5 py-2.5 rounded-xl apple-glass-inset text-zinc-950 dark:text-white placeholder-zinc-500 dark:placeholder-gray-500 focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-xs font-semibold font-mono transition-all resize-none"></textarea>
                     <div id="contact-message-error" class="hidden text-[11px] text-rose-600 dark:text-rose-400 font-mono mt-1 font-bold flex items-center gap-1">
                       <i data-lucide="alert-circle" class="w-3 h-3 inline"></i>
                       <span>Message must be at least 15 characters long.</span>
@@ -1976,7 +1979,7 @@
       <div class="relative w-full overflow-hidden py-3 mt-3 border-b border-zinc-400/40 dark:border-white/10">
         <div id="thankyou-scroll-track-2" class="flex whitespace-nowrap will-change-transform w-max">
           <div class="flex items-center gap-10 text-4xl sm:text-6xl md:text-7xl lg:text-[6.5vw] font-medium uppercase tracking-tight text-zinc-500 dark:text-zinc-400 font-mono leading-[0.85] pr-10">
-            <span>ARCHITECTING SCALABLE WEB SYSTEMS</span>
+            <span>ENGINEERING SCALABLE WEB APPLICATIONS</span>
             <span class="text-zinc-400 dark:text-zinc-600">•</span>
             <span>5+ YEARS PRODUCTION EXPERIENCE</span>
             <span class="text-zinc-400 dark:text-zinc-600">•</span>
@@ -1984,7 +1987,7 @@
             <span class="text-zinc-400 dark:text-zinc-600">•</span>
           </div>
           <div class="flex items-center gap-10 text-4xl sm:text-6xl md:text-7xl lg:text-[6.5vw] font-medium uppercase tracking-tight text-zinc-500 dark:text-zinc-400 font-mono leading-[0.85] pr-10" aria-hidden="true">
-            <span>ARCHITECTING SCALABLE WEB SYSTEMS</span>
+            <span>ENGINEERING SCALABLE WEB APPLICATIONS</span>
             <span class="text-zinc-400 dark:text-zinc-600">•</span>
             <span>5+ YEARS PRODUCTION EXPERIENCE</span>
             <span class="text-zinc-400 dark:text-zinc-600">•</span>
@@ -1992,7 +1995,7 @@
             <span class="text-zinc-400 dark:text-zinc-600">•</span>
           </div>
           <div class="flex items-center gap-10 text-4xl sm:text-6xl md:text-7xl lg:text-[6.5vw] font-medium uppercase tracking-tight text-zinc-500 dark:text-zinc-400 font-mono leading-[0.85] pr-10" aria-hidden="true">
-            <span>ARCHITECTING SCALABLE WEB SYSTEMS</span>
+            <span>ENGINEERING SCALABLE WEB APPLICATIONS</span>
             <span class="text-zinc-400 dark:text-zinc-600">•</span>
             <span>5+ YEARS PRODUCTION EXPERIENCE</span>
             <span class="text-zinc-400 dark:text-zinc-600">•</span>
@@ -2027,11 +2030,11 @@
               HARSH KUSHWAHA
             </h3>
             <span class="px-2.5 py-0.5 rounded bg-orange-500 text-white text-[10px] font-bold uppercase shadow-sm">
-              SR_DEV_II
+              SR_ENGINEER_II
             </span>
           </div>
           <p class="text-xs text-zinc-600 dark:text-gray-400 mt-1">
-            Senior Software Developer • Enterprise HRMS SaaS & High-Traffic Media Architect
+            Senior Software Engineer • Enterprise HRMS SaaS & High-Traffic Web Platforms
           </p>
         </div>
 
@@ -2053,9 +2056,9 @@
         </div>
         <ul class="space-y-2 text-xs font-semibold">
           <li><a href="#hero" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./00_terminal_hero.sh</a></li>
-          <li><a href="#about" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./01_about_architect.md</a></li>
+          <li><a href="#about" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./01_about_engineer.md</a></li>
           <li><a href="#experience" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./02_career_timeline.log</a></li>
-          <li><a href="#projects" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./03_deployed_systems.json</a></li>
+          <li><a href="#projects" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./03_featured_projects.json</a></li>
           <li><a href="#skills" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./04_skills_arsenal.env</a></li>
           <li><a href="#blog" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./05_tech_publications.md</a></li>
           <li><a href="#contact" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">./06_initiate_contact.socket</a></li>

@@ -107,8 +107,8 @@ class TerminalEngine {
 
   printHelp() {
     this.printOutput('<span class="text-zinc-950 dark:text-white font-bold">AVAILABLE COMMANDS:</span>');
-    this.printOutput('  <span class="text-zinc-700 dark:text-zinc-300 font-bold">whoami</span>    - Print developer identity & credentials');
-    this.printOutput('  <span class="text-zinc-700 dark:text-zinc-300 font-bold">about</span>     - Read professional summary & architecture bio');
+    this.printOutput('  <span class="text-zinc-700 dark:text-zinc-300 font-bold">whoami</span>    - Print engineer identity & credentials');
+    this.printOutput('  <span class="text-zinc-700 dark:text-zinc-300 font-bold">about</span>     - Read professional summary & engineering background');
     this.printOutput('  <span class="text-zinc-700 dark:text-zinc-300 font-bold">exp</span>       - Print career trajectory & company logs');
     this.printOutput('  <span class="text-zinc-700 dark:text-zinc-300 font-bold">skills</span>    - Output technical skills matrix with progress');
     this.printOutput('  <span class="text-zinc-700 dark:text-zinc-300 font-bold">projects</span>  - List deployed enterprise platforms');
@@ -120,32 +120,32 @@ class TerminalEngine {
 
   printBlog() {
     this.printOutput('<span class="text-zinc-950 dark:text-white font-bold">TECHNICAL PUBLICATIONS:</span>');
-    this.printOutput('  01. <a href="blog-hrms-saas.html" class="underline text-zinc-950 dark:text-white font-bold">Architecting High-Scale HRMS SaaS Platforms (React 18 & TS)</a> [8 MIN]');
+    this.printOutput('  01. <a href="blog-hrms-saas.html" class="underline text-zinc-950 dark:text-white font-bold">Engineering High-Scale HRMS SaaS Platforms (React 18 & TS)</a> [8 MIN]');
     this.printOutput('  02. <a href="blog-core-web-vitals.html" class="underline text-zinc-950 dark:text-white font-bold">Optimizing Core Web Vitals for 10M+ Readers (3.2s to 1.1s LCP)</a> [7 MIN]');
     this.printOutput('  03. <a href="blog-realtime-telemetry.html" class="underline text-zinc-950 dark:text-white font-bold">Real-Time Telemetry at 60 FPS (50K+ Sensor Points with WebGL)</a> [9 MIN]');
   }
 
   printWhoAmI() {
-    this.printOutput('<span class="text-zinc-950 dark:text-white font-bold">Harsh Kushwaha</span> • Senior Software Developer II');
+    this.printOutput('<span class="text-zinc-950 dark:text-white font-bold">Harsh Kushwaha</span> • Senior Software Engineer II');
     this.printOutput('Location: Noida, Uttar Pradesh, India');
     this.printOutput('Experience: 5+ Years in Scalable SaaS & High-Traffic Media Platforms');
   }
 
   printAbout() {
-    this.printOutput('<span class="text-zinc-950 dark:text-white font-bold">SUMMARY:</span> Senior Software Developer with 5 years of experience building scalable SaaS, enterprise, media, and e-commerce applications using React.js, TypeScript, Redux, JavaScript, and Tailwind CSS.');
-    this.printOutput('Architected React/Redux modules for HRMS SaaS platforms serving 2,500+ active users & led third-party vendor migrations.');
+    this.printOutput('<span class="text-zinc-950 dark:text-white font-bold">SUMMARY:</span> Senior Software Engineer with 5+ years of experience building scalable SaaS, enterprise, media, and e-commerce applications using React.js, TypeScript, Redux, JavaScript, and Tailwind CSS.');
+    this.printOutput('Engineered React/Redux modules for HRMS SaaS platforms serving 2,500+ active users & led third-party vendor migrations.');
     this.printOutput('Engineered high-volume media frontend features for <span class="text-zinc-950 dark:text-white font-bold">Hindustan Times, LiveMint, & HT Auto</span>.');
   }
 
   printExperience() {
     this.printOutput('<span class="text-zinc-950 dark:text-white font-bold">CAREER LOGS:</span>');
-    this.printOutput('  [Dec 2024 - Present] <span class="text-zinc-950 dark:text-white font-bold">INTELEGENCIA ANALYTICS PVT. LTD.</span> (Senior Software Developer II)');
+    this.printOutput('  [Dec 2024 - Present] <span class="text-zinc-950 dark:text-white font-bold">INTELEGENCIA ANALYTICS PVT. LTD.</span> (Senior Software Engineer II)');
     this.printOutput('    - 2,500+ HRMS SaaS active users & vendor migration.');
-    this.printOutput('  [Apr 2024 - Dec 2024] <span class="text-zinc-950 dark:text-white font-bold">KLOUDRAC SOFTWARES PVT. LTD.</span> (Software Developer)');
+    this.printOutput('  [Apr 2024 - Dec 2024] <span class="text-zinc-950 dark:text-white font-bold">KLOUDRAC SOFTWARES PVT. LTD.</span> (Software Engineer)');
     this.printOutput('    - Clients: Hindustan Times, LiveMint, HT Auto.');
-    this.printOutput('  [Aug 2023 - Apr 2024] <span class="text-zinc-950 dark:text-white font-bold">ALETHE LABS INDIA PVT. LTD.</span> (Software Developer)');
+    this.printOutput('  [Aug 2023 - Apr 2024] <span class="text-zinc-950 dark:text-white font-bold">ALETHE LABS INDIA PVT. LTD.</span> (Software Engineer)');
     this.printOutput('    - AI/ML data visualizers & government infrastructure telemetry.');
-    this.printOutput('  [Aug 2021 - Aug 2023] <span class="text-zinc-950 dark:text-white font-bold">EGLOBAL SOFT SOLUTIONS</span> (Software Developer)');
+    this.printOutput('  [Aug 2021 - Aug 2023] <span class="text-zinc-950 dark:text-white font-bold">EGLOBAL SOFT SOLUTIONS</span> (Software Engineer)');
     this.printOutput('    - Multi-industry React web apps & +40% SEO traffic surge.');
   }
 
@@ -159,7 +159,7 @@ class TerminalEngine {
   }
 
   printProjects() {
-    this.printOutput('<span class="text-zinc-950 dark:text-white font-bold">DEPLOYED SYSTEMS:</span>');
+    this.printOutput('<span class="text-zinc-950 dark:text-white font-bold">FEATURED PROJECTS:</span>');
     this.printOutput('  01. Enterprise HRMS SaaS Engine (2,500+ Active Users)');
     this.printOutput('  02. Hindustan Times & LiveMint High-Traffic Digital Suite');
     this.printOutput('  03. AI/ML Pipeline Telemetry Dashboard (Govt Infra)');

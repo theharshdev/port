@@ -42,6 +42,9 @@ class ThemeEngine {
       themeIcon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
       if (window.lucide) window.lucide.createIcons();
     }
+
+    // Dispatch global themeChanged event to sync 3D WebGL scenes and canvases
+    window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme } }));
   }
 }
 
