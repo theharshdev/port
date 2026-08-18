@@ -1443,14 +1443,15 @@ class ProjectCard3DModel {
     }
 
     const isDark = document.documentElement.classList.contains('dark');
-    const orangeColor = isDark ? 0xf97316 : 0xea580c;
-    const secondaryColor = isDark ? 0xffffff : 0x18181b;
-    const amberColor = isDark ? 0xfbbf24 : 0xd97706;
+    const primaryColor = isDark ? 0xf97316 : 0x71717a;
+    const secondaryColor = isDark ? 0xffffff : 0xa1a1aa;
+    const accentColor = isDark ? 0xfbbf24 : 0x9ca3af;
+    const innerGlassColor = isDark ? 0x200c00 : 0xd4d4d8;
 
-    const lineMat = new THREE.LineBasicMaterial({ color: orangeColor });
+    const lineMat = new THREE.LineBasicMaterial({ color: primaryColor });
     const lineDimMat = new THREE.LineBasicMaterial({ color: secondaryColor, transparent: true, opacity: isDark ? 0.7 : 0.85 });
-    const lineAmberMat = new THREE.LineBasicMaterial({ color: amberColor });
-    const innerGlassMat = new THREE.MeshBasicMaterial({ color: isDark ? 0x200c00 : 0x27272a, wireframe: true, transparent: true, opacity: 0.35 });
+    const lineAmberMat = new THREE.LineBasicMaterial({ color: accentColor });
+    const innerGlassMat = new THREE.MeshBasicMaterial({ color: innerGlassColor, wireframe: true, transparent: true, opacity: isDark ? 0.35 : 0.35 });
 
     if (this.modelType === 'torusknot') {
       // 01. Torus Knot Engine + Orbital Ring
@@ -1468,7 +1469,7 @@ class ProjectCard3DModel {
       this.group.add(this.subRing);
 
       const coreGeo = new THREE.OctahedronGeometry(0.22, 0);
-      const coreMat = new THREE.MeshBasicMaterial({ color: amberColor, wireframe: true });
+      const coreMat = new THREE.MeshBasicMaterial({ color: accentColor, wireframe: true });
       this.coreOrb = new THREE.Mesh(coreGeo, coreMat);
       this.group.add(this.coreOrb);
 
@@ -1512,7 +1513,7 @@ class ProjectCard3DModel {
       this.group.add(this.radarRing2);
 
       const beaconGeo = new THREE.OctahedronGeometry(0.18, 0);
-      this.coreOrb = new THREE.Mesh(beaconGeo, new THREE.MeshBasicMaterial({ color: amberColor, wireframe: true }));
+      this.coreOrb = new THREE.Mesh(beaconGeo, new THREE.MeshBasicMaterial({ color: accentColor, wireframe: true }));
       this.group.add(this.coreOrb);
 
     } else if (this.modelType === 'dodecahedron') {
@@ -1546,7 +1547,7 @@ class ProjectCard3DModel {
       this.group.add(this.subRing);
 
       const axisGeo = new THREE.OctahedronGeometry(0.24, 0);
-      this.coreOrb = new THREE.Mesh(axisGeo, new THREE.MeshBasicMaterial({ color: amberColor, wireframe: true }));
+      this.coreOrb = new THREE.Mesh(axisGeo, new THREE.MeshBasicMaterial({ color: accentColor, wireframe: true }));
       this.group.add(this.coreOrb);
 
     } else if (this.modelType === 'sentinel') {
@@ -1559,7 +1560,10 @@ class ProjectCard3DModel {
       const nodeCount = 3;
       for (let i = 0; i < nodeCount; i++) {
         const satGeo = new THREE.BoxGeometry(0.18, 0.18, 0.18);
-        const satMat = new THREE.MeshBasicMaterial({ color: i === 0 ? orangeColor : (i === 1 ? amberColor : secondaryColor), wireframe: true });
+        const satMat = new THREE.MeshBasicMaterial({
+          color: isDark ? (i === 0 ? primaryColor : (i === 1 ? accentColor : secondaryColor)) : (i === 0 ? 0x71717a : (i === 1 ? 0x9ca3af : 0xa1a1aa)),
+          wireframe: true
+        });
         const sat = new THREE.Mesh(satGeo, satMat);
         this.group.add(sat);
         this.satelliteNodes.push(sat);
