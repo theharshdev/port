@@ -567,12 +567,8 @@ class HeroMinimalScene {
     this.mouse.x += (this.mouse.targetX - this.mouse.x) * 0.05;
     this.mouse.y += (this.mouse.targetY - this.mouse.y) * 0.05;
 
-    // Fade out hero centerpiece as user scrolls down past top sections (so it doesn't overlap skills globe or contact form)
-    let scrollFade = 1.0;
-    if (scrollProgress > 0.10) {
-      scrollFade = Math.max(0, 1 - (scrollProgress - 0.10) / 0.15);
-    }
-
+    // Full-page dynamic 3D spline trajectory:
+    // As the user scrolls from top (progress 0) to bottom (progress 1), the model travels across the screen
     const isMobile = window.innerWidth < 768;
     const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
     const xSpread = isMobile ? 0.6 : (isTablet ? 1.4 : 2.2);
@@ -581,9 +577,9 @@ class HeroMinimalScene {
     const t = scrollProgress * Math.PI * 4;
     const baseOffset = isMobile ? 0 : 0.4;
     const pathX = baseOffset * (1 - scrollProgress) + Math.sin(t) * xSpread;
-    const pathY = 0.2 - scrollProgress * 2.0;
-    const pathZ = - (1 - scrollFade) * 8.0;
-    const pathScale = (isMobile ? 0.8 : 1.1) * scrollFade;
+    const pathY = (0.2 - scrollProgress * 1.6) + Math.sin(t * 0.5) * 0.35;
+    const pathZ = Math.cos(t * 0.7) * 0.6;
+    const pathScale = (isMobile ? 0.8 : 1.1) * (1.0 + Math.sin(scrollProgress * Math.PI) * 0.15);
 
     // Smooth lerp to target trajectory
     this.currentPos.x += (pathX + this.mouse.x * 0.3 - this.currentPos.x) * 0.08;
@@ -595,21 +591,16 @@ class HeroMinimalScene {
     const finalZ = this.currentPos.z + (this.introState ? this.introState.offsetZ : 0);
 
     if (this.heroGroup) {
-      if (finalScale <= 0.005 || scrollFade <= 0.005) {
-        this.heroGroup.visible = false;
-      } else {
-        this.heroGroup.visible = true;
-        this.heroGroup.position.set(this.currentPos.x, this.currentPos.y, finalZ);
-        this.heroGroup.scale.setScalar(finalScale);
+      this.heroGroup.position.set(this.currentPos.x, this.currentPos.y, finalZ);
+      this.heroGroup.scale.setScalar(finalScale);
 
-        // Kinetic rotation driven by elapsed time + scroll travel + scroll velocity + intro spin boost
-        const kineticSpin = scrollProgress * Math.PI * 6 + this.scrollVelocity * 0.003;
-        const boostY = this.introState ? this.introState.spinBoostY : 0;
-        const boostX = this.introState ? this.introState.spinBoostX : 0;
-        this.heroGroup.rotation.y = elapsedTime * 0.2 + kineticSpin + this.mouse.x * 0.35 + boostY;
-        this.heroGroup.rotation.x = elapsedTime * 0.12 + Math.sin(scrollProgress * Math.PI * 3) * 0.5 + this.mouse.y * 0.25 + boostX;
-        this.heroGroup.rotation.z = Math.cos(scrollProgress * Math.PI * 2) * 0.35 + (this.scrollVelocity * 0.001);
-      }
+      // Kinetic rotation driven by elapsed time + scroll travel + scroll velocity + intro spin boost
+      const kineticSpin = scrollProgress * Math.PI * 6 + this.scrollVelocity * 0.003;
+      const boostY = this.introState ? this.introState.spinBoostY : 0;
+      const boostX = this.introState ? this.introState.spinBoostX : 0;
+      this.heroGroup.rotation.y = elapsedTime * 0.2 + kineticSpin + this.mouse.x * 0.35 + boostY;
+      this.heroGroup.rotation.x = elapsedTime * 0.12 + Math.sin(scrollProgress * Math.PI * 3) * 0.5 + this.mouse.y * 0.25 + boostX;
+      this.heroGroup.rotation.z = Math.cos(scrollProgress * Math.PI * 2) * 0.35 + (this.scrollVelocity * 0.001);
     }
 
     const coreSpeed = this.introState ? this.introState.coreSpinSpeed : 1.0;
