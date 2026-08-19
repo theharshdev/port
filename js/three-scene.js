@@ -1278,8 +1278,8 @@ class MinimalModelWidget {
 
   setupUIControls() {
     const presetBtns = document.querySelectorAll('.preset-switch-btn');
-    const activeClasses = ['bg-zinc-950', 'text-white', 'dark:bg-white', 'dark:text-zinc-950'];
-    const inactiveClasses = ['bg-zinc-400/60', 'dark:bg-obsidian-800', 'text-zinc-800', 'dark:text-gray-300'];
+    const activeClasses = ['bg-zinc-950', 'text-white', 'dark:bg-white', 'dark:text-zinc-950', 'shadow-md'];
+    const inactiveClasses = ['bg-white', 'dark:bg-obsidian-800', 'text-zinc-900', 'dark:text-gray-300', 'border', 'border-zinc-400', 'dark:border-white/10', 'hover:border-orange-600', 'dark:hover:border-orange-500', 'hover:text-orange-600', 'dark:hover:text-orange-400', 'hover:bg-orange-50', 'dark:hover:bg-obsidian-800', 'shadow-sm'];
 
     presetBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -1746,6 +1746,83 @@ const SKILLS_GLOBE_DATA = [
     chips: ['CSS Grid', 'Flexbox', 'WCAG 2.1', 'Semantic Web']
   },
   {
+    id: 'python',
+    name: 'Python (v3.11+)',
+    category: 'ai',
+    categoryName: 'AI_&_PYTHON',
+    percentage: 92,
+    level: '92% (Advanced)',
+    desc: 'AsyncIO, Type Annotations, Pydantic v2, PyTorch/NumPy foundations, and High-Performance Scripting.',
+    impact: 'Built resilient microservices, ETL pipelines, and async data ingestion engines for high-throughput AI workloads.',
+    chips: ['AsyncIO', 'Pydantic v2', 'Type Hinting', 'ETL Pipelines', 'NumPy']
+  },
+  {
+    id: 'fastapi',
+    name: 'FastAPI',
+    category: 'ai',
+    categoryName: 'AI_&_BACKEND',
+    percentage: 90,
+    level: '90% (Production)',
+    desc: 'High-concurrency ASGI endpoints, Dependency Injection, Swagger OpenAPI, and Streaming Responses (SSE).',
+    impact: 'Architected low-latency inference gateways with sub-40ms P99 latency and automated streaming token delivery.',
+    chips: ['ASGI Engines', 'Streaming SSE', 'Dependency Injection', 'OpenAPI Schema', 'Pydantic']
+  },
+  {
+    id: 'langchain',
+    name: 'LangChain (v0.2+)',
+    category: 'ai',
+    categoryName: 'GENAI_&_AGENTS',
+    percentage: 91,
+    level: '91% (Agentic Lead)',
+    desc: 'LCEL (LangChain Expression Language), Custom Tools, Memory Stores, Output Parsers, and Multi-Agent Orchestration.',
+    impact: 'Constructed enterprise AI assistants with tool-calling, fallback routing, and structured JSON output validation.',
+    chips: ['LCEL Chains', 'Custom Tools', 'Output Parsers', 'Conversation Memory', 'Multi-Provider']
+  },
+  {
+    id: 'langgraph',
+    name: 'LangGraph & Agents',
+    category: 'ai',
+    categoryName: 'GENAI_&_AGENTS',
+    percentage: 89,
+    level: '89% (Stateful Workflows)',
+    desc: 'Cyclic Multi-Agent State Graphs, Human-in-the-Loop checkpoints, Persistent Memory, and Time-Travel Debugging.',
+    impact: 'Engineered self-correcting agentic workflows with deterministic conditional routing and durable execution state.',
+    chips: ['StateGraph', 'Human-in-the-Loop', 'Conditional Edges', 'Checkpointers', 'Multi-Agent Teams']
+  },
+  {
+    id: 'rag',
+    name: 'RAG & Vector DBs',
+    category: 'ai',
+    categoryName: 'AI_&_KNOWLEDGE',
+    percentage: 93,
+    level: '93% (Architecture Specialist)',
+    desc: 'Dense Embeddings, Hybrid Search (BM25 + Cosine), Chunking Strategies, Pinecone/Chroma/Qdrant, and Re-ranking.',
+    impact: 'Designed domain-specific document intelligence RAG pipelines achieving 94%+ retrieval recall on unstructured PDF corpora.',
+    chips: ['Hybrid Search', 'Pinecone / Chroma', 'Cohere Rerank', 'Context Chunking', 'Semantic Cache']
+  },
+  {
+    id: 'llm-apis',
+    name: 'LLM APIs & Gateways',
+    category: 'ai',
+    categoryName: 'AI_INFRASTRUCTURE',
+    percentage: 94,
+    level: '94% (Integration Expert)',
+    desc: 'OpenAI, Anthropic Claude, Gemini Pro, Groq, Ollama, Rate-Limit Fallbacks, and LiteLLM Proxy.',
+    impact: 'Integrated multi-provider LLM gateways with automated failover, token cost metering, and sub-100ms cold-start routing.',
+    chips: ['OpenAI / Claude / Gemini', 'Groq (LPU)', 'LiteLLM Proxy', 'Token Streaming', 'Failover Routing']
+  },
+  {
+    id: 'genai',
+    name: 'GenAI & System Prompts',
+    category: 'ai',
+    categoryName: 'GENAI_ENGINEERING',
+    percentage: 92,
+    level: '92% (Specialist)',
+    desc: 'Few-Shot Prompting, Chain-of-Thought (CoT), Guardrails (NeMo/LlamaGuard), Hallucination Mitigation, and Evaluation.',
+    impact: 'Delivered production-grade conversational copilots with deterministic guardrails and automated RAGAS eval metrics.',
+    chips: ['Few-Shot / CoT', 'Guardrails', 'RAGAS Evals', 'JSON Schema Enforcement', 'Prompt Profiling']
+  },
+  {
     id: 'redux',
     name: 'Redux Toolkit & RTK',
     category: 'state',
@@ -1944,7 +2021,7 @@ class Skills3DGlobe {
     this.renderer.toneMappingExposure = 1.1;
     this.canvasContainer.appendChild(this.renderer.domElement);
 
-    this.camera.position.z = 6.4;
+    this.camera.position.z = 6.8;
 
     this.globeGroup = new THREE.Group();
     this.scene.add(this.globeGroup);
@@ -2062,7 +2139,7 @@ class Skills3DGlobe {
     this.tagElements = [];
 
     const count = SKILLS_GLOBE_DATA.length;
-    const radius = 2.45;
+    const radius = 2.35;
 
     // Distribute nodes evenly on sphere using Fibonacci distribution
     for (let i = 0; i < count; i++) {
@@ -2085,14 +2162,16 @@ class Skills3DGlobe {
 
       // HTML Overlay Tag Element
       const tagEl = document.createElement('div');
-      tagEl.className = 'skill-globe-tag absolute pointer-events-auto cursor-pointer transform -translate-x-1/2 -translate-y-1/2 px-2.5 py-1 rounded-md text-[11px] font-mono font-bold border transition-all duration-150 backdrop-blur-md shadow-sm select-none';
+      tagEl.className = 'skill-globe-tag absolute pointer-events-auto cursor-pointer transform -translate-x-1/2 -translate-y-1/2 px-2.5 py-1 rounded-md text-[11px] font-mono font-bold border transition-all duration-150 backdrop-blur-md select-none';
       tagEl.setAttribute('data-index', i);
       tagEl.setAttribute('data-category', data.category);
 
+      const isDark = document.documentElement.classList.contains('dark');
       // Base Styling
-      tagEl.style.backgroundColor = 'rgba(24, 24, 27, 0.85)';
+      tagEl.style.backgroundColor = isDark ? 'rgba(24, 24, 27, 0.85)' : '#18181b';
       tagEl.style.color = '#ffffff';
-      tagEl.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+      tagEl.style.borderColor = isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.3)';
+      tagEl.style.boxShadow = isDark ? 'none' : '0 2px 8px rgba(0, 0, 0, 0.18)';
 
       tagEl.innerHTML = `
         <span class="inline-flex items-center gap-1.5">
@@ -2107,14 +2186,22 @@ class Skills3DGlobe {
       });
 
       tagEl.addEventListener('mouseenter', () => {
-        tagEl.style.borderColor = '#ffffff';
-        tagEl.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+        const isCurrentDark = document.documentElement.classList.contains('dark');
+        if (this.selectedIndex !== i) {
+          tagEl.style.borderColor = isCurrentDark ? '#f97316' : '#ea580c';
+          tagEl.style.backgroundColor = isCurrentDark ? 'rgba(249, 115, 22, 0.25)' : '#09090b';
+          tagEl.style.boxShadow = isCurrentDark ? '0 0 14px rgba(249, 115, 22, 0.5)' : '0 4px 14px rgba(234, 88, 12, 0.4), 0 0 0 1.5px #ea580c';
+          tagEl.style.color = '#ffffff';
+        }
       });
 
       tagEl.addEventListener('mouseleave', () => {
+        const isCurrentDark = document.documentElement.classList.contains('dark');
         if (this.selectedIndex !== i) {
-          tagEl.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-          tagEl.style.backgroundColor = 'rgba(24, 24, 27, 0.85)';
+          tagEl.style.borderColor = isCurrentDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.3)';
+          tagEl.style.backgroundColor = isCurrentDark ? 'rgba(24, 24, 27, 0.85)' : '#18181b';
+          tagEl.style.boxShadow = isCurrentDark ? 'none' : '0 2px 8px rgba(0, 0, 0, 0.18)';
+          tagEl.style.color = '#ffffff';
         }
       });
 
@@ -2138,7 +2225,7 @@ class Skills3DGlobe {
     selectorContainer.innerHTML = '';
     SKILLS_GLOBE_DATA.forEach((skill, idx) => {
       const chip = document.createElement('button');
-      chip.className = 'quick-skill-chip px-2 py-1 rounded text-[10px] font-mono font-bold transition-all bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400/40 dark:border-white/10 text-zinc-900 dark:text-zinc-300 hover:border-zinc-950 dark:hover:border-white hover:text-zinc-950 dark:hover:text-white';
+      chip.className = 'quick-skill-chip px-2 py-1 rounded text-[10px] font-mono font-bold transition-all bg-white dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 text-zinc-900 dark:text-zinc-300 hover:border-orange-600 dark:hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-obsidian-800 shadow-sm';
       chip.setAttribute('data-index', idx);
       chip.innerText = skill.name;
 
@@ -2177,24 +2264,25 @@ class Skills3DGlobe {
       hudChips.innerHTML = '';
       skill.chips.forEach(chipText => {
         const span = document.createElement('span');
-        span.className = 'px-2 py-0.5 rounded bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400/40 dark:border-white/10 text-zinc-900 dark:text-zinc-200';
+        span.className = 'px-2 py-0.5 rounded bg-white dark:bg-obsidian-900 border border-zinc-400/60 dark:border-white/10 text-zinc-900 dark:text-zinc-200 shadow-sm';
         span.innerText = chipText;
         hudChips.appendChild(span);
       });
     }
 
     // 2. Highlight active tag overlay badge
+    const isDark = document.documentElement.classList.contains('dark');
     this.tagElements.forEach((el, i) => {
       if (i === index) {
-        el.style.borderColor = '#f97316';
-        el.style.backgroundColor = 'rgba(234, 88, 12, 0.9)';
-        el.style.boxShadow = '0 0 16px rgba(249, 115, 22, 0.6)';
+        el.style.borderColor = isDark ? '#f97316' : '#ea580c';
+        el.style.backgroundColor = isDark ? 'rgba(234, 88, 12, 0.95)' : '#ea580c';
+        el.style.boxShadow = isDark ? '0 0 18px rgba(249, 115, 22, 0.7)' : '0 4px 18px rgba(234, 88, 12, 0.45), 0 0 0 2px rgba(234, 88, 12, 0.6)';
         el.style.color = '#ffffff';
       } else {
-        el.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-        el.style.backgroundColor = 'rgba(24, 24, 27, 0.85)';
-        el.style.boxShadow = 'none';
-        el.style.color = '#e4e4e7';
+        el.style.borderColor = isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.3)';
+        el.style.backgroundColor = isDark ? 'rgba(24, 24, 27, 0.85)' : '#18181b';
+        el.style.boxShadow = isDark ? 'none' : '0 2px 8px rgba(0, 0, 0, 0.18)';
+        el.style.color = '#ffffff';
       }
     });
 
@@ -2202,9 +2290,9 @@ class Skills3DGlobe {
     const chips = document.querySelectorAll('.quick-skill-chip');
     chips.forEach((c, i) => {
       if (i === index) {
-        c.className = 'quick-skill-chip px-2 py-1 rounded text-[10px] font-mono font-bold transition-all bg-orange-500 text-white shadow-sm border-transparent';
+        c.className = 'quick-skill-chip px-2 py-1 rounded text-[10px] font-mono font-bold transition-all bg-orange-600 dark:bg-orange-500 text-white shadow-md border border-orange-600 dark:border-transparent';
       } else {
-        c.className = 'quick-skill-chip px-2 py-1 rounded text-[10px] font-mono font-bold transition-all bg-zinc-300 dark:bg-obsidian-900 border border-zinc-400/40 dark:border-white/10 text-zinc-900 dark:text-zinc-300 hover:border-orange-500 dark:hover:border-orange-500';
+        c.className = 'quick-skill-chip px-2 py-1 rounded text-[10px] font-mono font-bold transition-all bg-white dark:bg-obsidian-900 border border-zinc-400 dark:border-white/10 text-zinc-900 dark:text-zinc-300 hover:border-orange-600 dark:hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-obsidian-800 shadow-sm';
       }
     });
 
@@ -2305,8 +2393,8 @@ class Skills3DGlobe {
   setupUIControls() {
     // Globe Category Filter Buttons
     const filterBtns = document.querySelectorAll('.globe-filter-btn');
-    const activeClasses = ['bg-orange-500', 'text-white', 'shadow-sm'];
-    const inactiveClasses = ['bg-zinc-200', 'dark:bg-obsidian-800', 'text-zinc-900', 'dark:text-gray-300', 'border', 'border-zinc-400', 'dark:border-white/10'];
+    const activeClasses = ['bg-orange-600', 'dark:bg-orange-500', 'text-white', 'border-orange-600', 'dark:border-transparent', 'shadow-md'];
+    const inactiveClasses = ['bg-white', 'dark:bg-obsidian-800', 'text-zinc-900', 'dark:text-gray-300', 'border', 'border-zinc-400', 'dark:border-white/10', 'hover:border-orange-600', 'dark:hover:border-orange-500', 'hover:text-orange-600', 'dark:hover:text-orange-400', 'hover:bg-orange-50', 'dark:hover:bg-obsidian-800', 'shadow-sm'];
 
     filterBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -2330,8 +2418,8 @@ class Skills3DGlobe {
         this.isAutoSpin = !this.isAutoSpin;
         spinBtn.innerText = `SPIN: ${this.isAutoSpin ? 'AUTO' : 'PAUSED'}`;
         spinBtn.className = this.isAutoSpin
-          ? 'px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-white text-[11px] font-bold transition-colors'
-          : 'px-2.5 py-1 rounded bg-amber-900/60 text-amber-300 text-[11px] font-bold transition-colors';
+          ? 'px-2.5 py-1 rounded bg-zinc-950 text-white dark:bg-zinc-800 dark:hover:bg-zinc-700 hover:bg-orange-600 text-[11px] font-bold transition-colors shadow-sm'
+          : 'px-2.5 py-1 rounded bg-orange-600 text-white dark:bg-amber-900/60 dark:text-amber-300 text-[11px] font-bold transition-colors shadow-sm';
       });
     }
 
@@ -2380,9 +2468,17 @@ class Skills3DGlobe {
       const halfWidth = containerWidth / 2;
       const halfHeight = containerHeight / 2;
 
+      // Vertical bounds thresholds to cleanly fade & hide nodes near top & bottom ribbons
+      const topCutoff = 48;         // Upper cutoff where nodes are completely hidden
+      const topFadeEnd = 86;        // Y position where nodes reach full visibility
+      const bottomCutoff = containerHeight - 48;  // Lower cutoff where nodes are completely hidden
+      const bottomFadeStart = containerHeight - 86; // Y position where nodes start fading down
+
       this.nodes.forEach((node) => {
         if (this.activeFilter !== 'all' && node.data.category !== this.activeFilter) {
           node.element.style.display = 'none';
+          node.element.style.visibility = 'hidden';
+          if (node.marker) node.marker.visible = false;
           return;
         }
 
@@ -2393,28 +2489,59 @@ class Skills3DGlobe {
         const x = (screenPos.x * halfWidth) + halfWidth;
         const y = -(screenPos.y * halfHeight) + halfHeight;
 
+        // Calculate smooth vertical fade multiplier
+        let verticalAlpha = 1.0;
+        if (y <= topCutoff) {
+          verticalAlpha = 0.0;
+        } else if (y < topFadeEnd) {
+          verticalAlpha = (y - topCutoff) / (topFadeEnd - topCutoff);
+        } else if (y >= bottomCutoff) {
+          verticalAlpha = 0.0;
+        } else if (y > bottomFadeStart) {
+          verticalAlpha = (bottomCutoff - y) / (bottomCutoff - bottomFadeStart);
+        }
+        verticalAlpha = Math.max(0, Math.min(1, verticalAlpha));
+
         // Depth attenuation: front nodes are bright and scaled, back nodes are dimmed
         const isFacingCamera = worldPos.z > -0.5;
-        const depthFactor = (worldPos.z + 2.5) / 5.0; // range ~0 to 1
+        let baseOpacity = 1.0;
+        let scale = 1.0;
+        let zIndex = 20;
+
+        if (worldPos.z < -0.8) {
+          baseOpacity = 0.12;
+          scale = 0.7;
+          zIndex = 1;
+        } else if (worldPos.z < 0.5) {
+          baseOpacity = 0.6;
+          scale = 0.85;
+          zIndex = 5;
+        } else {
+          baseOpacity = 1.0;
+          scale = 1.0;
+          zIndex = 20;
+        }
+
+        const finalOpacity = baseOpacity * verticalAlpha;
 
         node.element.style.left = `${x}px`;
         node.element.style.top = `${y}px`;
+        node.element.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        node.element.style.zIndex = zIndex;
 
-        if (worldPos.z < -0.8) {
-          node.element.style.opacity = '0.12';
-          node.element.style.transform = `translate(-50%, -50%) scale(0.7)`;
-          node.element.style.zIndex = '1';
-        } else if (worldPos.z < 0.5) {
-          node.element.style.opacity = '0.6';
-          node.element.style.transform = `translate(-50%, -50%) scale(0.85)`;
-          node.element.style.zIndex = '5';
+        // Completely hide from DOM rendering when near ribbons so backdrop-filter doesn't blur them
+        if (finalOpacity <= 0.02) {
+          node.element.style.opacity = '0';
+          node.element.style.visibility = 'hidden';
+          node.element.style.pointerEvents = 'none';
+          if (node.marker) node.marker.visible = false;
         } else {
-          node.element.style.opacity = '1';
-          node.element.style.transform = `translate(-50%, -50%) scale(1.0)`;
-          node.element.style.zIndex = '20';
+          node.element.style.display = 'block';
+          node.element.style.visibility = 'visible';
+          node.element.style.opacity = finalOpacity.toFixed(3);
+          node.element.style.pointerEvents = (finalOpacity > 0.35 && isFacingCamera) ? 'auto' : 'none';
+          if (node.marker) node.marker.visible = true;
         }
-
-        node.element.style.display = 'block';
       });
     }
 

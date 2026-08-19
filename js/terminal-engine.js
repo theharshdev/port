@@ -150,12 +150,17 @@ class TerminalEngine {
   }
 
   printSkills() {
-    this.printOutput('<span class="text-zinc-950 dark:text-white font-bold">TECHNICAL MATRIX:</span>');
-    this.printOutput('  React.js         <span class="text-zinc-950 dark:text-white">[█████████████████░] 95%</span>');
-    this.printOutput('  TypeScript       <span class="text-zinc-800 dark:text-zinc-300">[████████████████░░] 90%</span>');
-    this.printOutput('  Redux Toolkit    <span class="text-zinc-800 dark:text-zinc-300">[████████████████░░] 92%</span>');
-    this.printOutput('  Tailwind CSS     <span class="text-zinc-950 dark:text-white">[█████████████████░] 95%</span>');
-    this.printOutput('  Node.js / Express<span class="text-zinc-700 dark:text-zinc-400">[██████████████░░░░] 82%</span>');
+    this.printOutput('<span class="text-zinc-950 dark:text-white font-bold">TECHNICAL MATRIX (27 NODES):</span>');
+    this.printOutput('  React.js (v18+)  <span class="text-zinc-950 dark:text-white">[█████████████████░] 95%</span>');
+    this.printOutput('  TypeScript       <span class="text-zinc-800 dark:text-zinc-300">[████████████████░░] 92%</span>');
+    this.printOutput('  Python (3.11+)   <span class="text-zinc-800 dark:text-zinc-300">[████████████████░░] 92%</span>');
+    this.printOutput('  FastAPI          <span class="text-zinc-800 dark:text-zinc-300">[████████████████░░] 90%</span>');
+    this.printOutput('  LangChain & Graph<span class="text-zinc-800 dark:text-zinc-300">[████████████████░░] 91%</span>');
+    this.printOutput('  RAG & Vector DBs <span class="text-zinc-800 dark:text-zinc-300">[█████████████████░] 93%</span>');
+    this.printOutput('  LLM APIs & GenAI <span class="text-zinc-800 dark:text-zinc-300">[█████████████████░] 94%</span>');
+    this.printOutput('  Redux Toolkit    <span class="text-zinc-800 dark:text-zinc-300">[█████████████████░] 94%</span>');
+    this.printOutput('  Tailwind / GSAP  <span class="text-zinc-950 dark:text-white">[█████████████████░] 96%</span>');
+    this.printOutput('  Node.js / Express<span class="text-zinc-700 dark:text-zinc-400">[███████████████░░░] 85%</span>');
   }
 
   printProjects() {

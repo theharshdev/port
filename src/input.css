@@ -6,15 +6,16 @@
 /* Apple UI Premium Glassmorphism Design System                  */
 /* ------------------------------------------------------------- */
 
+/* Light Mode Card Foundation: Crisp, Modern Elevated Surface */
 .apple-glass {
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(28px) saturate(190%);
   -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.14);
   border-top: 1px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.07),
-              0 0 0 1px rgba(255, 255, 255, 0.5),
-              inset 0 1px 2px 0 rgba(255, 255, 255, 0.85);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.08),
+              0 0 0 1px rgba(0, 0, 0, 0.04),
+              inset 0 1px 2px 0 rgba(255, 255, 255, 0.9);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -30,17 +31,24 @@
 }
 
 .apple-glass-interactive {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Light Mode: Crisp White Card with High-Visibility Orange Outline & Elevated Warm Shadow */
 .apple-glass-interactive:hover {
-  background: rgba(255, 255, 255, 0.65);
-  border-color: rgba(255, 255, 255, 0.9);
-  border-top-color: #ffffff;
+  background: #ffffff;
+  border-color: #ea580c;
+  border-top-color: #ea580c;
   transform: translateY(-4px);
-  box-shadow: 0 28px 50px -12px rgba(0, 0, 0, 0.12),
-              0 0 0 1px rgba(249, 115, 22, 0.3),
-              inset 0 1px 2px 0 rgba(255, 255, 255, 1);
+  box-shadow: 0 24px 48px -12px rgba(234, 88, 12, 0.22),
+              0 0 0 1.5px #ea580c,
+              inset 0 1px 2px 0 #ffffff;
+}
+
+.apple-glass-interactive:active {
+  transform: translateY(-2px) scale(0.995);
+  box-shadow: 0 12px 24px -6px rgba(234, 88, 12, 0.3),
+              0 0 0 2px #ea580c;
 }
 
 .dark .apple-glass-interactive:hover {
@@ -53,9 +61,14 @@
               inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
 }
 
+.dark .apple-glass-interactive:active {
+  transform: translateY(-2px) scale(0.995);
+}
+
+/* Inset Containers: High Contrast in Light & Dark Mode */
 .apple-glass-inset {
-  background: rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -65,6 +78,172 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+}
+
+/* ------------------------------------------------------------- */
+/* High-Contrast Interactive Hover & Focus State Rules           */
+/* ------------------------------------------------------------- */
+
+/* Navigation Links */
+.nav-link {
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover {
+  color: #ea580c !important;
+}
+
+.dark .nav-link:hover {
+  color: #fb923c !important;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2.5px;
+  background: #ea580c;
+  border-radius: 9999px;
+  transform: translateX(-50%);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  opacity: 0;
+  box-shadow: 0 0 10px rgba(234, 88, 12, 0.8);
+}
+
+.dark .nav-link::after {
+  background: #f97316;
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.8);
+}
+
+.nav-link.nav-link-active {
+  color: #ea580c !important;
+}
+
+.dark .nav-link.nav-link-active {
+  color: #fb923c !important;
+}
+
+.nav-link.nav-link-active::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.nav-link-mobile {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link-mobile:hover {
+  background-color: rgba(234, 88, 12, 0.12) !important;
+  color: #ea580c !important;
+}
+
+.nav-link-mobile.nav-link-active {
+  background-color: rgba(234, 88, 12, 0.16) !important;
+  color: #ea580c !important;
+  border-left: 3px solid #ea580c !important;
+  padding-left: 0.875rem !important;
+}
+
+.dark .nav-link-mobile:hover {
+  background-color: rgba(249, 115, 22, 0.15) !important;
+  color: #fb923c !important;
+}
+
+.dark .nav-link-mobile.nav-link-active {
+  color: #fb923c !important;
+  border-left: 3px solid #f97316 !important;
+}
+
+/* ------------------------------------------------------------- */
+/* Form Inputs & Focus Visibility in Light & Dark Mode           */
+/* ------------------------------------------------------------- */
+input, select, textarea {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+input:hover, select:hover, textarea:hover {
+  border-color: rgba(234, 88, 12, 0.6) !important;
+}
+
+.dark input:hover, .dark select:hover, .dark textarea:hover {
+  border-color: rgba(249, 115, 22, 0.5) !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none !important;
+  border-color: #ea580c !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.32), 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+  color: #09090b !important;
+}
+
+.dark input:focus, .dark select:focus, .dark textarea:focus {
+  border-color: #f97316 !important;
+  background-color: rgba(15, 15, 17, 0.9) !important;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.25), 0 0 16px rgba(249, 115, 22, 0.2) !important;
+  color: #ffffff !important;
+}
+
+/* ------------------------------------------------------------- */
+/* Inset Badges, Chips & Interactive Spans (Light & Dark Hover)   */
+/* ------------------------------------------------------------- */
+span.apple-glass-inset:hover,
+div.apple-glass-inset:hover,
+button.apple-glass-inset:hover {
+  border-color: #ea580c !important;
+  background: #ffffff !important;
+  color: #ea580c !important;
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.18) !important;
+}
+
+.dark span.apple-glass-inset:hover,
+.dark div.apple-glass-inset:hover,
+.dark button.apple-glass-inset:hover {
+  border-color: #f97316 !important;
+  background: rgba(249, 115, 22, 0.12) !important;
+  color: #fb923c !important;
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.25) !important;
+}
+
+/* ------------------------------------------------------------- */
+/* Global Button Focus Accessibility                             */
+/* ------------------------------------------------------------- */
+button:focus-visible, a:focus-visible {
+  outline: 2px solid #ea580c !important;
+  outline-offset: 2px !important;
+}
+
+.dark button:focus-visible, .dark a:focus-visible {
+  outline: 2px solid #f97316 !important;
+  outline-offset: 2px !important;
+}
+
+/* ------------------------------------------------------------- */
+/* 3D Skills Globe Projection Layer Masking                      */
+/* Prevents skill nodes from blurring behind top & bottom ribbons */
+/* ------------------------------------------------------------- */
+#skills-3d-tag-overlay {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 46px,
+    black 84px,
+    black calc(100% - 84px),
+    transparent calc(100% - 46px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 46px,
+    black 84px,
+    black calc(100% - 84px),
+    transparent calc(100% - 46px),
+    transparent 100%
+  );
 }
 
 /* Official Lenis Smooth Scroll Optimization */
@@ -90,55 +269,4 @@ html, body {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
-}
-
-/* ------------------------------------------------------------- */
-/* Active Navlink Highlighting & Smooth Indicator               */
-/* ------------------------------------------------------------- */
-.nav-link {
-  position: relative;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: #f97316;
-  border-radius: 9999px;
-  transform: translateX(-50%);
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-  opacity: 0;
-  box-shadow: 0 0 10px rgba(249, 115, 22, 0.8);
-}
-
-.nav-link.nav-link-active {
-  color: #ea580c !important;
-}
-
-.dark .nav-link.nav-link-active {
-  color: #fb923c !important;
-}
-
-.nav-link.nav-link-active::after {
-  width: 100%;
-  opacity: 1;
-}
-
-.nav-link-mobile {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.nav-link-mobile.nav-link-active {
-  background-color: rgba(249, 115, 22, 0.15) !important;
-  color: #ea580c !important;
-  border-left: 3px solid #f97316 !important;
-  padding-left: 0.875rem !important;
-}
-
-.dark .nav-link-mobile.nav-link-active {
-  color: #fb923c !important;
 }

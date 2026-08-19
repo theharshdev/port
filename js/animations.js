@@ -464,8 +464,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    const activeNavClasses = ['bg-orange-500', 'text-white', 'shadow-sm', 'border-transparent'];
-    const inactiveNavClasses = ['bg-zinc-300', 'dark:bg-obsidian-900', 'text-zinc-800', 'dark:text-gray-300', 'border-zinc-400', 'dark:border-white/10'];
+    const activeNavClasses = ['bg-orange-600', 'dark:bg-orange-500', 'text-white', 'shadow-md', 'border-transparent'];
+    const inactiveNavClasses = ['bg-white', 'dark:bg-obsidian-900', 'text-zinc-900', 'dark:text-gray-300', 'border', 'border-zinc-400', 'dark:border-white/10', 'hover:border-orange-600', 'dark:hover:border-orange-500', 'hover:text-orange-600', 'dark:hover:text-orange-400', 'hover:bg-orange-50', 'dark:hover:bg-obsidian-800', 'shadow-sm'];
 
     const updateActiveTimelineNav = (targetId) => {
       timelineNavBtns.forEach(btn => {
@@ -621,8 +621,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const filterBtns = document.querySelectorAll('.skill-filter-btn');
-  const activeClasses = ['bg-zinc-900', 'dark:bg-white', 'text-white', 'dark:text-zinc-950', 'shadow-fighter-panel', 'border-transparent'];
-  const inactiveClasses = ['bg-zinc-200', 'dark:bg-obsidian-800', 'text-zinc-900', 'dark:text-gray-300', 'border-zinc-400', 'dark:border-white/10'];
+  const activeClasses = ['bg-orange-600', 'dark:bg-white', 'text-white', 'dark:text-zinc-950', 'shadow-md', 'border-transparent'];
+  const inactiveClasses = ['bg-white', 'dark:bg-obsidian-800', 'text-zinc-900', 'dark:text-gray-300', 'border', 'border-zinc-400', 'dark:border-white/10', 'hover:border-orange-600', 'dark:hover:border-orange-500', 'hover:text-orange-600', 'dark:hover:text-orange-400', 'hover:bg-orange-50', 'dark:hover:bg-obsidian-800', 'shadow-sm'];
 
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -940,8 +940,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // -------------------------------------------------------------
   const projectFilterBtns = document.querySelectorAll('.project-filter-btn');
 
-  const projActiveClasses = ['bg-orange-500', 'text-white', 'shadow-sm', 'border-transparent'];
-  const projInactiveClasses = ['bg-zinc-300', 'dark:bg-obsidian-900', 'text-zinc-800', 'dark:text-gray-300', 'border', 'border-zinc-400', 'dark:border-white/10'];
+  const projActiveClasses = ['bg-orange-600', 'dark:bg-orange-500', 'text-white', 'shadow-md', 'border-transparent'];
+  const projInactiveClasses = ['bg-white', 'dark:bg-obsidian-900', 'text-zinc-900', 'dark:text-gray-300', 'border', 'border-zinc-400', 'dark:border-white/10', 'hover:border-orange-600', 'dark:hover:border-orange-500', 'hover:text-orange-600', 'dark:hover:text-orange-400', 'hover:bg-orange-50', 'dark:hover:bg-obsidian-800', 'shadow-sm'];
 
   projectFilterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
