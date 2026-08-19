@@ -219,6 +219,19 @@ button:focus-visible, a:focus-visible {
   outline-offset: 2px !important;
 }
 
+/* Contact Form Card Elevated Surface */
+#contact-form-card {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(32px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(190%) !important;
+}
+
+.dark #contact-form-card {
+  background: rgba(18, 18, 22, 0.90) !important;
+  backdrop-filter: blur(32px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(190%) !important;
+}
+
 /* ------------------------------------------------------------- */
 /* 3D Skills Globe Projection Layer Masking                      */
 /* Prevents skill nodes from blurring behind top & bottom ribbons */
