@@ -188,20 +188,18 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* ------------------------------------------------------------- */
-/* Inset Badges, Chips & Interactive Spans (Light & Dark Hover)   */
+/* Inset Badges, Action Buttons & Links (Light & Dark Hover)      */
 /* ------------------------------------------------------------- */
-span.apple-glass-inset:hover,
-div.apple-glass-inset:hover,
-button.apple-glass-inset:hover {
+button.apple-glass-inset:hover,
+a.apple-glass-inset:hover {
   border-color: #ea580c !important;
   background: #ffffff !important;
   color: #ea580c !important;
   box-shadow: 0 2px 8px rgba(234, 88, 12, 0.18) !important;
 }
 
-.dark span.apple-glass-inset:hover,
-.dark div.apple-glass-inset:hover,
-.dark button.apple-glass-inset:hover {
+.dark button.apple-glass-inset:hover,
+.dark a.apple-glass-inset:hover {
   border-color: #f97316 !important;
   background: rgba(249, 115, 22, 0.12) !important;
   color: #fb923c !important;
